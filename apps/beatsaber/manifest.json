@@ -1,0 +1,24 @@
+{
+  "BundleIdentifier": "beatsaber",
+  "BundleType": "Application",
+  "BundleVersion": "1.0.0",
+  "VendorIdentifier": "com.spotify",
+  "UserInstallable": false,
+  "AppDescription": {
+    "en": ""
+  },
+  "AppName": {
+    "en": "Beat Saber"
+  },
+  "SupportedLanguages": [
+    "en"
+  ],
+  "SupportedDeviceClasses": [
+    "Desktop"
+  ],
+  "InjectScripts": false,
+  "InjectStylesheets": false,
+  "SkipLanguageValidation": true,
+  "SkipUnrequireValidation": true,
+  "SpmApp": true
+}
