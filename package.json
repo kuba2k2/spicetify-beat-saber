@@ -1,4 +1,13 @@
 {
+  "name": "spicetify-beat-saber",
+  "version": "1.0.0",
+  "description": "Beat Saber map availability plugin for Spicetify",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kuba2k2/spicetify-beat-saber.git"
+  },
+  "private": true,
   "dependencies": {
     "beastsaber-api": "^2.1.0",
     "beatsaver-api": "^2.0.2",
@@ -12,6 +21,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "format": "prettier --write \"src/**/*.ts\"",
     "format-check": "prettier --check \"src/**/*.ts\"",
+    "postversion": "cross-var replace '\\d+\\.\\d+\\.\\d+' $npm_package_version apps/beatsaber/manifest.json",
     "js": "node scripts/build.js",
     "js:watch": "node scripts/watch.js",
     "css": "sass --no-source-map --style compressed src/scss/style.scss apps/beatsaber/css/beatsaber.css",
@@ -32,11 +42,13 @@
     "@typescript-eslint/parser": "^5.5.0",
     "babelify": "^10.0.0",
     "browserify": "^17.0.0",
+    "cross-var": "^1.1.0",
     "eslint": "^8.3.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.27.1",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.0",
+    "replace": "^1.2.1",
     "sass": "^1.43.5",
     "tinyify": "^3.0.0",
     "tsify": "^5.0.4",
