@@ -1,0 +1,6 @@
+node_modules
+apps
+backend
+res
+scripts
+spicetify*.d.ts
