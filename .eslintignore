@@ -4,3 +4,4 @@ backend
 res
 scripts
 spicetify*.d.ts
+gulpfile.ts

@@ -76,9 +76,11 @@ function BeatSaberLoader() {
 		// remove the temporary resolver iframe
 		const resolverIframe = document.getElementById("beatsaber-app-resolver")
 		if (resolverIframe) resolverIframe.remove()
-
 	} else {
-		console.log("[BeatSaber/SubApp] Loading version", manifest.BundleVersion)
+		console.log(
+			"[BeatSaber/SubApp] Loading version",
+			manifest.BundleVersion
+		)
 		// check if the global core is initialized
 		if (!window.top.BeatSaber) {
 			setTimeout(BeatSaberLoader, 1000)

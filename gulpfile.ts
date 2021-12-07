@@ -17,7 +17,7 @@ function tsifyBabelify(b: BrowserifyObject, opts: { debug: boolean }) {
 	})
 }
 
-function css(debug: boolean = false) {
+function css(debug?: boolean) {
 	return gulp
 		.src("src/scss/style.scss")
 		.pipe(gulpIf(debug, sourcemaps.init()))
@@ -35,7 +35,7 @@ function resCopy() {
 	return gulp.src("res/*.css").pipe(gulp.dest("apps/beatsaber/css/"))
 }
 
-function js(debug: boolean = false, src?: string) {
+function js(debug?: boolean, src?: string) {
 	return gulp
 		.src(src || ["src/main.ts", "src/loader.ts", "src/shim.ts"])
 		.pipe(

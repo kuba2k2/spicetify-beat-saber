@@ -70,9 +70,7 @@ export class TrackQueue {
 
 		// remove duplicated requests
 		this.queue = this.queue.filter(
-			(item) =>
-				item.slug !== request.slug ||
-				item.type !== request.type
+			(item) => item.slug !== request.slug || item.type !== request.type
 		)
 
 		if (atStart) {
