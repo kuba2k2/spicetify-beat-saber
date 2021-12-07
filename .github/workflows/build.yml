@@ -1,0 +1,41 @@
+name: Build SPA package
+on:
+  push:
+    tags:
+      - "v*.*.*"
+jobs:
+  build:
+    name: Build SPA package
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+
+    - name: Install project
+      run: npm install
+
+    - name: Run lint
+      run: npm run lint
+
+    - name: Build package
+      run: bash build.sh
+
+    - name: Publish GitHub release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          apps/*.spa
+          apps/*.js
+
+    - name: Upload workflow artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: beatsaber
+        path: |
+          apps/*.spa
+          apps/*.js

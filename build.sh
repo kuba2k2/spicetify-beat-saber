@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 VERSION=$(node -p -e "require('./package.json').version")
 
 echo Building $VERSION
