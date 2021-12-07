@@ -1,0 +1,29 @@
+.bs-badge {
+	border-radius: 10rem;
+	color: #fff;
+	display: inline-block;
+	font-size: 0.7rem;
+	font-weight: 700;
+	height: 20px;
+	line-height: 20px;
+	margin: 0.4rem 0.3rem 0 0;
+	min-width: 26px;
+	padding: 0 0.6em;
+	text-align: center;
+
+	&.bs-easy {
+		background-color: #00a279;
+	}
+	&.bs-normal {
+		background-color: #3498db;
+	}
+	&.bs-hard {
+		background-color: #da6300;
+	}
+	&.bs-expert {
+		background-color: #e74c3c;
+	}
+	&.bs-expertplus {
+		background-color: #6610f2;
+	}
+}

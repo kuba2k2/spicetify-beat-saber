@@ -1,0 +1,25 @@
+.bs-empty-view {
+	flex-grow: 1;
+	align-self: center;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+
+	padding-top: 32px;
+	padding-bottom: 16px;
+
+	h3 {
+		font-size: 28px;
+		line-height: 36px;
+		letter-spacing: -0.005em;
+		font-weight: 900;
+		color: #fff;
+		text-transform: none;
+	}
+
+	p {
+		max-width: 400px;
+	}
+}

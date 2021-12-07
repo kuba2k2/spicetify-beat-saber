@@ -1,0 +1,19 @@
+.popover.modal.bs-modal {
+	width: 1000px;
+	margin-left: -500px;
+	max-height: 600px;
+	margin-top: -300px;
+
+	.popover-content {
+		min-height: 500px;
+	}
+
+	.popover-content-scroll-area {
+		overflow: hidden;
+	}
+
+	.bs-track-page {
+		overflow: auto;
+		height: 100%;
+	}
+}

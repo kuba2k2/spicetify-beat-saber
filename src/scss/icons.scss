@@ -1,0 +1,27 @@
+@use "../../res/beatsaber-font";
+
+// support bs-icons in data-ta-id and ta-id attributes (for buttons)
+[ta-id^="bs-icon-"],
+[ta-id*=" bs-icon-"],
+[data-ta-id^="bs-icon-"],
+[data-ta-id*=" bs-icon-"] {
+	@extend [class^="bs-icon-"];
+}
+
+@mixin fix-icon($name) {
+	[ta-id~="#{$name}"]::before,
+	[data-ta-id~="#{$name}"]::before {
+		@extend .#{$name};
+	}
+}
+
+@include fix-icon("bs-icon-bookmark");
+@include fix-icon("bs-icon-bookmark-filled");
+
+// these icons look a bit shifted down
+.bs-icon-bookmark {
+	&::before,
+	&-filled::before {
+		transform: translateY(-1px);
+	}
+}

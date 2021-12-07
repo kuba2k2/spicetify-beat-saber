@@ -1,0 +1,50 @@
+@use "badge";
+@use "builtin-level-header";
+@use "button-group";
+@use "colors";
+@use "empty-view";
+@use "icons";
+@use "map-list";
+@use "modal";
+@use "queue-button";
+@use "search-field";
+@use "spinner";
+@use "track-header";
+@use "track-page";
+@use "tracklist";
+
+/* ensure tooltip visibility in dialogs */
+#tooltip {
+	z-index: 10000;
+}
+
+.scrollbar-style-visible {
+	&-windows,
+	&-linux {
+		&::-webkit-scrollbar-button,
+		& ::-webkit-scrollbar-button {
+			background: none;
+			display: none;
+		}
+
+		&::-webkit-scrollbar-button:single-button,
+		& ::-webkit-scrollbar-button:single-button {
+			background-color: #181818;
+			background-image: url(https://local_resource_host/images/scrollbar-buttons.png);
+			background-size: 16px 64px;
+		}
+	}
+}
+
+table tr:not(:hover),
+.bs-hover-parent:not(:hover) {
+	.bs-hover,
+	[ta-id~="bs-hover"],
+	[data-ta-id~="bs-hover"] {
+		visibility: hidden;
+	}
+}
+
+.modal-backdrop {
+	display: none;
+}

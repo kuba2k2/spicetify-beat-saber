@@ -1,0 +1,26 @@
+@mixin colorize($name, $color, $colorHighlight, $colorFocus) {
+	.bs-#{$name},
+	.bs-#{$name}::before,
+	[ta-id~="bs-#{$name}"]::before,
+	[data-ta-id~="bs-#{$name}"]::before {
+		color: $color;
+	}
+
+	.bs-#{$name}:hover,
+	.bs-#{$name}:hover::before,
+	[ta-id~="bs-#{$name}"]:hover::before,
+	[data-ta-id~="bs-#{$name}"]:hover::before {
+		color: $colorHighlight !important;
+	}
+
+	.bs-#{$name}:focus,
+	.bs-#{$name}:focus::before,
+	[ta-id~="bs-#{$name}"]:focus::before,
+	[data-ta-id~="bs-#{$name}"]:focus::before {
+		color: $colorHighlight !important;
+	}
+}
+
+@include colorize("green", #1db954, #1ed760, #179443);
+@include colorize("yellow", #ffeb3b, #eeff41, #fbc02d);
+@include colorize("red", #f44336, #e57373, #d32f2f);

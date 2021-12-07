@@ -1,0 +1,34 @@
+.bs-queue-button {
+	position: relative;
+
+	& > button {
+		--button-size: 32px;
+		width: unset;
+
+		small {
+			vertical-align: middle;
+			padding: 0 4px;
+		}
+
+		&::before {
+			vertical-align: middle;
+		}
+	}
+
+	.ConnectPopup {
+		&__info {
+			margin: 24px 0 16px;
+		}
+
+		&__content {
+			.GlueToggle {
+				display: inline-block;
+				margin: 0 10px 0 20px;
+			}
+
+			span.bs-setting {
+				vertical-align: top;
+			}
+		}
+	}
+}

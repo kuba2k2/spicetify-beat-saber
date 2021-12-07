@@ -1,0 +1,41 @@
+.bs-ml-wrapper {
+	overflow: scroll;
+	height: 100%;
+}
+
+.Table[data-ta-id="bs-ml"] table {
+	table-layout: auto;
+	max-width: 1000px;
+
+	tbody tr:not(.bs-ml-row) {
+		display: none;
+	}
+}
+
+.bs-ml-row {
+	&,
+	* {
+		-webkit-user-drag: none !important;
+		user-select: none !important;
+	}
+
+	.bs-ml-image {
+		padding: 3px 10px;
+		width: 80px;
+
+		img {
+			width: 60px;
+			height: 60px;
+			vertical-align: middle;
+		}
+	}
+
+	.bs-ml-name {
+		padding: 5px 0 10px 12px;
+	}
+
+	.bs-ml-rating,
+	.bs-ml-actions {
+		white-space: nowrap;
+	}
+}
