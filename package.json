@@ -1,6 +1,6 @@
 {
   "name": "spicetify-beat-saber",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Beat Saber map availability plugin for Spicetify",
   "license": "MIT",
   "repository": {
