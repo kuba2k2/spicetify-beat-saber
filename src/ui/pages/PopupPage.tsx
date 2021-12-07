@@ -1,5 +1,6 @@
 import { Subscription } from "rxjs"
 import { QueueRequest } from "../../core/queue/requests/QueueRequest"
+import { TrackPage } from "./TrackPage"
 
 type QueueButtonState = {
 	items: QueueRequest[]
@@ -66,6 +67,12 @@ export class PopupPage extends Spicetify.React.Component<unknown, QueueButtonSta
 		return true
 	}
 
+	handleItemClick(request: QueueRequest) {
+		const track = BeatSaber.TrackQueue.getTrack(request.slug)
+		if (!track) return
+		TrackPage.showAsModal(track)
+	}
+
 	render() {
 		const settings = {
 			"blockQueue": "Block queue",
@@ -120,10 +127,22 @@ export class PopupPage extends Spicetify.React.Component<unknown, QueueButtonSta
 						)}
 
 						<ul>
-							{this.state.items.map(request => (
-								<li>
-									<button className="ConnectPopup__device ConnectPopup__device--available ConnectPopup__device--active">
-										<span className="ConnectPopup__device-image spoticon-device-computer-32"></span>
+							{this.state.items.map(request => {
+								let icon = "airplay";
+								switch (request.type) {
+									case "MapsRequest":
+										icon = "search"
+										break
+									case "DetailsRequest":
+										icon = "album"
+										break
+									case "ArtistImageRequest":
+										icon = "artist"
+										break
+								}
+								return (<li onClick={this.handleItemClick.bind(this, request)}>
+									<button className="ConnectPopup__device ConnectPopup__device--available ConnectPopup__device--active-no">
+										<span className={`ConnectPopup__device-image spoticon-${icon}-32`}></span>
 										<div className="ConnectPopup__device-body">
 											<p className="ConnectPopup__device-title">{request.type}</p>
 											<p className="ConnectPopup__device-info">
@@ -131,8 +150,8 @@ export class PopupPage extends Spicetify.React.Component<unknown, QueueButtonSta
 											</p>
 										</div>
 									</button>
-								</li>
-							))}
+								</li>)
+							})}
 						</ul>
 					</div>
 				</div>

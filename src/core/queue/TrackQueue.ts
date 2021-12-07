@@ -51,7 +51,7 @@ export class TrackQueue {
 		return this.observables.get(slug)
 	}
 
-	private getTrack(slug: string): Track | undefined {
+	getTrack(slug: string): Track | undefined {
 		return this.getSubject(slug)?.value
 	}
 

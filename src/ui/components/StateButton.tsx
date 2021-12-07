@@ -67,12 +67,7 @@ export class StateButton extends Spicetify.React.Component<StateButtonProps, Sta
 		if (this.props.onClick) {
 			this.props.onClick(this.state.track)
 		} else {
-			Spicetify.showReactModal({
-				title: "Beat Saber - Search results",
-				children: <TrackPage track={this.state.track} />,
-				okLabel: "OK",
-				className: "bs-modal",
-			})
+			TrackPage.showAsModal(this.state.track)
 		}
 	}
 
