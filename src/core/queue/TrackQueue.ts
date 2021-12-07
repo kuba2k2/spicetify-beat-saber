@@ -153,6 +153,14 @@ export class TrackQueue {
 			await BeatSaber.Storage.putTrack(track)
 		}
 
+		// delete the subject if no more requests is queued AND there is no observers
+		if (
+			!this.queue.some((request) => request.slug == track.slug) &&
+			!this.observables.has(track.slug)
+		) {
+			this.subjects.delete(track.slug)
+		}
+
 		this.queueNext()
 	}
 
@@ -172,7 +180,8 @@ export class TrackQueue {
 			return this.getObservable(track.slug)
 		}
 
-		const subject = new BehaviorSubject(track)
+		const subject =
+			this.getSubject(track.slug) || new BehaviorSubject(track)
 		const observable = subject.pipe(
 			finalize(() => {
 				this.finalize(track.slug)
@@ -277,8 +286,11 @@ export class TrackQueue {
 
 	finalize(slug: string) {
 		this.log("[TrackQueue] Finalizing", slug)
-		this.subjects.delete(slug)
 		this.observables.delete(slug)
+		// delete the subject if no more requests is queued (because there is no more observers)
+		if (!this.queue.some((request) => request.slug == slug)) {
+			this.subjects.delete(slug)
+		}
 	}
 
 	cancelRequests(slug: string) {
