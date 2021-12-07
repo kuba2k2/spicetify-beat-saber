@@ -6,7 +6,6 @@ VERSION=$(node -p -e "require('./package.json').version")
 
 echo Building $VERSION
 
-npm install
 npm run build
 
 cd apps/beatsaber
