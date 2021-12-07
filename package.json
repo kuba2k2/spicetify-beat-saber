@@ -21,7 +21,7 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "format": "prettier --write \"src/**/*.ts\"",
     "format-check": "prettier --check \"src/**/*.ts\"",
-    "postversion": "cross-var replace '\\d+\\.\\d+\\.\\d+' $npm_package_version apps/beatsaber/manifest.json",
+    "version": "cross-var replace '\\d+\\.\\d+\\.\\d+' $npm_package_version apps/beatsaber/manifest.json && git add apps/beatsaber/manifest.json",
     "build": "gulp build",
     "build:dev": "gulp build:dev",
     "watch": "gulp watch",
