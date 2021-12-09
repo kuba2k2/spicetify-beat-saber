@@ -51,6 +51,16 @@ function copyGlobals(source: Window, target: Window) {
 	}
 }
 
+function tryResolve(app: string) {
+	const iframe = document.createElement("iframe")
+	iframe.style.display = "none"
+	iframe.src = `spotify:app:${app}:loader`
+	iframe.onload = () => {
+		iframe.remove()
+	}
+	document.body.appendChild(iframe)
+}
+
 /**
  * The Loader script checks the availability of all required globals,
  * and makes everything available in sub-iframes. It also makes
@@ -99,6 +109,9 @@ function BeatSaberLoader() {
 	const script = document.createElement("script")
 	script.src = "https://beatsaber.app.spotify.com/beatsaber.bundle.js"
 	document.body.appendChild(script)
+
+	// try to resolve additional iframes
+	tryResolve("beatsaber-assets")
 
 	console.log("[BeatSaber] Main script injected")
 }

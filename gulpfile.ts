@@ -90,6 +90,8 @@ gulp.task("js:watch", () => {
 		if (!file.endsWith("loader.ts") && !file.endsWith("shim.ts")) {
 			file = "src/main.ts"
 		}
+		// apparently it does not understand backslashes properly
+		file = file.replace("\\", "/")
 		const task = js.bind(this, true, file)
 		task.displayName = file
 		gulp.series(task)(null)
