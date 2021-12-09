@@ -58,6 +58,8 @@ export class TrackWatcher extends BaseWatcher<HTMLTableRowElement> {
 
 		if (!uri || !artists || !title) return
 
+		if (!Spicetify.URI.isTrack(uri)) return
+
 		const track: TrackBase = { uri, title, artists }
 
 		Spicetify.ReactDOM.render(
