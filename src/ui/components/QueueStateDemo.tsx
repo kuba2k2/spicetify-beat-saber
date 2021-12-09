@@ -1,29 +1,21 @@
 import { Subscription } from "rxjs"
 import { QueueRequest } from "../../core/queue/requests/QueueRequest"
+import { QueueState } from "../../core/queue/TrackQueue"
 
-type QueueStateState = {
-	items: QueueRequest[]
-	blocked: boolean
-}
-
-export class QueueState extends Spicetify.React.Component<unknown, QueueStateState> {
+export class QueueStateDemo extends Spicetify.React.Component<unknown, QueueState> {
 	subscription: Subscription
 
 	constructor() {
 		super({})
 		this.state = {
-			items: [],
+			enqueued: [],
 			blocked: false,
 		}
 	}
 
 	componentDidMount() {
 		this.subscription = BeatSaber.TrackQueue.queueSubject.subscribe(state => {
-			if (state === true || state === false) {
-				this.setState({ blocked: state })
-			} else {
-				this.setState({ items: state })
-			}
+			this.setState(state)
 		})
 	}
 
@@ -41,7 +33,7 @@ export class QueueState extends Spicetify.React.Component<unknown, QueueStateSta
 					isDisabled={!this.state.blocked}
 					onClick={BeatSaber.TrackQueue.queueUnblock} />
 				<br /><br />
-				{this.state.items.map(request => (
+				{this.state.enqueued.map(request => (
 					<span style={{ marginTop: "5px" }}>
 						<b><i>{request.type}</i></b> -
 						<code>{request.slug}</code>

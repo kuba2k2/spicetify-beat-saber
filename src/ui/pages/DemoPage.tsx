@@ -1,6 +1,6 @@
 import { Track } from "../../core/models/Track";
 import { TrackBase } from "../../core/models/TrackBase";
-import { QueueState } from "../components/QueueState";
+import { QueueStateDemo } from "../components/QueueStateDemo";
 import { StateButton } from "../components/StateButton";
 import { TrackPage } from "./TrackPage";
 
@@ -84,7 +84,7 @@ export class DemoPage extends Spicetify.React.Component {
 					</div>
 				))}
 				<hr />
-				<QueueState />
+				<QueueStateDemo />
 			</div>
 		)
 	}

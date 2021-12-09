@@ -9,6 +9,7 @@ export class MapsRequest extends QueueRequest {
 	constructor(init: object) {
 		super(init)
 		this.type = "MapsRequest"
+		this.postRunDelay = 2000
 	}
 
 	requestWasEnqueued(track: Track): boolean {

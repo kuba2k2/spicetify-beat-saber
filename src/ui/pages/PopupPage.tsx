@@ -1,12 +1,11 @@
 import { Subscription } from "rxjs"
 import { QueueRequest } from "../../core/queue/requests/QueueRequest"
+import { QueueState } from "../../core/queue/TrackQueue"
 import { TrackPage } from "./TrackPage"
 
 type QueueButtonState = {
-	items: QueueRequest[]
-	blocked: boolean
 	popupVisible: boolean
-}
+} & QueueState
 
 export class PopupPage extends Spicetify.React.Component<unknown, QueueButtonState> {
 	subscription: Subscription
@@ -17,7 +16,7 @@ export class PopupPage extends Spicetify.React.Component<unknown, QueueButtonSta
 		this.handleBlockClick = this.handleBlockClick.bind(this)
 		this.handleClearClick = this.handleClearClick.bind(this)
 		this.state = {
-			items: [],
+			enqueued: [],
 			blocked: false,
 			popupVisible: false,
 		}
@@ -31,11 +30,7 @@ export class PopupPage extends Spicetify.React.Component<unknown, QueueButtonSta
 
 	componentDidMount() {
 		this.subscription = BeatSaber.TrackQueue.queueSubject.subscribe(state => {
-			if (state === true || state === false) {
-				this.setState({ blocked: state })
-			} else {
-				this.setState({ items: state })
-			}
+			this.setState(state)
 		})
 	}
 
@@ -81,81 +76,87 @@ export class PopupPage extends Spicetify.React.Component<unknown, QueueButtonSta
 			"logTrackPage": "Enable TrackPage logging",
 			"logWatchers": "Enable UI watchers logging",
 		}
-		return (
-			<div className="bs-queue-button">
-				<button
-					type="button"
-					className={`CanonicalButton Button Button--style-icon Button--size-32 bs-icon-note ${this.state.blocked ? "bs-red" : ""}`}
-					data-tooltip="Beat Saber"
-					onClick={this.handleIconClick}
-				>
-					<small>{this.state.items.length}</small>
-				</button>
-				<div className={`bs-queue-popup ConnectPopup ${this.state.popupVisible ? "visible" : ""}`}>
 
-					<div className="ConnectPopup__header">
-						<h3 className="ConnectPopup__header-title">
-							Beat Saber v{BeatSaberManifest.BundleVersion}
-						</h3>
-						{this.state.blocked && (
-							<a href="#"
-								className="ConnectPopup__header-help spoticon-block-16"
-								onClick={this.handleBlockClick}></a>
-						)}
-					</div>
+		let requests = this.state.enqueued
+		if (this.state.current) {
+			requests = [this.state.current].concat(this.state.enqueued)
+		}
 
-					<div className="ConnectPopup__content">
+		return <div className="bs-queue-button">
+			<button
+				type="button"
+				className={`CanonicalButton Button Button--style-icon Button--size-32 bs-icon-note ${this.state.blocked ? "bs-red" : ""}`}
+				data-tooltip="Beat Saber"
+				onClick={this.handleIconClick}
+			>
+				<small>{requests.length}</small>
+			</button>
 
-						{Object.entries(settings).flatMap(([key, value]) => [
-							<GlueToggle
-								onChange={this.handleSettingChange.bind(this, key)}
-								isActive={BeatSaber.Settings[key]} />,
-							<span className="bs-setting">{value}</span>,
-							<br />,
-						])}
+			<div className={`bs-queue-popup ConnectPopup ${this.state.popupVisible ? "visible" : ""}`}>
 
-						{this.state.items.length == 0 && (
-							<div className="ConnectPopup__info">
-								<p>The queue is currenty empty.</p>
-							</div>
-						)}
+				<div className="ConnectPopup__header">
+					<h3 className="ConnectPopup__header-title">
+						Beat Saber v{BeatSaberManifest.BundleVersion}
+					</h3>
+					{this.state.blocked && (
+						<a href="#"
+							className="ConnectPopup__header-help spoticon-block-16"
+							onClick={this.handleBlockClick}></a>
+					)}
+				</div>
 
-						{this.state.items.length != 0 && (
-							<div className="ConnectPopup__button">
-								<Button type="blue" text="Clear queue" onClick={this.handleClearClick} />
-							</div>
-						)}
+				<div className="ConnectPopup__content">
 
-						<ul>
-							{this.state.items.map(request => {
-								let icon = "airplay";
-								switch (request.type) {
-									case "MapsRequest":
-										icon = "search"
-										break
-									case "DetailsRequest":
-										icon = "album"
-										break
-									case "ArtistImageRequest":
-										icon = "artist"
-										break
-								}
-								return (<li onClick={this.handleItemClick.bind(this, request)}>
-									<button className="ConnectPopup__device ConnectPopup__device--available ConnectPopup__device--active-no">
-										<span className={`ConnectPopup__device-image spoticon-${icon}-32`}></span>
-										<div className="ConnectPopup__device-body">
-											<p className="ConnectPopup__device-title">{request.type}</p>
-											<p className="ConnectPopup__device-info">
-												<code>{request.slug}</code>
-											</p>
-										</div>
-									</button>
-								</li>)
-							})}
-						</ul>
-					</div>
+					{Object.entries(settings).flatMap(([key, value]) => [
+						<GlueToggle
+							onChange={this.handleSettingChange.bind(this, key)}
+							isActive={BeatSaber.Settings[key]} />,
+						<span className="bs-setting">{value}</span>,
+						<br />,
+					])}
+
+					{requests.length == 0 && (
+						<div className="ConnectPopup__info">
+							<p>The queue is currenty empty.</p>
+						</div>
+					)}
+
+					{requests.length != 0 && (
+						<div className="ConnectPopup__button">
+							<Button type="blue" text="Clear queue" onClick={this.handleClearClick} />
+						</div>
+					)}
+
+					<ul>{requests.map((request, index) => {
+						let icon = "airplay";
+						switch (request.type) {
+							case "MapsRequest":
+								icon = "search"
+								break
+							case "DetailsRequest":
+								icon = "album"
+								break
+							case "ArtistImageRequest":
+								icon = "artist"
+								break
+						}
+						const classNames = [
+							"ConnectPopup__device",
+							"ConnectPopup__device--available",
+							this.state.current && !index ? "ConnectPopup__device--active" : "",
+						]
+						return <li onClick={this.handleItemClick.bind(this, request)}>
+							<button className={classNames.join(" ")}>
+								<span className={`ConnectPopup__device-image spoticon-${icon}-32`}></span>
+								<div className="ConnectPopup__device-body">
+									<p className="ConnectPopup__device-title">{request.type}</p>
+									<p className="ConnectPopup__device-info"><code>{request.slug}</code></p>
+								</div>
+							</button>
+						</li>
+					})}</ul>
 				</div>
 			</div>
-		)
+		</div>
 	}
 }

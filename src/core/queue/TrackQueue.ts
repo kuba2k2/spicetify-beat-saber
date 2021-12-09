@@ -6,22 +6,32 @@ import { DetailsRequest } from "./requests/DetailsRequest"
 import { MapsRequest } from "./requests/MapsRequest"
 import { QueueRequest } from "./requests/QueueRequest"
 
+export type QueueState = {
+	current?: QueueRequest
+	enqueued?: QueueRequest[]
+	blocked?: boolean
+}
+
 export class TrackQueue {
 	private subjects: Map<string, BehaviorSubject<Track>>
 	private observables: Map<string, Observable<Track>>
 	private queue: QueueRequest[]
 	private queueRunning = false
+	private queueCleared = false
 	private queueResolve = () => null
 
-	queueSubject: BehaviorSubject<QueueRequest[] | boolean>
+	queueSubject: BehaviorSubject<QueueState>
 
 	constructor() {
 		this.finalize = this.finalize.bind(this)
+		this.queueUnblock = this.queueUnblock.bind(this)
 		this.subjects = new Map()
 		this.observables = new Map()
 		this.queue = []
-		this.queueSubject = new BehaviorSubject(this.queue)
-		this.queueUnblock = this.queueUnblock.bind(this)
+		this.queueSubject = new BehaviorSubject({
+			enqueued: [],
+			blocked: false,
+		})
 	}
 
 	private log(...data: unknown[]) {
@@ -34,13 +44,13 @@ export class TrackQueue {
 		return new Promise((resolve) => {
 			console.warn("[TrackQueue] Queue blocked")
 			this.queueResolve = resolve
-			this.queueSubject.next(true)
+			this.queueSubject.next({ blocked: true })
 		})
 	}
 
 	public queueUnblock() {
 		this.queueResolve()
-		this.queueSubject.next(false)
+		this.queueSubject.next({ blocked: false })
 	}
 
 	private getSubject(slug: string): BehaviorSubject<Track> | undefined {
@@ -86,7 +96,7 @@ export class TrackQueue {
 		}
 
 		// emit queue changes
-		this.queueSubject.next(this.queue)
+		this.queueSubject.next({ enqueued: this.queue })
 
 		// run the queue
 		this.runQueue()
@@ -105,10 +115,6 @@ export class TrackQueue {
 		}
 		this.queueRunning = true
 
-		if (BeatSaber.Settings.blockQueue) {
-			await this.queueBlock()
-		}
-
 		const request = this.queue.shift()
 		if (!request) {
 			this.queueFinish()
@@ -116,15 +122,33 @@ export class TrackQueue {
 		}
 		let track = this.getTrack(request.slug)
 		if (!track) {
-			this.queueNext()
+			this.queueNext(0)
 			return
 		}
 
 		// emit queue changes
-		this.queueSubject.next(this.queue)
+		this.queueSubject.next({
+			current: request,
+			enqueued: this.queue,
+		})
+
+		if (BeatSaber.Settings.blockQueue) {
+			await this.queueBlock()
+		}
+
+		// when the queue is cleared forcibly, cancel everything
+		// including the request waiting to be unblocked
+		if (this.queueCleared) {
+			this.queueCleared = false
+			this.queueNext(0)
+			return
+		}
+
+		let delay = request.postRunDelay
 
 		if (!request.requestShouldRun(track)) {
 			this.log("[TrackQueue] Run: skipping", track.slug)
+			delay = 0
 		} else {
 			this.log(
 				"[TrackQueue] Run: executing",
@@ -143,7 +167,7 @@ export class TrackQueue {
 				track = await request.run(track)
 			} catch (e) {
 				console.error("Queue error", e)
-				this.queueNext()
+				this.queueNext(0)
 				return
 			}
 			track.calculateState(true)
@@ -161,18 +185,28 @@ export class TrackQueue {
 			this.subjects.delete(track.slug)
 		}
 
-		this.queueNext()
+		if (delay) {
+			// emit no current queue item
+			this.queueSubject.next({ current: null })
+		}
+
+		this.queueNext(delay)
 	}
 
 	private queueFinish() {
 		this.log("[TrackQueue] Run: Queue finished")
+		this.queueSubject.next({ current: null, enqueued: this.queue })
 		this.queueRunning = false
 	}
 
-	private queueNext() {
+	private queueNext(delay: number) {
+		if (!delay) {
+			this.runQueue(true)
+			return
+		}
 		setTimeout(() => {
 			this.runQueue(true)
-		}, 500)
+		}, delay)
 	}
 
 	observe(track: Track): Observable<Track> {
@@ -298,13 +332,14 @@ export class TrackQueue {
 			(request) => request instanceof MapsRequest || request.slug != slug
 		)
 		// emit queue changes
-		this.queueSubject.next(this.queue)
+		this.queueSubject.next({ enqueued: this.queue })
 	}
 
 	clear() {
 		this.queue = []
 		// emit queue changes
-		this.queueSubject.next(this.queue)
+		this.queueSubject.next({ enqueued: this.queue })
+		this.queueCleared = true
 		this.queueUnblock()
 	}
 }
