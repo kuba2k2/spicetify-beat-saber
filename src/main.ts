@@ -1,5 +1,6 @@
 /// <reference path="../types/spicetify.d.ts" />
 /// <reference path="../types/spicetify-apis.d.ts" />
+/// <reference path="../types/spicetify-player.d.ts" />
 /// <reference path="../types/spicetify-react.d.ts" />
 /// <reference path="../types/spicetify-react-component.d.ts" />
 /// <reference path="../types/spicetify-uri.d.ts" />

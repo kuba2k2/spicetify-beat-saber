@@ -6,6 +6,7 @@ import { BridgeUtils } from "./BridgeUtils"
 import { DemoPage } from "../ui/pages/DemoPage"
 import { AppWatcher } from "../ui/watchers/AppWatcher"
 import { PopupPage } from "../ui/pages/PopupPage"
+import { NowPlayingPage } from "../ui/pages/NowPlayingPage"
 
 declare global {
 	interface Window {
@@ -58,6 +59,9 @@ export class BeatSaberCore {
 
 		const playerControls = document.querySelector(".extra-controls-container")
 		playerControls.prepend(PopupPage.getWrapped())
+
+		const nowPlayingButton = document.querySelector(".nowplaying-add-button")
+		nowPlayingButton.after(NowPlayingPage.getWrapped())
 
 		if (isBrowser) {
 			Spicetify.ReactDOM.render(
