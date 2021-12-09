@@ -1,5 +1,4 @@
 import { Subscription } from "rxjs"
-import { QueueRequest } from "../../core/queue/requests/QueueRequest"
 import { QueueState } from "../../core/queue/TrackQueue"
 
 export class QueueStateDemo extends Spicetify.React.Component<unknown, QueueState> {

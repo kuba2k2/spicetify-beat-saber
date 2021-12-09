@@ -3,7 +3,7 @@ import { Track } from "../../models/Track"
 export abstract class QueueRequest {
 	type: string
 	slug: string
-	postRunDelay: number = 500
+	postRunDelay = 500
 
 	requestShouldRun(_track: Track): boolean {
 		return true
