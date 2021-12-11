@@ -60,6 +60,10 @@ export class Track extends TrackDB {
 	 * All map hashes.
 	 */
 	hashes: Set<string> = new Set()
+	/**
+	 * All map keys (hex IDs).
+	 */
+	keys: Set<string> = new Set()
 
 	/**
 	 * Unreviewed maps, matched automatically.
@@ -73,6 +77,9 @@ export class Track extends TrackDB {
 	 * Maps marked as not-interested, read from the database.
 	 */
 	notInterestedHashes: Set<string> = new Set()
+
+	bookmarkedKeys: Set<string> = new Set()
+	downloadedHashes: Set<string> = new Set()
 
 	state: TrackState = TrackState.DEFAULT
 
@@ -169,6 +176,7 @@ export class Track extends TrackDB {
 		this.hashes = new Set(
 			this.maps?.map((map) => map.versions[0].hash) ?? []
 		)
+		this.keys = new Set(this.maps?.map((map) => map.id) ?? [])
 	}
 
 	public calculateMatches() {
@@ -198,6 +206,10 @@ export class Track extends TrackDB {
 
 		if (this.maps == null) {
 			this.state = TrackState.ENQUEUED
+		} else if (this.downloadedHashes.size) {
+			this.state = TrackState.DOWNLOADED
+		} else if (this.bookmarkedKeys.size) {
+			this.state = TrackState.BOOKMARKED
 		} else if (this.builtInLevel) {
 			this.state = TrackState.BUILT_IN
 		} else if (this.notInterested) {

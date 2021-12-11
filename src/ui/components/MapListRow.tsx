@@ -1,21 +1,24 @@
 import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
 import { ButtonGroup } from "./ButtonGroup"
 import { Characteristic, Difficulty, DifficultyBadge } from "./DifficultyBadge"
+import { MapListCallbacks } from "./MapListTypes"
 
 type MapListRowProps = {
 	map: MapDetail
 	showButtonGroup: boolean
+
 	matches?: boolean
 	notInterested?: boolean
-	onMatchClick?: (map: MapDetail) => void
-	onDoesntMatchClick?: (map: MapDetail) => void
-	onNotInterestedClick?: (map: MapDetail) => void
-}
+	bookmarked?: boolean | null
+	downloaded?: boolean | null
+} & MapListCallbacks
 
 export class MapListRow extends Spicetify.React.Component<MapListRowProps> {
 	constructor(props: MapListRowProps) {
 		super(props)
 		this.handleMatchesChange = this.handleMatchesChange.bind(this)
+		this.handleBookmarkClick = this.handleBookmarkClick.bind(this)
+		this.handleDownloadClick = this.handleDownloadClick.bind(this)
 	}
 
 	handleMatchesChange(index: number) {
@@ -33,6 +36,14 @@ export class MapListRow extends Spicetify.React.Component<MapListRowProps> {
 					this.props.onNotInterestedClick(this.props.map)
 				break
 		}
+	}
+
+	handleBookmarkClick() {
+		this.props.onBookmarkClick(this.props.map)
+	}
+
+	handleDownloadClick() {
+		this.props.onDownloadClick(this.props.map)
 	}
 
 	render() {
@@ -94,12 +105,34 @@ export class MapListRow extends Spicetify.React.Component<MapListRowProps> {
 						icon="playlist"
 						tooltip="Preview audio"
 					/>
-					<Button
-						type="icon"
-						ta-id="bs-icon-bookmark"
-						tooltip="Bookmark"
-					/>
-					<Button type="icon" icon="download" tooltip="Download" />
+					{this.props.onBookmarkClick && (
+						<Button
+							type="icon"
+							ta-id={
+								this.props.bookmarked
+									? "bs-icon-bookmark-filled"
+									: "bs-icon-bookmark"
+							}
+							tooltip="Bookmark"
+							isActive={this.props.bookmarked === true}
+							isDisabled={this.props.bookmarked === null}
+							onClick={this.handleBookmarkClick}
+						/>
+					)}
+					{this.props.onDownloadClick && (
+						<Button
+							type="icon"
+							icon={
+								this.props.downloaded
+									? "downloaded"
+									: "download"
+							}
+							tooltip="Download"
+							isActive={this.props.downloaded === true}
+							isDisabled={this.props.downloaded === null}
+							onClick={this.handleDownloadClick}
+						/>
+					)}
 
 					{this.props.showButtonGroup && (
 						<ButtonGroup

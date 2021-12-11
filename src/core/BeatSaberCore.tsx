@@ -1,5 +1,5 @@
 import BeatSaverAPI from "beatsaver-api"
-import { Storage } from "./Storage"
+import { Storage } from "./storage/Storage"
 import { Track } from "./models/Track"
 import { TrackQueue } from "./queue/TrackQueue"
 import { BridgeUtils } from "./BridgeUtils"
@@ -7,6 +7,8 @@ import { DemoPage } from "../ui/pages/DemoPage"
 import { AppWatcher } from "../ui/watchers/AppWatcher"
 import { PopupPage } from "../ui/pages/PopupPage"
 import { NowPlayingPage } from "../ui/pages/NowPlayingPage"
+import BeastSaber from "beastsaber-api"
+import { MapQueue } from "./queue/MapQueue"
 
 declare global {
 	interface Window {
@@ -19,6 +21,7 @@ export class BeatSaberCore {
 		AppName: "spicetify-beat-saber",
 		Version: BeatSaberManifest.BundleVersion,
 	})
+	Bsaber = new BeastSaber()
 
 	BaseUrl = "https://beatsaber.app.spotify.com"
 	AssetsUrl = "https://beatsaber-assets.app.spotify.com"
@@ -29,10 +32,12 @@ export class BeatSaberCore {
 	IsBrowser: boolean
 	Storage: Storage
 	TrackQueue: TrackQueue
+	MapQueue: MapQueue
 	Bridge: BridgeUtils
 	Settings = {
 		blockQueue: true,
 		logQueue: false,
+		logMapQueue: false,
 		logStateButton: false,
 		logTrackPage: false,
 		logWatchers: false,
@@ -44,6 +49,7 @@ export class BeatSaberCore {
 		this.IsBrowser = isBrowser
 		this.Storage = new Storage()
 		this.TrackQueue = new TrackQueue()
+		this.MapQueue = new MapQueue()
 		this.Bridge = new BridgeUtils()
 		await this.Storage.initialize()
 

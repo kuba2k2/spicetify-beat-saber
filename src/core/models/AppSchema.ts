@@ -13,7 +13,7 @@ export interface AppSchema extends DBSchema {
 		key: string
 		value: MapDetail
 	}
-	hashBookmarked: {
+	keyBookmarked: {
 		key: string
 		value: Map
 	}
@@ -22,3 +22,5 @@ export interface AppSchema extends DBSchema {
 		value: Level
 	}
 }
+
+export type MapType = MapDetail | Map | Level

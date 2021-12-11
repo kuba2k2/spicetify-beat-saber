@@ -1,6 +1,6 @@
-import { Track } from "../../models/Track"
+import { Track } from "../../../models/Track"
 
-export abstract class QueueRequest {
+export abstract class TrackQueueRequest {
 	type: string
 	slug: string
 	postRunDelay = 500

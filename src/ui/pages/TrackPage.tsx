@@ -5,6 +5,7 @@ import { BuiltInLevelHeader } from "../components/BuiltInLevelHeader"
 import { EmptyView } from "../components/EmptyView"
 import { LoadingSpinner } from "../components/LoadingSpinner"
 import { MapListTable } from "../components/MapListTable"
+import { MapListSets } from "../components/MapListTypes"
 import { SearchField } from "../components/SearchField"
 import { TrackHeader } from "../components/TrackHeader"
 
@@ -14,9 +15,8 @@ type TrackPageProps = {
 
 type TrackPageState = {
 	query: string
-	matchHashes: Set<string>
-	notInterestedHashes: Set<string>
-} & TrackPageProps
+} & TrackPageProps &
+	Required<MapListSets>
 
 export class TrackPage extends Spicetify.React.Component<
 	TrackPageProps,
@@ -32,6 +32,8 @@ export class TrackPage extends Spicetify.React.Component<
 		this.handleMatchClick = this.handleMatchClick.bind(this)
 		this.handleDoesntMatchClick = this.handleDoesntMatchClick.bind(this)
 		this.handleNotInterestedClick = this.handleNotInterestedClick.bind(this)
+		this.handleBookmarkClick = this.handleBookmarkClick.bind(this)
+		this.handleDownloadClick = this.handleDownloadClick.bind(this)
 
 		this.scrollNodeRef = Spicetify.React.createRef()
 		this.state = {
@@ -39,6 +41,10 @@ export class TrackPage extends Spicetify.React.Component<
 			query: props.track.getSearchQuery(),
 			matchHashes: props.track.allMatchHashes,
 			notInterestedHashes: props.track.notInterestedHashes,
+			bookmarkedKeys: props.track.bookmarkedKeys,
+			bookmarkingKeys: new Set(),
+			downloadedHashes: props.track.downloadedHashes,
+			downloadingHashes: new Set(),
 		}
 	}
 
@@ -53,7 +59,7 @@ export class TrackPage extends Spicetify.React.Component<
 
 	private log(...data: unknown[]) {
 		if (BeatSaber.Settings.logTrackPage) {
-			console.log(...data)
+			console.log("[TrackPage]", ...data)
 		}
 	}
 
@@ -69,13 +75,21 @@ export class TrackPage extends Spicetify.React.Component<
 					notInterestedHashes: this.state.notInterestedHashes.concat(
 						track.notInterestedHashes
 					),
+					bookmarkedKeys: track.bookmarkedKeys,
+					bookmarkingKeys: this.state.bookmarkingKeys.minus(
+						track.bookmarkedKeys
+					),
+					downloadedHashes: track.downloadedHashes,
+					downloadingHashes: this.state.downloadingHashes.minus(
+						track.downloadedHashes
+					),
 				})
 			})
-		this.log("[TrackPage] Subscribing", this.subscription)
+		this.log("Subscribing", this.subscription)
 	}
 
 	componentWillUnmount() {
-		this.log("[TrackPage] Unsubscribing")
+		this.log("Unsubscribing")
 		this.subscription?.unsubscribe()
 		BeatSaber.TrackQueue.cancelRequests(this.state.track.slug)
 		if (this.state.track.maps != null) {
@@ -122,6 +136,31 @@ export class TrackPage extends Spicetify.React.Component<
 		this.forceUpdate()
 	}
 
+	async handleBookmarkClick(map: MapDetail) {
+		this.state.bookmarkingKeys.add(map.id)
+		this.forceUpdate()
+		if (this.state.bookmarkedKeys.has(map.id)) {
+			await BeatSaber.MapQueue.bookmarkRemove(map)
+		} else {
+			await BeatSaber.MapQueue.bookmarkAdd(map)
+		}
+		this.state.bookmarkingKeys.delete(map.id)
+		this.forceUpdate()
+	}
+
+	async handleDownloadClick(map: MapDetail) {
+		const hash = map.versions[0].hash
+		this.state.downloadingHashes.add(hash)
+		this.forceUpdate()
+		if (this.state.downloadedHashes.has(hash)) {
+			await BeatSaber.MapQueue.downloadRemove(map)
+		} else {
+			await BeatSaber.MapQueue.downloadAdd(map)
+		}
+		this.state.downloadingHashes.delete(hash)
+		this.forceUpdate()
+	}
+
 	render() {
 		const track = this.state.track
 
@@ -147,11 +186,13 @@ export class TrackPage extends Spicetify.React.Component<
 			page = (
 				<MapListTable
 					maps={this.state.track.maps}
-					matchHashes={this.state.matchHashes}
-					notInterestedHashes={this.state.notInterestedHashes}
+					// pass MapListSets
+					{...this.state}
 					onMatchClick={this.handleMatchClick}
 					onDoesntMatchClick={this.handleDoesntMatchClick}
 					onNotInterestedClick={this.handleNotInterestedClick}
+					onBookmarkClick={this.handleBookmarkClick}
+					onDownloadClick={this.handleDownloadClick}
 				/>
 			)
 		} else if (!track.builtInLevel || track.userQuery) {

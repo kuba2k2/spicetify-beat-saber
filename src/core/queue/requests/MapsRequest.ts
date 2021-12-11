@@ -1,9 +1,8 @@
 import { SortOrder } from "beatsaver-api/lib/api/search"
 import { Track, TrackState } from "../../models/Track"
-import { HashType } from "../../Storage"
-import { QueueRequest } from "./QueueRequest"
+import { TrackQueueRequest } from "./base/TrackQueueRequest"
 
-export class MapsRequest extends QueueRequest {
+export class MapsRequest extends TrackQueueRequest {
 	userQuery?: string
 
 	constructor(init: object) {
@@ -42,10 +41,7 @@ export class MapsRequest extends QueueRequest {
 		track.maps = response.docs
 		track.userQuery = this.userQuery
 		track.extractHashes()
-		track.notInterestedHashes = await BeatSaber.Storage.getHashes(
-			HashType.NOT_INTERESTED,
-			track
-		)
+		await BeatSaber.Storage.Map.fillTrack(track)
 		track.calculateMatches()
 		return track
 	}

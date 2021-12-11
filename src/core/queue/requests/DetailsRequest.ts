@@ -1,7 +1,7 @@
 import { Track } from "../../models/Track"
-import { QueueRequest } from "./QueueRequest"
+import { TrackQueueRequest } from "./base/TrackQueueRequest"
 
-export class DetailsRequest extends QueueRequest {
+export class DetailsRequest extends TrackQueueRequest {
 	constructor(init: object) {
 		super(init)
 		this.type = "DetailsRequest"

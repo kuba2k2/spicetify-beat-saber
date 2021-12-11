@@ -1,15 +1,12 @@
 import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
+import { MapListCallbacks, MapListSets } from "./MapListTypes"
 import { MapListRow } from "./MapListRow"
 
 type MapListTableProps = {
 	maps: MapDetail[]
-	matchHashes?: Set<string>
-	notInterestedHashes?: Set<string>
-	onMatchClick?: (map: MapDetail) => void
-	onDoesntMatchClick?: (map: MapDetail) => void
-	onNotInterestedClick?: (map: MapDetail) => void
 	scrollNodeRef?: Spicetify.React.RefObject<HTMLDivElement>
-}
+} & MapListCallbacks &
+	MapListSets
 
 export class MapListTable extends Spicetify.React.Component<MapListTableProps> {
 	scrollNode: HTMLDivElement
@@ -68,12 +65,15 @@ export class MapListTable extends Spicetify.React.Component<MapListTableProps> {
 
 	renderRow(rowIndex: number) {
 		const map = this.props.maps[rowIndex]
-		const matches =
-			this.props.matchHashes &&
-			this.props.matchHashes.has(map.versions[0].hash)
-		const notInterested =
-			this.props.notInterestedHashes &&
-			this.props.notInterestedHashes.has(map.versions[0].hash)
+		const hash = map.versions[0].hash
+
+		const matches = this.props.matchHashes?.has(hash)
+		const notInterested = this.props.notInterestedHashes?.has(hash)
+
+		const bookmarked = this.props.bookmarkedKeys?.has(map.id)
+		const bookmarking = this.props.bookmarkingKeys?.has(map.id)
+		const downloaded = this.props.downloadedHashes?.has(hash)
+		const downloading = this.props.downloadingHashes?.has(hash)
 
 		return (
 			<MapListRow
@@ -81,9 +81,10 @@ export class MapListTable extends Spicetify.React.Component<MapListTableProps> {
 				showButtonGroup={!!this.props.matchHashes}
 				matches={matches}
 				notInterested={notInterested}
-				onMatchClick={this.props.onMatchClick}
-				onDoesntMatchClick={this.props.onDoesntMatchClick}
-				onNotInterestedClick={this.props.onNotInterestedClick}
+				bookmarked={bookmarking ? null : bookmarked}
+				downloaded={downloading ? null : downloaded}
+				// pass MapListCallbacks
+				{...this.props}
 			/>
 		)
 	}

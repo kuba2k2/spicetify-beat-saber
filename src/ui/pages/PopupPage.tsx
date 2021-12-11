@@ -1,5 +1,5 @@
 import { Subscription } from "rxjs"
-import { QueueRequest } from "../../core/queue/requests/QueueRequest"
+import { TrackQueueRequest } from "../../core/queue/requests/base/TrackQueueRequest"
 import { QueueState } from "../../core/queue/TrackQueue"
 import { TrackPage } from "./TrackPage"
 
@@ -67,7 +67,7 @@ export class PopupPage extends Spicetify.React.Component<
 		return true
 	}
 
-	handleItemClick(request: QueueRequest) {
+	handleItemClick(request: TrackQueueRequest) {
 		const track = BeatSaber.TrackQueue.getTrack(request.slug)
 		if (!track) return
 		TrackPage.showAsModal(track)

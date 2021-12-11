@@ -48,7 +48,7 @@ export class StateButton extends Spicetify.React.Component<
 
 	private log(...data: unknown[]) {
 		if (BeatSaber.Settings.logStateButton) {
-			console.log(...data)
+			console.log("[StateButton]", ...data)
 		}
 	}
 
@@ -58,11 +58,11 @@ export class StateButton extends Spicetify.React.Component<
 		).subscribe((track) => {
 			this.setState({ track: track })
 		})
-		this.log("[StateButton] Subscribing", this.subscription)
+		this.log("Subscribing", this.state.track.slug)
 	}
 
 	componentWillUnmount() {
-		this.log("[StateButton] Unsubscribing")
+		this.log("Unsubscribing")
 		this.subscription?.unsubscribe()
 	}
 

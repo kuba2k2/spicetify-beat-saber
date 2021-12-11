@@ -1,21 +1,21 @@
 import { BehaviorSubject, finalize, Observable, shareReplay } from "rxjs"
 import { Track } from "../models/Track"
-import { HashType } from "../Storage"
 import { ArtistImageRequest } from "./requests/ArtistImageRequest"
 import { DetailsRequest } from "./requests/DetailsRequest"
 import { MapsRequest } from "./requests/MapsRequest"
-import { QueueRequest } from "./requests/QueueRequest"
+import { TrackQueueRequest } from "./requests/base/TrackQueueRequest"
+import { MapCategory } from "../storage/MapStorage"
 
 export type QueueState = {
-	current?: QueueRequest
-	enqueued?: QueueRequest[]
+	current?: TrackQueueRequest
+	enqueued?: TrackQueueRequest[]
 	blocked?: boolean
 }
 
 export class TrackQueue {
 	private subjects: Map<string, BehaviorSubject<Track>>
 	private observables: Map<string, Observable<Track>>
-	private queue: QueueRequest[]
+	private queue: TrackQueueRequest[]
 	private queueRunning = false
 	private queueCleared = false
 	private queueResolve = () => null
@@ -36,7 +36,7 @@ export class TrackQueue {
 
 	private log(...data: unknown[]) {
 		if (BeatSaber.Settings.logQueue) {
-			console.log(...data)
+			console.log("[TrackQueue]", ...data)
 		}
 	}
 
@@ -48,16 +48,16 @@ export class TrackQueue {
 		})
 	}
 
-	public queueUnblock() {
+	queueUnblock() {
 		this.queueResolve()
 		this.queueSubject.next({ blocked: false })
 	}
 
-	private getSubject(slug: string): BehaviorSubject<Track> | undefined {
+	getSubject(slug: string): BehaviorSubject<Track> | undefined {
 		return this.subjects.get(slug)
 	}
 
-	private getObservable(slug: string): Observable<Track> | undefined {
+	getObservable(slug: string): Observable<Track> | undefined {
 		return this.observables.get(slug)
 	}
 
@@ -65,16 +65,36 @@ export class TrackQueue {
 		return this.getSubject(slug)?.value
 	}
 
-	private emit(track: Track) {
+	getSubjectsByHash(hash: string): BehaviorSubject<Track>[] {
+		const subjects = []
+		this.subjects.forEach((subject) => {
+			if (subject.value.hashes.has(hash)) {
+				subjects.push(subject)
+			}
+		})
+		return subjects
+	}
+
+	getSubjectsByKey(key: string): BehaviorSubject<Track>[] {
+		const subjects = []
+		this.subjects.forEach((subject) => {
+			if (subject.value.keys.has(key)) {
+				subjects.push(subject)
+			}
+		})
+		return subjects
+	}
+
+	emit(track: Track) {
 		const subject = this.getSubject(track.slug)
-		this.log("[TrackQueue] Emit", track.slug, "with state", track.state)
+		this.log("Emit", track.slug, "with state", track.state)
 		subject?.next(track)
 	}
 
-	private enqueue(request: QueueRequest, atStart?: boolean) {
+	private enqueue(request: TrackQueueRequest, atStart?: boolean) {
 		const track = this.getTrack(request.slug)
 		if (!request.requestShouldRun(track)) {
-			this.log("[TrackQueue] Enqueue: skipping", track.slug)
+			this.log("Enqueue: skipping", track.slug)
 			return
 		}
 
@@ -111,7 +131,7 @@ export class TrackQueue {
 			return
 		}
 		if (!this.queueRunning) {
-			this.log("[TrackQueue] Run: Queue started")
+			this.log("Run: Queue started")
 		}
 		this.queueRunning = true
 
@@ -147,11 +167,11 @@ export class TrackQueue {
 		let delay = request.postRunDelay
 
 		if (!request.requestShouldRun(track)) {
-			this.log("[TrackQueue] Run: skipping", track.slug)
+			this.log("Run: skipping", track.slug)
 			delay = 0
 		} else {
 			this.log(
-				"[TrackQueue] Run: executing",
+				"Run: executing",
 				track.slug,
 				"with current state",
 				track.state
@@ -174,7 +194,7 @@ export class TrackQueue {
 			this.emit(track)
 
 			// store the resolved track
-			await BeatSaber.Storage.putTrack(track)
+			await BeatSaber.Storage.Track.put(track)
 		}
 
 		// delete the subject if no more requests is queued AND there is no observers
@@ -194,7 +214,7 @@ export class TrackQueue {
 	}
 
 	private queueFinish() {
-		this.log("[TrackQueue] Run: Queue finished")
+		this.log("Run: Queue finished")
 		this.queueSubject.next({ current: null, enqueued: this.queue })
 		this.queueRunning = false
 	}
@@ -231,7 +251,7 @@ export class TrackQueue {
 
 	private async requestOrResolveMaps(track: Track, userQuery?: string) {
 		if (!userQuery) {
-			const found = await BeatSaber.Storage.getTrack(track)
+			const found = await BeatSaber.Storage.Track.get(track)
 			if (found && found.maps != null) {
 				this.emit(found)
 				return
@@ -246,14 +266,14 @@ export class TrackQueue {
 	}
 
 	requestMaps(track: Track, userQuery?: string): Observable<Track> {
-		this.log("[TrackQueue] Requesting maps for", track.slug)
+		this.log("Requesting maps for", track.slug)
 		const observable = this.observe(track)
 		this.requestOrResolveMaps(track, userQuery)
 		return observable
 	}
 
 	requestDetails(track: Track): Observable<Track> {
-		this.log("[TrackQueue] Requesting details for", track.slug)
+		this.log("Requesting details for", track.slug)
 		const observable = this.observe(track)
 		const request = new DetailsRequest({ slug: track.slug })
 		this.enqueue(request, true)
@@ -261,7 +281,7 @@ export class TrackQueue {
 	}
 
 	requestArtistImage(track: Track): Observable<Track> {
-		this.log("[TrackQueue] Requesting artist image for", track.slug)
+		this.log("Requesting artist image for", track.slug)
 		const observable = this.observe(track)
 		const request = new ArtistImageRequest({ slug: track.slug })
 		this.enqueue(request, true)
@@ -305,21 +325,21 @@ export class TrackQueue {
 			}
 		}
 
-		await BeatSaber.Storage.removeHashes(
-			HashType.NOT_INTERESTED,
+		await BeatSaber.Storage.Map.remove(
+			MapCategory.NOT_INTERESTED,
 			interestedHashes
 		)
-		await BeatSaber.Storage.putHashes(
-			HashType.NOT_INTERESTED,
-			notInterested
+		await BeatSaber.Storage.Map.put(
+			MapCategory.NOT_INTERESTED,
+			...notInterested
 		)
-		await BeatSaber.Storage.putTrack(track)
+		await BeatSaber.Storage.Track.put(track)
 
 		this.emit(track)
 	}
 
 	finalize(slug: string) {
-		this.log("[TrackQueue] Finalizing", slug)
+		this.log("Finalizing", slug)
 		this.observables.delete(slug)
 		// delete the subject if no more requests is queued (because there is no more observers)
 		if (!this.queue.some((request) => request.slug == slug)) {
