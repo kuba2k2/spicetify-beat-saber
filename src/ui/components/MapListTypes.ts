@@ -4,6 +4,8 @@ export type MapListCallbacks = {
 	onMatchClick?: (map: MapDetail) => void
 	onDoesntMatchClick?: (map: MapDetail) => void
 	onNotInterestedClick?: (map: MapDetail) => void
+	onPreviewClick?: (map: MapDetail) => void
+	onPlayClick?: (map: MapDetail) => void
 	onBookmarkClick?: (map: MapDetail) => void
 	onDownloadClick?: (map: MapDetail) => void
 }

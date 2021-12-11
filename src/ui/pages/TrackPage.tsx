@@ -33,11 +33,15 @@ export class TrackPage extends Spicetify.React.Component<
 
 	constructor(props: TrackPageProps) {
 		super(props)
+		// search
 		this.handleSearchQuery = this.handleSearchQuery.bind(this)
 		this.handleSearchSubmit = this.handleSearchSubmit.bind(this)
+		// matching
 		this.handleMatchClick = this.handleMatchClick.bind(this)
 		this.handleDoesntMatchClick = this.handleDoesntMatchClick.bind(this)
 		this.handleNotInterestedClick = this.handleNotInterestedClick.bind(this)
+		// actions
+		this.handlePlayClick = this.handlePlayClick.bind(this)
 		this.handleBookmarkClick = this.handleBookmarkClick.bind(this)
 		this.handleDownloadClick = this.handleDownloadClick.bind(this)
 
@@ -105,6 +109,7 @@ export class TrackPage extends Spicetify.React.Component<
 				this.state.notInterestedHashes
 			)
 		}
+		BeatSaber.pauseAudio()
 	}
 
 	handleSearchQuery(query: string) {
@@ -140,6 +145,10 @@ export class TrackPage extends Spicetify.React.Component<
 		this.state.matchHashes.delete(hash)
 		this.state.notInterestedHashes.add(hash)
 		this.forceUpdate()
+	}
+
+	handlePlayClick(map: MapDetail) {
+		BeatSaber.playAudio(map.versions[0].previewURL)
 	}
 
 	async handleBookmarkClick(map: MapDetail) {
@@ -221,6 +230,7 @@ export class TrackPage extends Spicetify.React.Component<
 					onMatchClick={this.handleMatchClick}
 					onDoesntMatchClick={this.handleDoesntMatchClick}
 					onNotInterestedClick={this.handleNotInterestedClick}
+					onPlayClick={this.handlePlayClick}
 					onBookmarkClick={this.handleBookmarkClick}
 					onDownloadClick={this.handleDownloadClick}
 				/>

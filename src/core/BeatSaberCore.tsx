@@ -44,6 +44,7 @@ export class BeatSaberCore {
 		lastSyncTime: 0,
 	}
 
+	private audio: HTMLAudioElement = null
 	private redirector: HTMLAnchorElement = null
 
 	public async initialize(isBrowser: boolean) {
@@ -161,5 +162,21 @@ export class BeatSaberCore {
 		}
 		this.redirector.href = uri.toString()
 		this.redirector.click()
+	}
+
+	public playAudio(url: string) {
+		if (!this.audio) {
+			this.audio = new Audio()
+		}
+		if (this.audio.paused || this.audio.src != url) {
+			this.audio.src = url
+			this.audio.play()
+		} else if (!this.audio.paused) {
+			this.audio.pause()
+		}
+	}
+
+	public pauseAudio() {
+		this.audio?.pause()
 	}
 }

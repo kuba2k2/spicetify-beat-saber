@@ -17,6 +17,8 @@ export class MapListRow extends Spicetify.React.Component<MapListRowProps> {
 	constructor(props: MapListRowProps) {
 		super(props)
 		this.handleMatchesChange = this.handleMatchesChange.bind(this)
+		this.handlePreviewClick = this.handlePreviewClick.bind(this)
+		this.handlePlayClick = this.handlePlayClick.bind(this)
 		this.handleBookmarkClick = this.handleBookmarkClick.bind(this)
 		this.handleDownloadClick = this.handleDownloadClick.bind(this)
 	}
@@ -36,6 +38,14 @@ export class MapListRow extends Spicetify.React.Component<MapListRowProps> {
 					this.props.onNotInterestedClick(this.props.map)
 				break
 		}
+	}
+
+	handlePreviewClick() {
+		this.props.onPreviewClick(this.props.map)
+	}
+
+	handlePlayClick() {
+		this.props.onPlayClick(this.props.map)
 	}
 
 	handleBookmarkClick() {
@@ -99,12 +109,24 @@ export class MapListRow extends Spicetify.React.Component<MapListRowProps> {
 				</TableCell>
 
 				<TableCell align="center" extraClassName="bs-ml-actions">
-					<Button type="icon" icon="play" tooltip="Preview map" />
-					<Button
-						type="icon"
-						icon="playlist"
-						tooltip="Preview audio"
-					/>
+					{this.props.onPreviewClick && (
+						<Button
+							type="icon"
+							icon="play"
+							tooltip="Preview map"
+							onClick={this.handlePreviewClick}
+						/>
+					)}
+
+					{this.props.onPlayClick && (
+						<Button
+							type="icon"
+							icon="playlist"
+							tooltip="Preview audio"
+							onClick={this.handlePlayClick}
+						/>
+					)}
+
 					{this.props.onBookmarkClick && (
 						<Button
 							type="icon"
