@@ -9,6 +9,9 @@ import { PopupPage } from "../ui/pages/PopupPage"
 import { NowPlayingPage } from "../ui/pages/NowPlayingPage"
 import BeastSaber from "beastsaber-api"
 import { MapQueue } from "./queue/MapQueue"
+import { BackendRequestHandler } from "./backend/BackendRequestHandler"
+import { Subject } from "rxjs"
+import { BackendUtils } from "./backend/BackendUtils"
 
 declare global {
 	interface Window {
@@ -30,10 +33,11 @@ export class BeatSaberCore {
 	AdditionalCSSFiles = [this.MainCSSFile, "/css/zlink-button.css"]
 
 	IsBrowser: boolean
-	Storage: Storage
-	TrackQueue: TrackQueue
-	MapQueue: MapQueue
-	Bridge: BridgeUtils
+	Storage = new Storage()
+	TrackQueue = new TrackQueue()
+	MapQueue = new MapQueue()
+	Bridge = new BridgeUtils()
+	ErrorSubject = new Subject<Error>()
 	Settings = {
 		blockQueue: true,
 		logQueue: false,
@@ -41,24 +45,28 @@ export class BeatSaberCore {
 		logStateButton: false,
 		logTrackPage: false,
 		logWatchers: false,
+		backendHostname: "localhost:23287",
+		backendAuth: "YWRtaW46bmltZGE=",
+		bsaberLogin: null,
+		bsaberPassword: null,
 	}
 
 	private redirector: HTMLAnchorElement = null
 
 	public async initialize(isBrowser: boolean) {
-		this.IsBrowser = isBrowser
-		this.Storage = new Storage()
-		this.TrackQueue = new TrackQueue()
-		this.MapQueue = new MapQueue()
-		this.Bridge = new BridgeUtils()
-		await this.Storage.initialize()
-
 		const settings = Spicetify.LocalStorage.get("beatsaber:settings")
 		if (settings) {
-			this.Settings = JSON.parse(settings)
+			Object.assign(this.Settings, JSON.parse(settings))
 		}
 
+		this.Bsaber.setRequestHandler(new BackendRequestHandler("bsaber.com"))
+		await this.Storage.initialize()
+
 		new AppWatcher(document.body as HTMLBodyElement).connect()
+
+		this.ErrorSubject.subscribe((error) => {
+			Spicetify.showNotification(error.toString())
+		})
 
 		const playerControls = document.querySelector(
 			".extra-controls-container"

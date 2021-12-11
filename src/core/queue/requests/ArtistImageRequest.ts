@@ -1,5 +1,5 @@
 import { Track } from "../../models/Track"
-import { TrackQueueRequest } from "./base/TrackQueueRequest"
+import { TrackQueueRequest } from "../base/TrackQueueRequest"
 
 export class ArtistImageRequest extends TrackQueueRequest {
 	constructor(init: object) {

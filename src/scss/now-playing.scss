@@ -2,14 +2,14 @@
 	display: inline-block;
 	position: absolute;
 	top: -5px;
-	right: 28px;
+	right: (24px + 4px);
 	margin-left: 8px;
 }
 
-.view-player .track-text-item.text-item {
-	padding-right: 68px !important;
+.bs-now-playing, .nowplaying-add-button {
+	transform: translateX(32px);
 }
 
 .feedback-enabled .bs-now-playing {
-	right: 4px;
+	right: (2 * 24px + 4px);
 }

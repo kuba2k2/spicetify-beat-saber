@@ -1,6 +1,6 @@
 import { Level } from "../../models/Level"
 import { MapCategory } from "../../storage/MapStorage"
-import { MapQueueRequest, MapQueueRequestType } from "./base/MapQueueRequest"
+import { MapQueueRequest, MapQueueRequestType } from "../base/MapQueueRequest"
 
 export class DownloadRequest extends MapQueueRequest {
 	hash: string

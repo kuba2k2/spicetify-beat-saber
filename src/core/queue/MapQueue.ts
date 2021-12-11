@@ -1,8 +1,5 @@
 import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
-import {
-	MapQueueRequest,
-	MapQueueRequestType,
-} from "./requests/base/MapQueueRequest"
+import { MapQueueRequest, MapQueueRequestType } from "./base/MapQueueRequest"
 import { BookmarkRequest } from "./requests/BookmarkRequest"
 import { DownloadRequest } from "./requests/DownloadRequest"
 
@@ -61,6 +58,8 @@ export class MapQueue {
 				await request.run()
 			} catch (e) {
 				console.error("Map queue error", e)
+				BeatSaber.ErrorSubject.next(e)
+				request.reject(e)
 				this.queueNext(0)
 				return
 			}

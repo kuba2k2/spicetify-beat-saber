@@ -1,6 +1,7 @@
 import { Map } from "beastsaber-api/lib/models/Map"
 import { MapCategory } from "../../storage/MapStorage"
-import { MapQueueRequest, MapQueueRequestType } from "./base/MapQueueRequest"
+import { MapQueueRequest, MapQueueRequestType } from "../base/MapQueueRequest"
+import { QueueError } from "../base/QueueError"
 
 export class BookmarkRequest extends MapQueueRequest {
 	key: string

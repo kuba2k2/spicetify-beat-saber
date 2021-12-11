@@ -1,6 +1,6 @@
 import { SortOrder } from "beatsaver-api/lib/api/search"
 import { Track, TrackState } from "../../models/Track"
-import { TrackQueueRequest } from "./base/TrackQueueRequest"
+import { TrackQueueRequest } from "../base/TrackQueueRequest"
 
 export class MapsRequest extends TrackQueueRequest {
 	userQuery?: string

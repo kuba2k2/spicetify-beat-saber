@@ -1,5 +1,5 @@
 import { Subscription } from "rxjs"
-import { TrackQueueRequest } from "../../core/queue/requests/base/TrackQueueRequest"
+import { TrackQueueRequest } from "../../core/queue/base/TrackQueueRequest"
 import { QueueState } from "../../core/queue/TrackQueue"
 import { TrackPage } from "./TrackPage"
 

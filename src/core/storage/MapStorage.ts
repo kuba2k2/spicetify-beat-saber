@@ -51,6 +51,7 @@ export class MapStorage {
 	async put(cat: MapCategory, ...items: MapType[]) {
 		const tx = this.db.transaction(cat, "readwrite")
 		for (const item of items) {
+			if (!item) continue
 			if ("versions" in item) {
 				await tx.store.put(item, item.versions[0].hash)
 				continue

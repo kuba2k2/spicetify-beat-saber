@@ -15,14 +15,20 @@ type TrackPageProps = {
 
 type TrackPageState = {
 	query: string
+	bubbleVisible?: boolean
+	bubbleType?: BubbleType
+	bubbleText?: string
 } & TrackPageProps &
 	Required<MapListSets>
+
+type BubbleType = "success" | "info" | "error"
 
 export class TrackPage extends Spicetify.React.Component<
 	TrackPageProps,
 	TrackPageState
 > {
 	subscription: Subscription = null
+	bubbleTimeout: NodeJS.Timeout
 	scrollNodeRef: Spicetify.React.RefObject<HTMLDivElement>
 
 	constructor(props: TrackPageProps) {
@@ -139,10 +145,16 @@ export class TrackPage extends Spicetify.React.Component<
 	async handleBookmarkClick(map: MapDetail) {
 		this.state.bookmarkingKeys.add(map.id)
 		this.forceUpdate()
-		if (this.state.bookmarkedKeys.has(map.id)) {
-			await BeatSaber.MapQueue.bookmarkRemove(map)
-		} else {
-			await BeatSaber.MapQueue.bookmarkAdd(map)
+		try {
+			if (this.state.bookmarkedKeys.has(map.id)) {
+				await BeatSaber.MapQueue.bookmarkRemove(map)
+				this.showBubble("info", "Removed bookmark for " + map.name)
+			} else {
+				await BeatSaber.MapQueue.bookmarkAdd(map)
+				this.showBubble("success", "Bookmarked " + map.name)
+			}
+		} catch (e) {
+			this.showBubble("error", e.toString())
 		}
 		this.state.bookmarkingKeys.delete(map.id)
 		this.forceUpdate()
@@ -152,13 +164,31 @@ export class TrackPage extends Spicetify.React.Component<
 		const hash = map.versions[0].hash
 		this.state.downloadingHashes.add(hash)
 		this.forceUpdate()
-		if (this.state.downloadedHashes.has(hash)) {
-			await BeatSaber.MapQueue.downloadRemove(map)
-		} else {
-			await BeatSaber.MapQueue.downloadAdd(map)
+		try {
+			if (this.state.downloadedHashes.has(hash)) {
+				await BeatSaber.MapQueue.downloadRemove(map)
+				this.showBubble("info", "Deleted " + map.name)
+			} else {
+				await BeatSaber.MapQueue.downloadAdd(map)
+				this.showBubble("success", "Downloaded " + map.name)
+			}
+		} catch (e) {
+			this.showBubble("error", e.toString())
 		}
 		this.state.downloadingHashes.delete(hash)
 		this.forceUpdate()
+	}
+
+	showBubble(type: BubbleType, text: string) {
+		this.setState({
+			bubbleVisible: true,
+			bubbleType: type,
+			bubbleText: text,
+		})
+		clearTimeout(this.bubbleTimeout)
+		this.bubbleTimeout = setTimeout(() => {
+			this.setState({ bubbleVisible: false })
+		}, 5000)
 	}
 
 	render() {
@@ -213,13 +243,25 @@ export class TrackPage extends Spicetify.React.Component<
 				key={this.props.track.slug}
 			>
 				{header}
+
 				<SearchField
 					placeholder={this.state.track.getDefaultSearchQuery()}
 					value={this.state.query}
 					onSearch={this.handleSearchQuery}
 					onSubmit={this.handleSearchSubmit}
 				/>
+
 				{page}
+
+				<div className="notification-bubble-mount-node">
+					<div
+						className={`notification-bubble-container ${
+							this.state.bubbleType
+						} ${this.state.bubbleVisible ? "" : "is-hidden"}`}
+					>
+						<span>{this.state.bubbleText}</span>
+					</div>
+				</div>
 			</div>
 		)
 	}

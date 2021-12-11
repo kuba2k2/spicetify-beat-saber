@@ -10,11 +10,13 @@ export abstract class MapQueueRequest {
 
 	readonly promise: Promise<void>
 	protected resolve: () => void
+	public reject: (reason: Error) => void
 	protected type: MapQueueRequestType
 
 	constructor() {
-		this.promise = new Promise((resolve) => {
+		this.promise = new Promise((resolve, reject) => {
 			this.resolve = resolve
+			this.reject = reject
 		})
 	}
 

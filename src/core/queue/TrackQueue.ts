@@ -3,7 +3,7 @@ import { Track } from "../models/Track"
 import { ArtistImageRequest } from "./requests/ArtistImageRequest"
 import { DetailsRequest } from "./requests/DetailsRequest"
 import { MapsRequest } from "./requests/MapsRequest"
-import { TrackQueueRequest } from "./requests/base/TrackQueueRequest"
+import { TrackQueueRequest } from "./base/TrackQueueRequest"
 import { MapCategory } from "../storage/MapStorage"
 
 export type QueueState = {
@@ -187,6 +187,7 @@ export class TrackQueue {
 				track = await request.run(track)
 			} catch (e) {
 				console.error("Queue error", e)
+				BeatSaber.ErrorSubject.next(e)
 				this.queueNext(0)
 				return
 			}
