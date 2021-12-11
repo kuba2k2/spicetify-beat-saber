@@ -51,7 +51,7 @@ export class TrackWatcher extends BaseWatcher<HTMLTableRowElement> {
 		const uri = Spicetify.URI.fromString(
 			this.root.getAttribute(this.type.uriAttribute)
 		)
-		const artists = this.artists ? [...this.artists] : []
+		let artists = this.artists ? [...this.artists] : []
 		const title = this.root
 			.querySelector(this.type.titleQuery)
 			?.textContent?.trim()
@@ -64,7 +64,9 @@ export class TrackWatcher extends BaseWatcher<HTMLTableRowElement> {
 			artists.push(artist.textContent.trim())
 		})
 
-		if (!uri || !artists || !title) return
+		artists = artists.filter((artist) => !!artist)
+
+		if (!uri || !artists.length || !title) return
 
 		if (!Spicetify.URI.isTrack(uri)) return
 

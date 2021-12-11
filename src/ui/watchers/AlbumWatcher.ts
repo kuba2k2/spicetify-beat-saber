@@ -11,6 +11,13 @@ export class AlbumWatcher extends BaseWatcher<HTMLDivElement> {
 	mount(child: Element): BaseWatcher<Element> {
 		if (!isHTMLDiv(child)) return
 
+		const stickyHeaderRow = <HTMLTableRowElement>(
+			child.querySelector("table.Table__sticky-header-table > thead > tr")
+		)
+		if (!stickyHeaderRow.querySelector(".TableCellBeatSaber")) {
+			stickyHeaderRow.insertCell(2).className = "TableCellBeatSaber"
+		}
+
 		const artists = []
 		child
 			.querySelectorAll(".AlbumMetaInfo__artists a")
@@ -19,14 +26,16 @@ export class AlbumWatcher extends BaseWatcher<HTMLDivElement> {
 				artists.push(artist.textContent.trim())
 			})
 
-		const stickyHeaderRow = <HTMLTableRowElement>(
-			child.querySelector("table.Table__sticky-header-table > thead > tr")
-		)
-		if (!stickyHeaderRow.querySelector(".TableCellBeatSaber")) {
-			stickyHeaderRow.insertCell(2).className = "TableCellBeatSaber"
+		const table = <HTMLTableElement>child.querySelector(".Table > table")
+
+		if (!artists.length && child.querySelector(".AlbumMetaInfo__artists")) {
+			// probably a compilation
+			return new TracklistWatcher(
+				table,
+				TracklistTypes.ALBUM_REACT_COMPILATION
+			)
 		}
 
-		const table = <HTMLTableElement>child.querySelector(".Table > table")
 		return new TracklistWatcher(table, TracklistTypes.ALBUM_REACT, artists)
 	}
 }

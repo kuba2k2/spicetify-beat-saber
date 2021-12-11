@@ -99,8 +99,12 @@ export class BeatSaberCore {
 
 		if (BeatSaber.Settings.bsaberUsername && BeatSaber.Settings) {
 			Spicetify.showNotification("Syncing bookmarks...")
-			const keys = await BeatSaber.Api.getBookmarkKeys(BeatSaber.Settings.bsaberUsername)
-			const storedKeys = await BeatSaber.Storage.Map.getKeys(MapCategory.BOOKMARKED)
+			const keys = await BeatSaber.Api.getBookmarkKeys(
+				BeatSaber.Settings.bsaberUsername
+			)
+			const storedKeys = await BeatSaber.Storage.Map.getKeys(
+				MapCategory.BOOKMARKED
+			)
 			const missingPages = new Set<number>()
 
 			keys.forEach((key, index) => {
@@ -111,8 +115,14 @@ export class BeatSaberCore {
 
 			for (const page of missingPages) {
 				Spicetify.showNotification(`Getting bookmarks page ${page}...`)
-				const bookmarks = await BeatSaber.Api.getBookmarks(BeatSaber.Settings.bsaberUsername, page)
-				await BeatSaber.Storage.Map.put(MapCategory.BOOKMARKED, ...bookmarks)
+				const bookmarks = await BeatSaber.Api.getBookmarks(
+					BeatSaber.Settings.bsaberUsername,
+					page
+				)
+				await BeatSaber.Storage.Map.put(
+					MapCategory.BOOKMARKED,
+					...bookmarks
+				)
 			}
 		}
 
@@ -120,7 +130,9 @@ export class BeatSaberCore {
 		const downloads = await BeatSaber.Api.getDownloads()
 		await BeatSaber.Storage.Map.put(MapCategory.DOWNLOADED, ...downloads)
 
-		Spicetify.showNotification(`Added ${bookmarkCount || "no"} new bookmarks`)
+		Spicetify.showNotification(
+			`Added ${bookmarkCount || "no"} new bookmarks`
+		)
 	}
 
 	public initializeSubApp(window: Window) {

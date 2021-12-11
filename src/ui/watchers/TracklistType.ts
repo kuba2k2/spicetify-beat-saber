@@ -63,4 +63,16 @@ export class TracklistTypes {
 		artistsQuery: ".TableCellSong__featuredArtists a",
 		artistsQueryUnavailable: ".TableCellSong__featuredArtists span",
 	}
+	static readonly ALBUM_REACT_COMPILATION: TracklistType = {
+		hasHeader: true,
+		uriAttribute: "data-ta-uri",
+		headerClass: "TableHeaderRow",
+		cellIndex: 2,
+		cellQuery: ".TableCellBeatSaber",
+		cellClass: "TableCell TableCellBeatSaber",
+		cellHeaderClass: "TableCellBeatSaber",
+		titleQuery: ".TableCellSong__track-name",
+		artistsQuery: ".TableCellArtists > span a",
+		artistsQueryUnavailable: ".TableCellArtists > span span",
+	}
 }

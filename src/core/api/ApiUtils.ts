@@ -17,7 +17,9 @@ export class ApiUtils {
 	BeastSaber = new BeastSaber()
 
 	constructor() {
-		this.BeastSaber.setRequestHandler(new BackendRequestHandler("bsaber.com"))
+		this.BeastSaber.setRequestHandler(
+			new BackendRequestHandler("bsaber.com")
+		)
 	}
 
 	async getTrackMetadata(uri: Spicetify.URI): Promise<BridgeTrack> {
@@ -51,8 +53,11 @@ export class ApiUtils {
 	}
 
 	private async login() {
-		if (!await this.BeastSaber.isLoggedIn()) {
-			await this.BeastSaber.login(BeatSaber.Settings.bsaberLogin, BeatSaber.Settings.bsaberPassword)
+		if (!(await this.BeastSaber.isLoggedIn())) {
+			await this.BeastSaber.login(
+				BeatSaber.Settings.bsaberLogin,
+				BeatSaber.Settings.bsaberPassword
+			)
 		}
 	}
 
