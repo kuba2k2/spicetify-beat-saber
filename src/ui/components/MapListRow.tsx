@@ -1,6 +1,6 @@
-import { MapDetail } from "beatsaver-api/lib/models/MapDetail";
-import { ButtonGroup } from "./ButtonGroup";
-import { Characteristic, Difficulty, DifficultyBadge } from "./DifficultyBadge";
+import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
+import { ButtonGroup } from "./ButtonGroup"
+import { Characteristic, Difficulty, DifficultyBadge } from "./DifficultyBadge"
 
 type MapListRowProps = {
 	map: MapDetail
@@ -13,7 +13,6 @@ type MapListRowProps = {
 }
 
 export class MapListRow extends Spicetify.React.Component<MapListRowProps> {
-
 	constructor(props: MapListRowProps) {
 		super(props)
 		this.handleMatchesChange = this.handleMatchesChange.bind(this)
@@ -24,15 +23,15 @@ export class MapListRow extends Spicetify.React.Component<MapListRowProps> {
 			case 0:
 				if (this.props.onMatchClick)
 					this.props.onMatchClick(this.props.map)
-				break;
+				break
 			case 1:
 				if (this.props.onDoesntMatchClick)
 					this.props.onDoesntMatchClick(this.props.map)
-				break;
+				break
 			case 2:
 				if (this.props.onNotInterestedClick)
 					this.props.onNotInterestedClick(this.props.map)
-				break;
+				break
 		}
 	}
 
@@ -44,15 +43,20 @@ export class MapListRow extends Spicetify.React.Component<MapListRowProps> {
 
 		const diffs = [] as Spicetify.React.ReactNode[]
 		map.versions[0].diffs.forEach((diff, index) => {
-			const tooltip = `${diff.nps.toFixed(2)} NPS / ${diff.notes} Notes (${diff.characteristic})`;
+			const tooltip = `${diff.nps.toFixed(2)} NPS / ${
+				diff.notes
+			} Notes (${diff.characteristic})`
 			if (index % 7 === 0) {
-				diffs.push(<div style={{ clear: "both" }}></div>);
+				diffs.push(<div style={{ clear: "both" }}></div>)
 			}
 			diffs.push(
 				<DifficultyBadge
-					characteristic={diff.characteristic.toLowerCase() as Characteristic}
+					characteristic={
+						diff.characteristic.toLowerCase() as Characteristic
+					}
 					difficulty={diff.difficulty.toLowerCase() as Difficulty}
-					tooltip={tooltip} />
+					tooltip={tooltip}
+				/>
 			)
 		})
 
@@ -85,19 +89,34 @@ export class MapListRow extends Spicetify.React.Component<MapListRowProps> {
 
 				<TableCell align="center" extraClassName="bs-ml-actions">
 					<Button type="icon" icon="play" tooltip="Preview map" />
-					<Button type="icon" icon="playlist" tooltip="Preview audio" />
-					<Button type="icon" ta-id="bs-icon-bookmark" tooltip="Bookmark" />
+					<Button
+						type="icon"
+						icon="playlist"
+						tooltip="Preview audio"
+					/>
+					<Button
+						type="icon"
+						ta-id="bs-icon-bookmark"
+						tooltip="Bookmark"
+					/>
 					<Button type="icon" icon="download" tooltip="Download" />
 
-					{this.props.showButtonGroup &&
+					{this.props.showButtonGroup && (
 						<ButtonGroup
-							selectedIndex={this.props.notInterested ? 2 : this.props.matches ? 0 : 1}
-							onChange={this.handleMatchesChange}>
+							selectedIndex={
+								this.props.notInterested
+									? 2
+									: this.props.matches
+									? 0
+									: 1
+							}
+							onChange={this.handleMatchesChange}
+						>
 							{["Matches", "check-alt"]}
 							{["Doesn't match", "x"]}
 							{["Not interested", "block"]}
 						</ButtonGroup>
-					}
+					)}
 				</TableCell>
 			</TableRow>
 		)

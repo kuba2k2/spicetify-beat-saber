@@ -1,12 +1,12 @@
-import { MapDetail } from "beatsaver-api/lib/models/MapDetail";
-import { skip, Subscription } from "rxjs";
-import { Track, TrackState } from "../../core/models/Track";
-import { BuiltInLevelHeader } from "../components/BuiltInLevelHeader";
-import { EmptyView } from "../components/EmptyView";
-import { LoadingSpinner } from "../components/LoadingSpinner";
-import { MapListTable } from "../components/MapListTable";
-import { SearchField } from "../components/SearchField";
-import { TrackHeader } from "../components/TrackHeader";
+import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
+import { skip, Subscription } from "rxjs"
+import { Track, TrackState } from "../../core/models/Track"
+import { BuiltInLevelHeader } from "../components/BuiltInLevelHeader"
+import { EmptyView } from "../components/EmptyView"
+import { LoadingSpinner } from "../components/LoadingSpinner"
+import { MapListTable } from "../components/MapListTable"
+import { SearchField } from "../components/SearchField"
+import { TrackHeader } from "../components/TrackHeader"
 
 type TrackPageProps = {
 	track: Track
@@ -18,7 +18,10 @@ type TrackPageState = {
 	notInterestedHashes: Set<string>
 } & TrackPageProps
 
-export class TrackPage extends Spicetify.React.Component<TrackPageProps, TrackPageState> {
+export class TrackPage extends Spicetify.React.Component<
+	TrackPageProps,
+	TrackPageState
+> {
 	subscription: Subscription = null
 	scrollNodeRef: Spicetify.React.RefObject<HTMLDivElement>
 
@@ -55,14 +58,17 @@ export class TrackPage extends Spicetify.React.Component<TrackPageProps, TrackPa
 	}
 
 	componentDidMount() {
-		this.subscription = BeatSaber.TrackQueue
-			.observe(this.state.track)
+		this.subscription = BeatSaber.TrackQueue.observe(this.state.track)
 			.pipe(skip(1))
-			.subscribe(track => {
+			.subscribe((track) => {
 				this.setState({
 					track: track,
-					matchHashes: this.state.matchHashes.concat(track.allMatchHashes),
-					notInterestedHashes: this.state.notInterestedHashes.concat(track.notInterestedHashes),
+					matchHashes: this.state.matchHashes.concat(
+						track.allMatchHashes
+					),
+					notInterestedHashes: this.state.notInterestedHashes.concat(
+						track.notInterestedHashes
+					),
 				})
 			})
 		this.log("[TrackPage] Subscribing", this.subscription)
@@ -73,7 +79,11 @@ export class TrackPage extends Spicetify.React.Component<TrackPageProps, TrackPa
 		this.subscription?.unsubscribe()
 		BeatSaber.TrackQueue.cancelRequests(this.state.track.slug)
 		if (this.state.track.maps != null) {
-			BeatSaber.TrackQueue.reviewTrack(this.state.track, this.state.matchHashes, this.state.notInterestedHashes)
+			BeatSaber.TrackQueue.reviewTrack(
+				this.state.track,
+				this.state.matchHashes,
+				this.state.notInterestedHashes
+			)
 		}
 	}
 
@@ -82,7 +92,8 @@ export class TrackPage extends Spicetify.React.Component<TrackPageProps, TrackPa
 	}
 
 	handleSearchSubmit() {
-		const query = this.state.query || this.state.track.getDefaultSearchQuery()
+		const query =
+			this.state.query || this.state.track.getDefaultSearchQuery()
 		this.log("Submitting query", query)
 		BeatSaber.TrackQueue.requestMaps(this.state.track, query)
 	}
@@ -125,20 +136,24 @@ export class TrackPage extends Spicetify.React.Component<TrackPageProps, TrackPa
 		let header: Spicetify.React.ReactNode
 		let page: Spicetify.React.ReactNode
 
-		if (track.state === TrackState.ENQUEUED || track.state === TrackState.SEARCHING) {
+		if (
+			track.state === TrackState.ENQUEUED ||
+			track.state === TrackState.SEARCHING
+		) {
 			// queued or searching, show progress bar
 			page = <LoadingSpinner />
-
 		} else if (track.maps?.length) {
 			// maps == [...], show results table
-			page = <MapListTable
-				maps={this.state.track.maps}
-				matchHashes={this.state.matchHashes}
-				notInterestedHashes={this.state.notInterestedHashes}
-				onMatchClick={this.handleMatchClick}
-				onDoesntMatchClick={this.handleDoesntMatchClick}
-				onNotInterestedClick={this.handleNotInterestedClick} />
-
+			page = (
+				<MapListTable
+					maps={this.state.track.maps}
+					matchHashes={this.state.matchHashes}
+					notInterestedHashes={this.state.notInterestedHashes}
+					onMatchClick={this.handleMatchClick}
+					onDoesntMatchClick={this.handleDoesntMatchClick}
+					onNotInterestedClick={this.handleNotInterestedClick}
+				/>
+			)
 		} else if (!track.builtInLevel || track.userQuery) {
 			// maps == [] + not a built-in level, show no results
 			page = <EmptyView query={track.getSearchQuery()} hint="" />
@@ -151,13 +166,18 @@ export class TrackPage extends Spicetify.React.Component<TrackPageProps, TrackPa
 		}
 
 		return (
-			<div className="bs-track-page" ref={this.scrollNodeRef} key={this.props.track.slug}>
+			<div
+				className="bs-track-page"
+				ref={this.scrollNodeRef}
+				key={this.props.track.slug}
+			>
 				{header}
 				<SearchField
 					placeholder={this.state.track.getDefaultSearchQuery()}
 					value={this.state.query}
 					onSearch={this.handleSearchQuery}
-					onSubmit={this.handleSearchSubmit} />
+					onSubmit={this.handleSearchSubmit}
+				/>
 				{page}
 			</div>
 		)

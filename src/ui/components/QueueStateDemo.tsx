@@ -1,7 +1,10 @@
 import { Subscription } from "rxjs"
 import { QueueState } from "../../core/queue/TrackQueue"
 
-export class QueueStateDemo extends Spicetify.React.Component<unknown, QueueState> {
+export class QueueStateDemo extends Spicetify.React.Component<
+	unknown,
+	QueueState
+> {
 	subscription: Subscription
 
 	constructor() {
@@ -13,9 +16,11 @@ export class QueueStateDemo extends Spicetify.React.Component<unknown, QueueStat
 	}
 
 	componentDidMount() {
-		this.subscription = BeatSaber.TrackQueue.queueSubject.subscribe(state => {
-			this.setState(state)
-		})
+		this.subscription = BeatSaber.TrackQueue.queueSubject.subscribe(
+			(state) => {
+				this.setState(state)
+			}
+		)
 	}
 
 	componentWillUnmount() {
@@ -30,12 +35,16 @@ export class QueueStateDemo extends Spicetify.React.Component<unknown, QueueStat
 					type="blue"
 					text="Unlock"
 					isDisabled={!this.state.blocked}
-					onClick={BeatSaber.TrackQueue.queueUnblock} />
-				<br /><br />
-				{this.state.enqueued.map(request => (
+					onClick={BeatSaber.TrackQueue.queueUnblock}
+				/>
+				<br />
+				<br />
+				{this.state.enqueued.map((request) => (
 					<span style={{ marginTop: "5px" }}>
-						<b><i>{request.type}</i></b> -
-						<code>{request.slug}</code>
+						<b>
+							<i>{request.type}</i>
+						</b>{" "}
+						-<code>{request.slug}</code>
 						<br />
 					</span>
 				))}

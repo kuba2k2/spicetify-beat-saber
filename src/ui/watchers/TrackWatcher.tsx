@@ -1,7 +1,7 @@
-import { TrackBase } from "../../core/models/TrackBase";
-import { StateButton } from "../components/StateButton";
-import { BaseWatcher } from "./BaseWatcher";
-import { TracklistType } from "./TracklistType";
+import { TrackBase } from "../../core/models/TrackBase"
+import { StateButton } from "../components/StateButton"
+import { BaseWatcher } from "./BaseWatcher"
+import { TracklistType } from "./TracklistType"
 
 export class TrackWatcher extends BaseWatcher<HTMLTableRowElement> {
 	timeoutId: NodeJS.Timeout
@@ -11,7 +11,11 @@ export class TrackWatcher extends BaseWatcher<HTMLTableRowElement> {
 	artists?: string[]
 	buttonCell: HTMLTableCellElement
 
-	constructor(root: HTMLTableRowElement, type: TracklistType, artists?: string[]) {
+	constructor(
+		root: HTMLTableRowElement,
+		type: TracklistType,
+		artists?: string[]
+	) {
 		super(root)
 		this.type = type
 		this.artists = artists
@@ -44,14 +48,18 @@ export class TrackWatcher extends BaseWatcher<HTMLTableRowElement> {
 	handleConnect() {
 		if (!this.buttonCell) return
 
-		const uri = Spicetify.URI.fromString(this.root.getAttribute(this.type.uriAttribute))
+		const uri = Spicetify.URI.fromString(
+			this.root.getAttribute(this.type.uriAttribute)
+		)
 		const artists = this.artists ? [...this.artists] : []
-		const title = this.root.querySelector(this.type.titleQuery)?.textContent?.trim()
+		const title = this.root
+			.querySelector(this.type.titleQuery)
+			?.textContent?.trim()
 
 		const query = this.root.classList.contains("unavailable")
 			? this.type.artistsQueryUnavailable
 			: this.type.artistsQuery
-		this.root.querySelectorAll(query)?.forEach(artist => {
+		this.root.querySelectorAll(query)?.forEach((artist) => {
 			if (!artist?.textContent) return
 			artists.push(artist.textContent.trim())
 		})
@@ -64,7 +72,7 @@ export class TrackWatcher extends BaseWatcher<HTMLTableRowElement> {
 
 		Spicetify.ReactDOM.render(
 			<StateButton trackBase={track} />,
-			this.buttonCell,
+			this.buttonCell
 		)
 	}
 
@@ -73,6 +81,6 @@ export class TrackWatcher extends BaseWatcher<HTMLTableRowElement> {
 	}
 
 	mount(_child: Element): BaseWatcher<Element> {
-		throw new Error("Method not implemented.");
+		throw new Error("Method not implemented.")
 	}
 }

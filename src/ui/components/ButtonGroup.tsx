@@ -5,14 +5,12 @@ type ButtonGroupProps = {
 }
 
 export class ButtonGroup extends Spicetify.React.Component<ButtonGroupProps> {
-
 	constructor(props: ButtonGroupProps) {
 		super(props)
 	}
 
 	handleClick(index: number) {
-		if (this.props.onChange)
-			this.props.onChange(index)
+		if (this.props.onChange) this.props.onChange(index)
 	}
 
 	render() {
@@ -20,11 +18,16 @@ export class ButtonGroup extends Spicetify.React.Component<ButtonGroupProps> {
 			<div className="bs-button-group">
 				{this.props.children.map(([text, icon], index) => (
 					<Button
-						type={index == this.props.selectedIndex ? "green" : "stroke"}
+						type={
+							index == this.props.selectedIndex
+								? "green"
+								: "stroke"
+						}
 						icon={icon}
 						text=""
 						tooltip={text}
-						onClick={this.handleClick.bind(this, index)} />
+						onClick={this.handleClick.bind(this, index)}
+					/>
 				))}
 			</div>
 		)

@@ -32,8 +32,11 @@ export class SearchField extends Spicetify.React.Component<SearchFieldProps> {
 		return (
 			<div className="h-search-field-outer-wrapper bs-search-field">
 				<div className="h-search-field-wrapper">
-					<div className={`${this.props.value ? "focus" : ""} h-search-wrapper spoticon-search-16`}>
-
+					<div
+						className={`${
+							this.props.value ? "focus" : ""
+						} h-search-wrapper spoticon-search-16`}
+					>
 						<input
 							className="h-search"
 							type="text"
@@ -41,14 +44,15 @@ export class SearchField extends Spicetify.React.Component<SearchFieldProps> {
 							placeholder={this.props.placeholder}
 							value={this.props.value}
 							onChange={this.handleChange}
-							onKeyDown={this.handleKeyPress} />
+							onKeyDown={this.handleKeyPress}
+						/>
 
 						<span
 							className="h-search-close spoticon-x-16"
-							onClick={this.handleClear} />
+							onClick={this.handleClear}
+						/>
 
 						<ul className="h-search-suggestions" />
-
 					</div>
 				</div>
 			</div>

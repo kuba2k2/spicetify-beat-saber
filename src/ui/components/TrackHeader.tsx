@@ -1,11 +1,10 @@
-import { Track } from "../../core/models/Track";
+import { Track } from "../../core/models/Track"
 
 type TrackHeaderProps = {
 	track: Track
 }
 
 export class TrackHeader extends Spicetify.React.Component<TrackHeaderProps> {
-
 	render() {
 		const track = this.props.track
 		let artistImage: string
@@ -14,11 +13,11 @@ export class TrackHeader extends Spicetify.React.Component<TrackHeaderProps> {
 		}
 		return (
 			<div className="bs-track-header">
-
 				<HeaderBackgroundImage
 					imageUrl={artistImage}
 					scrollBackdropOpacity={0}
-					scrollOpacity={0} />
+					scrollOpacity={0}
+				/>
 
 				<Card
 					uri={track.uri.toString()}
@@ -28,7 +27,8 @@ export class TrackHeader extends Spicetify.React.Component<TrackHeaderProps> {
 					trackUri="spotify:app:beatsaber"
 					forceEnableOverlay={true}
 					hideAddButton={true}
-					hideMoreButton={true} />
+					hideMoreButton={true}
+				/>
 			</div>
 		)
 	}

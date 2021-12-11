@@ -1,11 +1,11 @@
-import { Subscription } from "rxjs";
-import { Track, TrackState } from "../../core/models/Track";
-import { TrackBase } from "../../core/models/TrackBase";
-import { TrackPage } from "../pages/TrackPage";
+import { Subscription } from "rxjs"
+import { Track, TrackState } from "../../core/models/Track"
+import { TrackBase } from "../../core/models/TrackBase"
+import { TrackPage } from "../pages/TrackPage"
 
 type StateButtonProps = {
-	trackBase: TrackBase,
-	onClick?: (track: Track) => void,
+	trackBase: TrackBase
+	onClick?: (track: Track) => void
 }
 
 type StateButtonState = {
@@ -30,7 +30,10 @@ const stateClassMap = new Map([
 	[TrackState.DOWNLOADED, ["downloaded", null]],
 ]) as Map<TrackState, [Spicetify.Model.Icon | null, string | null]>
 
-export class StateButton extends Spicetify.React.Component<StateButtonProps, StateButtonState> {
+export class StateButton extends Spicetify.React.Component<
+	StateButtonProps,
+	StateButtonState
+> {
 	subscription: Subscription = null
 
 	constructor(props: StateButtonProps) {
@@ -50,11 +53,11 @@ export class StateButton extends Spicetify.React.Component<StateButtonProps, Sta
 	}
 
 	componentDidMount() {
-		this.subscription = BeatSaber.TrackQueue
-			.requestMaps(this.state.track)
-			.subscribe(track => {
-				this.setState({ track: track })
-			})
+		this.subscription = BeatSaber.TrackQueue.requestMaps(
+			this.state.track
+		).subscribe((track) => {
+			this.setState({ track: track })
+		})
 		this.log("[StateButton] Subscribing", this.subscription)
 	}
 
@@ -151,7 +154,8 @@ export class StateButton extends Spicetify.React.Component<StateButtonProps, Sta
 				size={32}
 				taId={taId}
 				tooltip={this.getTooltip()}
-				onClick={this.handleClick} />
+				onClick={this.handleClick}
+			/>
 		)
 	}
 }

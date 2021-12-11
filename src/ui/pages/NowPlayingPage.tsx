@@ -13,13 +13,16 @@ type NowPlayingPageState = {
 	}
 }
 
-export class NowPlayingPage extends Spicetify.React.Component<unknown, NowPlayingPageState> {
+export class NowPlayingPage extends Spicetify.React.Component<
+	unknown,
+	NowPlayingPageState
+> {
 	timeoutId: NodeJS.Timeout
 
 	constructor() {
 		super({})
 		this.state = {
-			data: Spicetify.Player.data
+			data: Spicetify.Player.data,
 		}
 	}
 

@@ -1,5 +1,5 @@
-import { MapDetail } from "beatsaver-api/lib/models/MapDetail";
-import { MapListRow } from "./MapListRow";
+import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
+import { MapListRow } from "./MapListRow"
 
 type MapListTableProps = {
 	maps: MapDetail[]
@@ -21,8 +21,10 @@ export class MapListTable extends Spicetify.React.Component<MapListTableProps> {
 
 	render() {
 		const maps = this.props.maps
-		const rowIds = maps.map((map) => map.id);
-		const rowIdToIndexMap = new Map(maps.map((map, index) => [map.id, index]))
+		const rowIds = maps.map((map) => map.id)
+		const rowIdToIndexMap = new Map(
+			maps.map((map, index) => [map.id, index])
+		)
 		return (
 			<Table
 				renderRow={this.renderRow.bind(this)}
@@ -48,26 +50,41 @@ export class MapListTable extends Spicetify.React.Component<MapListTableProps> {
 		return (
 			<TableHeaderRow extraClassName="bs-ml-header">
 				<TableHeaderCell extraClassName="bs-ml-image" label="" />
-				<TableHeaderCell extraClassName="bs-ml-rating" align="center" label="Rating" />
+				<TableHeaderCell
+					extraClassName="bs-ml-rating"
+					align="center"
+					label="Rating"
+				/>
 				<TableHeaderCell extraClassName="bs-ml-name" label="Name" />
 				<TableHeaderCell extraClassName="bs-ml-mapper" label="Mapper" />
-				<TableHeaderCell extraClassName="bs-ml-actions" align="center" label="Actions" />
+				<TableHeaderCell
+					extraClassName="bs-ml-actions"
+					align="center"
+					label="Actions"
+				/>
 			</TableHeaderRow>
 		)
 	}
 
 	renderRow(rowIndex: number) {
-		const map = this.props.maps[rowIndex];
-		const matches = this.props.matchHashes && this.props.matchHashes.has(map.versions[0].hash)
-		const notInterested = this.props.notInterestedHashes && this.props.notInterestedHashes.has(map.versions[0].hash)
+		const map = this.props.maps[rowIndex]
+		const matches =
+			this.props.matchHashes &&
+			this.props.matchHashes.has(map.versions[0].hash)
+		const notInterested =
+			this.props.notInterestedHashes &&
+			this.props.notInterestedHashes.has(map.versions[0].hash)
 
-		return <MapListRow
-			map={map}
-			showButtonGroup={!!this.props.matchHashes}
-			matches={matches}
-			notInterested={notInterested}
-			onMatchClick={this.props.onMatchClick}
-			onDoesntMatchClick={this.props.onDoesntMatchClick}
-			onNotInterestedClick={this.props.onNotInterestedClick} />
+		return (
+			<MapListRow
+				map={map}
+				showButtonGroup={!!this.props.matchHashes}
+				matches={matches}
+				notInterested={notInterested}
+				onMatchClick={this.props.onMatchClick}
+				onDoesntMatchClick={this.props.onDoesntMatchClick}
+				onNotInterestedClick={this.props.onNotInterestedClick}
+			/>
+		)
 	}
 }

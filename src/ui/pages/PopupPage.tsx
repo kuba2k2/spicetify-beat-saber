@@ -7,7 +7,10 @@ type QueueButtonState = {
 	popupVisible: boolean
 } & QueueState
 
-export class PopupPage extends Spicetify.React.Component<unknown, QueueButtonState> {
+export class PopupPage extends Spicetify.React.Component<
+	unknown,
+	QueueButtonState
+> {
 	subscription: Subscription
 
 	constructor() {
@@ -29,9 +32,11 @@ export class PopupPage extends Spicetify.React.Component<unknown, QueueButtonSta
 	}
 
 	componentDidMount() {
-		this.subscription = BeatSaber.TrackQueue.queueSubject.subscribe(state => {
-			this.setState(state)
-		})
+		this.subscription = BeatSaber.TrackQueue.queueSubject.subscribe(
+			(state) => {
+				this.setState(state)
+			}
+		)
 	}
 
 	componentWillUnmount() {
@@ -70,11 +75,11 @@ export class PopupPage extends Spicetify.React.Component<unknown, QueueButtonSta
 
 	render() {
 		const settings = {
-			"blockQueue": "Block queue",
-			"logQueue": "Enable TrackQueue logging",
-			"logStateButton": "Enable StateButton logging",
-			"logTrackPage": "Enable TrackPage logging",
-			"logWatchers": "Enable UI watchers logging",
+			blockQueue: "Block queue",
+			logQueue: "Enable TrackQueue logging",
+			logStateButton: "Enable StateButton logging",
+			logTrackPage: "Enable TrackPage logging",
+			logWatchers: "Enable UI watchers logging",
 		}
 
 		let requests = this.state.enqueued
@@ -82,81 +87,116 @@ export class PopupPage extends Spicetify.React.Component<unknown, QueueButtonSta
 			requests = [this.state.current].concat(this.state.enqueued)
 		}
 
-		return <div className="bs-queue-button">
-			<button
-				type="button"
-				className={`CanonicalButton Button Button--style-icon Button--size-32 bs-icon-note ${this.state.blocked ? "bs-red" : ""}`}
-				data-tooltip="Beat Saber"
-				onClick={this.handleIconClick}
-			>
-				<small>{requests.length}</small>
-			</button>
+		return (
+			<div className="bs-queue-button">
+				<button
+					type="button"
+					className={`CanonicalButton Button Button--style-icon Button--size-32 bs-icon-note ${
+						this.state.blocked ? "bs-red" : ""
+					}`}
+					data-tooltip="Beat Saber"
+					onClick={this.handleIconClick}
+				>
+					<small>{requests.length}</small>
+				</button>
 
-			<div className={`bs-queue-popup ConnectPopup ${this.state.popupVisible ? "visible" : ""}`}>
+				<div
+					className={`bs-queue-popup ConnectPopup ${
+						this.state.popupVisible ? "visible" : ""
+					}`}
+				>
+					<div className="ConnectPopup__header">
+						<h3 className="ConnectPopup__header-title">
+							Beat Saber v{BeatSaberManifest.BundleVersion}
+						</h3>
+						{this.state.blocked && (
+							<a
+								href="#"
+								className="ConnectPopup__header-help spoticon-block-16"
+								onClick={this.handleBlockClick}
+							></a>
+						)}
+					</div>
 
-				<div className="ConnectPopup__header">
-					<h3 className="ConnectPopup__header-title">
-						Beat Saber v{BeatSaberManifest.BundleVersion}
-					</h3>
-					{this.state.blocked && (
-						<a href="#"
-							className="ConnectPopup__header-help spoticon-block-16"
-							onClick={this.handleBlockClick}></a>
-					)}
-				</div>
+					<div className="ConnectPopup__content">
+						{Object.entries(settings).flatMap(([key, value]) => [
+							<GlueToggle
+								onChange={this.handleSettingChange.bind(
+									this,
+									key
+								)}
+								isActive={BeatSaber.Settings[key]}
+							/>,
+							<span className="bs-setting">{value}</span>,
+							<br />,
+						])}
 
-				<div className="ConnectPopup__content">
+						{requests.length == 0 && (
+							<div className="ConnectPopup__info">
+								<p>The queue is currenty empty.</p>
+							</div>
+						)}
 
-					{Object.entries(settings).flatMap(([key, value]) => [
-						<GlueToggle
-							onChange={this.handleSettingChange.bind(this, key)}
-							isActive={BeatSaber.Settings[key]} />,
-						<span className="bs-setting">{value}</span>,
-						<br />,
-					])}
+						{requests.length != 0 && (
+							<div className="ConnectPopup__button">
+								<Button
+									type="blue"
+									text="Clear queue"
+									onClick={this.handleClearClick}
+								/>
+							</div>
+						)}
 
-					{requests.length == 0 && (
-						<div className="ConnectPopup__info">
-							<p>The queue is currenty empty.</p>
-						</div>
-					)}
-
-					{requests.length != 0 && (
-						<div className="ConnectPopup__button">
-							<Button type="blue" text="Clear queue" onClick={this.handleClearClick} />
-						</div>
-					)}
-
-					<ul>{requests.map((request, index) => {
-						let icon = "airplay";
-						switch (request.type) {
-							case "MapsRequest":
-								icon = "search"
-								break
-							case "DetailsRequest":
-								icon = "album"
-								break
-							case "ArtistImageRequest":
-								icon = "artist"
-								break
-						}
-						const classNames = [
-							"ConnectPopup__device",
-							"ConnectPopup__device--available",
-							this.state.current && !index ? "ConnectPopup__device--active" : "",
-						]
-						return <li onClick={this.handleItemClick.bind(this, request)}>
-							<button className={classNames.join(" ")}>
-								<span className={`ConnectPopup__device-image spoticon-${icon}-32`}></span>
-								<div className="ConnectPopup__device-body">
-									<p className="ConnectPopup__device-title">{request.type}</p>
-									<p className="ConnectPopup__device-info"><code>{request.slug}</code></p>
-								</div>
-							</button>
-						</li>
-					})}</ul>
+						<ul>
+							{requests.map((request, index) => {
+								let icon = "airplay"
+								switch (request.type) {
+									case "MapsRequest":
+										icon = "search"
+										break
+									case "DetailsRequest":
+										icon = "album"
+										break
+									case "ArtistImageRequest":
+										icon = "artist"
+										break
+								}
+								const classNames = [
+									"ConnectPopup__device",
+									"ConnectPopup__device--available",
+									this.state.current && !index
+										? "ConnectPopup__device--active"
+										: "",
+								]
+								return (
+									<li
+										onClick={this.handleItemClick.bind(
+											this,
+											request
+										)}
+									>
+										<button
+											className={classNames.join(" ")}
+										>
+											<span
+												className={`ConnectPopup__device-image spoticon-${icon}-32`}
+											></span>
+											<div className="ConnectPopup__device-body">
+												<p className="ConnectPopup__device-title">
+													{request.type}
+												</p>
+												<p className="ConnectPopup__device-info">
+													<code>{request.slug}</code>
+												</p>
+											</div>
+										</button>
+									</li>
+								)
+							})}
+						</ul>
+					</div>
 				</div>
 			</div>
-		</div>
+		)
 	}
 }

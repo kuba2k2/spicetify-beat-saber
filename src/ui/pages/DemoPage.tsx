@@ -1,11 +1,10 @@
-import { Track } from "../../core/models/Track";
-import { TrackBase } from "../../core/models/TrackBase";
-import { QueueStateDemo } from "../components/QueueStateDemo";
-import { StateButton } from "../components/StateButton";
-import { TrackPage } from "./TrackPage";
+import { Track } from "../../core/models/Track"
+import { TrackBase } from "../../core/models/TrackBase"
+import { QueueStateDemo } from "../components/QueueStateDemo"
+import { StateButton } from "../components/StateButton"
+import { TrackPage } from "./TrackPage"
 
 export class DemoPage extends Spicetify.React.Component {
-
 	tracks: TrackBase[] = [
 		{
 			uri: Spicetify.URI.fromString(
@@ -75,12 +74,15 @@ export class DemoPage extends Spicetify.React.Component {
 	render() {
 		return (
 			<div style={{ marginTop: 100 }}>
-				{this.tracks.map(track => (
+				{this.tracks.map((track) => (
 					<div className="bs-hover-parent">
 						<StateButton
 							onClick={this.handleClick}
-							trackBase={track} />
-						<span>{track.artists[0]} - {track.title}</span>
+							trackBase={track}
+						/>
+						<span>
+							{track.artists[0]} - {track.title}
+						</span>
 					</div>
 				))}
 				<hr />

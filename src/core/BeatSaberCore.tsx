@@ -24,10 +24,7 @@ export class BeatSaberCore {
 	AssetsUrl = "https://beatsaber-assets.app.spotify.com"
 
 	MainCSSFile = `/css/beatsaber.css`
-	AdditionalCSSFiles = [
-		this.MainCSSFile,
-		"/css/zlink-button.css",
-	]
+	AdditionalCSSFiles = [this.MainCSSFile, "/css/zlink-button.css"]
 
 	IsBrowser: boolean
 	Storage: Storage
@@ -57,16 +54,20 @@ export class BeatSaberCore {
 
 		new AppWatcher(document.body as HTMLBodyElement).connect()
 
-		const playerControls = document.querySelector(".extra-controls-container")
+		const playerControls = document.querySelector(
+			".extra-controls-container"
+		)
 		playerControls.prepend(PopupPage.getWrapped())
 
-		const nowPlayingButton = document.querySelector(".nowplaying-add-button")
+		const nowPlayingButton = document.querySelector(
+			".nowplaying-add-button"
+		)
 		nowPlayingButton.after(NowPlayingPage.getWrapped())
 
 		if (isBrowser) {
 			Spicetify.ReactDOM.render(
 				Spicetify.React.createElement(DemoPage),
-				document.getElementById("root"),
+				document.getElementById("root")
 			)
 		}
 	}
@@ -74,12 +75,15 @@ export class BeatSaberCore {
 	public initializeSubApp(window: Window) {
 		Spicetify.ReactDOM.render(
 			Spicetify.React.createElement(DemoPage),
-			window.document.getElementById("root"),
+			window.document.getElementById("root")
 		)
 	}
 
 	public saveSettings() {
-		Spicetify.LocalStorage.set("beatsaber:settings", JSON.stringify(this.Settings))
+		Spicetify.LocalStorage.set(
+			"beatsaber:settings",
+			JSON.stringify(this.Settings)
+		)
 	}
 
 	public openApp(uri: Spicetify.URI) {
