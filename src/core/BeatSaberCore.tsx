@@ -1,17 +1,14 @@
-import BeatSaverAPI from "beatsaver-api"
 import { Storage } from "./storage/Storage"
 import { Track } from "./models/Track"
 import { TrackQueue } from "./queue/TrackQueue"
-import { BridgeUtils } from "./BridgeUtils"
 import { DemoPage } from "../ui/pages/DemoPage"
 import { AppWatcher } from "../ui/watchers/AppWatcher"
 import { PopupPage } from "../ui/pages/PopupPage"
 import { NowPlayingPage } from "../ui/pages/NowPlayingPage"
-import BeastSaber from "beastsaber-api"
 import { MapQueue } from "./queue/MapQueue"
-import { BackendRequestHandler } from "./backend/BackendRequestHandler"
 import { Subject } from "rxjs"
-import { BackendUtils } from "./backend/BackendUtils"
+import { ApiUtils } from "./api/ApiUtils"
+import { MapCategory } from "./storage/MapStorage"
 
 declare global {
 	interface Window {
@@ -20,12 +17,6 @@ declare global {
 }
 
 export class BeatSaberCore {
-	Api = new BeatSaverAPI({
-		AppName: "spicetify-beat-saber",
-		Version: BeatSaberManifest.BundleVersion,
-	})
-	Bsaber = new BeastSaber()
-
 	BaseUrl = "https://beatsaber.app.spotify.com"
 	AssetsUrl = "https://beatsaber-assets.app.spotify.com"
 
@@ -33,10 +24,10 @@ export class BeatSaberCore {
 	AdditionalCSSFiles = [this.MainCSSFile, "/css/zlink-button.css"]
 
 	IsBrowser: boolean
+	Api = new ApiUtils()
 	Storage = new Storage()
 	TrackQueue = new TrackQueue()
 	MapQueue = new MapQueue()
-	Bridge = new BridgeUtils()
 	ErrorSubject = new Subject<Error>()
 	Settings = {
 		blockQueue: true,
@@ -49,30 +40,40 @@ export class BeatSaberCore {
 		backendAuth: "YWRtaW46bmltZGE=",
 		bsaberLogin: null,
 		bsaberPassword: null,
+		bsaberUsername: null,
+		lastSyncTime: 0,
 	}
 
 	private redirector: HTMLAnchorElement = null
 
 	public async initialize(isBrowser: boolean) {
+		// load all settings
 		const settings = Spicetify.LocalStorage.get("beatsaber:settings")
 		if (settings) {
 			Object.assign(this.Settings, JSON.parse(settings))
 		}
 
-		this.Bsaber.setRequestHandler(new BackendRequestHandler("bsaber.com"))
+		// initialize the database
 		await this.Storage.initialize()
 
+		// watch all apps for tracklists
 		new AppWatcher(document.body as HTMLBodyElement).connect()
 
+		// subscribe to show errors
 		this.ErrorSubject.subscribe((error) => {
 			Spicetify.showNotification(error.toString())
 		})
 
+		// sync bookmarks and downloads
+		setTimeout(this.syncMaps, 5000)
+
+		// add popup button to player footer
 		const playerControls = document.querySelector(
 			".extra-controls-container"
 		)
 		playerControls.prepend(PopupPage.getWrapped())
 
+		// add now playing button
 		const nowPlayingButton = document.querySelector(
 			".nowplaying-add-button"
 		)
@@ -84,6 +85,42 @@ export class BeatSaberCore {
 				document.getElementById("root")
 			)
 		}
+	}
+
+	public async syncMaps() {
+		const now = new Date().getTime()
+		if (now - BeatSaber.Settings.lastSyncTime < 2 * 24 * 60 * 60 * 1000) {
+			return
+		}
+		BeatSaber.Settings.lastSyncTime = now
+		BeatSaber.saveSettings()
+
+		let bookmarkCount = 0
+
+		if (BeatSaber.Settings.bsaberUsername && BeatSaber.Settings) {
+			Spicetify.showNotification("Syncing bookmarks...")
+			const keys = await BeatSaber.Api.getBookmarkKeys(BeatSaber.Settings.bsaberUsername)
+			const storedKeys = await BeatSaber.Storage.Map.getKeys(MapCategory.BOOKMARKED)
+			const missingPages = new Set<number>()
+
+			keys.forEach((key, index) => {
+				if (storedKeys.has(key)) return
+				bookmarkCount++
+				missingPages.add(Math.floor(index / 20) + 1)
+			})
+
+			for (const page of missingPages) {
+				Spicetify.showNotification(`Getting bookmarks page ${page}...`)
+				const bookmarks = await BeatSaber.Api.getBookmarks(BeatSaber.Settings.bsaberUsername, page)
+				await BeatSaber.Storage.Map.put(MapCategory.BOOKMARKED, ...bookmarks)
+			}
+		}
+
+		Spicetify.showNotification("Syncing downloads...")
+		const downloads = await BeatSaber.Api.getDownloads()
+		await BeatSaber.Storage.Map.put(MapCategory.DOWNLOADED, ...downloads)
+
+		Spicetify.showNotification(`Added ${bookmarkCount || "no"} new bookmarks`)
 	}
 
 	public initializeSubApp(window: Window) {

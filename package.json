@@ -9,7 +9,7 @@
   },
   "private": true,
   "dependencies": {
-    "beastsaber-api": "^2.2.0",
+    "beastsaber-api": "^2.2.1",
     "beatsaver-api": "^2.0.2",
     "idb": "^7.0.0",
     "jquery": "^3.6.0",

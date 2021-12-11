@@ -15,7 +15,6 @@ export class BookmarkRequest extends MapQueueRequest {
 
 	async run() {
 		const category = MapCategory.BOOKMARKED
-		let map: Map
 		console.log("Bookmark", this.type, "by key", this.key)
 
 		if (
@@ -25,10 +24,10 @@ export class BookmarkRequest extends MapQueueRequest {
 			throw new QueueError("BeastSaber login data missing")
 		}
 
+		let map: Map
 		switch (this.type) {
 			case MapQueueRequestType.ADD:
-				map = await BeatSaber.Bsaber.getMapByKey(this.key)
-				// TODO add bookmark by map.id
+				map = await BeatSaber.Api.addBookmark(this.key)
 				await BeatSaber.Storage.Map.put(category, map)
 				break
 			case MapQueueRequestType.REMOVE:
@@ -36,7 +35,7 @@ export class BookmarkRequest extends MapQueueRequest {
 					category,
 					this.key
 				)) as Map
-				// TOOD remove bookmark by map.id
+				await BeatSaber.Api.removeBookmark(map.id)
 				await BeatSaber.Storage.Map.remove(category, this.key)
 				break
 		}

@@ -16,7 +16,8 @@
 		opacity: 1;
 		padding: 12px 36px;
 		text-align: center;
-		transition: opacity, background-color 0.5s cubic-bezier(0.3, 0, 0.4, 1);
+		transition: none 0.5s cubic-bezier(0.3, 0, 0.4, 1);
+		transition-property: opacity, background-color;
 
 		&.is-hidden {
 			opacity: 0;

@@ -27,17 +27,7 @@ export class MapsRequest extends TrackQueueRequest {
 
 	async run(track: Track): Promise<Track> {
 		const query = this.userQuery || track.getDefaultSearchQuery()
-		// because the API encodes the parameters twice
-		const params = {
-			sortOrder: SortOrder.Relevance,
-			get q() {
-				return query
-			},
-			set q(_value) {
-				false
-			},
-		}
-		const response = await BeatSaber.Api.searchMaps(params)
+		const response = await BeatSaber.Api.searchMaps(query)
 		track.maps = response.docs
 		track.userQuery = this.userQuery
 		track.extractHashes()

@@ -12,7 +12,7 @@ export class DetailsRequest extends TrackQueueRequest {
 	}
 
 	async run(track: Track): Promise<Track> {
-		const metadata = await BeatSaber.Bridge.getTrackMetadata(track.uri)
+		const metadata = await BeatSaber.Api.getTrackMetadata(track.uri)
 
 		track.title = metadata.name
 		track.artists = metadata.artists?.map((artist) => artist.name)

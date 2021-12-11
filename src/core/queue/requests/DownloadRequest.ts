@@ -14,12 +14,12 @@ export class DownloadRequest extends MapQueueRequest {
 
 	async run() {
 		const category = MapCategory.DOWNLOADED
-		let level: Level
 		console.log("Download", this.type, "by hash", this.hash)
 
+		let level: Level
 		switch (this.type) {
 			case MapQueueRequestType.ADD:
-				// TODO download level by this.hash
+				level = await BeatSaber.Api.downloadLevel(this.hash)
 				await BeatSaber.Storage.Map.put(category, level)
 				break
 			case MapQueueRequestType.REMOVE:
@@ -27,7 +27,7 @@ export class DownloadRequest extends MapQueueRequest {
 					category,
 					this.hash
 				)) as Level
-				// TODO remove download by level.levelDir
+				await BeatSaber.Api.deleteLevel(level.levelDir)
 				break
 		}
 
