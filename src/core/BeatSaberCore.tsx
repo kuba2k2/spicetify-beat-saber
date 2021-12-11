@@ -36,8 +36,8 @@ export class BeatSaberCore {
 		logStateButton: false,
 		logTrackPage: false,
 		logWatchers: false,
-		backendHostname: "localhost:23287",
-		backendAuth: "YWRtaW46bmltZGE=",
+		backendHostname: null,
+		backendAuth: null,
 		bsaberLogin: null,
 		bsaberPassword: null,
 		bsaberUsername: null,
@@ -88,6 +88,10 @@ export class BeatSaberCore {
 	}
 
 	public async syncMaps() {
+		if (!BeatSaber.Settings.backendHostname) {
+			return
+		}
+
 		const now = new Date().getTime()
 		if (now - BeatSaber.Settings.lastSyncTime < 2 * 24 * 60 * 60 * 1000) {
 			return

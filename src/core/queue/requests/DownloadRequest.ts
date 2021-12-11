@@ -1,6 +1,7 @@
 import { Level } from "../../models/Level"
 import { MapCategory } from "../../storage/MapStorage"
 import { MapQueueRequest, MapQueueRequestType } from "../base/MapQueueRequest"
+import { QueueError } from "../base/QueueError"
 
 export class DownloadRequest extends MapQueueRequest {
 	hash: string
@@ -13,9 +14,11 @@ export class DownloadRequest extends MapQueueRequest {
 	}
 
 	async run() {
-		const category = MapCategory.DOWNLOADED
-		console.log("Download", this.type, "by hash", this.hash)
+		if (!BeatSaber.Settings.backendHostname) {
+			throw new QueueError("Backend is not configured")
+		}
 
+		const category = MapCategory.DOWNLOADED
 		let level: Level
 		switch (this.type) {
 			case MapQueueRequestType.ADD:

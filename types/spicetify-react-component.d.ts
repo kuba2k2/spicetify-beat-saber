@@ -4,6 +4,7 @@ declare class Button extends Spicetify.ReactComponent.Button {}
 declare class Card extends Spicetify.ReactComponent.Card {}
 declare class CardWithoutLink extends Spicetify.ReactComponent.CardWithoutLink {}
 declare class CircularLoader extends Spicetify.ReactComponent.CircularLoader {}
+declare class GlueSectionDivider extends Spicetify.ReactComponent.GlueSectionDivider {}
 declare class GlueToggle extends Spicetify.ReactComponent.GlueToggle {}
 declare class HeaderBackgroundImage extends Spicetify.ReactComponent.HeaderBackgroundImage {}
 declare class HeaderData extends Spicetify.ReactComponent.HeaderData {}
@@ -84,6 +85,13 @@ declare namespace Spicetify {
 			size: number
 		}
 		class CircularLoader extends React.PureComponent<CircularLoaderProps> {}
+
+		type GlueSectionDividerProps = {
+			children?: React.ReactNode[]
+			description?: string
+			title?: React.ReactNode
+		}
+		class GlueSectionDivider extends React.PureComponent<GlueSectionDividerProps> {}
 
 		type GlueToggleProps = {
 			isActive?: boolean

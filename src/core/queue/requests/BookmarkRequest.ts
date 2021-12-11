@@ -14,8 +14,9 @@ export class BookmarkRequest extends MapQueueRequest {
 	}
 
 	async run() {
-		const category = MapCategory.BOOKMARKED
-		console.log("Bookmark", this.type, "by key", this.key)
+		if (!BeatSaber.Settings.backendHostname) {
+			throw new QueueError("Backend is not configured")
+		}
 
 		if (
 			!BeatSaber.Settings.bsaberLogin ||
@@ -24,6 +25,7 @@ export class BookmarkRequest extends MapQueueRequest {
 			throw new QueueError("BeastSaber login data missing")
 		}
 
+		const category = MapCategory.BOOKMARKED
 		let map: Map
 		switch (this.type) {
 			case MapQueueRequestType.ADD:

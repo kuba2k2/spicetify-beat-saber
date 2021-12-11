@@ -1,3 +1,4 @@
+import { ChangeEvent } from "react"
 import { Subscription } from "rxjs"
 import { TrackQueueRequest } from "../../core/queue/base/TrackQueueRequest"
 import { QueueState } from "../../core/queue/TrackQueue"
@@ -67,6 +68,16 @@ export class PopupPage extends Spicetify.React.Component<
 		return true
 	}
 
+	handleInputChange(
+		key: string,
+		event: ChangeEvent<HTMLInputElement>
+	): boolean {
+		BeatSaber.Settings[key] = event.target.value
+		BeatSaber.saveSettings()
+		this.forceUpdate()
+		return true
+	}
+
 	handleItemClick(request: TrackQueueRequest) {
 		const track = BeatSaber.TrackQueue.getTrack(request.slug)
 		if (!track) return
@@ -74,12 +85,24 @@ export class PopupPage extends Spicetify.React.Component<
 	}
 
 	render() {
-		const settings = {
+		const toggles = {
 			blockQueue: "Block queue",
-			logQueue: "Enable TrackQueue logging",
-			logStateButton: "Enable StateButton logging",
-			logTrackPage: "Enable TrackPage logging",
-			logWatchers: "Enable UI watchers logging",
+			logQueue: "Debug TrackQueue",
+			logMapQueue: "Debug MapQueue",
+			logStateButton: "Debug StateButton",
+			logTrackPage: "Debug TrackPage",
+			logWatchers: "Debug UI watchers",
+		}
+
+		const inputsBsaber = {
+			bsaberUsername: "Username (profile name)",
+			bsaberLogin: "Login (e-mail or login username)",
+			bsaberPassword: "Password",
+		}
+
+		const inputsBackend = {
+			backendHostname: "Hostname (domain:port)",
+			backendAuth: "Authentication",
 		}
 
 		let requests = this.state.enqueued
@@ -119,7 +142,53 @@ export class PopupPage extends Spicetify.React.Component<
 					</div>
 
 					<div className="ConnectPopup__content">
-						{Object.entries(settings).flatMap(([key, value]) => [
+						<GlueSectionDivider
+							title="Settings"
+							description="BeastSaber login"
+						/>
+						{Object.entries(inputsBsaber).map(([key, value]) => (
+							<div className="form-group">
+								<label htmlFor={key}>{value}</label>
+								<br />
+								<input
+									placeholder={value}
+									className="form-control"
+									type={
+										key.toLowerCase().includes("password")
+											? "password"
+											: "text"
+									}
+									name={key}
+									value={BeatSaber.Settings[key]}
+									onChange={this.handleInputChange.bind(
+										this,
+										key
+									)}
+								/>
+							</div>
+						))}
+
+						<GlueSectionDivider description="Backend config" />
+						{Object.entries(inputsBackend).map(([key, value]) => (
+							<div className="form-group">
+								<label htmlFor={key}>{value}</label>
+								<br />
+								<input
+									placeholder={value}
+									className="form-control"
+									type="text"
+									name={key}
+									value={BeatSaber.Settings[key]}
+									onChange={this.handleInputChange.bind(
+										this,
+										key
+									)}
+								/>
+							</div>
+						))}
+
+						<GlueSectionDivider description="Debugging" />
+						{Object.entries(toggles).flatMap(([key, value]) => [
 							<GlueToggle
 								onChange={this.handleSettingChange.bind(
 									this,
@@ -130,6 +199,8 @@ export class PopupPage extends Spicetify.React.Component<
 							<span className="bs-setting">{value}</span>,
 							<br />,
 						])}
+
+						<GlueSectionDivider title="Queue" />
 
 						{requests.length == 0 && (
 							<div className="ConnectPopup__info">
