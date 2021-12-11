@@ -42,7 +42,7 @@ export class DownloadRequest extends MapQueueRequest {
 					track.downloadedHashes.delete(this.hash)
 					break
 			}
-			track.calculateState()
+			track.calculateMatches()
 			subject.next(track)
 		}
 

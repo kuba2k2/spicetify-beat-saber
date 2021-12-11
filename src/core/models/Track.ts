@@ -83,6 +83,9 @@ export class Track extends TrackDB {
 
 	state: TrackState = TrackState.DEFAULT
 
+	private hasBookmarked = false
+	private hasDownloaded = false
+
 	constructor(init: Partial<Track>) {
 		super()
 		Object.assign(this, init)
@@ -182,20 +185,31 @@ export class Track extends TrackDB {
 	public calculateMatches() {
 		this.matchHashes.clear()
 		this.possibleMatchHashes.clear()
+
+		const matchKeys = new Set<string>()
+
 		this.maps?.forEach((map) => {
 			const hash = map.versions[0].hash
 			const included = this.includeHashes.has(hash)
 			const excluded = this.excludeHashes.has(hash)
 			const notInterested = this.notInterestedHashes.has(hash)
+			if (included) {
+				matchKeys.add(map.id)
+			}
 			if (included || excluded || notInterested) {
 				return
 			}
 			if (this.mapMatches(map)) {
 				this.matchHashes.add(hash)
+				matchKeys.add(map.id)
 			} else {
 				this.possibleMatchHashes.add(hash)
 			}
 		})
+
+		const matchHashes = this.allMatchHashes
+		this.hasBookmarked = matchKeys.hasAny(this.bookmarkedKeys)
+		this.hasDownloaded = matchHashes.hasAny(this.downloadedHashes)
 		this.calculateState()
 	}
 
@@ -206,9 +220,9 @@ export class Track extends TrackDB {
 
 		if (this.maps == null) {
 			this.state = TrackState.ENQUEUED
-		} else if (this.downloadedHashes.size) {
+		} else if (this.hasDownloaded) {
 			this.state = TrackState.DOWNLOADED
-		} else if (this.bookmarkedKeys.size) {
+		} else if (this.hasBookmarked) {
 			this.state = TrackState.BOOKMARKED
 		} else if (this.builtInLevel) {
 			this.state = TrackState.BUILT_IN

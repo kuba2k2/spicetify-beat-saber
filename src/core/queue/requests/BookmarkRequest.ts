@@ -18,6 +18,13 @@ export class BookmarkRequest extends MapQueueRequest {
 		let map: Map
 		console.log("Bookmark", this.type, "by key", this.key)
 
+		if (
+			!BeatSaber.Settings.bsaberLogin ||
+			!BeatSaber.Settings.bsaberPassword
+		) {
+			throw new QueueError("BeastSaber login data missing")
+		}
+
 		switch (this.type) {
 			case MapQueueRequestType.ADD:
 				map = await BeatSaber.Bsaber.getMapByKey(this.key)
@@ -45,7 +52,7 @@ export class BookmarkRequest extends MapQueueRequest {
 					track.bookmarkedKeys.delete(this.key)
 					break
 			}
-			track.calculateState()
+			track.calculateMatches()
 			subject.next(track)
 		}
 
