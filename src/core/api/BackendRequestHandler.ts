@@ -20,14 +20,15 @@ export class BackendRequestHandler implements RequestHandler {
 		this.get = this.get.bind(this)
 		this.post = this.post.bind(this)
 
+		this.domain = domain
+		this.baseUrl = `https://${this.domain}`
+
 		const cookies = Spicetify.LocalStorage.get("beatsaber:cookies")
 		if (!cookies) {
 			this.cookieJar = new CookieJar()
 			return
 		}
 		this.cookieJar = CookieJar.fromJSON(cookies)
-		this.domain = domain
-		this.baseUrl = `https://${this.domain}`
 	}
 
 	get proxyUrl(): string {
