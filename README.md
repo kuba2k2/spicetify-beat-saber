@@ -27,12 +27,13 @@ Refer to the backend's README for instructions on how to configure everything.
 ## Installation
 1. Install [spicetify-legacy](https://github.com/kuba2k2/spicetify-legacy) following the instructions in the README.
 2. Download the `.spa` file and `beatsaber.shim.js` from the Releases page of this repo.
-3. Copy the shim to `~/.spicetify/Extensions` and the `.spa` file to `~/.spicetify/CustomApps` (the `~` means your home folder - c:\Users\username on Windows).
-4. `spicetify config extensions beatsaber.shim.js`
-5. `spicetify config custom_apps beatsaber-1.0.0.spa` (or whatever version is the file you downloaded earlier)
-6. `spicetify backup` (if you hadn't done this before)
-7. `spicetify apply`
-8. The app should now be available in your Spotify client.
+3. Rename the downloaded `.spa` file to `beatsaber.spa`.
+4. Copy `beatsaber.shim.js` to `~/.spicetify/Extensions` and `beatsaber.spa` file to `~/.spicetify/CustomApps` (the `~` means your home folder - c:\Users\username on Windows).
+5. `spicetify config extensions beatsaber.shim.js`
+6. `spicetify config custom_apps beatsaber.spa`
+7. `spicetify backup` (if you hadn't done this before)
+8. `spicetify apply`
+9. The app should now be available in your Spotify client.
 
 ## License
 MIT
