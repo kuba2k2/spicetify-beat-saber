@@ -1,10 +1,12 @@
+import React from "react"
+
 type ButtonGroupProps = {
 	children: [string, Spicetify.Model.Icon][]
 	selectedIndex?: number
 	onChange?: (index: number) => void
 }
 
-export class ButtonGroup extends Spicetify.React.Component<ButtonGroupProps> {
+export class ButtonGroup extends React.Component<ButtonGroupProps> {
 	constructor(props: ButtonGroupProps) {
 		super(props)
 	}

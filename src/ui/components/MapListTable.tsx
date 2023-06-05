@@ -1,14 +1,15 @@
+import React from "react"
 import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
 import { MapListCallbacks, MapListSets } from "./MapListTypes"
 import { MapListRow } from "./MapListRow"
 
 type MapListTableProps = {
 	maps: MapDetail[]
-	scrollNodeRef?: Spicetify.React.RefObject<HTMLDivElement>
+	scrollNodeRef?: React.RefObject<HTMLDivElement>
 } & MapListCallbacks &
 	MapListSets
 
-export class MapListTable extends Spicetify.React.Component<MapListTableProps> {
+export class MapListTable extends React.Component<MapListTableProps> {
 	scrollNode: HTMLDivElement
 
 	constructor(props: MapListTableProps) {

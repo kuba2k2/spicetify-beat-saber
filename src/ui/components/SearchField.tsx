@@ -1,3 +1,5 @@
+import React from "react"
+
 type SearchFieldProps = {
 	placeholder?: string
 	value?: string
@@ -5,7 +7,7 @@ type SearchFieldProps = {
 	onSubmit?: () => void
 }
 
-export class SearchField extends Spicetify.React.Component<SearchFieldProps> {
+export class SearchField extends React.Component<SearchFieldProps> {
 	constructor(props: SearchFieldProps) {
 		super(props)
 		this.handleChange = this.handleChange.bind(this)
@@ -13,7 +15,7 @@ export class SearchField extends Spicetify.React.Component<SearchFieldProps> {
 		this.handleKeyPress = this.handleKeyPress.bind(this)
 	}
 
-	handleChange(event: Spicetify.React.ChangeEvent<HTMLInputElement>) {
+	handleChange(event: React.ChangeEvent<HTMLInputElement>) {
 		this.props.onSearch(event.target.value)
 	}
 
@@ -21,7 +23,7 @@ export class SearchField extends Spicetify.React.Component<SearchFieldProps> {
 		this.props.onSearch("")
 	}
 
-	handleKeyPress(event: Spicetify.React.KeyboardEvent<HTMLInputElement>) {
+	handleKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
 		if (event.key === "Enter" && this.props.onSubmit) {
 			event.preventDefault()
 			this.props.onSubmit()

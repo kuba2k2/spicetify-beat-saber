@@ -1,3 +1,4 @@
+import React from "react"
 import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
 import { skip, Subscription } from "rxjs"
 import { Track, TrackState } from "../../core/models/Track"
@@ -23,13 +24,10 @@ type TrackPageState = {
 
 type BubbleType = "success" | "info" | "error"
 
-export class TrackPage extends Spicetify.React.Component<
-	TrackPageProps,
-	TrackPageState
-> {
+export class TrackPage extends React.Component<TrackPageProps, TrackPageState> {
 	subscription: Subscription = null
 	bubbleTimeout: NodeJS.Timeout
-	scrollNodeRef: Spicetify.React.RefObject<HTMLDivElement>
+	scrollNodeRef: React.RefObject<HTMLDivElement>
 
 	constructor(props: TrackPageProps) {
 		super(props)
@@ -45,7 +43,7 @@ export class TrackPage extends Spicetify.React.Component<
 		this.handleBookmarkClick = this.handleBookmarkClick.bind(this)
 		this.handleDownloadClick = this.handleDownloadClick.bind(this)
 
-		this.scrollNodeRef = Spicetify.React.createRef()
+		this.scrollNodeRef = React.createRef()
 		this.state = {
 			track: props.track,
 			query: props.track.getSearchQuery(),
@@ -211,8 +209,8 @@ export class TrackPage extends Spicetify.React.Component<
 			}
 		}
 
-		let header: Spicetify.React.ReactNode
-		let page: Spicetify.React.ReactNode
+		let header: React.ReactNode
+		let page: React.ReactNode
 
 		if (
 			track.state === TrackState.ENQUEUED ||

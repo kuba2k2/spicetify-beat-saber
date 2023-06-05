@@ -1,9 +1,11 @@
+import React from "react"
+
 type EmptyViewProps = {
 	query: string
 	hint?: string
 }
 
-export class EmptyView extends Spicetify.React.Component<EmptyViewProps> {
+export class EmptyView extends React.Component<EmptyViewProps> {
 	render() {
 		return (
 			<div className="bs-empty-view">

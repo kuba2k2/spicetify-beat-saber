@@ -1,3 +1,5 @@
+import React from "react"
+import ReactDOM from "react-dom"
 import { TrackBase } from "../../core/models/TrackBase"
 import { StateButton } from "../components/StateButton"
 
@@ -13,7 +15,7 @@ type NowPlayingPageState = {
 	}
 }
 
-export class NowPlayingPage extends Spicetify.React.Component<
+export class NowPlayingPage extends React.Component<
 	unknown,
 	NowPlayingPageState
 > {
@@ -29,7 +31,7 @@ export class NowPlayingPage extends Spicetify.React.Component<
 	static getWrapped(): HTMLDivElement {
 		const parent = document.createElement("div")
 		parent.className = "bs-now-playing"
-		Spicetify.ReactDOM.render(<NowPlayingPage />, parent)
+		ReactDOM.render(<NowPlayingPage />, parent)
 		return parent
 	}
 

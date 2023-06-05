@@ -1,3 +1,5 @@
+import React from "react"
+import ReactDOM from "react-dom"
 import { Storage } from "./storage/Storage"
 import { Track } from "./models/Track"
 import { TrackQueue } from "./queue/TrackQueue"
@@ -78,8 +80,8 @@ export class BeatSaberCore {
 		nowPlayingButton.after(NowPlayingPage.getWrapped())
 
 		if (isBrowser) {
-			Spicetify.ReactDOM.render(
-				Spicetify.React.createElement(DemoPage),
+			ReactDOM.render(
+				React.createElement(DemoPage),
 				document.getElementById("root")
 			)
 		}
@@ -144,8 +146,8 @@ export class BeatSaberCore {
 	}
 
 	public initializeSubApp(window: Window) {
-		Spicetify.ReactDOM.render(
-			Spicetify.React.createElement(DemoPage),
+		ReactDOM.render(
+			React.createElement(DemoPage),
 			window.document.getElementById("root")
 		)
 	}

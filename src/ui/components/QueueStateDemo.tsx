@@ -1,10 +1,8 @@
+import React from "react"
 import { Subscription } from "rxjs"
 import { QueueState } from "../../core/queue/TrackQueue"
 
-export class QueueStateDemo extends Spicetify.React.Component<
-	unknown,
-	QueueState
-> {
+export class QueueStateDemo extends React.Component<unknown, QueueState> {
 	subscription: Subscription
 
 	constructor() {

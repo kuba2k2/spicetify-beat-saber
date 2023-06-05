@@ -1,3 +1,4 @@
+import React from "react"
 import { Subscription } from "rxjs"
 import { Track, TrackState } from "../../core/models/Track"
 import { TrackBase } from "../../core/models/TrackBase"
@@ -30,7 +31,7 @@ const stateClassMap = new Map([
 	[TrackState.DOWNLOADED, ["downloaded", null]],
 ]) as Map<TrackState, [Spicetify.Model.Icon | null, string | null]>
 
-export class StateButton extends Spicetify.React.Component<
+export class StateButton extends React.Component<
 	StateButtonProps,
 	StateButtonState
 > {

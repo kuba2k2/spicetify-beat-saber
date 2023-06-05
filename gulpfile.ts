@@ -6,7 +6,14 @@ import uglify from "gulp-uglify"
 import rename from "gulp-rename"
 import gulpIf from "gulp-if"
 import bro from "gulp-bro"
+import transform from "gulp-transform"
+import { File } from "gulp-util"
 const sass = require("gulp-sass")(require("sass"))
+
+const globals = {
+	"react": "Spicetify.React",
+	"react-dom": "Spicetify.ReactDOM",
+}
 
 function tsifyBabelify(b: BrowserifyObject, opts: { debug: boolean }) {
 	b.plugin("tsify")
@@ -36,6 +43,14 @@ function resCopy() {
 }
 
 function js(debug?: boolean, src?: string) {
+	function rewriteRequire(contents: string, file: File) {
+		for (const global in globals) {
+			// @ts-ignore
+			contents = contents.replaceAll(`require("${global}")`, globals[global])
+		}
+		return contents
+	}
+
 	return gulp
 		.src(src || ["src/main.ts", "src/loader.ts", "src/shim.ts"])
 		.pipe(
@@ -43,6 +58,7 @@ function js(debug?: boolean, src?: string) {
 				debug: debug,
 				cacheFile: "browserify-cache.json",
 				plugin: [[tsifyBabelify, { debug }]],
+				external: Object.keys(globals),
 			})
 		)
 		.pipe(gulpIf(debug, sourcemaps.init({ loadMaps: true })))
@@ -55,6 +71,7 @@ function js(debug?: boolean, src?: string) {
 			})
 		)
 		.pipe(gulpIf(debug, sourcemaps.write(".")))
+		.pipe(transform("utf8", rewriteRequire))
 		.pipe(gulp.dest("apps/beatsaber/"))
 }
 

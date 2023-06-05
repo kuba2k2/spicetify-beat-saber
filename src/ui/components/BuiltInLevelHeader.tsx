@@ -1,11 +1,11 @@
+import React from "react"
 import { BuiltInLevel } from "../../core/models/BuiltInLevel"
 
 type BuiltInLevelHeaderProps = {
 	level: BuiltInLevel
 }
 
-export class BuiltInLevelHeader extends Spicetify.React
-	.Component<BuiltInLevelHeaderProps> {
+export class BuiltInLevelHeader extends React.Component<BuiltInLevelHeaderProps> {
 	render() {
 		const level = this.props.level
 		let source: string

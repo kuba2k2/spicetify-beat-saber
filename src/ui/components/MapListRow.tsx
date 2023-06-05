@@ -1,3 +1,4 @@
+import React from "react"
 import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
 import { ButtonGroup } from "./ButtonGroup"
 import { Characteristic, Difficulty, DifficultyBadge } from "./DifficultyBadge"
@@ -13,7 +14,7 @@ type MapListRowProps = {
 	downloaded?: boolean | null
 } & MapListCallbacks
 
-export class MapListRow extends Spicetify.React.Component<MapListRowProps> {
+export class MapListRow extends React.Component<MapListRowProps> {
 	constructor(props: MapListRowProps) {
 		super(props)
 		this.handleMatchesChange = this.handleMatchesChange.bind(this)
@@ -62,7 +63,7 @@ export class MapListRow extends Spicetify.React.Component<MapListRowProps> {
 		const uploaderUrl = `https://beatsaver.com/profile/${map.uploader.id}`
 		const score = (map.stats.score * 100).toFixed(0)
 
-		const diffs = [] as Spicetify.React.ReactNode[]
+		const diffs = [] as React.ReactNode[]
 		map.versions[0].diffs.forEach((diff, index) => {
 			const tooltip = `${diff.nps.toFixed(2)} NPS / ${
 				diff.notes

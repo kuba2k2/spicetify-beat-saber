@@ -1,10 +1,11 @@
+import React from "react"
 import { Track } from "../../core/models/Track"
 
 type TrackHeaderProps = {
 	track: Track
 }
 
-export class TrackHeader extends Spicetify.React.Component<TrackHeaderProps> {
+export class TrackHeader extends React.Component<TrackHeaderProps> {
 	render() {
 		const track = this.props.track
 		let artistImage: string

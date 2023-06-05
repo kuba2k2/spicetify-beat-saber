@@ -1,10 +1,11 @@
+import React from "react"
 import { Track } from "../../core/models/Track"
 import { TrackBase } from "../../core/models/TrackBase"
 import { QueueStateDemo } from "../components/QueueStateDemo"
 import { StateButton } from "../components/StateButton"
 import { TrackPage } from "./TrackPage"
 
-export class DemoPage extends Spicetify.React.Component {
+export class DemoPage extends React.Component {
 	tracks: TrackBase[] = [
 		{
 			uri: Spicetify.URI.fromString(

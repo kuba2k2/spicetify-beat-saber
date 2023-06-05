@@ -1,3 +1,5 @@
+import React from "react"
+import ReactDOM from "react-dom"
 import { ChangeEvent } from "react"
 import { Subscription } from "rxjs"
 import { TrackQueueRequest } from "../../core/queue/base/TrackQueueRequest"
@@ -8,10 +10,7 @@ type QueueButtonState = {
 	popupVisible: boolean
 } & QueueState
 
-export class PopupPage extends Spicetify.React.Component<
-	unknown,
-	QueueButtonState
-> {
+export class PopupPage extends React.Component<unknown, QueueButtonState> {
 	subscription: Subscription
 
 	constructor() {
@@ -28,7 +27,7 @@ export class PopupPage extends Spicetify.React.Component<
 
 	static getWrapped(): HTMLDivElement {
 		const parent = document.createElement("div")
-		Spicetify.ReactDOM.render(<PopupPage />, parent)
+		ReactDOM.render(<PopupPage />, parent)
 		return parent
 	}
 

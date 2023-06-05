@@ -1,3 +1,5 @@
+import React from "react"
+import ReactDOM from "react-dom"
 import { TrackBase } from "../../core/models/TrackBase"
 import { StateButton } from "../components/StateButton"
 import { BaseWatcher } from "./BaseWatcher"
@@ -72,14 +74,11 @@ export class TrackWatcher extends BaseWatcher<HTMLTableRowElement> {
 
 		const track: TrackBase = { uri, title, artists }
 
-		Spicetify.ReactDOM.render(
-			<StateButton trackBase={track} />,
-			this.buttonCell
-		)
+		ReactDOM.render(<StateButton trackBase={track} />, this.buttonCell)
 	}
 
 	handleDisconnect() {
-		Spicetify.ReactDOM.unmountComponentAtNode(this.buttonCell)
+		ReactDOM.unmountComponentAtNode(this.buttonCell)
 	}
 
 	mount(_child: Element): BaseWatcher<Element> {

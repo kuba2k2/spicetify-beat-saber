@@ -1,3 +1,5 @@
+import React from "react"
+
 export type Difficulty = "easy" | "normal" | "hard" | "expert" | "expertplus"
 export type Characteristic =
 	| "standard"
@@ -22,8 +24,7 @@ const diffNames = {
 	expertplus: "Expert+",
 }
 
-export class DifficultyBadge extends Spicetify.React
-	.Component<DifficultyBadgeProps> {
+export class DifficultyBadge extends React.Component<DifficultyBadgeProps> {
 	render() {
 		return (
 			<span
