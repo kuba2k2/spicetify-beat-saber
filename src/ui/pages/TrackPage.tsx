@@ -68,13 +68,13 @@ export class TrackPage extends Spicetify.React.Component<
 	}
 
 	private log(...data: unknown[]) {
-		if (BeatSaber.Settings.logTrackPage) {
+		if (BeatSaber.Core.Settings.logTrackPage) {
 			console.log("[TrackPage]", ...data)
 		}
 	}
 
 	componentDidMount() {
-		this.subscription = BeatSaber.TrackQueue.observe(this.state.track)
+		this.subscription = BeatSaber.Core.TrackQueue.observe(this.state.track)
 			.pipe(skip(1))
 			.subscribe((track) => {
 				this.setState({
@@ -101,15 +101,15 @@ export class TrackPage extends Spicetify.React.Component<
 	componentWillUnmount() {
 		this.log("Unsubscribing")
 		this.subscription?.unsubscribe()
-		BeatSaber.TrackQueue.cancelRequests(this.state.track.slug)
+		BeatSaber.Core.TrackQueue.cancelRequests(this.state.track.slug)
 		if (this.state.track.maps != null) {
-			BeatSaber.TrackQueue.reviewTrack(
+			BeatSaber.Core.TrackQueue.reviewTrack(
 				this.state.track,
 				this.state.matchHashes,
 				this.state.notInterestedHashes
 			)
 		}
-		BeatSaber.pauseAudio()
+		BeatSaber.Core.pauseAudio()
 	}
 
 	handleSearchQuery(query: string) {
@@ -120,7 +120,7 @@ export class TrackPage extends Spicetify.React.Component<
 		const query =
 			this.state.query || this.state.track.getDefaultSearchQuery()
 		this.log("Submitting query", query)
-		BeatSaber.TrackQueue.requestMaps(this.state.track, query)
+		BeatSaber.Core.TrackQueue.requestMaps(this.state.track, query)
 	}
 
 	handleMatchClick(map: MapDetail) {
@@ -148,7 +148,7 @@ export class TrackPage extends Spicetify.React.Component<
 	}
 
 	handlePlayClick(map: MapDetail) {
-		BeatSaber.playAudio(map.versions[0].previewURL)
+		BeatSaber.Core.playAudio(map.versions[0].previewURL)
 	}
 
 	async handleBookmarkClick(map: MapDetail) {
@@ -156,10 +156,10 @@ export class TrackPage extends Spicetify.React.Component<
 		this.forceUpdate()
 		try {
 			if (this.state.bookmarkedKeys.has(map.id)) {
-				await BeatSaber.MapQueue.bookmarkRemove(map)
+				await BeatSaber.Core.MapQueue.bookmarkRemove(map)
 				this.showBubble("info", "Removed bookmark for " + map.name)
 			} else {
-				await BeatSaber.MapQueue.bookmarkAdd(map)
+				await BeatSaber.Core.MapQueue.bookmarkAdd(map)
 				this.showBubble("success", "Bookmarked " + map.name)
 			}
 		} catch (e) {
@@ -175,10 +175,10 @@ export class TrackPage extends Spicetify.React.Component<
 		this.forceUpdate()
 		try {
 			if (this.state.downloadedHashes.has(hash)) {
-				await BeatSaber.MapQueue.downloadRemove(map)
+				await BeatSaber.Core.MapQueue.downloadRemove(map)
 				this.showBubble("info", "Deleted " + map.name)
 			} else {
-				await BeatSaber.MapQueue.downloadAdd(map)
+				await BeatSaber.Core.MapQueue.downloadAdd(map)
 				this.showBubble("success", "Downloaded " + map.name)
 			}
 		} catch (e) {
@@ -203,11 +203,11 @@ export class TrackPage extends Spicetify.React.Component<
 	render() {
 		const track = this.state.track
 
-		if (!BeatSaber.IsBrowser && !track.builtInLevel) {
+		if (!BeatSaber.Core.IsBrowser && !track.builtInLevel) {
 			if (!track.imageUri) {
-				BeatSaber.TrackQueue.requestDetails(track)
+				BeatSaber.Core.TrackQueue.requestDetails(track)
 			} else if (!track.artistImage) {
-				BeatSaber.TrackQueue.requestArtistImage(track)
+				BeatSaber.Core.TrackQueue.requestArtistImage(track)
 			}
 		}
 

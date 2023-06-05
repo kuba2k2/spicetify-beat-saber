@@ -32,12 +32,12 @@ export class BackendRequestHandler implements RequestHandler {
 	}
 
 	get proxyUrl(): string {
-		return `http://${BeatSaber.Settings.backendHostname}/proxy/`
+		return `http://${BeatSaber.Core.Settings.backendHostname}/proxy/`
 	}
 
 	get proxyHeaders(): Record<string, string> {
 		return {
-			Authorization: `Basic ${BeatSaber.Settings.backendAuth}`,
+			Authorization: `Basic ${BeatSaber.Core.Settings.backendAuth}`,
 			"Content-Type": "application/json",
 		}
 	}

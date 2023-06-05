@@ -47,13 +47,13 @@ export class StateButton extends Spicetify.React.Component<
 	}
 
 	private log(...data: unknown[]) {
-		if (BeatSaber.Settings.logStateButton) {
+		if (BeatSaber.Core.Settings.logStateButton) {
 			console.log("[StateButton]", ...data)
 		}
 	}
 
 	componentDidMount() {
-		this.subscription = BeatSaber.TrackQueue.requestMaps(
+		this.subscription = BeatSaber.Core.TrackQueue.requestMaps(
 			this.state.track
 		).subscribe((track) => {
 			this.setState({ track: track })

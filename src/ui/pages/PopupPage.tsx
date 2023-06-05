@@ -33,7 +33,7 @@ export class PopupPage extends Spicetify.React.Component<
 	}
 
 	componentDidMount() {
-		this.subscription = BeatSaber.TrackQueue.queueSubject.subscribe(
+		this.subscription = BeatSaber.Core.TrackQueue.queueSubject.subscribe(
 			(state) => {
 				this.setState(state)
 			}
@@ -52,18 +52,18 @@ export class PopupPage extends Spicetify.React.Component<
 
 	handleBlockClick() {
 		if (this.state.blocked) {
-			BeatSaber.TrackQueue.queueUnblock()
+			BeatSaber.Core.TrackQueue.queueUnblock()
 			return
 		}
 	}
 
 	handleClearClick() {
-		BeatSaber.TrackQueue.clear()
+		BeatSaber.Core.TrackQueue.clear()
 	}
 
 	handleSettingChange(key: string, isEnabled: boolean): boolean {
-		BeatSaber.Settings[key] = isEnabled
-		BeatSaber.saveSettings()
+		BeatSaber.Core.Settings[key] = isEnabled
+		BeatSaber.Core.saveSettings()
 		this.forceUpdate()
 		return true
 	}
@@ -72,14 +72,14 @@ export class PopupPage extends Spicetify.React.Component<
 		key: string,
 		event: ChangeEvent<HTMLInputElement>
 	): boolean {
-		BeatSaber.Settings[key] = event.target.value
-		BeatSaber.saveSettings()
+		BeatSaber.Core.Settings[key] = event.target.value
+		BeatSaber.Core.saveSettings()
 		this.forceUpdate()
 		return true
 	}
 
 	handleItemClick(request: TrackQueueRequest) {
-		const track = BeatSaber.TrackQueue.getTrack(request.slug)
+		const track = BeatSaber.Core.TrackQueue.getTrack(request.slug)
 		if (!track) return
 		TrackPage.showAsModal(track)
 	}
@@ -130,7 +130,7 @@ export class PopupPage extends Spicetify.React.Component<
 				>
 					<div className="ConnectPopup__header">
 						<h3 className="ConnectPopup__header-title">
-							Beat Saber v{BeatSaberManifest.BundleVersion}
+							Beat Saber v{BeatSaber.Manifest.BundleVersion}
 						</h3>
 						{this.state.blocked && (
 							<a
@@ -159,7 +159,7 @@ export class PopupPage extends Spicetify.React.Component<
 											: "text"
 									}
 									name={key}
-									value={BeatSaber.Settings[key]}
+									value={BeatSaber.Core.Settings[key]}
 									onChange={this.handleInputChange.bind(
 										this,
 										key
@@ -178,7 +178,7 @@ export class PopupPage extends Spicetify.React.Component<
 									className="form-control"
 									type="text"
 									name={key}
-									value={BeatSaber.Settings[key]}
+									value={BeatSaber.Core.Settings[key]}
 									onChange={this.handleInputChange.bind(
 										this,
 										key
@@ -194,7 +194,7 @@ export class PopupPage extends Spicetify.React.Component<
 									this,
 									key
 								)}
-								isActive={BeatSaber.Settings[key]}
+								isActive={BeatSaber.Core.Settings[key]}
 							/>,
 							<span className="bs-setting">{value}</span>,
 							<br />,

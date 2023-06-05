@@ -1,17 +1,13 @@
 import * as manifest from "../apps/beatsaber/manifest.json"
 
-const globals = [
-	"React",
-	"ReactComponent",
-	"ReactDOM",
-	"Redux",
-	"ReduxStore",
-	"Spicetify",
-	"Webpack",
+const globals = ["Spicetify"]
+
+const components = [
 	"Button",
 	"Card",
 	"CardWithoutLink",
 	"CircularLoader",
+	"GlueSectionDivider",
 	"GlueToggle",
 	"HeaderBackgroundImage",
 	"HeaderData",
@@ -24,41 +20,45 @@ const globals = [
 ]
 
 const spicetifyClasses = [
-	"BridgeAsync",
+	// "BridgeAsync",
 	"CosmosAsync",
 	"LocalStorage",
 	"React",
 	"ReactComponent",
 	"ReactDOM",
-	"Redux",
-	"ReduxStore",
 	"URI",
 ]
 
 function checkGlobals(window: Window) {
+	// check globals
 	for (const name of globals) {
-		if (!window[name]) return false
+		if (window[name] === undefined) return false
 	}
+
+	// check React components
+	if (BeatSaber.IsZlink) {
+		for (const name of components) {
+			if (window[name] === undefined) return false
+		}
+	}
+
+	// check Spicetify classes
 	for (const name of spicetifyClasses) {
 		if (!Spicetify[name]) return false
 	}
+
 	return true
 }
 
-function copyGlobals(source: Window, target: Window) {
-	for (const name of globals) {
-		target[name] = source[name]
+function importComponents(source: Window) {
+	if (BeatSaber.IsZlink) {
+		// copy from Window
+		for (const name of components) {
+			BeatSaber.React[name] = source[name]
+		}
+	} else {
+		// import polyfills
 	}
-}
-
-function tryResolve(app: string) {
-	const iframe = document.createElement("iframe")
-	iframe.style.display = "none"
-	iframe.src = `spotify:app:${app}:loader`
-	iframe.onload = () => {
-		iframe.remove()
-	}
-	document.body.appendChild(iframe)
 }
 
 /**
@@ -77,41 +77,69 @@ function BeatSaberLoader() {
 
 	if (isTopWindow) {
 		console.log("[BeatSaber/Top] Loading version", manifest.BundleVersion)
+
+		// check Spotify type
+		const isXpui = window.location.href.includes("xpui.app.spotify.com")
+		const baseUrl = isXpui
+			? "https://xpui.app.spotify.com/assets/beatsaber"
+			: "https://beatsaber.app.spotify.com"
+
+		// build global data object
+		window.BeatSaber = {
+			Core: undefined,
+			// @ts-ignore
+			Manifest: manifest,
+			// @ts-ignore
+			React: {},
+			BaseUrl: baseUrl,
+			IsZlink: !isXpui,
+			IsXpui: isXpui,
+		}
+
 		// check if everything is available already
 		if (!checkGlobals(window)) {
 			setTimeout(BeatSaberLoader, 1000)
 			return
 		}
 
+		// import React components
+		importComponents(window.top)
+
 		// remove the temporary resolver iframe
-		const resolverIframe = document.getElementById("beatsaber-app-resolver")
-		if (resolverIframe) resolverIframe.remove()
+		if (BeatSaber.IsZlink) {
+			const resolverIframe = document.getElementById(
+				"beatsaber-app-resolver"
+			)
+			if (resolverIframe) resolverIframe.remove()
+		}
 	} else {
 		console.log(
 			"[BeatSaber/SubApp] Loading version",
 			manifest.BundleVersion
 		)
+
 		// check if the global core is initialized
-		if (!window.top.BeatSaber) {
+		if (!window.top.BeatSaber || !window.top.BeatSaber.Core) {
 			setTimeout(BeatSaberLoader, 1000)
 			return
 		}
-		// make everything available in this window
-		copyGlobals(window.top, window)
-		window.BeatSaber = window.top.BeatSaber
-	}
 
-	// store the app manifest globally (ignore missing property errors)
-	// @ts-ignore
-	window.BeatSaberManifest = manifest
+		// make everything available in this window
+		window.BeatSaber = window.top.BeatSaber
+		// @ts-ignore
+		window.Spicetify = window.top.Spicetify
+	}
 
 	// run the Main script
 	const script = document.createElement("script")
-	script.src = "https://beatsaber.app.spotify.com/beatsaber.bundle.js"
+	script.src = `${BeatSaber.BaseUrl}/beatsaber.bundle.js`
 	document.body.appendChild(script)
 
-	// try to resolve additional iframes
-	tryResolve("beatsaber-assets")
+	// load the stylesheets
+	const style = document.createElement("link")
+	style.rel = "stylesheet"
+	style.href = `${BeatSaber.BaseUrl}/css/beatsaber.css`
+	document.head.appendChild(style)
 
 	console.log("[BeatSaber] Main script injected")
 }

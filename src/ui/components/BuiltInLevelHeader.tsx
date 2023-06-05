@@ -32,9 +32,9 @@ export class BuiltInLevelHeader extends Spicetify.React
 							<h3 className="bs-builtin-pack">{source}</h3>
 						</div>
 					}
-					imageUrl={`${BeatSaber.AssetsUrl}/levels/${level.cover}.png`}
+					imageUrl={`${BeatSaber.BaseUrl}/levels/${level.cover}.png`}
 					backgroundType="image"
-					backgroundImageUrl={`${BeatSaber.AssetsUrl}/levelpacks/${level.pack.cover}.png`}
+					backgroundImageUrl={`${BeatSaber.BaseUrl}/levelpacks/${level.pack.cover}.png`}
 					hideAddButton={true}
 					hidePlayButton={true}
 					scrollNode={document.createElement("div")}

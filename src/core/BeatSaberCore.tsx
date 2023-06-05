@@ -17,9 +17,6 @@ declare global {
 }
 
 export class BeatSaberCore {
-	BaseUrl = "https://beatsaber.app.spotify.com"
-	AssetsUrl = "https://beatsaber-assets.app.spotify.com"
-
 	MainCSSFile = `/css/beatsaber.css`
 	AdditionalCSSFiles = [this.MainCSSFile, "/css/zlink-button.css"]
 
@@ -89,25 +86,28 @@ export class BeatSaberCore {
 	}
 
 	public async syncMaps() {
-		if (!BeatSaber.Settings.backendHostname) {
+		if (!BeatSaber.Core.Settings.backendHostname) {
 			return
 		}
 
 		const now = new Date().getTime()
-		if (now - BeatSaber.Settings.lastSyncTime < 2 * 24 * 60 * 60 * 1000) {
+		if (
+			now - BeatSaber.Core.Settings.lastSyncTime <
+			2 * 24 * 60 * 60 * 1000
+		) {
 			return
 		}
-		BeatSaber.Settings.lastSyncTime = now
-		BeatSaber.saveSettings()
+		BeatSaber.Core.Settings.lastSyncTime = now
+		BeatSaber.Core.saveSettings()
 
 		let bookmarkCount = 0
 
-		if (BeatSaber.Settings.bsaberUsername && BeatSaber.Settings) {
+		if (BeatSaber.Core.Settings.bsaberUsername && BeatSaber.Core.Settings) {
 			Spicetify.showNotification("Syncing bookmarks...")
-			const keys = await BeatSaber.Api.getBookmarkKeys(
-				BeatSaber.Settings.bsaberUsername
+			const keys = await BeatSaber.Core.Api.getBookmarkKeys(
+				BeatSaber.Core.Settings.bsaberUsername
 			)
-			const storedKeys = await BeatSaber.Storage.Map.getKeys(
+			const storedKeys = await BeatSaber.Core.Storage.Map.getKeys(
 				MapCategory.BOOKMARKED
 			)
 			const missingPages = new Set<number>()
@@ -120,11 +120,11 @@ export class BeatSaberCore {
 
 			for (const page of missingPages) {
 				Spicetify.showNotification(`Getting bookmarks page ${page}...`)
-				const bookmarks = await BeatSaber.Api.getBookmarks(
-					BeatSaber.Settings.bsaberUsername,
+				const bookmarks = await BeatSaber.Core.Api.getBookmarks(
+					BeatSaber.Core.Settings.bsaberUsername,
 					page
 				)
-				await BeatSaber.Storage.Map.put(
+				await BeatSaber.Core.Storage.Map.put(
 					MapCategory.BOOKMARKED,
 					...bookmarks
 				)
@@ -132,8 +132,11 @@ export class BeatSaberCore {
 		}
 
 		Spicetify.showNotification("Syncing downloads...")
-		const downloads = await BeatSaber.Api.getDownloads()
-		await BeatSaber.Storage.Map.put(MapCategory.DOWNLOADED, ...downloads)
+		const downloads = await BeatSaber.Core.Api.getDownloads()
+		await BeatSaber.Core.Storage.Map.put(
+			MapCategory.DOWNLOADED,
+			...downloads
+		)
 
 		Spicetify.showNotification(
 			`Added ${bookmarkCount || "no"} new bookmarks`

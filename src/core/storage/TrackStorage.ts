@@ -29,7 +29,7 @@ export class TrackStorage {
 		}
 
 		if (found) {
-			await BeatSaber.Storage.Map.fillTrack(found)
+			await BeatSaber.Core.Storage.Map.fillTrack(found)
 			found.includeHashes.deleteAll(found.notInterestedHashes)
 			found.excludeHashes.deleteAll(found.notInterestedHashes)
 			found.calculateMatches()

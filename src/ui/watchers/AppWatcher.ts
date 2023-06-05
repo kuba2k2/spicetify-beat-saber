@@ -15,7 +15,7 @@ export class AppWatcher extends BaseWatcher<HTMLBodyElement> {
 
 	prepareIframe(doc: Document) {
 		doc?.head?.append(
-			...BeatSaber.AdditionalCSSFiles.map((file) => {
+			...BeatSaber.Core.AdditionalCSSFiles.map((file) => {
 				const style = document.createElement("link")
 				style.rel = "stylesheet"
 				style.href = BeatSaber.BaseUrl + file

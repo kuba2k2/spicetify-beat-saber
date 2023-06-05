@@ -17,15 +17,15 @@ function BeatSaberMain() {
 		// import the core module
 		import("./core/BeatSaberCore").then(({ BeatSaberCore }) => {
 			// make it a singleton
-			window.BeatSaber = new BeatSaberCore()
+			window.BeatSaber.Core = new BeatSaberCore()
 			// run the core
-			BeatSaber.initialize(isBrowser)
+			BeatSaber.Core.initialize(isBrowser)
 		})
 		return
 	}
 
 	// run the sub-application
-	BeatSaber.initializeSubApp(window)
+	BeatSaber.Core.initializeSubApp(window)
 }
 
 BeatSaberMain()

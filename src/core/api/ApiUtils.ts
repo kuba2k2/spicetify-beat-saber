@@ -11,7 +11,7 @@ import { BackendRequestHandler } from "./BackendRequestHandler"
 export class ApiUtils {
 	BeatSaver = new BeatSaverAPI({
 		AppName: "spicetify-beat-saber",
-		Version: BeatSaberManifest.BundleVersion,
+		Version: BeatSaber.Manifest.BundleVersion,
 	})
 
 	BeastSaber = new BeastSaber()
@@ -55,8 +55,8 @@ export class ApiUtils {
 	private async login() {
 		if (!(await this.BeastSaber.isLoggedIn())) {
 			await this.BeastSaber.login(
-				BeatSaber.Settings.bsaberLogin,
-				BeatSaber.Settings.bsaberPassword
+				BeatSaber.Core.Settings.bsaberLogin,
+				BeatSaber.Core.Settings.bsaberPassword
 			)
 		}
 	}
@@ -85,9 +85,9 @@ export class ApiUtils {
 	}
 
 	async levelsRequest<T>(endpoint: string): Promise<T> {
-		const url = `http://${BeatSaber.Settings.backendHostname}/levels${endpoint}`
+		const url = `http://${BeatSaber.Core.Settings.backendHostname}/levels${endpoint}`
 		const headers = {
-			Authorization: `Basic ${BeatSaber.Settings.backendAuth}`,
+			Authorization: `Basic ${BeatSaber.Core.Settings.backendAuth}`,
 		}
 		const response = await Spicetify.CosmosAsync.get(url, null, headers)
 		return response as unknown as T

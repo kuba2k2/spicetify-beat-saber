@@ -1,10 +1,16 @@
 import { BeatSaberCore } from "./src/core/BeatSaberCore"
 
 declare global {
-	interface Window {
-		BeatSaber: BeatSaberCore
-		BeatSaberManifest: AppManifest
+	interface BeatSaberGlobal {
+		Core: BeatSaberCore
+		Manifest: AppManifest
+		React: typeof Spicetify.ReactComponent
+		BaseUrl: string
+		IsZlink: boolean
+		IsXpui: boolean
 	}
-	const BeatSaber: BeatSaberCore
-	const BeatSaberManifest: AppManifest
+	interface Window {
+		BeatSaber: BeatSaberGlobal
+	}
+	const BeatSaber: BeatSaberGlobal
 }

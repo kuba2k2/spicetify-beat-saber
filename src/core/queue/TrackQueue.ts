@@ -35,7 +35,7 @@ export class TrackQueue {
 	}
 
 	private log(...data: unknown[]) {
-		if (BeatSaber.Settings.logQueue) {
+		if (BeatSaber.Core.Settings.logQueue) {
 			console.log("[TrackQueue]", ...data)
 		}
 	}
@@ -152,7 +152,7 @@ export class TrackQueue {
 			enqueued: this.queue,
 		})
 
-		if (BeatSaber.Settings.blockQueue) {
+		if (BeatSaber.Core.Settings.blockQueue) {
 			await this.queueBlock()
 		}
 
@@ -187,7 +187,7 @@ export class TrackQueue {
 				track = await request.run(track)
 			} catch (e) {
 				console.error("Queue error", e)
-				BeatSaber.ErrorSubject.next(e)
+				BeatSaber.Core.ErrorSubject.next(e)
 				this.queueNext(0)
 				return
 			}
@@ -195,7 +195,7 @@ export class TrackQueue {
 			this.emit(track)
 
 			// store the resolved track
-			await BeatSaber.Storage.Track.put(track)
+			await BeatSaber.Core.Storage.Track.put(track)
 		}
 
 		// delete the subject if no more requests is queued AND there is no observers
@@ -252,7 +252,7 @@ export class TrackQueue {
 
 	private async requestOrResolveMaps(track: Track, userQuery?: string) {
 		if (!userQuery) {
-			const found = await BeatSaber.Storage.Track.get(track)
+			const found = await BeatSaber.Core.Storage.Track.get(track)
 			if (found && found.maps != null) {
 				this.emit(found)
 				return
@@ -326,15 +326,15 @@ export class TrackQueue {
 			}
 		}
 
-		await BeatSaber.Storage.Map.remove(
+		await BeatSaber.Core.Storage.Map.remove(
 			MapCategory.NOT_INTERESTED,
 			interestedHashes
 		)
-		await BeatSaber.Storage.Map.put(
+		await BeatSaber.Core.Storage.Map.put(
 			MapCategory.NOT_INTERESTED,
 			...notInterested
 		)
-		await BeatSaber.Storage.Track.put(track)
+		await BeatSaber.Core.Storage.Track.put(track)
 
 		this.emit(track)
 	}

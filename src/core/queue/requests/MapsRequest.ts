@@ -26,11 +26,11 @@ export class MapsRequest extends TrackQueueRequest {
 
 	async run(track: Track): Promise<Track> {
 		const query = this.userQuery || track.getDefaultSearchQuery()
-		const response = await BeatSaber.Api.searchMaps(query)
+		const response = await BeatSaber.Core.Api.searchMaps(query)
 		track.maps = response.docs
 		track.userQuery = this.userQuery
 		track.extractHashes()
-		await BeatSaber.Storage.Map.fillTrack(track)
+		await BeatSaber.Core.Storage.Map.fillTrack(track)
 		track.calculateMatches()
 		return track
 	}

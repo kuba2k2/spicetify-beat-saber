@@ -1,6 +1,7 @@
 /**
  * The Shim is responsible for resolving the custom apps' URIs, as well as
- * attaching the global CSS and Loader JS to the main window.
+ * attaching the Loader JS to the main window.
+ * It is used on Zlink only.
  */
 function BeatSaberShim() {
 	const isBrowser = !navigator.userAgent.includes("Spotify")
@@ -15,11 +16,6 @@ function BeatSaberShim() {
 		// run the Loader script
 		const script = document.createElement("script")
 		script.src = "https://beatsaber.app.spotify.com/beatsaber.loader.js"
-		// load the stylesheets
-		const style = document.createElement("link")
-		style.rel = "stylesheet"
-		style.href = "https://beatsaber.app.spotify.com/css/beatsaber.css"
-		document.head.appendChild(style)
 		document.body.appendChild(script)
 	}
 	document.body.appendChild(iframe)

@@ -16,7 +16,7 @@ export class QueueStateDemo extends Spicetify.React.Component<
 	}
 
 	componentDidMount() {
-		this.subscription = BeatSaber.TrackQueue.queueSubject.subscribe(
+		this.subscription = BeatSaber.Core.TrackQueue.queueSubject.subscribe(
 			(state) => {
 				this.setState(state)
 			}
@@ -35,7 +35,7 @@ export class QueueStateDemo extends Spicetify.React.Component<
 					type="blue"
 					text="Unlock"
 					isDisabled={!this.state.blocked}
-					onClick={BeatSaber.TrackQueue.queueUnblock}
+					onClick={BeatSaber.Core.TrackQueue.queueUnblock}
 				/>
 				<br />
 				<br />

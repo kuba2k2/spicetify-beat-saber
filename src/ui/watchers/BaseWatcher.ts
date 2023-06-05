@@ -17,7 +17,7 @@ export abstract class BaseWatcher<T extends Element> {
 	}
 
 	protected log(...data: unknown[]) {
-		if (BeatSaber.Settings.logWatchers) {
+		if (BeatSaber.Core.Settings.logWatchers) {
 			console.log(...data)
 		}
 	}
