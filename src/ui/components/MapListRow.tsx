@@ -82,35 +82,44 @@ export class MapListRow extends Spicetify.React.Component<MapListRowProps> {
 		})
 
 		return (
-			<TableRow
+			<BeatSaber.React.TableRow
 				rowId={map.id}
 				extraClassName="bs-ml-row"
 				isPlayable={false}
 				isTrackPlaying={false}
 			>
-				<TableCell align="center" extraClassName="bs-ml-image">
+				<BeatSaber.React.TableCell
+					align="center"
+					extraClassName="bs-ml-image"
+				>
 					<img src={map.versions[0].coverURL} />
-				</TableCell>
+				</BeatSaber.React.TableCell>
 
-				<TableCell align="center" extraClassName="bs-ml-rating">
+				<BeatSaber.React.TableCell
+					align="center"
+					extraClassName="bs-ml-rating"
+				>
 					<span className="bs-green">{map.stats.upvotes}</span>
 					&nbsp;/&nbsp;
 					<span className="bs-red">{map.stats.downvotes}</span>
 					&nbsp;({score}%)
-				</TableCell>
+				</BeatSaber.React.TableCell>
 
-				<TableCell extraClassName="bs-ml-name">
+				<BeatSaber.React.TableCell extraClassName="bs-ml-name">
 					<a href={mapUrl}>{map.name}</a>
 					{diffs}
-				</TableCell>
+				</BeatSaber.React.TableCell>
 
-				<TableCell extraClassName="bs-ml-mapper">
+				<BeatSaber.React.TableCell extraClassName="bs-ml-mapper">
 					<a href={uploaderUrl}>{map.uploader.name}</a>
-				</TableCell>
+				</BeatSaber.React.TableCell>
 
-				<TableCell align="center" extraClassName="bs-ml-actions">
+				<BeatSaber.React.TableCell
+					align="center"
+					extraClassName="bs-ml-actions"
+				>
 					{this.props.onPreviewClick && (
-						<Button
+						<BeatSaber.React.Button
 							type="icon"
 							icon="play"
 							tooltip="Preview map"
@@ -119,7 +128,7 @@ export class MapListRow extends Spicetify.React.Component<MapListRowProps> {
 					)}
 
 					{this.props.onPlayClick && (
-						<Button
+						<BeatSaber.React.Button
 							type="icon"
 							icon="playlist"
 							tooltip="Preview audio"
@@ -128,7 +137,7 @@ export class MapListRow extends Spicetify.React.Component<MapListRowProps> {
 					)}
 
 					{this.props.onBookmarkClick && (
-						<Button
+						<BeatSaber.React.Button
 							type="icon"
 							ta-id={
 								this.props.bookmarked
@@ -142,7 +151,7 @@ export class MapListRow extends Spicetify.React.Component<MapListRowProps> {
 						/>
 					)}
 					{this.props.onDownloadClick && (
-						<Button
+						<BeatSaber.React.Button
 							type="icon"
 							icon={
 								this.props.downloaded
@@ -172,8 +181,8 @@ export class MapListRow extends Spicetify.React.Component<MapListRowProps> {
 							{["Not interested", "block"]}
 						</ButtonGroup>
 					)}
-				</TableCell>
-			</TableRow>
+				</BeatSaber.React.TableCell>
+			</BeatSaber.React.TableRow>
 		)
 	}
 }

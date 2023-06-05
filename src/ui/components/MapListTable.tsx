@@ -23,7 +23,7 @@ export class MapListTable extends Spicetify.React.Component<MapListTableProps> {
 			maps.map((map, index) => [map.id, index])
 		)
 		return (
-			<Table
+			<BeatSaber.React.Table
 				renderRow={this.renderRow.bind(this)}
 				renderHeaderRow={this.renderHeaderRow}
 				rowIds={rowIds}
@@ -35,7 +35,7 @@ export class MapListTable extends Spicetify.React.Component<MapListTableProps> {
 				stickyTableHeaderOffsetTop={0}
 				sumOfStickyElementHeights={0}
 				rowHeight={41}
-			></Table>
+			></BeatSaber.React.Table>
 		)
 	}
 
@@ -45,21 +45,30 @@ export class MapListTable extends Spicetify.React.Component<MapListTableProps> {
 
 	renderHeaderRow() {
 		return (
-			<TableHeaderRow extraClassName="bs-ml-header">
-				<TableHeaderCell extraClassName="bs-ml-image" label="" />
-				<TableHeaderCell
+			<BeatSaber.React.TableHeaderRow extraClassName="bs-ml-header">
+				<BeatSaber.React.TableHeaderCell
+					extraClassName="bs-ml-image"
+					label=""
+				/>
+				<BeatSaber.React.TableHeaderCell
 					extraClassName="bs-ml-rating"
 					align="center"
 					label="Rating"
 				/>
-				<TableHeaderCell extraClassName="bs-ml-name" label="Name" />
-				<TableHeaderCell extraClassName="bs-ml-mapper" label="Mapper" />
-				<TableHeaderCell
+				<BeatSaber.React.TableHeaderCell
+					extraClassName="bs-ml-name"
+					label="Name"
+				/>
+				<BeatSaber.React.TableHeaderCell
+					extraClassName="bs-ml-mapper"
+					label="Mapper"
+				/>
+				<BeatSaber.React.TableHeaderCell
 					extraClassName="bs-ml-actions"
 					align="center"
 					label="Actions"
 				/>
-			</TableHeaderRow>
+			</BeatSaber.React.TableHeaderRow>
 		)
 	}
 

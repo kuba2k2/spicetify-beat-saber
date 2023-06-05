@@ -17,7 +17,7 @@ export class ButtonGroup extends Spicetify.React.Component<ButtonGroupProps> {
 		return (
 			<div className="bs-button-group">
 				{this.props.children.map(([text, icon], index) => (
-					<Button
+					<BeatSaber.React.Button
 						type={
 							index == this.props.selectedIndex
 								? "green"

@@ -19,7 +19,7 @@ export class BuiltInLevelHeader extends Spicetify.React
 
 		return (
 			<div className="bs-builtin-header">
-				<HeaderData
+				<BeatSaber.React.HeaderData
 					uri="spotify:app:beatsaber"
 					title={level.songName}
 					label={level.songAuthorName}

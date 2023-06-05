@@ -130,6 +130,10 @@ function BeatSaberLoader() {
 		window.Spicetify = window.top.Spicetify
 	}
 
+	// copy React as global (because we're using TSX)
+	// @ts-ignore
+	window.React = window.Spicetify.React
+
 	// run the Main script
 	const script = document.createElement("script")
 	script.src = `${BeatSaber.BaseUrl}/beatsaber.bundle.js`

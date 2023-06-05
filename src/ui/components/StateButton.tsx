@@ -148,7 +148,7 @@ export class StateButton extends Spicetify.React.Component<
 	render() {
 		const [icon, taId] = stateClassMap.get(this.state.track.state)
 		return (
-			<Button
+			<BeatSaber.React.Button
 				type="icon"
 				icon={icon}
 				size={32}

@@ -142,7 +142,7 @@ export class PopupPage extends Spicetify.React.Component<
 					</div>
 
 					<div className="ConnectPopup__content">
-						<GlueSectionDivider
+						<BeatSaber.React.GlueSectionDivider
 							title="Settings"
 							description="BeastSaber login"
 						/>
@@ -168,7 +168,7 @@ export class PopupPage extends Spicetify.React.Component<
 							</div>
 						))}
 
-						<GlueSectionDivider description="Backend config" />
+						<BeatSaber.React.GlueSectionDivider description="Backend config" />
 						{Object.entries(inputsBackend).map(([key, value]) => (
 							<div className="form-group">
 								<label htmlFor={key}>{value}</label>
@@ -187,9 +187,9 @@ export class PopupPage extends Spicetify.React.Component<
 							</div>
 						))}
 
-						<GlueSectionDivider description="Debugging" />
+						<BeatSaber.React.GlueSectionDivider description="Debugging" />
 						{Object.entries(toggles).flatMap(([key, value]) => [
-							<GlueToggle
+							<BeatSaber.React.GlueToggle
 								onChange={this.handleSettingChange.bind(
 									this,
 									key
@@ -200,7 +200,7 @@ export class PopupPage extends Spicetify.React.Component<
 							<br />,
 						])}
 
-						<GlueSectionDivider title="Queue" />
+						<BeatSaber.React.GlueSectionDivider title="Queue" />
 
 						{requests.length == 0 && (
 							<div className="ConnectPopup__info">
@@ -210,7 +210,7 @@ export class PopupPage extends Spicetify.React.Component<
 
 						{requests.length != 0 && (
 							<div className="ConnectPopup__button">
-								<Button
+								<BeatSaber.React.Button
 									type="blue"
 									text="Clear queue"
 									onClick={this.handleClearClick}

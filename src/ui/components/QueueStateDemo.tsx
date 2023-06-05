@@ -31,7 +31,7 @@ export class QueueStateDemo extends Spicetify.React.Component<
 		return (
 			<div style={{ margin: "0 20px" }}>
 				<h2>TrackQueue</h2>
-				<Button
+				<BeatSaber.React.Button
 					type="blue"
 					text="Unlock"
 					isDisabled={!this.state.blocked}

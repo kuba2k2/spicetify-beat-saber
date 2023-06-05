@@ -13,13 +13,13 @@ export class TrackHeader extends Spicetify.React.Component<TrackHeaderProps> {
 		}
 		return (
 			<div className="bs-track-header">
-				<HeaderBackgroundImage
+				<BeatSaber.React.HeaderBackgroundImage
 					imageUrl={artistImage}
 					scrollBackdropOpacity={0}
 					scrollOpacity={0}
 				/>
 
-				<Card
+				<BeatSaber.React.Card
 					uri={track.uri.toString()}
 					title={track.title}
 					metadata={track.getArtist()}
