@@ -74,7 +74,11 @@ export class TrackWatcher extends BaseWatcher<HTMLTableRowElement> {
 
 		const track: TrackBase = { uri, title, artists }
 
-		ReactDOM.render(<StateButton trackBase={track} />, this.buttonCell)
+		BeatSaber.Core.render(
+			<StateButton trackBase={track} />,
+			window,
+			this.buttonCell
+		)
 	}
 
 	handleDisconnect() {

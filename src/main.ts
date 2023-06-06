@@ -19,13 +19,20 @@ function BeatSaberMain() {
 			// make it a singleton
 			window.BeatSaber.Core = new BeatSaberCore()
 			// run the core
-			BeatSaber.Core.initialize(isBrowser)
+			BeatSaber.Core.initialize()
 		})
-		return
+		if (!isBrowser) {
+			// do not mount the sub-application in Spotify main window
+			return
+		}
 	}
 
 	// run the sub-application
-	BeatSaber.Core.initializeSubApp(window)
+	BeatSaber.Core.render(
+		BeatSaber.Core.getAppPage(),
+		window,
+		window.document.getElementById("root")
+	)
 }
 
 BeatSaberMain()

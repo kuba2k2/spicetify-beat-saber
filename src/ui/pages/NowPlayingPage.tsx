@@ -1,5 +1,4 @@
 import React from "react"
-import ReactDOM from "react-dom"
 import { TrackBase } from "../../core/models/TrackBase"
 import { StateButton } from "../components/StateButton"
 
@@ -26,13 +25,6 @@ export class NowPlayingPage extends React.Component<
 		this.state = {
 			data: Spicetify.Player.data,
 		}
-	}
-
-	static getWrapped(): HTMLDivElement {
-		const parent = document.createElement("div")
-		parent.className = "bs-now-playing"
-		ReactDOM.render(<NowPlayingPage />, parent)
-		return parent
 	}
 
 	componentDidMount() {

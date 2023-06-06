@@ -1,5 +1,4 @@
 import React from "react"
-import ReactDOM from "react-dom"
 import styled from "styled-components"
 import { Subscription } from "rxjs"
 import { TrackQueueRequest } from "../../core/queue/base/TrackQueueRequest"
@@ -46,12 +45,6 @@ export class PopupPage extends React.Component<unknown, QueueButtonState> {
 			blocked: false,
 			popupVisible: false,
 		}
-	}
-
-	static getWrapped(): HTMLDivElement {
-		const parent = document.createElement("div")
-		ReactDOM.render(<PopupPage />, parent)
-		return parent
 	}
 
 	componentDidMount() {

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { ReactElement } from "react"
 import ReactDOM from "react-dom"
 import { Storage } from "./storage/Storage"
 import { Track } from "./models/Track"
@@ -11,6 +11,7 @@ import { MapQueue } from "./queue/MapQueue"
 import { Subject } from "rxjs"
 import { ApiUtils } from "./api/ApiUtils"
 import { MapCategory } from "./storage/MapStorage"
+import { StyleSheetManager } from "styled-components"
 
 declare global {
 	interface Window {
@@ -46,7 +47,7 @@ export class BeatSaberCore {
 	private audio: HTMLAudioElement = null
 	private redirector: HTMLAnchorElement = null
 
-	public async initialize(isBrowser: boolean) {
+	public async initialize() {
 		// load all settings
 		const settings = Spicetify.LocalStorage.get("beatsaber:settings")
 		if (settings) {
@@ -67,24 +68,61 @@ export class BeatSaberCore {
 		// sync bookmarks and downloads
 		setTimeout(this.syncMaps, 5000)
 
-		// add popup button to player footer
-		const playerControls = document.querySelector(
-			".extra-controls-container"
-		)
-		playerControls.prepend(PopupPage.getWrapped())
-
-		// add now playing button
-		const nowPlayingButton = document.querySelector(
-			".nowplaying-add-button"
-		)
-		nowPlayingButton.after(NowPlayingPage.getWrapped())
-
-		if (isBrowser) {
-			ReactDOM.render(
-				React.createElement(DemoPage),
-				document.getElementById("root")
+		if (BeatSaber.IsZlink) {
+			// add popup button to player footer
+			const playerControls = document.querySelector(
+				".extra-controls-container"
+			)
+			playerControls.prepend(this.render(<PopupPage />))
+			// add now playing button
+			const nowPlayingButton = document.querySelector(
+				".nowplaying-add-button"
+			)
+			nowPlayingButton?.after(
+				this.render(<NowPlayingPage />, null, null, "bs-now-playing")
 			)
 		}
+
+		if (BeatSaber.IsXpui) {
+			// add popup button to player footer
+			const playerControls = document.querySelector(
+				".main-nowPlayingBar-extraControls"
+			)
+			playerControls?.prepend(this.render(<PopupPage />))
+			// add now playing button
+			// const nowPlayingButton = document.querySelector(
+			// 	".main-addButton-button"
+			// )
+			// nowPlayingButton?.after(
+			// 	this.render(<NowPlayingPage />, null, null, "bs-now-playing")
+			// )
+		}
+	}
+
+	public getAppPage() {
+		return <DemoPage />
+	}
+
+	public render(
+		component: ReactElement,
+		window?: Window,
+		parent?: HTMLElement,
+		parentClass?: string
+	) {
+		if (!window) {
+			window = global.window
+		}
+		if (!parent) {
+			parent = window.document.createElement("div")
+			parent.className = parentClass
+		}
+		ReactDOM.render(
+			<StyleSheetManager target={window.document.head}>
+				{component}
+			</StyleSheetManager>,
+			parent
+		)
+		return parent
 	}
 
 	public async syncMaps() {
@@ -142,13 +180,6 @@ export class BeatSaberCore {
 
 		Spicetify.showNotification(
 			`Added ${bookmarkCount || "no"} new bookmarks`
-		)
-	}
-
-	public initializeSubApp(window: Window) {
-		ReactDOM.render(
-			React.createElement(DemoPage),
-			window.document.getElementById("root")
 		)
 	}
 

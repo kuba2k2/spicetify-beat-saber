@@ -133,11 +133,14 @@ function BeatSaberLoader() {
 	script.src = `${BeatSaber.BaseUrl}/beatsaber.bundle.js`
 	document.body.appendChild(script)
 
-	// load the stylesheets
-	const style = document.createElement("link")
-	style.rel = "stylesheet"
-	style.href = `${BeatSaber.BaseUrl}/css/beatsaber.css`
-	document.head.appendChild(style)
+	if (isTopWindow) {
+		// load the stylesheets
+		// SubApp has stylesheets in index.html
+		const style = document.createElement("link")
+		style.rel = "stylesheet"
+		style.href = `${BeatSaber.BaseUrl}/css/beatsaber.css`
+		document.head.appendChild(style)
+	}
 
 	console.log("[BeatSaber] Main script injected")
 }

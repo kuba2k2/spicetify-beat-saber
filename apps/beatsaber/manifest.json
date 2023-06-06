@@ -20,5 +20,10 @@
   "InjectStylesheets": false,
   "SkipLanguageValidation": true,
   "SkipUnrequireValidation": true,
-  "SpmApp": true
+  "SpmApp": true,
+  "name": "Beat Saber",
+  "icon": "<svg viewBox=\"-64 -64 1408 1408\"><g transform=\"matrix(3.1496 0 0 3.1496 -213.33 557.9)\"><path transform=\"matrix(.26458 0 0 .26458 0 -244.87)\" d=\"m518.5 256c-145.42 0-262.5 117.08-262.5 262.5v1011c0 145.42 117.08 262.5 262.5 262.5h1011c145.42 0 262.5-117.08 262.5-262.5v-1011c0-145.42-117.08-262.5-262.5-262.5zm-6.498 256h1024v128l-512 256-512-256z\" fill-rule=\"evenodd\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"128\" style=\"paint-order:fill markers stroke\"/></g></svg>",
+  "active-icon": "<svg viewBox=\"0 0 1280 1280\"><g transform=\"matrix(3.1496 0 0 3.1496 -213.33 557.9)\"><path transform=\"matrix(.26458 0 0 .26458 0 -244.87)\" d=\"m518.5 256c-145.42 0-262.5 117.08-262.5 262.5v1011c0 145.42 117.08 262.5 262.5 262.5h1011c145.42 0 262.5-117.08 262.5-262.5v-1011c0-145.42-117.08-262.5-262.5-262.5zm-6.498 256h1024v128l-512 256-512-256z\" fill-rule=\"evenodd\" fill=\"currentColor\" stroke=\"currentColor\" stroke-width=\"3.7795\" style=\"paint-order:fill markers stroke\"/></g></svg>",
+  "assets": ["manifest.json", "beatsaber.*.js", "css", "levelpacks", "levels"],
+  "subfiles_extension": ["beatsaber.loader.js"]
 }

@@ -48,11 +48,24 @@ function js(debug?: boolean, src?: string) {
 			// @ts-ignore
 			contents = contents.replaceAll(`require("${global}")`, globals[global])
 		}
+		// make shim-xpui export the render() function
+		if (file.basename == "index.js") {
+			contents = contents.replace("(function(){", "const renderRequire=(function(){")
+			contents += "const render = renderRequire(1).default;"
+			// contents = contents.replace("")
+		}
 		return contents
 	}
 
+	const sources = {
+		"main": "beatsaber.bundle",
+		"loader": "beatsaber.loader",
+		"shim-zlink": "beatsaber.shim",
+		"shim-xpui": "index",
+	}
+
 	return gulp
-		.src(src || ["src/main.ts", "src/loader.ts", "src/shim.ts"])
+		.src(src || Object.keys(sources).map((s) => `src/${s}.ts`))
 		.pipe(
 			bro({
 				debug: debug,
@@ -65,8 +78,7 @@ function js(debug?: boolean, src?: string) {
 		.pipe(gulpIf(!debug, uglify()))
 		.pipe(
 			rename((opt) => {
-				opt.basename =
-					"beatsaber." + opt.basename.replace("main", "bundle")
+				opt.basename = sources[opt.basename]
 				opt.extname = ".js"
 			})
 		)
@@ -104,7 +116,7 @@ gulp.task("js:dev", () => {
 gulp.task("js:watch", () => {
 	gulp.series(gulp.task("js:dev"))(null)
 	return gulp.watch(["src/**/*.ts", "src/**/*.tsx"]).on("change", (file) => {
-		if (!file.endsWith("loader.ts") && !file.endsWith("shim.ts")) {
+		if (!file.endsWith("loader.ts") && !file.includes("shim-")) {
 			file = "src/main.ts"
 		}
 		// apparently it does not understand backslashes properly

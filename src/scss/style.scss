@@ -49,3 +49,43 @@ table tr:not(:hover),
 .modal-backdrop {
 	display: none;
 }
+
+:root {
+    --spice-button-active: var(--modspotify_sidebar_indicator_and_hover_button_bg);
+    --spice-button-disabled: rgba(var(--spice-rgb-text), 0.2);
+    --spice-button: var(--modspotify_indicator_fg_and_button_bg);
+    --spice-card: #282828;
+    --spice-highlight-elevated: #2a2a2a;
+    --spice-highlight: var(--modspotify_miscellaneous_bg);
+    --spice-main-elevated: #242424;
+    --spice-main: var(--modspotify_main_bg);
+    --spice-misc: #7f7f7f;
+    --spice-notification-error: #e22134;
+    --spice-notification: var(--modspotify_miscellaneous_hover_bg);
+    --spice-player: var(--modspotify_main_bg);
+    --spice-selected-row: var(--modspotify_main_fg);
+    --spice-shadow: #000000;
+    --spice-sidebar: #000000;
+    --spice-subtext: var(--modspotify_secondary_fg);
+    --spice-tab-active: #333333;
+    --spice-text: var(--modspotify_main_fg);
+
+	--spice-rgb-button-active: var(--modspotify_rgb_sidebar_indicator_and_hover_button_bg);
+    --spice-rgb-button-disabled: var(--modspotify_rgb_miscellaneous_bg);
+    --spice-rgb-button: var(--modspotify_rgb_indicator_fg_and_button_bg);
+    --spice-rgb-card: 40,40,40;
+    --spice-rgb-highlight-elevated: 42,42,42;
+    --spice-rgb-highlight: var(--modspotify_rgb_miscellaneous_bg);
+    --spice-rgb-main-elevated: 36,36,36;
+    --spice-rgb-main: var(--modspotify_rgb_main_bg);
+    --spice-rgb-misc: 127,127,127;
+    --spice-rgb-notification-error: 226,33,52;
+    --spice-rgb-notification: var(--modspotify_rgb_miscellaneous_hover_bg);
+    --spice-rgb-player: var(--modspotify_rgb_main_bg);
+    --spice-rgb-selected-row: var(--modspotify_rgb_main_fg);
+    --spice-rgb-shadow: 0,0,0;
+    --spice-rgb-sidebar: 0,0,0;
+    --spice-rgb-subtext: var(--modspotify_rgb_secondary_fg);
+    --spice-rgb-tab-active: 51,51,51;
+    --spice-rgb-text: var(--modspotify_rgb_main_fg);
+}
