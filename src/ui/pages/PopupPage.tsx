@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import { ChangeEvent } from "react"
+import styled from "styled-components"
 import { Subscription } from "rxjs"
 import { TrackQueueRequest } from "../../core/queue/base/TrackQueueRequest"
 import { QueueState } from "../../core/queue/TrackQueue"
@@ -8,7 +8,7 @@ import { Toggle } from "../components/Toggle"
 import { PlaybarPopup, PlaybarPopupItem } from "../components/PlaybarPopup"
 import { TrackPage } from "./TrackPage"
 import { SectionDivider } from "../components/SectionDivider"
-import styled from "styled-components"
+import { TextField } from "../components/TextField"
 
 type QueueButtonState = {
 	popupVisible: boolean
@@ -90,11 +90,8 @@ export class PopupPage extends React.Component<unknown, QueueButtonState> {
 		return true
 	}
 
-	handleInputChange(
-		key: string,
-		event: ChangeEvent<HTMLInputElement>
-	): boolean {
-		BeatSaber.Core.Settings[key] = event.target.value
+	handleInputChange(key: string, value: string): boolean {
+		BeatSaber.Core.Settings[key] = value
 		BeatSaber.Core.saveSettings()
 		this.forceUpdate()
 		return true
@@ -116,16 +113,26 @@ export class PopupPage extends React.Component<unknown, QueueButtonState> {
 			logWatchers: "Debug UI watchers",
 		}
 
-		const inputsBsaber = {
-			bsaberUsername: "Username (profile name)",
-			bsaberLogin: "Login (e-mail or login username)",
-			bsaberPassword: "Password",
-		}
+		const inputsBsaber: { [key: string]: [string, Spicetify.Model.Icon] } =
+			{
+				bsaberUsername: [
+					"Username (profile name)",
+					// @ts-ignore
+					BeatSaber.IsZlink ? "user" : "artist",
+				],
+				bsaberLogin: ["Login (e-mail or login username)", "edit"],
+				bsaberPassword: ["Password", "locked"],
+			}
 
-		const inputsBackend = {
-			backendHostname: "Hostname (domain:port)",
-			backendAuth: "Authentication",
-		}
+		const inputsBackend: { [key: string]: [string, Spicetify.Model.Icon] } =
+			{
+				backendHostname: [
+					"Hostname (domain:port)",
+					// @ts-ignore
+					BeatSaber.IsZlink ? "device-computer" : "computer",
+				],
+				backendAuth: ["Authentication", "locked"],
+			}
 
 		let requests = this.state.enqueued
 		if (this.state.current) {
@@ -156,47 +163,44 @@ export class PopupPage extends React.Component<unknown, QueueButtonState> {
 						description="BeastSaber login"
 					/>
 
-					{Object.entries(inputsBsaber).map(([key, value]) => (
-						<div className="form-group">
-							<label htmlFor={key}>{value}</label>
-							<br />
-							<input
-								placeholder={value}
-								className="form-control"
+					{Object.entries(inputsBsaber).map(
+						([key, [value, icon]]) => (
+							<TextField
+								key={key}
 								type={
 									key.toLowerCase().includes("password")
 										? "password"
 										: "text"
 								}
-								name={key}
+								label={value}
+								placeholder={value}
 								value={BeatSaber.Core.Settings[key]}
+								iconStart={icon}
 								onChange={this.handleInputChange.bind(
 									this,
 									key
 								)}
 							/>
-						</div>
-					))}
+						)
+					)}
 
 					<SectionDivider description="Backend config" />
 
-					{Object.entries(inputsBackend).map(([key, value]) => (
-						<div className="form-group">
-							<label htmlFor={key}>{value}</label>
-							<br />
-							<input
+					{Object.entries(inputsBackend).map(
+						([key, [value, icon]]) => (
+							<TextField
+								key={key}
+								label={value}
 								placeholder={value}
-								className="form-control"
-								type="text"
-								name={key}
 								value={BeatSaber.Core.Settings[key]}
+								iconStart={icon}
 								onChange={this.handleInputChange.bind(
 									this,
 									key
 								)}
 							/>
-						</div>
-					))}
+						)
+					)}
 
 					<SectionDivider description="Debugging" />
 

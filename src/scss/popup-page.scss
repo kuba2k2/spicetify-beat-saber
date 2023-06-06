@@ -14,46 +14,4 @@
 			vertical-align: middle;
 		}
 	}
-
-	.ConnectPopup {
-		&__button {
-			margin: 10px 0;
-		}
-
-		&__content {
-			padding: 0 20px;
-
-			label {
-				margin: 0 10px 0 0;
-			}
-
-			span.bs-setting {
-				vertical-align: top;
-			}
-		}
-
-		ul {
-			margin: 0 -20px;
-		}
-
-		.form-group input {
-			padding: 5px;
-			border: 0;
-			background-color: #333;
-			display: inline-block;
-			width: 100%;
-			color: #fff;
-
-			&::placeholder {
-				color: #949494;
-			}
-
-			&:focus {
-				border-color: #404040;
-				background-color: #404040;
-				color: #fff;
-				outline: 0;
-			}
-		}
-	}
 }
