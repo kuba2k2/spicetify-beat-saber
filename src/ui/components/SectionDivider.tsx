@@ -44,10 +44,6 @@ const DividerAuxiliary = styled.div`
 `
 
 export class SectionDivider extends React.PureComponent<SectionDividerProps> {
-	constructor(props: SectionDividerProps) {
-		super(props)
-	}
-
 	render() {
 		return (
 			<DividerOuter>

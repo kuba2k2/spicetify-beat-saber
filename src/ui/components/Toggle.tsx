@@ -9,6 +9,10 @@ type ToggleProps = {
 	taId?: string
 }
 
+const ToggleOuter = styled.div`
+	display: inline-block;
+`
+
 const ToggleInput = styled.input`
 	display: none;
 `
@@ -83,7 +87,7 @@ export class Toggle extends React.PureComponent<ToggleProps> {
 
 	render() {
 		return (
-			<label>
+			<ToggleOuter>
 				<ToggleInput
 					type="checkbox"
 					name={this.props.labelId}
@@ -94,7 +98,7 @@ export class Toggle extends React.PureComponent<ToggleProps> {
 				<ToggleIndicator onClick={this.handleChange.bind(this)}>
 					<ToggleInner />
 				</ToggleIndicator>
-			</label>
+			</ToggleOuter>
 		)
 	}
 }

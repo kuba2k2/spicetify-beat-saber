@@ -5,12 +5,33 @@ import { Subscription } from "rxjs"
 import { TrackQueueRequest } from "../../core/queue/base/TrackQueueRequest"
 import { QueueState } from "../../core/queue/TrackQueue"
 import { Toggle } from "../components/Toggle"
+import { PlaybarPopup, PlaybarPopupItem } from "../components/PlaybarPopup"
 import { TrackPage } from "./TrackPage"
 import { SectionDivider } from "../components/SectionDivider"
+import styled from "styled-components"
 
 type QueueButtonState = {
 	popupVisible: boolean
 } & QueueState
+
+const SettingsLabel = styled.span`
+	margin-left: 10px;
+	vertical-align: super;
+`
+
+const SettingsList = styled.ul`
+	margin: 0 -20px;
+`
+
+const SettingsInfo = styled.div`
+	text-align: center;
+	padding: 0 16px;
+	color: var(--spice-subtext);
+
+	& p {
+		margin: 0;
+	}
+`
 
 export class PopupPage extends React.Component<unknown, QueueButtonState> {
 	subscription: Subscription
@@ -124,150 +145,117 @@ export class PopupPage extends React.Component<unknown, QueueButtonState> {
 					<small>{requests.length}</small>
 				</button>
 
-				<div
-					className={`bs-queue-popup ConnectPopup ${
-						this.state.popupVisible ? "visible" : ""
-					}`}
+				<PlaybarPopup
+					isOpen={this.state.popupVisible}
+					title={`Beat Saber v${BeatSaber.Manifest.BundleVersion}`}
+					titleIcon={this.state.blocked ? "block" : undefined}
+					onTitleIconClick={this.handleBlockClick}
 				>
-					<div className="ConnectPopup__header">
-						<h3 className="ConnectPopup__header-title">
-							Beat Saber v{BeatSaber.Manifest.BundleVersion}
-						</h3>
-						{this.state.blocked && (
-							<a
-								href="#"
-								className="ConnectPopup__header-help spoticon-block-16"
-								onClick={this.handleBlockClick}
-							></a>
-						)}
-					</div>
+					<SectionDivider
+						title="Settings"
+						description="BeastSaber login"
+					/>
 
-					<div className="ConnectPopup__content">
-						<SectionDivider
-							title="Settings"
-							description="BeastSaber login"
-						/>
-						{Object.entries(inputsBsaber).map(([key, value]) => (
-							<div className="form-group">
-								<label htmlFor={key}>{value}</label>
-								<br />
-								<input
-									placeholder={value}
-									className="form-control"
-									type={
-										key.toLowerCase().includes("password")
-											? "password"
-											: "text"
-									}
-									name={key}
-									value={BeatSaber.Core.Settings[key]}
-									onChange={this.handleInputChange.bind(
-										this,
-										key
-									)}
-								/>
-							</div>
-						))}
-
-						<SectionDivider description="Backend config" />
-						{Object.entries(inputsBackend).map(([key, value]) => (
-							<div className="form-group">
-								<label htmlFor={key}>{value}</label>
-								<br />
-								<input
-									placeholder={value}
-									className="form-control"
-									type="text"
-									name={key}
-									value={BeatSaber.Core.Settings[key]}
-									onChange={this.handleInputChange.bind(
-										this,
-										key
-									)}
-								/>
-							</div>
-						))}
-
-						<SectionDivider description="Debugging" />
-						{Object.entries(toggles).flatMap(([key, value]) => [
-							<Toggle
-								onChange={this.handleSettingChange.bind(
+					{Object.entries(inputsBsaber).map(([key, value]) => (
+						<div className="form-group">
+							<label htmlFor={key}>{value}</label>
+							<br />
+							<input
+								placeholder={value}
+								className="form-control"
+								type={
+									key.toLowerCase().includes("password")
+										? "password"
+										: "text"
+								}
+								name={key}
+								value={BeatSaber.Core.Settings[key]}
+								onChange={this.handleInputChange.bind(
 									this,
 									key
 								)}
-								isActive={BeatSaber.Core.Settings[key]}
-							/>,
-							<span className="bs-setting">{value}</span>,
-							<br />,
-						])}
+							/>
+						</div>
+					))}
 
-						<SectionDivider title="Queue" />
+					<SectionDivider description="Backend config" />
 
-						{requests.length == 0 && (
-							<div className="ConnectPopup__info">
-								<p>The queue is currenty empty.</p>
-							</div>
-						)}
+					{Object.entries(inputsBackend).map(([key, value]) => (
+						<div className="form-group">
+							<label htmlFor={key}>{value}</label>
+							<br />
+							<input
+								placeholder={value}
+								className="form-control"
+								type="text"
+								name={key}
+								value={BeatSaber.Core.Settings[key]}
+								onChange={this.handleInputChange.bind(
+									this,
+									key
+								)}
+							/>
+						</div>
+					))}
 
-						{requests.length != 0 && (
-							<div className="ConnectPopup__button">
-								<BeatSaber.React.Button
-									type="blue"
-									text="Clear queue"
-									onClick={this.handleClearClick}
+					<SectionDivider description="Debugging" />
+
+					{Object.entries(toggles).flatMap(([key, value]) => [
+						<Toggle
+							onChange={this.handleSettingChange.bind(this, key)}
+							isActive={BeatSaber.Core.Settings[key]}
+						/>,
+						<SettingsLabel>{value}</SettingsLabel>,
+						<br />,
+					])}
+
+					<SectionDivider title="Queue" />
+
+					{requests.length == 0 && (
+						<SettingsInfo>
+							<p>The queue is currenty empty.</p>
+						</SettingsInfo>
+					)}
+
+					{requests.length != 0 && (
+						<SettingsInfo>
+							<BeatSaber.React.Button
+								type="blue"
+								text="Clear queue"
+								onClick={this.handleClearClick}
+							/>
+						</SettingsInfo>
+					)}
+
+					<SettingsList>
+						{requests.map((request, index) => {
+							let icon: Spicetify.Model.Icon = "airplay"
+							switch (request.type) {
+								case "MapsRequest":
+									icon = "search"
+									break
+								case "DetailsRequest":
+									icon = "album"
+									break
+								case "ArtistImageRequest":
+									icon = "artist"
+									break
+							}
+							return (
+								<PlaybarPopupItem
+									icon={icon}
+									title={request.type}
+									info={<code>{request.slug}</code>}
+									isActive={this.state.current && !index}
+									onClick={this.handleItemClick.bind(
+										this,
+										request
+									)}
 								/>
-							</div>
-						)}
-
-						<ul>
-							{requests.map((request, index) => {
-								let icon = "airplay"
-								switch (request.type) {
-									case "MapsRequest":
-										icon = "search"
-										break
-									case "DetailsRequest":
-										icon = "album"
-										break
-									case "ArtistImageRequest":
-										icon = "artist"
-										break
-								}
-								const classNames = [
-									"ConnectPopup__device",
-									"ConnectPopup__device--available",
-									this.state.current && !index
-										? "ConnectPopup__device--active"
-										: "",
-								]
-								return (
-									<li
-										onClick={this.handleItemClick.bind(
-											this,
-											request
-										)}
-									>
-										<button
-											className={classNames.join(" ")}
-										>
-											<span
-												className={`ConnectPopup__device-image spoticon-${icon}-32`}
-											></span>
-											<div className="ConnectPopup__device-body">
-												<p className="ConnectPopup__device-title">
-													{request.type}
-												</p>
-												<p className="ConnectPopup__device-info">
-													<code>{request.slug}</code>
-												</p>
-											</div>
-										</button>
-									</li>
-								)
-							})}
-						</ul>
-					</div>
-				</div>
+							)
+						})}
+					</SettingsList>
+				</PlaybarPopup>
 			</div>
 		)
 	}

@@ -13,4 +13,16 @@ declare global {
 		BeatSaber: BeatSaberGlobal
 	}
 	const BeatSaber: BeatSaberGlobal
+
+	type BeatSaberIcon =
+		"bs-360degree" |
+		"bs-lightshow" |
+		"bs-lawless" |
+		"bs-90degree" |
+		"bs-onesaber" |
+		"bs-standard" |
+		"bs-bookmark" |
+		"bs-bookmark-filled" |
+		"bs-note" |
+		"bs-noarrows"
 }
