@@ -6,6 +6,7 @@ import { TrackQueueRequest } from "../../core/queue/base/TrackQueueRequest"
 import { QueueState } from "../../core/queue/TrackQueue"
 import { Toggle } from "../components/Toggle"
 import { TrackPage } from "./TrackPage"
+import { SectionDivider } from "../components/SectionDivider"
 
 type QueueButtonState = {
 	popupVisible: boolean
@@ -142,7 +143,7 @@ export class PopupPage extends React.Component<unknown, QueueButtonState> {
 					</div>
 
 					<div className="ConnectPopup__content">
-						<BeatSaber.React.GlueSectionDivider
+						<SectionDivider
 							title="Settings"
 							description="BeastSaber login"
 						/>
@@ -168,7 +169,7 @@ export class PopupPage extends React.Component<unknown, QueueButtonState> {
 							</div>
 						))}
 
-						<BeatSaber.React.GlueSectionDivider description="Backend config" />
+						<SectionDivider description="Backend config" />
 						{Object.entries(inputsBackend).map(([key, value]) => (
 							<div className="form-group">
 								<label htmlFor={key}>{value}</label>
@@ -187,7 +188,7 @@ export class PopupPage extends React.Component<unknown, QueueButtonState> {
 							</div>
 						))}
 
-						<BeatSaber.React.GlueSectionDivider description="Debugging" />
+						<SectionDivider description="Debugging" />
 						{Object.entries(toggles).flatMap(([key, value]) => [
 							<Toggle
 								onChange={this.handleSettingChange.bind(
@@ -200,7 +201,7 @@ export class PopupPage extends React.Component<unknown, QueueButtonState> {
 							<br />,
 						])}
 
-						<BeatSaber.React.GlueSectionDivider title="Queue" />
+						<SectionDivider title="Queue" />
 
 						{requests.length == 0 && (
 							<div className="ConnectPopup__info">

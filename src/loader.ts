@@ -7,7 +7,6 @@ const components = [
 	"Card",
 	"CardWithoutLink",
 	"CircularLoader",
-	"GlueSectionDivider",
 	"HeaderBackgroundImage",
 	"HeaderData",
 	"Table",
