@@ -4,6 +4,7 @@ import { ChangeEvent } from "react"
 import { Subscription } from "rxjs"
 import { TrackQueueRequest } from "../../core/queue/base/TrackQueueRequest"
 import { QueueState } from "../../core/queue/TrackQueue"
+import { Toggle } from "../components/Toggle"
 import { TrackPage } from "./TrackPage"
 
 type QueueButtonState = {
@@ -188,7 +189,7 @@ export class PopupPage extends React.Component<unknown, QueueButtonState> {
 
 						<BeatSaber.React.GlueSectionDivider description="Debugging" />
 						{Object.entries(toggles).flatMap(([key, value]) => [
-							<BeatSaber.React.GlueToggle
+							<Toggle
 								onChange={this.handleSettingChange.bind(
 									this,
 									key
