@@ -10,29 +10,13 @@
  * This is the main entrypoint of the application.
  */
 function BeatSaberMain() {
-	const isTopWindow = window === window.top
-	const isBrowser = !navigator.userAgent.includes("Spotify")
-
-	if (isTopWindow) {
-		// import the core module
-		import("./core/BeatSaberCore").then(({ BeatSaberCore }) => {
-			// make it a singleton
-			window.BeatSaber.Core = new BeatSaberCore()
-			// run the core
-			BeatSaber.Core.initialize()
-		})
-		if (!isBrowser) {
-			// do not mount the sub-application in Spotify main window
-			return
-		}
-	}
-
-	// run the sub-application
-	BeatSaber.Core.render(
-		BeatSaber.Core.getAppPage(),
-		window,
-		window.document.getElementById("root")
-	)
+	// import the core module
+	import("./core/BeatSaberCore").then(({ BeatSaberCore }) => {
+		// make it a singleton
+		window.BeatSaber.Core = new BeatSaberCore()
+		// run the core
+		BeatSaber.Core.initialize()
+	})
 }
 
 BeatSaberMain()
