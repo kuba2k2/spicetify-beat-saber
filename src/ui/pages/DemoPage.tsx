@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { Track } from "../../core/models/Track"
 import { TrackBase } from "../../core/models/TrackBase"
 import { Button } from "../components/Button"
+import { ButtonGroup } from "../components/ButtonGroup"
 import { DifficultyBadge } from "../components/DifficultyBadge"
 import { Icon } from "../components/Icon"
 import { SearchField } from "../components/SearchField"
@@ -185,13 +186,13 @@ export class DemoPage extends React.Component {
 					<tr>
 						<td>ButtonGroup</td>
 						<td>
-							{/* <ButtonGroup>
+							<ButtonGroup>
 								{[
 									["Check", "check"],
 									["X", "x"],
 									["Block", "block"],
 								]}
-							</ButtonGroup> */}
+							</ButtonGroup>
 						</td>
 					</tr>
 					<tr>

@@ -8,6 +8,7 @@ import { PlaybarPopup, PlaybarPopupItem } from "../components/PlaybarPopup"
 import { TrackPage } from "./TrackPage"
 import { SectionDivider } from "../components/SectionDivider"
 import { TextField } from "../components/TextField"
+import { Button } from "../components/Button"
 
 type QueueButtonState = {
 	popupVisible: boolean
@@ -24,7 +25,7 @@ const SettingsList = styled.ul`
 
 const SettingsInfo = styled.div`
 	text-align: center;
-	padding: 0 16px;
+	padding: 0 16px 8px;
 	color: var(--spice-subtext);
 
 	& p {
@@ -220,8 +221,7 @@ export class PopupPage extends React.Component<unknown, QueueButtonState> {
 
 					{requests.length != 0 && (
 						<SettingsInfo>
-							<BeatSaber.React.Button
-								type="blue"
+							<Button
 								text="Clear queue"
 								onClick={this.handleClearClick}
 							/>
