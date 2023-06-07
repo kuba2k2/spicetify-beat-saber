@@ -26,6 +26,12 @@
 	}
 }
 
+// remove icon margins
+[class^="bs-icon-"]:before,
+[class*=" bs-icon-"]:before {
+	margin: 0 !important;
+}
+
 :root {
 	--bs-icon-color: var(--spice-subtext);
 }

@@ -8,8 +8,8 @@ type TextFieldProps = {
 	label?: string
 	placeholder?: string
 	value?: string
-	iconStart?: Spicetify.Model.Icon | BeatSaberIcon
-	iconEnd?: Spicetify.Model.Icon | BeatSaberIcon
+	iconStart?: IconType
+	iconEnd?: IconType
 	onChange?: (value: string) => void
 	onSubmit?: (value: string) => void
 	onIconStartClick?: () => void

@@ -1,9 +1,35 @@
 import React from "react"
+import styled from "styled-components"
 import { Track } from "../../core/models/Track"
 import { TrackBase } from "../../core/models/TrackBase"
-import { QueueStateDemo } from "../components/QueueStateDemo"
-import { StateButton } from "../components/StateButton"
+import { Button } from "../components/Button"
+import { DifficultyBadge } from "../components/DifficultyBadge"
+import { Icon } from "../components/Icon"
+import { TextField } from "../components/TextField"
+import { Toggle } from "../components/Toggle"
 import { TrackPage } from "./TrackPage"
+
+const PageWrapper = styled.div`
+	margin-top: ${BeatSaber.IsZlink ? "100px" : "0"};
+	padding: 0 ${BeatSaber.IsZlink ? "32px" : "var(--content-spacing)"};
+`
+
+const Title = styled.h1`
+	color: var(--spice-text);
+	font-size: 36px;
+	font-weight: 900;
+	line-height: 44px;
+	letter-spacing: -0.005em;
+`
+
+const StyledTable = styled.table`
+	border-collapse: collapse;
+
+	td {
+		padding: 5px;
+		border: 1px solid grey;
+	}
+`
 
 export class DemoPage extends React.Component {
 	tracks: TrackBase[] = [
@@ -73,9 +99,7 @@ export class DemoPage extends React.Component {
 	}
 
 	render() {
-		return (
-			<div style={{ marginTop: 100 }}>
-				{this.tracks.map((track) => (
+		/* {this.tracks.map((track) => (
 					<div className="bs-hover-parent">
 						<StateButton
 							onClick={this.handleClick}
@@ -87,8 +111,274 @@ export class DemoPage extends React.Component {
 					</div>
 				))}
 				<hr />
-				<QueueStateDemo />
-			</div>
+				<QueueStateDemo /> */
+
+		const ZlinkButton = BeatSaber.IsXpui
+			? (props) => <span></span>
+			: (props) => <BeatSaber.React.Button {...props} />
+		return (
+			<PageWrapper>
+				<Title>Demo Page</Title>
+				<StyledTable>
+					<tr>
+						<th>Name</th>
+						<th>Component</th>
+						<th></th>
+						<th></th>
+					</tr>
+					<tr>
+						<td>TextField</td>
+						<td>
+							<TextField
+								iconEnd="x"
+								onIconEndClick={alert}
+								placeholder="Placeholder"
+								value="Value"
+								label="Text field label"
+							/>
+						</td>
+					</tr>
+					<tr>
+						<td>Icon / Spoticon</td>
+						<td>
+							<Icon icon="block" />
+						</td>
+					</tr>
+					<tr>
+						<td>Icon / BeatSaber</td>
+						<td>
+							<Icon icon="bs-note" />
+						</td>
+					</tr>
+					<tr>
+						<td>SearchField</td>
+						<td>{/* <SearchField onSearch={console.log} /> */}</td>
+					</tr>
+					<tr>
+						<td>DifficultyBadge</td>
+						<td>
+							<DifficultyBadge
+								characteristic="standard"
+								difficulty="expertplus"
+							/>
+						</td>
+					</tr>
+					<tr>
+						<td>Toggle</td>
+						<td>
+							<Toggle />
+						</td>
+					</tr>
+					<tr>
+						<td>Toggle / disabled</td>
+						<td>
+							<Toggle isDisabled={true} />
+						</td>
+					</tr>
+					<tr>
+						<td>LoadingSpinner</td>
+						<td>{/* <LoadingSpinner /> */}</td>
+					</tr>
+					<tr>
+						<td>ButtonGroup</td>
+						<td>
+							{/* <ButtonGroup>
+								{[
+									["Check", "check"],
+									["X", "x"],
+									["Block", "block"],
+								]}
+							</ButtonGroup> */}
+						</td>
+					</tr>
+					<tr>
+						<td>Button / default</td>
+						<td></td>
+						<td>
+							<Button text="Button" />
+						</td>
+						<td>
+							<Button type="icon" icon="block" />
+						</td>
+					</tr>
+					<tr>
+						<td>Button / green</td>
+						<td>
+							<ZlinkButton type="green" text="Button" />
+						</td>
+						<td>
+							<Button color="green" text="Button" />
+						</td>
+						<td>
+							<Button color="green" type="icon" icon="block" />
+						</td>
+					</tr>
+					<tr>
+						<td>Button / green / disabled</td>
+						<td>
+							<ZlinkButton
+								type="green"
+								text="Button"
+								isDisabled={true}
+							/>
+						</td>
+						<td>
+							<Button
+								color="green"
+								text="Button"
+								isDisabled={true}
+							/>
+						</td>
+						<td>
+							<Button
+								color="green"
+								type="icon"
+								icon="block"
+								isDisabled={true}
+							/>
+						</td>
+					</tr>
+					<tr>
+						<td>Button / gray</td>
+						<td>
+							<ZlinkButton type="gray" text="Button" />
+						</td>
+						<td>
+							<Button color="gray" text="Button" />
+						</td>
+						<td>
+							<Button color="gray" type="icon" icon="block" />
+						</td>
+					</tr>
+					<tr>
+						<td>Button / blue</td>
+						<td>
+							<ZlinkButton type="blue" text="Button" />
+						</td>
+						<td>
+							<Button color="blue" text="Button" />
+						</td>
+						<td>
+							<Button color="blue" type="icon" icon="block" />
+						</td>
+					</tr>
+					<tr>
+						<td>Button / red</td>
+						<td>
+							<ZlinkButton type="red" text="Button" />
+						</td>
+						<td>
+							<Button color="red" text="Button" />
+						</td>
+						<td>
+							<Button color="red" type="icon" icon="block" />
+						</td>
+					</tr>
+					<tr>
+						<td>Button / white</td>
+						<td>
+							<ZlinkButton type="white" text="Button" />
+						</td>
+						<td>
+							<Button color="white" text="Button" />
+						</td>
+						<td>
+							<Button color="white" type="icon" icon="block" />
+						</td>
+					</tr>
+					<tr>
+						<td>Button / transparent</td>
+						<td></td>
+						<td>
+							<Button color="transparent" text="Button" />
+						</td>
+						<td>
+							<Button
+								color="transparent"
+								type="icon"
+								icon="block"
+							/>
+						</td>
+					</tr>
+					<tr>
+						<td>Button / stroke</td>
+						<td>
+							<ZlinkButton type="stroke" text="Button" />
+						</td>
+						<td>
+							<Button
+								color="transparent"
+								outline={true}
+								text="Button"
+							/>
+						</td>
+						<td>
+							<Button
+								color="transparent"
+								outline={true}
+								type="icon"
+								icon="block"
+							/>
+						</td>
+					</tr>
+					<tr>
+						<td>Button / text+icon</td>
+						<td>
+							<ZlinkButton
+								type="green"
+								text="Button"
+								icon="block"
+							/>
+						</td>
+						<td>
+							<Button color="green" text="Button" icon="block" />
+						</td>
+					</tr>
+					<tr>
+						<td>Button / icon only</td>
+						<td>
+							<ZlinkButton type="green" icon="block" />
+						</td>
+						<td>
+							<Button color="green" icon="block" />
+						</td>
+					</tr>
+					<tr>
+						<td>Button / icon</td>
+						<td>
+							<ZlinkButton type="icon" icon="block" />
+						</td>
+						<td>
+							<Button type="icon" icon="block" />
+						</td>
+					</tr>
+					<tr>
+						<td>Button / icon-background</td>
+						<td>
+							<ZlinkButton type="icon-background" icon="block" />
+						</td>
+						<td>
+							<Button type="icon" icon="block" />
+						</td>
+					</tr>
+					<tr>
+						<td>Button / icon-stroke</td>
+						<td>
+							<ZlinkButton type="icon-stroke" icon="block" />
+						</td>
+						<td>
+							<Button type="icon" outline={true} icon="block" />
+						</td>
+					</tr>
+					<tr>
+						<td>Button / icon + text</td>
+						<td></td>
+						<td>
+							<Button type="icon" icon="bs-note" text="2" />
+						</td>
+					</tr>
+				</StyledTable>
+			</PageWrapper>
 		)
 	}
 }

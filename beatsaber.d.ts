@@ -14,7 +14,7 @@ declare global {
 	}
 	const BeatSaber: BeatSaberGlobal
 
-	type BeatSaberIcon =
+	type IconType =
 		"bs-360degree" |
 		"bs-lightshow" |
 		"bs-lawless" |
@@ -24,5 +24,6 @@ declare global {
 		"bs-bookmark" |
 		"bs-bookmark-filled" |
 		"bs-note" |
-		"bs-noarrows"
+		"bs-noarrows" |
+		Spicetify.Model.Icon
 }
