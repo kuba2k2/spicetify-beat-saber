@@ -1,11 +1,12 @@
 import React from "react"
 import styled from "styled-components"
+import { Button } from "./Button"
 import { Icon } from "./Icon"
 
 type PlaybarPopupProps = {
 	isOpen: boolean
 	title: string
-	titleIcon?: Spicetify.Model.Icon
+	titleIcon?: IconType
 	onTitleClick?: () => void
 	onTitleIconClick?: () => void
 	children: React.ReactNode[]
@@ -61,17 +62,9 @@ const Header = styled.div`
 	}
 `
 
-const HeaderIcon = styled(BeatSaber.React.Button)`
+const HeaderButton = styled(Button)`
 	position: absolute;
-	top: 18px;
-	color: var(--spice-subtext);
-	border-bottom: 0;
-	right: 16px;
-
-	&:focus,
-	&:hover {
-		color: var(--spice-text);
-	}
+	right: 8px;
 `
 
 const Content = styled.div`
@@ -90,7 +83,11 @@ export class PlaybarPopup extends React.Component<PlaybarPopupProps> {
 						{this.props.title}
 					</h3>
 					{this.props.titleIcon && (
-						<Icon icon={this.props.titleIcon} />
+						<HeaderButton
+							type="icon"
+							icon={this.props.titleIcon}
+							onClick={this.props.onTitleIconClick}
+						/>
 					)}
 				</Header>
 

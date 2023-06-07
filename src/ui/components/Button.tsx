@@ -21,8 +21,8 @@ type ButtonProps = {
 	color?: ButtonColor
 	outline?: boolean
 	size?: ButtonSize
-	isActive?: boolean
 	isDisabled?: boolean
+	className?: string
 	onClick?: () => void
 }
 
@@ -79,6 +79,15 @@ const buttonColor: { [key in ButtonColor]: ButtonColorDef } = {
 	},
 }
 
+type StyledProps = {
+	$clickable: boolean
+	$outlined: boolean
+	$iconSecondary: boolean
+	$iconAndText: boolean
+	$size: number
+	$color: ButtonColorDef
+}
+
 const ButtonOutline = css`
 	&:after {
 		content: "";
@@ -108,14 +117,23 @@ const ButtonOutline = css`
 	}
 `
 
+const ButtonHover = css<StyledProps>`
+	&:enabled:hover {
+		background: ${(props) => props.$color.hover};
+		transform: scale(${(props) => buttonScale[props.$size]});
+		transition: none 33ms cubic-bezier(0.3, 0, 0, 1);
+		transition-property: transform, box-shadow, color, background-color;
+	}
+
+	&:enabled:hover:active {
+		opacity: 0.8;
+		transform: scale(0.99);
+	}
+`
+
 const ButtonIcon = styled(Icon)``
 
-const ButtonBase = styled.button<{
-	$outlined: boolean
-	$iconAndText: boolean
-	$size: number
-	$color: ButtonColorDef
-}>`
+const ButtonBase = styled.button<StyledProps>`
 	--bs-button-size: ${(props) => `${props.$size}px`};
 	--bs-icon-color: ${(props) => props.$color.text};
 
@@ -140,18 +158,7 @@ const ButtonBase = styled.button<{
 		opacity: 0.4;
 	}
 
-	&:enabled:hover {
-		background: ${(props) => props.$color.hover};
-		transform: scale(${(props) => buttonScale[props.$size]});
-		transition: none 33ms cubic-bezier(0.3, 0, 0, 1);
-		transition-property: transform, box-shadow, color, background-color;
-	}
-
-	&:enabled:hover:active {
-		opacity: 0.8;
-		transform: scale(0.99);
-	}
-
+	${(props) => props.$clickable && ButtonHover}
 	${(props) => props.$outlined && ButtonOutline}
 `
 
@@ -162,6 +169,7 @@ const Text = styled.span`
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	opacity: 1;
+	vertical-align: super;
 `
 
 const Small = styled(Text)`
@@ -175,12 +183,7 @@ const Small = styled(Text)`
 	}
 `
 
-const NormalButton = styled(ButtonBase)<{
-	$outlined: boolean
-	$iconAndText: boolean
-	$size: number
-	$color: ButtonColorDef
-}>`
+const NormalButton = styled(ButtonBase)<StyledProps>`
 	font-size: 11px;
 	line-height: var(--bs-button-size);
 	letter-spacing: 0.16em;
@@ -206,12 +209,7 @@ const NormalButton = styled(ButtonBase)<{
 		`}
 `
 
-const IconButton = styled(ButtonBase)<{
-	$iconSecondary: boolean
-	$iconAndText: boolean
-	$size: number
-	$color: ButtonColorDef
-}>`
+const IconButton = styled(ButtonBase)<StyledProps>`
 	--bs-icon-color: ${(props) =>
 		props.$iconSecondary ? "var(--spice-subtext)" : props.$color.text};
 
@@ -230,15 +228,21 @@ const IconButton = styled(ButtonBase)<{
 					}
 			  `}
 
-	&:enabled:hover {
-		--bs-icon-color: ${(props) =>
-			props.$iconSecondary ? "var(--spice-text)" : props.$color.text};
+	${(props) =>
+		props.$clickable &&
+		css<StyledProps>`
+			&:enabled:hover {
+				--bs-icon-color: ${(props) =>
+					props.$iconSecondary
+						? "var(--spice-text)"
+						: props.$color.text};
 
-		${(props) => props.$iconAndText && `transform: none;`}
-		&:active {
-			${(props) => props.$iconAndText && `transform: none;`}
-		}
-	}
+				${(props) => props.$iconAndText && `transform: none;`}
+				&:active {
+					${(props) => props.$iconAndText && `transform: none;`}
+				}
+			}
+		`}
 `
 
 export class Button extends React.PureComponent<ButtonProps> {
@@ -252,7 +256,15 @@ export class Button extends React.PureComponent<ButtonProps> {
 		const Component = type == "normal" ? NormalButton : IconButton
 		return (
 			<Component
+				className={this.props.className}
 				disabled={this.props.isDisabled}
+				onClick={this.props.onClick}
+				$clickable={
+					!!this.props.onClick ||
+					type != "icon" ||
+					color != "transparent" ||
+					this.props.outline
+				}
 				$outlined={this.props.outline}
 				$iconSecondary={this.props.outline || color == "transparent"}
 				$iconAndText={this.props.icon && this.props.text}

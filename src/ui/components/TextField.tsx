@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import { Button } from "./Button"
 import { Icon } from "./Icon"
 
 type TextFieldProps = {
@@ -31,32 +32,18 @@ const InputWrapper = styled.div`
 	position: relative;
 `
 
-const StyledIcon = styled(Icon)<{ $clickable: boolean }>`
-	display: block;
+const StyledButton = styled.div`
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
-	padding: 10px;
-
-	${(props) =>
-		props.$clickable &&
-		`
-		&:hover {
-			--bs-icon-color: var(--spice-text);
-		}
-
-		&:active {
-			--bs-icon-color: rgba(var(--spice-rgb-text), 0.5);
-		}
-		`}
 `
 
-const StartIcon = styled(StyledIcon)`
-	left: 0;
+const StartButton = styled(StyledButton)`
+	left: 4px;
 `
 
-const EndIcon = styled(StyledIcon)`
-	right: 0;
+const EndButton = styled(StyledButton)`
+	right: 4px;
 `
 
 const Input = styled.input`
@@ -69,12 +56,12 @@ const Input = styled.input`
 	border-radius: 4px !important;
 	border: 1px solid transparent;
 
-	${StartIcon} ~ & {
-		padding-left: 36px;
+	${StartButton} ~ & {
+		padding-left: 38px;
 	}
 
-	${EndIcon} ~ & {
-		padding-right: 36px;
+	${EndButton} ~ & {
+		padding-right: 38px;
 	}
 `
 
@@ -106,23 +93,25 @@ export class TextField extends React.PureComponent<TextFieldProps> {
 				)}
 				<InputWrapper>
 					{this.props.iconStart && (
-						<StartIcon
-							icon={this.props.iconStart}
-							$clickable={
-								!!this.props.onIconStartClick ||
-								!!this.props.onIconEndClick
-							}
-						/>
+						<StartButton>
+							<Button
+								type="icon"
+								icon={this.props.iconStart}
+								onClick={this.props.onIconStartClick}
+							/>
+						</StartButton>
 					)}
+
 					{this.props.iconEnd && (
-						<EndIcon
-							icon={this.props.iconEnd}
-							$clickable={
-								!!this.props.onIconStartClick ||
-								!!this.props.onIconEndClick
-							}
-						/>
+						<EndButton>
+							<Button
+								type="icon"
+								icon={this.props.iconEnd}
+								onClick={this.props.onIconEndClick}
+							/>
+						</EndButton>
 					)}
+
 					<Input
 						id={this.props.key}
 						name={this.props.key}

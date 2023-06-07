@@ -11,6 +11,10 @@
 	padding: 0 0.6em;
 	text-align: center;
 
+	&:before {
+		margin-right: .2em !important;
+	}
+
 	&.bs-easy {
 		background-color: #00a279;
 	}
