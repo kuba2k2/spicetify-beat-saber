@@ -1,11 +1,15 @@
 import React from "react"
 import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
-import { ButtonGroup } from "./ButtonGroup"
-import { Characteristic, Difficulty, DifficultyBadge } from "./DifficultyBadge"
-import { MapListCallbacks } from "./MapListTypes"
-import { Button } from "./Button"
+import { ButtonGroup } from "../../controls/ButtonGroup"
+import {
+	Characteristic,
+	Difficulty,
+	DifficultyBadge,
+} from "../../components/DifficultyBadge"
+import { TrackMapCallbacks } from "./TrackMapTypes"
+import { Button } from "../../controls/Button"
 
-type MapListRowProps = {
+type TrackMapRowProps = {
 	map: MapDetail
 	showButtonGroup: boolean
 
@@ -13,10 +17,10 @@ type MapListRowProps = {
 	notInterested?: boolean
 	bookmarked?: boolean | null
 	downloaded?: boolean | null
-} & MapListCallbacks
+} & TrackMapCallbacks
 
-export class MapListRow extends React.Component<MapListRowProps> {
-	constructor(props: MapListRowProps) {
+export class TrackMapRow extends React.Component<TrackMapRowProps> {
+	constructor(props: TrackMapRowProps) {
 		super(props)
 		this.handleMatchesChange = this.handleMatchesChange.bind(this)
 		this.handlePreviewClick = this.handlePreviewClick.bind(this)

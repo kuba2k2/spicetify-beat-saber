@@ -5,7 +5,7 @@ import { SortOrder } from "beatsaver-api/lib/api/search"
 import { SearchResponse } from "beatsaver-api/lib/models/SearchResponse"
 import { BridgeTrack } from "../models/BridgeTrack"
 import { CosmosArtist } from "../models/CosmosArtist"
-import { Level } from "../models/Level"
+import { MapLocal } from "../models/MapLocal"
 import { BackendRequestHandler } from "./BackendRequestHandler"
 
 export class ApiUtils {
@@ -93,16 +93,16 @@ export class ApiUtils {
 		return response as unknown as T
 	}
 
-	async getDownloads(): Promise<Level[]> {
-		return this.levelsRequest<Level[]>("/")
+	async getDownloads(): Promise<MapLocal[]> {
+		return this.levelsRequest<MapLocal[]>("/")
 	}
 
 	async getDownloadHashes(): Promise<string[]> {
 		return this.levelsRequest<string[]>("/hashes")
 	}
 
-	async downloadLevel(hash: string): Promise<Level> {
-		return this.levelsRequest<Level>(`/download/${hash}`)
+	async downloadLevel(hash: string): Promise<MapLocal> {
+		return this.levelsRequest<MapLocal>(`/download/${hash}`)
 	}
 
 	async deleteLevel(levelDir: string): Promise<void> {

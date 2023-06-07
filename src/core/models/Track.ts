@@ -1,5 +1,5 @@
 import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
-import { BuiltInLevel } from "./BuiltInLevel"
+import { MapOst } from "./MapOst"
 import { getSlug } from "../utils"
 import { TrackDB } from "./TrackDB"
 
@@ -54,7 +54,7 @@ export enum TrackState {
 }
 
 export class Track extends TrackDB {
-	builtInLevel: BuiltInLevel = null
+	builtInLevel: MapOst = null
 
 	/**
 	 * All map hashes.

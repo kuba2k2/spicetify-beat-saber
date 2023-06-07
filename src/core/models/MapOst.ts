@@ -7,7 +7,7 @@ interface LevelPack {
 	isOST: boolean
 }
 
-export interface BuiltInLevel {
+export interface MapOst {
 	id: string
 	songName: string
 	songSubName: string

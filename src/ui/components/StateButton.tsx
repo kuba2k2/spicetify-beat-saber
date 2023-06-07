@@ -2,7 +2,7 @@ import React from "react"
 import { Subscription } from "rxjs"
 import { Track, TrackState } from "../../core/models/Track"
 import { TrackBase } from "../../core/models/TrackBase"
-import { TrackPage } from "../pages/TrackPage"
+import { TrackPage } from "../pages/track/TrackPage"
 
 type StateButtonProps = {
 	trackBase: TrackBase

@@ -1,4 +1,4 @@
-export type Level = {
+export type MapLocal = {
 	levelDir: string
 	hash: string
 

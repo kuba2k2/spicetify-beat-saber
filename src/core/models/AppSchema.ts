@@ -1,7 +1,7 @@
 import { Map } from "beastsaber-api/lib/models/Map"
 import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
 import { DBSchema } from "idb"
-import { Level } from "./Level"
+import { MapLocal } from "./MapLocal"
 import { TrackDB } from "./TrackDB"
 
 export interface AppSchema extends DBSchema {
@@ -19,8 +19,8 @@ export interface AppSchema extends DBSchema {
 	}
 	hashDownloaded: {
 		key: string
-		value: Level
+		value: MapLocal
 	}
 }
 
-export type MapType = MapDetail | Map | Level
+export type MapType = MapDetail | Map | MapLocal

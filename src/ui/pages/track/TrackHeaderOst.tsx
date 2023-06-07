@@ -1,11 +1,11 @@
 import React from "react"
-import { BuiltInLevel } from "../../core/models/BuiltInLevel"
+import { MapOst } from "../../../core/models/MapOst"
 
-type BuiltInLevelHeaderProps = {
-	level: BuiltInLevel
+type TrackHeaderOstProps = {
+	level: MapOst
 }
 
-export class BuiltInLevelHeader extends React.Component<BuiltInLevelHeaderProps> {
+export class TrackHeaderOst extends React.Component<TrackHeaderOstProps> {
 	render() {
 		const level = this.props.level
 		let source: string

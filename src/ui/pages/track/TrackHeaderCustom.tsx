@@ -1,11 +1,11 @@
 import React from "react"
-import { Track } from "../../core/models/Track"
+import { Track } from "../../../core/models/Track"
 
-type TrackHeaderProps = {
+type TrackHeaderCustomProps = {
 	track: Track
 }
 
-export class TrackHeader extends React.Component<TrackHeaderProps> {
+export class TrackHeaderCustom extends React.Component<TrackHeaderCustomProps> {
 	render() {
 		const track = this.props.track
 		let artistImage: string

@@ -1,4 +1,4 @@
-import { Level } from "../../models/Level"
+import { MapLocal } from "../../models/MapLocal"
 import { MapCategory } from "../../storage/MapStorage"
 import { MapQueueRequest, MapQueueRequestType } from "../base/MapQueueRequest"
 import { QueueError } from "../base/QueueError"
@@ -19,7 +19,7 @@ export class DownloadRequest extends MapQueueRequest {
 		}
 
 		const category = MapCategory.DOWNLOADED
-		let level: Level
+		let level: MapLocal
 		switch (this.type) {
 			case MapQueueRequestType.ADD:
 				level = await BeatSaber.Core.Api.downloadLevel(this.hash)
@@ -29,7 +29,7 @@ export class DownloadRequest extends MapQueueRequest {
 				level = (await BeatSaber.Core.Storage.Map.get(
 					category,
 					this.hash
-				)) as Level
+				)) as MapLocal
 				await BeatSaber.Core.Api.deleteLevel(level.levelDir)
 				break
 		}

@@ -1,6 +1,6 @@
 import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
 
-export type MapListCallbacks = {
+export type TrackMapCallbacks = {
 	onMatchClick?: (map: MapDetail) => void
 	onDoesntMatchClick?: (map: MapDetail) => void
 	onNotInterestedClick?: (map: MapDetail) => void
@@ -10,7 +10,7 @@ export type MapListCallbacks = {
 	onDownloadClick?: (map: MapDetail) => void
 }
 
-export type MapListSets = {
+export type TrackMapSets = {
 	matchHashes?: Set<string>
 	notInterestedHashes?: Set<string>
 	bookmarkedKeys?: Set<string>

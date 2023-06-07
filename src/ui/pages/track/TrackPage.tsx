@@ -1,14 +1,14 @@
 import React from "react"
 import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
 import { skip, Subscription } from "rxjs"
-import { Track, TrackState } from "../../core/models/Track"
-import { BuiltInLevelHeader } from "../components/BuiltInLevelHeader"
-import { EmptyView } from "../components/EmptyView"
-import { LoadingSpinner } from "../components/LoadingSpinner"
-import { MapListTable } from "../components/MapListTable"
-import { MapListSets } from "../components/MapListTypes"
-import { SearchField } from "../components/SearchField"
-import { TrackHeader } from "../components/TrackHeader"
+import { Track, TrackState } from "../../../core/models/Track"
+import { TrackHeaderOst } from "./TrackHeaderOst"
+import { EmptyView } from "../../components/EmptyView"
+import { LoadingSpinner } from "../../components/LoadingSpinner"
+import { TrackMapTable } from "./TrackMapTable"
+import { TrackMapSets } from "./TrackMapTypes"
+import { SearchField } from "../../components/SearchField"
+import { TrackHeaderCustom } from "./TrackHeaderCustom"
 
 type TrackPageProps = {
 	track: Track
@@ -20,7 +20,7 @@ type TrackPageState = {
 	bubbleType?: BubbleType
 	bubbleText?: string
 } & TrackPageProps &
-	Required<MapListSets>
+	Required<TrackMapSets>
 
 type BubbleType = "success" | "info" | "error"
 
@@ -221,7 +221,7 @@ export class TrackPage extends React.Component<TrackPageProps, TrackPageState> {
 		} else if (track.maps?.length) {
 			// maps == [...], show results table
 			page = (
-				<MapListTable
+				<TrackMapTable
 					maps={this.state.track.maps}
 					// pass MapListSets
 					{...this.state}
@@ -239,9 +239,9 @@ export class TrackPage extends React.Component<TrackPageProps, TrackPageState> {
 		}
 
 		if (track.builtInLevel) {
-			header = <BuiltInLevelHeader level={track.builtInLevel} />
+			header = <TrackHeaderOst level={track.builtInLevel} />
 		} else {
-			header = <TrackHeader track={track} />
+			header = <TrackHeaderCustom track={track} />
 		}
 
 		return (

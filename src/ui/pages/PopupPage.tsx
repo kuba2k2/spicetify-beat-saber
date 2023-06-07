@@ -3,12 +3,12 @@ import styled from "styled-components"
 import { Subscription } from "rxjs"
 import { TrackQueueRequest } from "../../core/queue/base/TrackQueueRequest"
 import { QueueState } from "../../core/queue/TrackQueue"
-import { Toggle } from "../components/Toggle"
+import { Toggle } from "../controls/Toggle"
 import { PlaybarPopup, PlaybarPopupItem } from "../components/PlaybarPopup"
-import { TrackPage } from "./TrackPage"
+import { TrackPage } from "./track/TrackPage"
 import { SectionDivider } from "../components/SectionDivider"
-import { TextField } from "../components/TextField"
-import { Button } from "../components/Button"
+import { TextField } from "../controls/TextField"
+import { Button } from "../controls/Button"
 
 type QueueButtonState = {
 	popupVisible: boolean

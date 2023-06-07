@@ -1,7 +1,7 @@
 import { IDBPDatabase } from "idb"
 import * as builtInLevels from "../../../res/levels.json"
 import { AppSchema } from "../models/AppSchema"
-import { BuiltInLevel } from "../models/BuiltInLevel"
+import { MapOst } from "../models/MapOst"
 import { Track } from "../models/Track"
 import { Storage } from "./Storage"
 
@@ -22,7 +22,7 @@ export class TrackStorage {
 		}
 
 		if (track.slug in builtInLevels) {
-			const level = builtInLevels[track.slug] as BuiltInLevel
+			const level = builtInLevels[track.slug] as MapOst
 			if (!found) found = new Track(track)
 			found.builtInLevel = level
 			found.maps = found.maps || []

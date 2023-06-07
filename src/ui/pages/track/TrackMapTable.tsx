@@ -1,18 +1,18 @@
 import React from "react"
 import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
-import { MapListCallbacks, MapListSets } from "./MapListTypes"
-import { MapListRow } from "./MapListRow"
+import { TrackMapCallbacks, TrackMapSets } from "./TrackMapTypes"
+import { TrackMapRow } from "./TrackMapRow"
 
-type MapListTableProps = {
+type TrackMapTableProps = {
 	maps: MapDetail[]
 	scrollNodeRef?: React.RefObject<HTMLDivElement>
-} & MapListCallbacks &
-	MapListSets
+} & TrackMapCallbacks &
+	TrackMapSets
 
-export class MapListTable extends React.Component<MapListTableProps> {
+export class TrackMapTable extends React.Component<TrackMapTableProps> {
 	scrollNode: HTMLDivElement
 
-	constructor(props: MapListTableProps) {
+	constructor(props: TrackMapTableProps) {
 		super(props)
 		this.scrollNode = document.createElement("div")
 	}
@@ -86,7 +86,7 @@ export class MapListTable extends React.Component<MapListTableProps> {
 		const downloading = this.props.downloadingHashes?.has(hash)
 
 		return (
-			<MapListRow
+			<TrackMapRow
 				map={map}
 				showButtonGroup={!!this.props.matchHashes}
 				matches={matches}
