@@ -5,6 +5,7 @@ import { Icon } from "./Icon"
 
 type ButtonColor =
 	| "primary"
+	| "secondary"
 	| "green"
 	| "blue"
 	| "red"
@@ -19,8 +20,10 @@ type ButtonProps = {
 	text?: String
 	tooltip?: string
 	color?: ButtonColor
+	activeColor?: ButtonColor
 	outline?: boolean
 	size?: ButtonSize
+	isActive?: boolean
 	isDisabled?: boolean
 	className?: string
 	onClick?: () => void
@@ -46,6 +49,11 @@ const buttonColor: { [key in ButtonColor]: ButtonColorDef } = {
 		color: "var(--spice-button)",
 		hover: "var(--spice-button-active)",
 		text: "var(--spice-text)",
+	},
+	secondary: {
+		color: "var(--spice-subtext)",
+		hover: "var(--spice-text)",
+		text: "var(--spice-main)",
 	},
 	green: {
 		color: "#1db954",
@@ -81,11 +89,13 @@ const buttonColor: { [key in ButtonColor]: ButtonColorDef } = {
 
 type StyledProps = {
 	$clickable: boolean
+	$active: boolean
 	$outlined: boolean
 	$iconSecondary: boolean
 	$iconAndText: boolean
 	$size: number
 	$color: ButtonColorDef
+	$activeColor: ButtonColorDef
 }
 
 const ButtonOutline = css`
@@ -119,6 +129,8 @@ const ButtonOutline = css`
 
 const ButtonHover = css<StyledProps>`
 	&:enabled:hover {
+		--bs-icon-color: var(--bs-fg-hover);
+		color: var(--bs-fg-hover);
 		background: ${(props) => props.$color.hover};
 		transform: scale(${(props) => buttonScale[props.$size]});
 		transition: none 33ms cubic-bezier(0.3, 0, 0, 1);
@@ -135,7 +147,11 @@ const ButtonIcon = styled(Icon)``
 
 const ButtonBase = styled.button<StyledProps>`
 	--bs-button-size: ${(props) => `${props.$size}px`};
-	--bs-icon-color: ${(props) => props.$color.text};
+	--bs-fg-color: ${(props) =>
+		props.$active ? props.$activeColor.color : props.$color.text};
+	--bs-fg-hover: ${(props) =>
+		props.$active ? props.$activeColor.hover : props.$color.text};
+	--bs-icon-color: var(--bs-fg-color);
 
 	position: relative;
 	user-select: none;
@@ -151,7 +167,7 @@ const ButtonBase = styled.button<StyledProps>`
 	transition: none 33ms cubic-bezier(0.3, 0, 0.7, 1);
 	transition-property: transform, box-shadow, color, background-color;
 	background: ${(props) => props.$color.color};
-	color: ${(props) => props.$color.text};
+	color: var(--bs-fg-color);
 
 	&:disabled {
 		pointer-events: none;
@@ -210,8 +226,10 @@ const NormalButton = styled(ButtonBase)<StyledProps>`
 `
 
 const IconButton = styled(ButtonBase)<StyledProps>`
-	--bs-icon-color: ${(props) =>
-		props.$iconSecondary ? "var(--spice-subtext)" : props.$color.text};
+	/* --bs-icon-color: ${(props) =>
+		props.$iconSecondary
+			? "var(--spice-subtext)"
+			: "var(--bs-fg-color)"}; */
 
 	${(props) =>
 		props.$iconAndText
@@ -232,10 +250,11 @@ const IconButton = styled(ButtonBase)<StyledProps>`
 		props.$clickable &&
 		css<StyledProps>`
 			&:enabled:hover {
-				--bs-icon-color: ${(props) =>
+				--bs-icon-color: var(--bs-fg-hover);
+				/* --bs-icon-color: ${(props) =>
 					props.$iconSecondary
 						? "var(--spice-text)"
-						: props.$color.text};
+						: "var(--bs-fg-color)"}; */
 
 				${(props) => props.$iconAndText && `transform: none;`}
 				&:active {
@@ -249,9 +268,17 @@ export class Button extends React.PureComponent<ButtonProps> {
 	render() {
 		const type = this.props.type ?? "normal"
 		const size = this.props.size ?? 32
-		const color = this.props.outline
+		const outline = this.props.outline
+		const color = outline
 			? "transparent"
 			: this.props.color ?? (type == "normal" ? "primary" : "transparent")
+		let active = this.props.isActive && (color == "transparent" || outline)
+		let activeColor = this.props.activeColor ?? "primary"
+
+		if (type == "icon" && (outline || color == "transparent") && !active) {
+			active = true
+			activeColor = "secondary"
+		}
 
 		const Component = type == "normal" ? NormalButton : IconButton
 		return (
@@ -263,13 +290,15 @@ export class Button extends React.PureComponent<ButtonProps> {
 					!!this.props.onClick ||
 					type != "icon" ||
 					color != "transparent" ||
-					this.props.outline
+					outline
 				}
-				$outlined={this.props.outline}
-				$iconSecondary={this.props.outline || color == "transparent"}
+				$active={active}
+				$outlined={outline}
+				$iconSecondary={(outline || color == "transparent") && !active}
 				$iconAndText={this.props.icon && this.props.text}
 				$size={size}
 				$color={buttonColor[color]}
+				$activeColor={buttonColor[activeColor]}
 			>
 				{this.props.icon && (
 					<ButtonIcon icon={this.props.icon} size={16} />

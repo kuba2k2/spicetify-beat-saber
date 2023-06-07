@@ -344,7 +344,11 @@ export class DemoPage extends React.Component {
 							<ZlinkButton type="green" icon="block" />
 						</td>
 						<td>
-							<Button color="green" icon="block" />
+							<Button
+								color="green"
+								icon="block"
+								onClick={console.log}
+							/>
 						</td>
 					</tr>
 					<tr>
@@ -353,7 +357,30 @@ export class DemoPage extends React.Component {
 							<ZlinkButton type="icon" icon="block" />
 						</td>
 						<td>
-							<Button type="icon" icon="block" />
+							<Button
+								type="icon"
+								icon="block"
+								onClick={console.log}
+							/>
+						</td>
+					</tr>
+					<tr>
+						<td>Button / icon + active</td>
+						<td>
+							<ZlinkButton
+								type="icon"
+								icon="block"
+								isActive={true}
+							/>
+						</td>
+						<td>
+							<Button
+								type="icon"
+								icon="block"
+								activeColor="green"
+								isActive={true}
+								onClick={console.log}
+							/>
 						</td>
 					</tr>
 					<tr>
@@ -362,7 +389,11 @@ export class DemoPage extends React.Component {
 							<ZlinkButton type="icon-background" icon="block" />
 						</td>
 						<td>
-							<Button type="icon" icon="block" />
+							<Button
+								type="icon"
+								icon="block"
+								onClick={console.log}
+							/>
 						</td>
 					</tr>
 					<tr>
@@ -371,14 +402,43 @@ export class DemoPage extends React.Component {
 							<ZlinkButton type="icon-stroke" icon="block" />
 						</td>
 						<td>
-							<Button type="icon" outline={true} icon="block" />
+							<Button
+								type="icon"
+								outline={true}
+								icon="block"
+								onClick={console.log}
+							/>
+						</td>
+					</tr>
+					<tr>
+						<td>Button / icon-stroke + active</td>
+						<td>
+							<ZlinkButton
+								type="icon-stroke"
+								icon="block"
+								isActive={true}
+							/>
+						</td>
+						<td>
+							<Button
+								type="icon"
+								outline={true}
+								icon="block"
+								isActive={true}
+								onClick={console.log}
+							/>
 						</td>
 					</tr>
 					<tr>
 						<td>Button / icon + text</td>
 						<td></td>
 						<td>
-							<Button type="icon" icon="bs-note" text="2" />
+							<Button
+								type="icon"
+								icon="bs-note"
+								text="2"
+								onClick={console.log}
+							/>
 						</td>
 					</tr>
 				</StyledTable>

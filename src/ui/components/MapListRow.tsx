@@ -3,6 +3,7 @@ import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
 import { ButtonGroup } from "./ButtonGroup"
 import { Characteristic, Difficulty, DifficultyBadge } from "./DifficultyBadge"
 import { MapListCallbacks } from "./MapListTypes"
+import { Button } from "./Button"
 
 type MapListRowProps = {
 	map: MapDetail
@@ -120,39 +121,42 @@ export class MapListRow extends React.Component<MapListRowProps> {
 					extraClassName="bs-ml-actions"
 				>
 					{this.props.onPreviewClick && (
-						<BeatSaber.React.Button
+						<Button
 							type="icon"
 							icon="play"
 							tooltip="Preview map"
+							activeColor="secondary"
 							onClick={this.handlePreviewClick}
 						/>
 					)}
 
 					{this.props.onPlayClick && (
-						<BeatSaber.React.Button
+						<Button
 							type="icon"
 							icon="playlist"
 							tooltip="Preview audio"
+							activeColor="secondary"
 							onClick={this.handlePlayClick}
 						/>
 					)}
 
 					{this.props.onBookmarkClick && (
-						<BeatSaber.React.Button
+						<Button
 							type="icon"
-							ta-id={
+							icon={
 								this.props.bookmarked
-									? "bs-icon-bookmark-filled"
-									: "bs-icon-bookmark"
+									? "bs-bookmark-filled"
+									: "bs-bookmark"
 							}
 							tooltip="Bookmark"
+							activeColor="secondary"
 							isActive={this.props.bookmarked === true}
 							isDisabled={this.props.bookmarked === null}
 							onClick={this.handleBookmarkClick}
 						/>
 					)}
 					{this.props.onDownloadClick && (
-						<BeatSaber.React.Button
+						<Button
 							type="icon"
 							icon={
 								this.props.downloaded
@@ -160,6 +164,7 @@ export class MapListRow extends React.Component<MapListRowProps> {
 									: "download"
 							}
 							tooltip="Download"
+							activeColor="secondary"
 							isActive={this.props.downloaded === true}
 							isDisabled={this.props.downloaded === null}
 							onClick={this.handleDownloadClick}

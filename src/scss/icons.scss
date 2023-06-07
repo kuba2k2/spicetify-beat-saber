@@ -18,14 +18,6 @@
 @include fix-icon("bs-icon-bookmark");
 @include fix-icon("bs-icon-bookmark-filled");
 
-// these icons look a bit shifted down
-.bs-icon-bookmark {
-	&::before,
-	&-filled::before {
-		transform: translateY(-1px);
-	}
-}
-
 // remove icon margins
 [class^="bs-icon-"]:before,
 [class*=" bs-icon-"]:before {
