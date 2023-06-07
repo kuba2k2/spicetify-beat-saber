@@ -7,6 +7,7 @@ type PlaybarPopupProps = {
 	isOpen: boolean
 	title: string
 	titleIcon?: IconType
+	className?: string
 	onTitleClick?: () => void
 	onTitleIconClick?: () => void
 	children: React.ReactNode[]
@@ -63,7 +64,7 @@ const Header = styled.div`
 `
 
 const HeaderButton = styled(Button)`
-	position: absolute;
+	position: absolute !important;
 	right: 8px;
 `
 
@@ -77,7 +78,10 @@ const Content = styled.div`
 export class PlaybarPopup extends React.Component<PlaybarPopupProps> {
 	render() {
 		return (
-			<Popup $visible={this.props.isOpen}>
+			<Popup
+				className={this.props.className}
+				$visible={this.props.isOpen}
+			>
 				<Header>
 					<h3 onClick={this.props.onTitleClick}>
 						{this.props.title}
@@ -103,6 +107,7 @@ type PlaybarPopupItemProps = {
 	info?: any
 	isActive?: boolean
 	isDisabled?: boolean
+	className?: string
 	onClick?: () => void
 }
 
@@ -168,7 +173,7 @@ const ItemInfo = styled.p`
 export class PlaybarPopupItem extends React.Component<PlaybarPopupItemProps> {
 	render() {
 		return (
-			<li onClick={this.props.onClick}>
+			<li className={this.props.className} onClick={this.props.onClick}>
 				<Item
 					$isActive={this.props.isActive}
 					$isDisabled={this.props.isDisabled}

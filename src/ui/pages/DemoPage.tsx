@@ -5,6 +5,7 @@ import { TrackBase } from "../../core/models/TrackBase"
 import { Button } from "../components/Button"
 import { DifficultyBadge } from "../components/DifficultyBadge"
 import { Icon } from "../components/Icon"
+import { SearchField } from "../components/SearchField"
 import { TextField } from "../components/TextField"
 import { Toggle } from "../components/Toggle"
 import { TrackPage } from "./TrackPage"
@@ -152,7 +153,9 @@ export class DemoPage extends React.Component {
 					</tr>
 					<tr>
 						<td>SearchField</td>
-						<td>{/* <SearchField onSearch={console.log} /> */}</td>
+						<td>
+							<SearchField onSearch={console.log} />
+						</td>
 					</tr>
 					<tr>
 						<td>DifficultyBadge</td>

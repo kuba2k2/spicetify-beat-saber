@@ -11,15 +11,12 @@ type TextFieldProps = {
 	value?: string
 	iconStart?: IconType
 	iconEnd?: IconType
+	className?: string
 	onChange?: (value: string) => void
 	onSubmit?: (value: string) => void
 	onIconStartClick?: () => void
 	onIconEndClick?: () => void
 }
-
-const Field = styled.div`
-	margin-bottom: 15px;
-`
 
 const Label = styled.label`
 	display: inline-block;
@@ -51,7 +48,7 @@ const Input = styled.input`
 	height: 40px;
 	padding: 0 12px;
 	font-size: 14px;
-	background: rgba(var(--spice-rgb-text), 0.1);
+	background: rgba(var(--spice-rgb-text), 0.2);
 	color: var(--spice-text);
 	border-radius: 4px !important;
 	border: 1px solid transparent;
@@ -87,7 +84,7 @@ export class TextField extends React.PureComponent<TextFieldProps> {
 
 	render() {
 		return (
-			<Field>
+			<div className={this.props.className}>
 				{this.props.label && (
 					<Label htmlFor={this.props.key}>{this.props.label}</Label>
 				)}
@@ -123,7 +120,7 @@ export class TextField extends React.PureComponent<TextFieldProps> {
 						onKeyDown={this.handleKeyDown}
 					/>
 				</InputWrapper>
-			</Field>
+			</div>
 		)
 	}
 }

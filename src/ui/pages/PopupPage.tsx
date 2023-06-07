@@ -32,6 +32,10 @@ const SettingsInfo = styled.div`
 	}
 `
 
+const SettingsField = styled(TextField)`
+	margin-bottom: 15px;
+`
+
 export class PopupPage extends React.Component<unknown, QueueButtonState> {
 	subscription: Subscription
 
@@ -158,7 +162,7 @@ export class PopupPage extends React.Component<unknown, QueueButtonState> {
 
 					{Object.entries(inputsBsaber).map(
 						([key, [value, icon]]) => (
-							<TextField
+							<SettingsField
 								key={key}
 								type={
 									key.toLowerCase().includes("password")
@@ -181,7 +185,7 @@ export class PopupPage extends React.Component<unknown, QueueButtonState> {
 
 					{Object.entries(inputsBackend).map(
 						([key, [value, icon]]) => (
-							<TextField
+							<SettingsField
 								key={key}
 								label={value}
 								placeholder={value}

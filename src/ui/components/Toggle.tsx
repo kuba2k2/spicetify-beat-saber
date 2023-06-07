@@ -4,9 +4,9 @@ import styled from "styled-components"
 type ToggleProps = {
 	isActive?: boolean
 	isDisabled?: boolean
-	onChange?: (isActive: boolean) => boolean
+	className?: string
 	labelId?: string
-	taId?: string
+	onChange?: (isActive: boolean) => boolean
 }
 
 const ToggleOuter = styled.div`
@@ -87,7 +87,7 @@ export class Toggle extends React.PureComponent<ToggleProps> {
 
 	render() {
 		return (
-			<ToggleOuter>
+			<ToggleOuter className={this.props.className}>
 				<ToggleInput
 					type="checkbox"
 					name={this.props.labelId}

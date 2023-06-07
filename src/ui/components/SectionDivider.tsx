@@ -5,6 +5,7 @@ type SectionDividerProps = {
 	children?: React.ReactNode[]
 	description?: string
 	title?: React.ReactNode
+	className?: string
 }
 
 const DividerOuter = styled.div`
@@ -46,7 +47,7 @@ const DividerAuxiliary = styled.div`
 export class SectionDivider extends React.PureComponent<SectionDividerProps> {
 	render() {
 		return (
-			<DividerOuter>
+			<DividerOuter className={this.props.className}>
 				<DividerContainer>
 					<div>
 						{this.props.title && (
