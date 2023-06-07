@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react"
 import ReactDOM from "react-dom"
+import { __PRIVATE__ } from "styled-components"
 import { Storage } from "./storage/Storage"
 import { Track } from "./models/Track"
 import { TrackQueue } from "./queue/TrackQueue"
@@ -43,6 +44,7 @@ export class BeatSaberCore {
 		bsaberUsername: null,
 		lastSyncTime: 0,
 	}
+	StyleSheets = new Map<Document, any>()
 
 	private audio: HTMLAudioElement = null
 	private redirector: HTMLAnchorElement = null
@@ -79,7 +81,7 @@ export class BeatSaberCore {
 				".nowplaying-add-button"
 			)
 			nowPlayingButton?.after(
-				this.render(<NowPlayingPage />, null, null, "bs-now-playing")
+				this.render(<NowPlayingPage />, null, "bs-now-playing")
 			)
 		}
 
@@ -94,7 +96,7 @@ export class BeatSaberCore {
 			// 	".main-addButton-button"
 			// )
 			// nowPlayingButton?.after(
-			// 	this.render(<NowPlayingPage />, null, null, "bs-now-playing")
+			// 	this.render(<NowPlayingPage />, null, "bs-now-playing")
 			// )
 		}
 	}
@@ -105,21 +107,24 @@ export class BeatSaberCore {
 
 	public render(
 		component: ReactElement,
-		window?: Window,
 		parent?: HTMLElement,
 		parentClass?: string
 	) {
-		if (!window) {
-			window = global.window
-		}
+		const document = parent?.ownerDocument ?? window.document
 		if (!parent) {
-			parent = window.document.createElement("div")
+			parent = document.createElement("div")
 			parent.className = parentClass
 		}
+
+		let sheet = this.StyleSheets.get(document)
+		if (!sheet) {
+			sheet = new __PRIVATE__.StyleSheet({ target: document.head })
+			this.StyleSheets.set(document, sheet)
+			console.log("[BeatSaber] Created StyleSheet", sheet, "in", document)
+		}
+
 		ReactDOM.render(
-			<StyleSheetManager target={window.document.head}>
-				{component}
-			</StyleSheetManager>,
+			<StyleSheetManager sheet={sheet}>{component}</StyleSheetManager>,
 			parent
 		)
 		return parent

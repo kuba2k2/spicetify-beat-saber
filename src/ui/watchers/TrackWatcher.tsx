@@ -76,7 +76,6 @@ export class TrackWatcher extends BaseWatcher<HTMLTableRowElement> {
 
 		BeatSaber.Core.render(
 			<StateButton trackBase={track} />,
-			window,
 			this.buttonCell
 		)
 	}

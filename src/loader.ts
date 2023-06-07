@@ -162,7 +162,6 @@ function BeatSaberLoaderRender() {
 	// render the app page
 	BeatSaber.Core.render(
 		BeatSaber.Core.getAppPage(),
-		window,
 		window.document.getElementById("root")
 	)
 	console.log("[BeatSaber] App page rendered")

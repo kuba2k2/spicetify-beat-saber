@@ -4,6 +4,7 @@
 
 	button {
 		width: 20px;
+		--bs-button-size: 20px;
 
 		&::before {
 			padding-left: 2px;

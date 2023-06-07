@@ -2,6 +2,7 @@ import React from "react"
 import { Subscription } from "rxjs"
 import { Track, TrackState } from "../../core/models/Track"
 import { TrackBase } from "../../core/models/TrackBase"
+import { Button, ButtonColor } from "../controls/Button"
 import { TrackPage } from "../pages/track/TrackPage"
 
 type StateButtonProps = {
@@ -13,23 +14,29 @@ type StateButtonState = {
 	track: Track
 } & StateButtonProps
 
-const stateClassMap = new Map([
-	[TrackState.DEFAULT, [null, null]],
-	[TrackState.ENQUEUED, ["more", null]],
-	[TrackState.SEARCHING, ["search", null]],
-	[TrackState.BUILT_IN, ["offline", null]],
-	[TrackState.NOT_INTERESTED, ["block", "bs-hover"]],
-	[TrackState.MAPS_NO_RESULTS, ["x", "bs-hover"]],
-	[TrackState.MAPS_NO_RESULTS_NEW, ["x", null]],
-	[TrackState.MAPS_EXCLUDED, ["x", "bs-hover"]],
-	[TrackState.MAPS_NOT_INTERESTED, ["block", null]],
-	[TrackState.MAPS_POSSIBLE, ["info", "bs-yellow"]],
-	[TrackState.MAPS_MATCHED, ["check-alt", null]],
-	[TrackState.MAPS_MATCHED_NEW, ["check-alt", "bs-green"]],
-	[TrackState.BOOKMARKED, ["tag", null]],
-	[TrackState.DOWNLOADING, ["download", null]],
-	[TrackState.DOWNLOADED, ["downloaded", null]],
-]) as Map<TrackState, [Spicetify.Model.Icon | null, string | null]>
+const stateStyle: {
+	[key in TrackState]: {
+		icon: IconType | null
+		hover?: boolean
+		color?: ButtonColor
+	}
+} = {
+	DEFAULT: { icon: null },
+	ENQUEUED: { icon: "more" },
+	SEARCHING: { icon: "search" },
+	BUILT_IN: { icon: "offline" },
+	NOT_INTERESTED: { icon: "block", hover: true },
+	MAPS_NO_RESULTS: { icon: "x", hover: true },
+	MAPS_NO_RESULTS_NEW: { icon: "x" },
+	MAPS_EXCLUDED: { icon: "x", hover: true },
+	MAPS_NOT_INTERESTED: { icon: "block" },
+	MAPS_POSSIBLE: { icon: "info", color: "yellow" },
+	MAPS_MATCHED: { icon: "check-alt" },
+	MAPS_MATCHED_NEW: { icon: "check-alt", color: "green" },
+	BOOKMARKED: { icon: "tag" },
+	DOWNLOADING: { icon: "download" },
+	DOWNLOADED: { icon: "downloaded" },
+}
 
 export class StateButton extends React.Component<
 	StateButtonProps,
@@ -147,13 +154,15 @@ export class StateButton extends React.Component<
 	}
 
 	render() {
-		const [icon, taId] = stateClassMap.get(this.state.track.state)
+		const style = stateStyle[this.state.track.state]
 		return (
-			<BeatSaber.React.Button
+			<Button
+				className={style.hover && "bs-hover"}
 				type="icon"
-				icon={icon}
 				size={32}
-				taId={taId}
+				icon={style.icon}
+				activeColor={style.color}
+				isActive={!!style.color}
 				tooltip={this.getTooltip()}
 				onClick={this.handleClick}
 			/>

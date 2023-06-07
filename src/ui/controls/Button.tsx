@@ -3,12 +3,13 @@ import { CSSProperties } from "react"
 import styled, { css } from "styled-components"
 import { Icon } from "./Icon"
 
-type ButtonColor =
+export type ButtonColor =
 	| "primary"
 	| "secondary"
 	| "green"
 	| "blue"
 	| "red"
+	| "yellow"
 	| "white"
 	| "gray"
 	| "transparent"
@@ -69,6 +70,11 @@ const buttonColor: { [key in ButtonColor]: ButtonColorDef } = {
 		color: "#cd1a2b",
 		hover: "#eb182c",
 		text: "#ffffff",
+	},
+	yellow: {
+		color: "#ffeb3b",
+		hover: "#eeff41",
+		text: "#000000",
 	},
 	white: {
 		color: "#ffffff",
