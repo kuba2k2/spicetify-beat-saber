@@ -301,7 +301,7 @@ export class Button extends React.PureComponent<ButtonProps> {
 				$active={active}
 				$outlined={outline}
 				$iconSecondary={(outline || color == "transparent") && !active}
-				$iconAndText={this.props.icon && this.props.text}
+				$iconAndText={!!(this.props.icon && this.props.text)}
 				$size={size}
 				$color={buttonColor[color]}
 				$activeColor={buttonColor[activeColor]}

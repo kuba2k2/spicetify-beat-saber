@@ -1,6 +1,5 @@
 import React, { ReactElement } from "react"
 import ReactDOM from "react-dom"
-import { __PRIVATE__ } from "styled-components"
 import { Storage } from "./storage/Storage"
 import { Track } from "./models/Track"
 import { TrackQueue } from "./queue/TrackQueue"
@@ -12,7 +11,7 @@ import { MapQueue } from "./queue/MapQueue"
 import { Subject } from "rxjs"
 import { ApiUtils } from "./api/ApiUtils"
 import { MapCategory } from "./storage/MapStorage"
-import { StyleSheetManager } from "styled-components"
+import { StyleSheetManager, ServerStyleSheet } from "styled-components"
 
 declare global {
 	interface Window {
@@ -118,7 +117,16 @@ export class BeatSaberCore {
 
 		let sheet = this.StyleSheets.get(document)
 		if (!sheet) {
-			sheet = new __PRIVATE__.StyleSheet({ target: document.head })
+			const serverSheet = new ServerStyleSheet()
+			// @ts-ignore
+			serverSheet.instance.options.isServer = false
+			// @ts-ignore
+			serverSheet.instance.server = false
+			// @ts-ignore
+			sheet = serverSheet.instance.reconstructWithOptions({
+				target: document.head,
+				server: false,
+			})
 			this.StyleSheets.set(document, sheet)
 			console.log("[BeatSaber] Created StyleSheet", sheet, "in", document)
 		}
