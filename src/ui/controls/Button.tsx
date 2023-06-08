@@ -239,11 +239,17 @@ const IconButton = styled(ButtonBase)<StyledProps>`
 
 	${(props) =>
 		props.$iconAndText
-			? css`
-					${ButtonIcon} {
-						transform: translateY(25%);
-					}
-			  `
+			? BeatSaber.IsZlink
+				? css`
+						${ButtonIcon} {
+							transform: translateY(25%);
+						}
+				  `
+				: css`
+						${ButtonIcon} {
+							transform: translateY(10%);
+						}
+				  `
 			: css`
 					width: var(--bs-button-size);
 

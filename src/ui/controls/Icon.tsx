@@ -17,6 +17,10 @@ const IconOuter = styled.div<{ $size: number }>`
 const IconZlink = styled.i<{ $size: number }>`
 	color: var(--bs-icon-color);
 	line-height: ${(props) => `${props.$size}px`};
+
+	&::before {
+		font-size: ${(props) => `${props.$size}px`};
+	}
 `
 
 const IconXpui = styled.svg`
