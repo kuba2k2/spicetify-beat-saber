@@ -1,8 +1,8 @@
 import React from "react"
 import { TrackBase } from "../../core/models/TrackBase"
-import { StateButton } from "../components/StateButton"
+import { TrackApp } from "./TrackApp"
 
-type NowPlayingPageState = {
+type NowPlayingAppState = {
 	data?: {
 		track: {
 			uri: string
@@ -14,9 +14,9 @@ type NowPlayingPageState = {
 	}
 }
 
-export class NowPlayingPage extends React.Component<
+export class NowPlayingApp extends React.Component<
 	unknown,
-	NowPlayingPageState
+	NowPlayingAppState
 > {
 	timeoutId: NodeJS.Timeout
 
@@ -48,6 +48,6 @@ export class NowPlayingPage extends React.Component<
 			title: data.track.metadata.title,
 			artists: [data.track.metadata.artist_name],
 		}
-		return <StateButton trackBase={track} />
+		return <TrackApp trackBase={track} />
 	}
 }

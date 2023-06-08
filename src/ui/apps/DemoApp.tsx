@@ -33,7 +33,7 @@ const StyledTable = styled.table`
 	}
 `
 
-export class DemoPage extends React.Component {
+export class DemoApp extends React.Component {
 	tracks: TrackBase[] = [
 		{
 			uri: Spicetify.URI.fromString(

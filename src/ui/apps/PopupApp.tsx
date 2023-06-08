@@ -10,7 +10,7 @@ import { SectionDivider } from "../components/SectionDivider"
 import { TextField } from "../controls/TextField"
 import { Button } from "../controls/Button"
 
-type QueueButtonState = {
+type PopupAppState = {
 	popupVisible: boolean
 } & QueueState
 
@@ -37,7 +37,7 @@ const SettingsField = styled(TextField)`
 	margin-bottom: 15px;
 `
 
-export class PopupPage extends React.Component<unknown, QueueButtonState> {
+export class PopupApp extends React.Component<unknown, PopupAppState> {
 	subscription: Subscription
 
 	constructor() {

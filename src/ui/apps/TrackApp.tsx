@@ -3,16 +3,16 @@ import { Subscription } from "rxjs"
 import { Track, TrackState } from "../../core/models/Track"
 import { TrackBase } from "../../core/models/TrackBase"
 import { Button, ButtonColor } from "../controls/Button"
-import { TrackPage } from "../pages/track/TrackPage"
+import { TrackPage } from "./track/TrackPage"
 
-type StateButtonProps = {
+type TrackAppProps = {
 	trackBase: TrackBase
 	onClick?: (track: Track) => void
 }
 
-type StateButtonState = {
+type TrackAppState = {
 	track: Track
-} & StateButtonProps
+} & TrackAppProps
 
 const stateStyle: {
 	[key in TrackState]: {
@@ -38,13 +38,10 @@ const stateStyle: {
 	DOWNLOADED: { icon: "downloaded" },
 }
 
-export class StateButton extends React.Component<
-	StateButtonProps,
-	StateButtonState
-> {
+export class TrackApp extends React.Component<TrackAppProps, TrackAppState> {
 	subscription: Subscription = null
 
-	constructor(props: StateButtonProps) {
+	constructor(props: TrackAppProps) {
 		super(props)
 		this.handleClick = this.handleClick.bind(this)
 

@@ -4,10 +4,10 @@ import { __PRIVATE__ } from "styled-components"
 import { Storage } from "./storage/Storage"
 import { Track } from "./models/Track"
 import { TrackQueue } from "./queue/TrackQueue"
-import { DemoPage } from "../ui/pages/DemoPage"
+import { DemoApp } from "../ui/apps/DemoApp"
 import { AppWatcher } from "../ui/watchers/AppWatcher"
-import { PopupPage } from "../ui/pages/PopupPage"
-import { NowPlayingPage } from "../ui/pages/NowPlayingPage"
+import { PopupApp } from "../ui/apps/PopupApp"
+import { NowPlayingApp } from "../ui/apps/NowPlayingApp"
 import { MapQueue } from "./queue/MapQueue"
 import { Subject } from "rxjs"
 import { ApiUtils } from "./api/ApiUtils"
@@ -75,13 +75,13 @@ export class BeatSaberCore {
 			const playerControls = document.querySelector(
 				".extra-controls-container"
 			)
-			playerControls.prepend(this.render(<PopupPage />))
+			playerControls.prepend(this.render(<PopupApp />))
 			// add now playing button
 			const nowPlayingButton = document.querySelector(
 				".nowplaying-add-button"
 			)
 			nowPlayingButton?.after(
-				this.render(<NowPlayingPage />, null, "bs-now-playing")
+				this.render(<NowPlayingApp />, null, "bs-now-playing")
 			)
 		}
 
@@ -90,7 +90,7 @@ export class BeatSaberCore {
 			const playerControls = document.querySelector(
 				".main-nowPlayingBar-extraControls"
 			)
-			playerControls?.prepend(this.render(<PopupPage />))
+			playerControls?.prepend(this.render(<PopupApp />))
 			// add now playing button
 			// const nowPlayingButton = document.querySelector(
 			// 	".main-addButton-button"
@@ -102,7 +102,7 @@ export class BeatSaberCore {
 	}
 
 	public getAppPage() {
-		return <DemoPage />
+		return <DemoApp />
 	}
 
 	public render(

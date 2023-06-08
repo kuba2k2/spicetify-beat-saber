@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import { TrackBase } from "../../core/models/TrackBase"
-import { StateButton } from "../components/StateButton"
+import { TrackApp } from "../apps/TrackApp"
 import { BaseWatcher } from "./BaseWatcher"
 import { TracklistType } from "./TracklistType"
 
@@ -74,10 +74,7 @@ export class TrackWatcher extends BaseWatcher<HTMLTableRowElement> {
 
 		const track: TrackBase = { uri, title, artists }
 
-		BeatSaber.Core.render(
-			<StateButton trackBase={track} />,
-			this.buttonCell
-		)
+		BeatSaber.Core.render(<TrackApp trackBase={track} />, this.buttonCell)
 	}
 
 	handleDisconnect() {
