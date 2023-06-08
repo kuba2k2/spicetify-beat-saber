@@ -54,7 +54,7 @@ export class Icon extends React.PureComponent<IconProps> {
 						role="presentation"
 						width={size}
 						height={size}
-						viewBox={`0 0 ${size} ${size}`}
+						viewBox={`0 0 16 16`}
 						dangerouslySetInnerHTML={{
 							// @ts-ignore
 							__html: Spicetify.SVGIcons[icon],

@@ -1,4 +1,5 @@
 import React from "react"
+import styled from "styled-components"
 import { TrackBase } from "../../core/models/TrackBase"
 import { TrackApp } from "./TrackApp"
 
@@ -13,6 +14,12 @@ type NowPlayingAppState = {
 		}
 	}
 }
+
+const StyledApp = styled(TrackApp)`
+	position: absolute;
+	top: -5px;
+	right: -32px;
+`
 
 export class NowPlayingApp extends React.Component<
 	unknown,
@@ -48,6 +55,11 @@ export class NowPlayingApp extends React.Component<
 			title: data.track.metadata.title,
 			artists: [data.track.metadata.artist_name],
 		}
-		return <TrackApp trackBase={track} />
+		if (BeatSaber.IsZlink) {
+			return <StyledApp trackBase={track} />
+		}
+		if (BeatSaber.IsXpui) {
+			return <TrackApp trackBase={track} />
+		}
 	}
 }

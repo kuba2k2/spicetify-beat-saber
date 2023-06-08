@@ -70,33 +70,59 @@ export class BeatSaberCore {
 		setTimeout(this.syncMaps, 5000)
 
 		if (BeatSaber.IsZlink) {
+			// build icon map
+			BeatSaber.Icons = {
+				queue: "more",
+				search: "search",
+				builtin: "offline",
+				block: "block",
+				x: "x",
+				question: "info",
+				check: "check-alt",
+				tag: "tag",
+				download: "download",
+				downloaded: "downloaded",
+			}
+
 			// add popup button to player footer
 			const playerControls = document.querySelector(
 				".extra-controls-container"
 			)
 			playerControls.prepend(this.render(<PopupApp />))
+
 			// add now playing button
 			const nowPlayingButton = document.querySelector(
 				".nowplaying-add-button"
 			)
-			nowPlayingButton?.after(
-				this.render(<NowPlayingApp />, null, "bs-now-playing")
-			)
+			nowPlayingButton?.after(this.render(<NowPlayingApp />))
 		}
 
 		if (BeatSaber.IsXpui) {
+			// build icon map
+			BeatSaber.Icons = {
+				queue: "more",
+				search: "search",
+				builtin: "offline",
+				block: "block",
+				x: "x",
+				question: "podcasts",
+				check: "check-alt-fill" as IconType,
+				tag: "ticket" as IconType,
+				download: "download",
+				downloaded: "downloaded",
+			}
+
 			// add popup button to player footer
 			const playerControls = document.querySelector(
 				".main-nowPlayingBar-extraControls"
 			)
 			playerControls?.prepend(this.render(<PopupApp />))
+
 			// add now playing button
-			// const nowPlayingButton = document.querySelector(
-			// 	".main-addButton-button"
-			// )
-			// nowPlayingButton?.after(
-			// 	this.render(<NowPlayingPage />, null, "bs-now-playing")
-			// )
+			const nowPlayingButton = document.querySelector(
+				".main-addButton-button"
+			)
+			nowPlayingButton?.after(this.render(<NowPlayingApp />))
 		}
 	}
 

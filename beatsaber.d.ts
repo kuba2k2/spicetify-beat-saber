@@ -8,6 +8,7 @@ declare global {
 		BaseUrl: string
 		IsZlink: boolean
 		IsXpui: boolean
+		Icons: {[key in StateIconType]: IconType}
 	}
 	interface Window {
 		BeatSaber: BeatSaberGlobal
@@ -26,4 +27,16 @@ declare global {
 		"bs-note" |
 		"bs-noarrows" |
 		Spicetify.Model.Icon
+
+	type StateIconType =
+		"queue" |
+		"search" |
+		"builtin" |
+		"block" |
+		"x" |
+		"question" |
+		"check" |
+		"tag" |
+		"download" |
+		"downloaded"
 }

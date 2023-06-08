@@ -7,6 +7,7 @@ import { TrackPage } from "./track/TrackPage"
 
 type TrackAppProps = {
 	trackBase: TrackBase
+	className?: string
 	onClick?: (track: Track) => void
 }
 
@@ -16,23 +17,23 @@ type TrackAppState = {
 
 const stateStyle: {
 	[key in TrackState]: {
-		icon: IconType | null
+		icon: StateIconType | null
 		hover?: boolean
 		color?: ButtonColor
 	}
 } = {
 	DEFAULT: { icon: null },
-	ENQUEUED: { icon: "more" },
+	ENQUEUED: { icon: "queue" },
 	SEARCHING: { icon: "search" },
-	BUILT_IN: { icon: "offline" },
+	BUILT_IN: { icon: "builtin" },
 	NOT_INTERESTED: { icon: "block", hover: true },
 	MAPS_NO_RESULTS: { icon: "x", hover: true },
 	MAPS_NO_RESULTS_NEW: { icon: "x" },
 	MAPS_EXCLUDED: { icon: "x", hover: true },
 	MAPS_NOT_INTERESTED: { icon: "block" },
-	MAPS_POSSIBLE: { icon: "info", color: "yellow" },
-	MAPS_MATCHED: { icon: "check-alt" },
-	MAPS_MATCHED_NEW: { icon: "check-alt", color: "green" },
+	MAPS_POSSIBLE: { icon: "question", color: "yellow" },
+	MAPS_MATCHED: { icon: "check" },
+	MAPS_MATCHED_NEW: { icon: "check", color: "green" },
 	BOOKMARKED: { icon: "tag" },
 	DOWNLOADING: { icon: "download" },
 	DOWNLOADED: { icon: "downloaded" },
@@ -154,10 +155,12 @@ export class TrackApp extends React.Component<TrackAppProps, TrackAppState> {
 		const style = stateStyle[this.state.track.state]
 		return (
 			<Button
-				className={style.hover && "bs-hover"}
+				className={`${this.props.className} ${
+					style.hover ? "bs-hover" : ""
+				}`}
 				type="icon"
 				size={32}
-				icon={style.icon}
+				icon={BeatSaber.Icons[style.icon]}
 				activeColor={style.color}
 				isActive={!!style.color}
 				tooltip={this.getTooltip()}
