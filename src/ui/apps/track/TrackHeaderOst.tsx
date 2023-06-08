@@ -1,9 +1,20 @@
 import React from "react"
+import styled from "styled-components"
 import { MapOst } from "../../../core/models/MapOst"
+import { TrackHeader } from "../../components/TrackHeader"
 
 type TrackHeaderOstProps = {
 	level: MapOst
 }
+
+const SubName = styled.span`
+	color: white;
+`
+
+const Pack = styled.h3`
+	margin: 0;
+	color: white;
+`
 
 export class TrackHeaderOst extends React.Component<TrackHeaderOstProps> {
 	render() {
@@ -18,28 +29,16 @@ export class TrackHeaderOst extends React.Component<TrackHeaderOstProps> {
 		}
 
 		return (
-			<div className="bs-builtin-header">
-				<BeatSaber.React.HeaderData
-					uri="spotify:app:beatsaber"
-					title={level.songName}
-					label={level.songAuthorName}
-					metaInfo={
-						<div>
-							<span className="bs-builtin-subname">
-								{level.songSubName}
-							</span>
-							<br />
-							<h3 className="bs-builtin-pack">{source}</h3>
-						</div>
-					}
-					imageUrl={`${BeatSaber.BaseUrl}/levels/${level.cover}.png`}
-					backgroundType="image"
-					backgroundImageUrl={`${BeatSaber.BaseUrl}/levelpacks/${level.pack.cover}.png`}
-					hideAddButton={true}
-					hidePlayButton={true}
-					scrollNode={document.createElement("div")}
-				/>
-			</div>
+			<TrackHeader
+				title={level.songName}
+				label={level.songAuthorName}
+				imageUrl={`${BeatSaber.BaseUrl}/levels/${level.cover}.png`}
+				backgroundImageUrl={`${BeatSaber.BaseUrl}/levelpacks/${level.pack.cover}.png`}
+			>
+				<SubName>{level.songSubName}</SubName>
+				<br />
+				<Pack>{source}</Pack>
+			</TrackHeader>
 		)
 	}
 }
