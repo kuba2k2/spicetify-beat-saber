@@ -57,12 +57,13 @@ export class TrackPage extends React.Component<TrackPageProps, TrackPageState> {
 	}
 
 	static showAsModal(track: Track) {
-		Spicetify.showReactModal({
-			title: "Beat Saber - Search results",
-			children: <TrackPage track={track} />,
-			okLabel: "OK",
-			className: "bs-modal",
-		})
+		BeatSaber.Core.renderModal(
+			{
+				title: "Beat Saber - Search results",
+				className: "bs-modal",
+			},
+			<TrackPage track={track} />
+		)
 	}
 
 	private log(...data: unknown[]) {

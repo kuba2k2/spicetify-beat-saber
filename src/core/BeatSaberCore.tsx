@@ -12,6 +12,7 @@ import { Subject } from "rxjs"
 import { ApiUtils } from "./api/ApiUtils"
 import { MapCategory } from "./storage/MapStorage"
 import { StyleSheetManager, ServerStyleSheet } from "styled-components"
+import { XpuiModal } from "../ui/components/XpuiModal"
 
 declare global {
 	interface Window {
@@ -162,6 +163,22 @@ export class BeatSaberCore {
 			parent
 		)
 		return parent
+	}
+
+	public renderModal(
+		options: Omit<Spicetify.ModalParams, "children">,
+		...children: React.ReactNode[]
+	) {
+		options.okLabel = options.okLabel ?? "OK"
+		options.isCancelable = options.isCancelable === false ? false : true
+
+		if (BeatSaber.IsZlink) {
+			Spicetify.showReactModal({ ...options, children: children })
+		}
+
+		if (BeatSaber.IsXpui) {
+			XpuiModal.open(document.body, { ...options, children: children })
+		}
 	}
 
 	public async syncMaps() {

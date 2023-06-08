@@ -16,7 +16,7 @@ type NowPlayingAppState = {
 }
 
 const StyledApp = styled(TrackApp)`
-	position: absolute;
+	position: absolute !important;
 	top: -5px;
 	right: -32px;
 `

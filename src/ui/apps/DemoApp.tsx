@@ -121,6 +121,27 @@ export class DemoApp extends React.Component {
 		return (
 			<PageWrapper>
 				<Title>Demo Page</Title>
+				<div>
+					<Button
+						text="Open modal"
+						onClick={() =>
+							BeatSaber.Core.renderModal(
+								{
+									title: "Modal Test",
+									className: "bs-modal",
+								},
+								<div
+									style={{
+										width: "100%",
+										height: "1000px",
+										background:
+											"linear-gradient(0deg, white, black)",
+									}}
+								/>
+							)
+						}
+					/>
+				</div>
 				<StyledTable>
 					<tr>
 						<th>Name</th>
