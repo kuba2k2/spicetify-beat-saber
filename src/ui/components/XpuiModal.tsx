@@ -1,4 +1,5 @@
 import React, { MouseEvent } from "react"
+import ReactDOM from "react-dom"
 import styled from "styled-components"
 import { Button } from "../controls/Button"
 
@@ -62,6 +63,7 @@ export class XpuiModal extends React.Component<
 	close() {
 		this.setState({ isOpen: false })
 		setTimeout(() => {
+			ReactDOM.unmountComponentAtNode(this.props.modal)
 			this.props.modal.remove()
 		}, 500)
 	}

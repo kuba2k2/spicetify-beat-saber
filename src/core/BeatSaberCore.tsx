@@ -4,7 +4,8 @@ import { Storage } from "./storage/Storage"
 import { Track } from "./models/Track"
 import { TrackQueue } from "./queue/TrackQueue"
 import { DemoApp } from "../ui/apps/DemoApp"
-import { AppWatcher } from "../ui/watchers/AppWatcher"
+import { AppWatcher as ZlinkWatcher } from "../ui/watchers/zlink/AppWatcher"
+import { AppWatcher as XpuiWatcher } from "../ui/watchers/xpui/AppWatcher"
 import { PopupApp } from "../ui/apps/PopupApp"
 import { NowPlayingApp } from "../ui/apps/NowPlayingApp"
 import { MapQueue } from "./queue/MapQueue"
@@ -61,7 +62,12 @@ export class BeatSaberCore {
 		await this.Storage.initialize()
 
 		// watch all apps for tracklists
-		new AppWatcher(document.body as HTMLBodyElement).connect()
+		if (BeatSaber.IsZlink) {
+			new ZlinkWatcher(document.body as HTMLBodyElement).connect()
+		}
+		if (BeatSaber.IsXpui) {
+			new XpuiWatcher(document.body as HTMLBodyElement).connect()
+		}
 
 		// subscribe to show errors
 		this.ErrorSubject.subscribe((error) => {
@@ -84,6 +90,7 @@ export class BeatSaberCore {
 				tag: "tag",
 				download: "download",
 				downloaded: "downloaded",
+				audio: "playlist",
 			}
 
 			// add popup button to player footer
@@ -100,6 +107,13 @@ export class BeatSaberCore {
 		}
 
 		if (BeatSaber.IsXpui) {
+			// fill missing icons
+			// @ts-ignore
+			Spicetify.SVGIcons["music"] =
+				'<path d="M4 1h11v11.75A2.75 2.75 0 1112.25 10h1.25V2.5h-8v10.25A2.75 2.75 0 112.75 10H4V1zm0 10.5H2.75A1.25 1.25 0 104 12.75V11.5zm9.5 0h-1.25a1.25 1.25 0 101.25 1.25V11.5z"></path>'
+			// @ts-ignore
+			Spicetify.SVGIcons["help"] =
+				'<path d="M8 1.5a6.5 6.5 0 100 13 6.5 6.5 0 000-13zM0 8a8 8 0 1116 0A8 8 0 010 8z"></path><path d="M7.25 12.026v-1.5h1.5v1.5h-1.5zm.884-7.096A1.125 1.125 0 007.06 6.39l-1.431.448a2.625 2.625 0 115.13-.784c0 .54-.156 1.015-.503 1.488-.3.408-.7.652-.973.818l-.112.068c-.185.116-.26.203-.302.283-.046.087-.097.245-.097.57h-1.5c0-.47.072-.898.274-1.277.206-.385.507-.645.827-.846l.147-.092c.285-.177.413-.257.526-.41.169-.23.213-.397.213-.602 0-.622-.503-1.125-1.125-1.125z"></path>'
 			// build icon map
 			BeatSaber.Icons = {
 				queue: "more",
@@ -107,11 +121,12 @@ export class BeatSaberCore {
 				builtin: "offline",
 				block: "block",
 				x: "x",
-				question: "podcasts",
+				question: "help" as IconType,
 				check: "check-alt-fill" as IconType,
 				tag: "ticket" as IconType,
 				download: "download",
 				downloaded: "downloaded",
+				audio: "music" as IconType,
 			}
 
 			// add popup button to player footer

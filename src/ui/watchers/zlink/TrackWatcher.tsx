@@ -1,9 +1,9 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import { TrackBase } from "../../core/models/TrackBase"
-import URI from "../../core/models/URI"
-import { TrackApp } from "../apps/TrackApp"
-import { BaseWatcher } from "./BaseWatcher"
+import { TrackBase } from "../../../core/models/TrackBase"
+import URI from "../../../core/models/URI"
+import { TrackApp } from "../../apps/TrackApp"
+import { BaseWatcher } from "../BaseWatcher"
 import { TracklistType } from "./TracklistType"
 
 export class TrackWatcher extends BaseWatcher<HTMLTableRowElement> {

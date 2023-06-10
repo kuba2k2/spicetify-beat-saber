@@ -241,7 +241,7 @@ export class TrackMapTable extends React.Component<TrackMapTableProps> {
 					{this.props.onPlayClick && (
 						<Button
 							type="icon"
-							icon={BeatSaber.IsZlink ? "playlist" : "play"}
+							icon={BeatSaber.Icons.audio}
 							tooltip="Preview audio"
 							activeColor="secondary"
 							onClick={this.props.onPlayClick.bind(this, map)}

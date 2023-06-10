@@ -17,7 +17,7 @@ type TrackAppState = {
 
 const stateStyle: {
 	[key in TrackState]: {
-		icon: StateIconType | null
+		icon: DefaultIconType | null
 		hover?: boolean
 		color?: ButtonColor
 	}
@@ -54,7 +54,7 @@ export class TrackApp extends React.Component<TrackAppProps, TrackAppState> {
 
 	private log(...data: unknown[]) {
 		if (BeatSaber.Core.Settings.logStateButton) {
-			console.log("[StateButton]", ...data)
+			console.log("[TrackApp]", ...data)
 		}
 	}
 
@@ -70,6 +70,7 @@ export class TrackApp extends React.Component<TrackAppProps, TrackAppState> {
 	componentWillUnmount() {
 		this.log("Unsubscribing")
 		this.subscription?.unsubscribe()
+		BeatSaber.Core.TrackQueue.cancelMapRequests(this.state.track.slug)
 	}
 
 	handleClick() {

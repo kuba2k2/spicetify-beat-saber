@@ -1,17 +1,16 @@
-import { isHTMLDiv } from "../../core/utils"
-import { BaseWatcher } from "./BaseWatcher"
+import { BaseWatcher } from "../BaseWatcher"
 import { TracklistTypes } from "./TracklistType"
 import { TracklistWatcher } from "./TracklistWatcher"
 
-export class StationWatcher extends BaseWatcher<HTMLIFrameElement> {
+export class SearchWatcher extends BaseWatcher<HTMLIFrameElement> {
 	connect(): void {
-		this.observe(".track-list-container")
+		this.observe(".App__content.container")
 	}
 
 	mount(child: Element): BaseWatcher<Element> {
 		if (
-			isHTMLDiv(child) &&
-			child.className.includes("tracklist-station-container")
+			child.tagName == "SECTION" &&
+			child.getAttribute("data-interaction-context") == "category-tracks"
 		) {
 			const table = child.querySelector("table")
 			return new TracklistWatcher(table, TracklistTypes.NORMAL)

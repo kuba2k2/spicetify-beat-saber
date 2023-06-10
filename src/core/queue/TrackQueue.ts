@@ -356,6 +356,15 @@ export class TrackQueue {
 		this.queueSubject.next({ enqueued: this.queue })
 	}
 
+	cancelMapRequests(slug: string) {
+		this.queue = this.queue.filter(
+			(request) =>
+				!(request instanceof MapsRequest) || request.slug != slug
+		)
+		// emit queue changes
+		this.queueSubject.next({ enqueued: this.queue })
+	}
+
 	clear() {
 		this.queue = []
 		// emit queue changes

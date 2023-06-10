@@ -1,7 +1,8 @@
 @use "badge";
 @use "icons";
 @use "modal";
-@use "tracklist";
+@use "tracklist-xpui";
+@use "tracklist-zlink";
 
 /* ensure tooltip visibility in dialogs */
 #tooltip {

@@ -1,5 +1,5 @@
-import { isHTMLTableRow } from "../../core/utils"
-import { BaseWatcher } from "./BaseWatcher"
+import { isHTMLTableRow } from "../../../core/utils"
+import { BaseWatcher } from "../BaseWatcher"
 import { TracklistType } from "./TracklistType"
 import { TrackWatcher } from "./TrackWatcher"
 

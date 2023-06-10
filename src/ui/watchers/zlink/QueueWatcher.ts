@@ -1,11 +1,12 @@
-import { isHTMLTable } from "../../core/utils"
-import { BaseWatcher } from "./BaseWatcher"
+import { isHTMLTable } from "../../../core/utils"
+import { BaseWatcher } from "../BaseWatcher"
 import { TracklistTypes } from "./TracklistType"
 import { TracklistWatcher } from "./TracklistWatcher"
 
-export class CollectionSongsWatcher extends BaseWatcher<HTMLIFrameElement> {
+export class QueueWatcher extends BaseWatcher<HTMLIFrameElement> {
 	connect(): void {
-		this.observe("#list-placeholder div")
+		this.observe("#queue-tracklist")
+		this.observe("#history-tracklist")
 	}
 
 	mount(child: Element): BaseWatcher<Element> {
