@@ -1,5 +1,7 @@
+import URI from "./URI"
+
 export type TrackBase = {
-	uri: Spicetify.URI
+	uri: URI
 	title: string
 	artists: string[]
 }

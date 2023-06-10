@@ -125,17 +125,15 @@ export class TrackHeader extends React.PureComponent<TrackHeaderProps> {
 				/>
 				<ContentWrapper>
 					<Content>
-						{this.props.imageUrl && (
-							<ImageOuter>
-								<ImageWrapper>
-									<Image
-										style={{
-											backgroundImage: `url(${this.props.imageUrl})`,
-										}}
-									/>
-								</ImageWrapper>
-							</ImageOuter>
-						)}
+						<ImageOuter>
+							<ImageWrapper>
+								<Image
+									style={{
+										backgroundImage: `url(${this.props.imageUrl})`,
+									}}
+								/>
+							</ImageWrapper>
+						</ImageOuter>
 						<Data>
 							{this.props.label && (
 								<Label>{this.props.label}</Label>

@@ -3,9 +3,10 @@ import { Map } from "beastsaber-api/lib/models/Map"
 import BeatSaverAPI from "beatsaver-api"
 import { SortOrder } from "beatsaver-api/lib/api/search"
 import { SearchResponse } from "beatsaver-api/lib/models/SearchResponse"
-import { BridgeTrack } from "../models/BridgeTrack"
+import { ApiTrack } from "../models/ApiTrack"
 import { CosmosArtist } from "../models/CosmosArtist"
 import { MapLocal } from "../models/MapLocal"
+import URI from "../models/URI"
 import { BackendRequestHandler } from "./BackendRequestHandler"
 
 export class ApiUtils {
@@ -22,19 +23,13 @@ export class ApiUtils {
 		)
 	}
 
-	async getTrackMetadata(uri: Spicetify.URI): Promise<BridgeTrack> {
-		const track = await Spicetify.BridgeAsync.request("track_metadata", [
-			uri.toString(),
-		])
-		return track as BridgeTrack
+	async getTrackMetadata(uri: URI): Promise<ApiTrack> {
+		const url = `https://api.spotify.com/v1/tracks/${uri.id}`
+		return (await Spicetify.CosmosAsync.get(url)) as ApiTrack
 	}
 
-	async getArtist(uri: Spicetify.URI): Promise<CosmosArtist> {
-		const id = uri.getBase62Id()
-		const catalogue = window.__spotify.product_state.catalogue
-		const locale = window.__spotify.locale
-		const username = window.__spotify.username
-		const url = `hm://artist/v1/${id}/desktop?format=json&catalogue=${catalogue}&locale=${locale}&username=${username}&cat=1`
+	async getArtist(uri: URI): Promise<CosmosArtist> {
+		const url = `https://spclient.wg.spotify.com/artist/v1/${uri.id}/desktop?format=json`
 		return (await Spicetify.CosmosAsync.get(url)) as CosmosArtist
 	}
 

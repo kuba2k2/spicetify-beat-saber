@@ -1,16 +1,17 @@
 import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
+import URI from "./URI"
 
 export class TrackDB {
-	uri: Spicetify.URI
+	uri: URI
 	slug: string
 	title: string
 	artists: string[]
 
-	artistURIs: Spicetify.URI[] = []
-	artistImage: Spicetify.URI | false = null
+	artistURIs: URI[] = []
+	artistImage: URI | false = null
 	album: string = null
-	albumUri: Spicetify.URI = null
-	imageUri: Spicetify.URI = null
+	albumUri: URI = null
+	imageUri: URI = null
 
 	userQuery: string = null
 	maps: MapDetail[] = null

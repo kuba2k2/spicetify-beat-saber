@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { TrackBase } from "../../core/models/TrackBase"
+import URI from "../../core/models/URI"
 import { TrackApp } from "./TrackApp"
 
 type NowPlayingAppState = {
@@ -51,7 +52,7 @@ export class NowPlayingApp extends React.Component<
 		const data = this.state.data
 		if (!data) return null
 		const track: TrackBase = {
-			uri: Spicetify.URI.fromString(data.track.uri),
+			uri: URI.from(data.track.uri),
 			title: data.track.metadata.title,
 			artists: [data.track.metadata.artist_name],
 		}

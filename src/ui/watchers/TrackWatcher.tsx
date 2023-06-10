@@ -1,6 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import { TrackBase } from "../../core/models/TrackBase"
+import URI from "../../core/models/URI"
 import { TrackApp } from "../apps/TrackApp"
 import { BaseWatcher } from "./BaseWatcher"
 import { TracklistType } from "./TracklistType"
@@ -50,9 +51,7 @@ export class TrackWatcher extends BaseWatcher<HTMLTableRowElement> {
 	handleConnect() {
 		if (!this.buttonCell) return
 
-		const uri = Spicetify.URI.fromString(
-			this.root.getAttribute(this.type.uriAttribute)
-		)
+		const uri = URI.from(this.root.getAttribute(this.type.uriAttribute))
 		let artists = this.artists ? [...this.artists] : []
 		const title = this.root
 			.querySelector(this.type.titleQuery)
@@ -70,7 +69,7 @@ export class TrackWatcher extends BaseWatcher<HTMLTableRowElement> {
 
 		if (!uri || !artists.length || !title) return
 
-		if (!Spicetify.URI.isTrack(uri)) return
+		if (uri.type != "track") return
 
 		const track: TrackBase = { uri, title, artists }
 

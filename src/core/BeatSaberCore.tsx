@@ -13,6 +13,7 @@ import { ApiUtils } from "./api/ApiUtils"
 import { MapCategory } from "./storage/MapStorage"
 import { StyleSheetManager, ServerStyleSheet } from "styled-components"
 import { XpuiModal } from "../ui/components/XpuiModal"
+import URI from "./models/URI"
 
 declare global {
 	interface Window {
@@ -131,17 +132,7 @@ export class BeatSaberCore {
 		return <DemoApp />
 	}
 
-	public render(
-		component: ReactElement,
-		parent?: HTMLElement,
-		parentClass?: string
-	) {
-		const document = parent?.ownerDocument ?? window.document
-		if (!parent) {
-			parent = document.createElement("div")
-			parent.className = parentClass
-		}
-
+	public wrapComponent(component: ReactElement, document: Document) {
 		let sheet = this.StyleSheets.get(document)
 		if (!sheet) {
 			const serverSheet = new ServerStyleSheet()
@@ -158,10 +149,20 @@ export class BeatSaberCore {
 			console.log("[BeatSaber] Created StyleSheet", sheet, "in", document)
 		}
 
-		ReactDOM.render(
-			<StyleSheetManager sheet={sheet}>{component}</StyleSheetManager>,
-			parent
-		)
+		return <StyleSheetManager sheet={sheet}>{component}</StyleSheetManager>
+	}
+
+	public render(
+		component: ReactElement,
+		parent?: HTMLElement,
+		parentClass?: string
+	) {
+		const document = parent?.ownerDocument ?? window.document
+		if (!parent) {
+			parent = document.createElement("div")
+			parent.className = parentClass
+		}
+		ReactDOM.render(this.wrapComponent(component, document), parent)
 		return parent
 	}
 
@@ -246,7 +247,7 @@ export class BeatSaberCore {
 		)
 	}
 
-	public openApp(uri: Spicetify.URI) {
+	public openApp(uri: URI) {
 		if (this.redirector == null) {
 			this.redirector = document.createElement("a")
 			this.redirector.style.display = "none"

@@ -10,6 +10,7 @@ import { TextField } from "../controls/TextField"
 import { Toggle } from "../controls/Toggle"
 import { TrackPage } from "./track/TrackPage"
 import { LoadingSpinner } from "../components/LoadingSpinner"
+import URI from "../../core/models/URI"
 
 const PageWrapper = styled.div`
 	margin-top: ${BeatSaber.IsZlink ? "100px" : "0"};
@@ -36,51 +37,37 @@ const StyledTable = styled.table`
 export class DemoApp extends React.Component {
 	tracks: TrackBase[] = [
 		{
-			uri: Spicetify.URI.fromString(
-				"spotify:track:5lqGAnVqlk8lJ5K3jCLpUX"
-			),
+			uri: new URI("spotify:track:5lqGAnVqlk8lJ5K3jCLpUX"),
 			title: "Ether",
 			artists: ["Fox Stevenson"],
 		},
 		{
-			uri: Spicetify.URI.fromString(
-				"spotify:track:5lqGAnVqlk8lJ5K3jCLpUX"
-			),
+			uri: new URI("spotify:track:5lqGAnVqlk8lJ5K3jCLpUX"),
 			title: "Ether",
 			artists: ["Fox Stevenson"],
 		},
 		{
-			uri: Spicetify.URI.fromString(
-				"spotify:track:4k6OqgD1d2szll4nD2IJhG"
-			),
+			uri: new URI("spotify:track:4k6OqgD1d2szll4nD2IJhG"),
 			title: "Perfect Lie",
 			artists: ["Fox Stevenson"],
 		},
 		{
-			uri: Spicetify.URI.fromString(
-				"spotify:track:1VDBIDi6IeysCELFjPq0jR"
-			),
+			uri: new URI("spotify:track:1VDBIDi6IeysCELFjPq0jR"),
 			title: "YES",
 			artists: ["Koven"],
 		},
 		{
-			uri: Spicetify.URI.fromString(
-				"spotify:track:0zDAH9Vyi1JsJCTrzaIEnv"
-			),
+			uri: new URI("spotify:track:0zDAH9Vyi1JsJCTrzaIEnv"),
 			title: "Be There For You",
 			artists: ["Sedliv"],
 		},
 		{
-			uri: Spicetify.URI.fromString(
-				"spotify:track:3NLr3Lsc9DnhJd9ObpoY3x"
-			),
+			uri: new URI("spotify:track:3NLr3Lsc9DnhJd9ObpoY3x"),
 			title: "Light Up",
 			artists: ["Koven"],
 		},
 		{
-			uri: Spicetify.URI.fromString(
-				"spotify:track:5Gp2779W5p9qN3idmx0nLQ"
-			),
+			uri: new URI("spotify:track:5Gp2779W5p9qN3idmx0nLQ"),
 			title: "Rattlesnake",
 			artists: ["Rogue"],
 		},

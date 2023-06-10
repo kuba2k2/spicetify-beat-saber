@@ -3,7 +3,12 @@ import React from "react"
 class BeatSaberWrapper extends React.Component {
 	render() {
 		console.log("[BeatSaber/Xpui] Rendering app page")
-		if (BeatSaber && BeatSaber.Core) return BeatSaber.Core.getAppPage()
+		if (BeatSaber && BeatSaber.Core) {
+			return BeatSaber.Core.wrapComponent(
+				BeatSaber.Core.getAppPage(),
+				window.document
+			)
+		}
 		setTimeout(() => {
 			this.forceUpdate()
 		}, 1000)

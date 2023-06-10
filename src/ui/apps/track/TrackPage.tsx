@@ -17,6 +17,8 @@ type TrackPageProps = {
 
 type TrackPageState = {
 	query: string
+	imageRequested?: boolean
+	artistImageRequested?: boolean
 	bubbleVisible?: boolean
 	bubbleType?: BubbleType
 	bubbleText?: string
@@ -225,9 +227,15 @@ export class TrackPage extends React.Component<TrackPageProps, TrackPageState> {
 
 		if (!BeatSaber.Core.IsBrowser && !track.builtInLevel) {
 			if (!track.imageUri) {
-				BeatSaber.Core.TrackQueue.requestDetails(track)
+				if (!this.state.imageRequested) {
+					BeatSaber.Core.TrackQueue.requestDetails(track)
+					this.setState({ imageRequested: true })
+				}
 			} else if (!track.artistImage) {
-				BeatSaber.Core.TrackQueue.requestArtistImage(track)
+				if (!this.state.artistImageRequested) {
+					BeatSaber.Core.TrackQueue.requestArtistImage(track)
+					this.setState({ artistImageRequested: true })
+				}
 			}
 		}
 
