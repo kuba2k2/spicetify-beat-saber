@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 type IconProps = {
 	icon: IconType
-	size?: 16 | 24 | 32
+	size?: 16 | 24 | 32 | 48 | 56 | 64
 	className?: string
 }
 

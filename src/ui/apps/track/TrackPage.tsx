@@ -7,8 +7,9 @@ import { EmptyView } from "../../components/EmptyView"
 import { LoadingSpinner } from "../../components/LoadingSpinner"
 import { TrackMapTable } from "./TrackMapTable"
 import { TrackMapSets } from "./TrackMapTypes"
-import { SearchField } from "../../components/SearchField"
 import { TrackHeaderCustom } from "./TrackHeaderCustom"
+import { TextField } from "../../controls/TextField"
+import styled from "styled-components"
 
 type TrackPageProps = {
 	track: Track
@@ -24,6 +25,21 @@ type TrackPageState = {
 
 type BubbleType = "success" | "info" | "error"
 
+const Page = styled.div`
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	overflow: scroll;
+	height: 100%;
+
+	--gradient-bg: ${() =>
+		BeatSaber.IsZlink ? "var(--spice-main)" : "var(--spice-card)"};
+`
+
+const SearchField = styled(TextField)`
+	margin: 8px;
+`
+
 export class TrackPage extends React.Component<TrackPageProps, TrackPageState> {
 	subscription: Subscription = null
 	bubbleTimeout: NodeJS.Timeout
@@ -33,6 +49,7 @@ export class TrackPage extends React.Component<TrackPageProps, TrackPageState> {
 		super(props)
 		// search
 		this.handleSearchQuery = this.handleSearchQuery.bind(this)
+		this.handleSearchClear = this.handleSearchClear.bind(this)
 		this.handleSearchSubmit = this.handleSearchSubmit.bind(this)
 		// matching
 		this.handleMatchClick = this.handleMatchClick.bind(this)
@@ -113,6 +130,10 @@ export class TrackPage extends React.Component<TrackPageProps, TrackPageState> {
 
 	handleSearchQuery(query: string) {
 		this.setState({ query: query })
+	}
+
+	handleSearchClear() {
+		this.setState({ query: "" })
 	}
 
 	handleSearchSubmit() {
@@ -246,18 +267,18 @@ export class TrackPage extends React.Component<TrackPageProps, TrackPageState> {
 		}
 
 		return (
-			<div
-				className="bs-track-page"
-				ref={this.scrollNodeRef}
-				key={this.props.track.slug}
-			>
+			<Page key={this.props.track.slug}>
 				{header}
 
 				<SearchField
+					key="search"
 					placeholder={this.state.track.getDefaultSearchQuery()}
 					value={this.state.query}
-					onSearch={this.handleSearchQuery}
+					iconStart="search"
+					iconEnd="x"
+					onChange={this.handleSearchQuery}
 					onSubmit={this.handleSearchSubmit}
+					onIconEndClick={this.handleSearchClear}
 				/>
 
 				{page}
@@ -271,7 +292,7 @@ export class TrackPage extends React.Component<TrackPageProps, TrackPageState> {
 						<span>{this.state.bubbleText}</span>
 					</div>
 				</div>
-			</div>
+			</Page>
 		)
 	}
 }

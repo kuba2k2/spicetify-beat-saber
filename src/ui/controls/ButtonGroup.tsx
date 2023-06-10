@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { Button } from "./Button"
 
 type ButtonGroupProps = {
-	children: [string, Spicetify.Model.Icon][]
+	children: [string, IconType][]
 	selectedIndex?: number
 	className?: string
 	onChange?: (index: number) => void

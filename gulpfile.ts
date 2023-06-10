@@ -47,6 +47,8 @@ function js(debug?: boolean, src?: string) {
 		for (const global in globals) {
 			// @ts-ignore
 			contents = contents.replaceAll(`require("${global}")`, globals[global])
+			// @ts-ignore
+			contents = contents.replaceAll(`require('${global}')`, globals[global])
 		}
 		// make shim-xpui export the render() function
 		if (file.basename == "index.js") {

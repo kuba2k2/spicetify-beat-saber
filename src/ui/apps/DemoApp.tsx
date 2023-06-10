@@ -6,7 +6,6 @@ import { Button } from "../controls/Button"
 import { ButtonGroup } from "../controls/ButtonGroup"
 import { DifficultyBadge } from "../components/DifficultyBadge"
 import { Icon } from "../controls/Icon"
-import { SearchField } from "../components/SearchField"
 import { TextField } from "../controls/TextField"
 import { Toggle } from "../controls/Toggle"
 import { TrackPage } from "./track/TrackPage"
@@ -171,12 +170,6 @@ export class DemoApp extends React.Component {
 						<td>Icon / BeatSaber</td>
 						<td>
 							<Icon icon="bs-note" />
-						</td>
-					</tr>
-					<tr>
-						<td>SearchField</td>
-						<td>
-							<SearchField onSearch={console.log} />
 						</td>
 					</tr>
 					<tr>

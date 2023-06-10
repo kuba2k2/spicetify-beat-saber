@@ -14,17 +14,15 @@ type TrackHeaderProps = {
 const Header = styled.header`
 	position: relative;
 	min-height: 300px;
+	display: flex;
 `
 
 const ContentWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
-	height: 100%;
 	min-height: 208px;
 	max-width: 1480px;
-	margin-left: auto;
-	margin-right: auto;
 	padding: 72px 32px 16px 32px;
 	contain: paint;
 `
@@ -94,7 +92,7 @@ const Title = styled.span`
 	margin-left: -0.07em;
 	color: #fff;
 	font-size: 48px;
-	font-weight: var(--glue-font-weight-black);
+	font-weight: 900;
 	line-height: 56px;
 	letter-spacing: -0.005em;
 	text-transform: none;

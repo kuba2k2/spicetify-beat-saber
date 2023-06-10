@@ -25,6 +25,8 @@ const Content = styled.div`
 	max-height: 600px;
 	min-height: 500px;
 	overflow: auto;
+	display: flex;
+	flex-direction: column;
 `
 
 const Footer = styled.div`

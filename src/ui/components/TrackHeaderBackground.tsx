@@ -43,7 +43,8 @@ const Overlay = styled.div`
 
 const Gradient = styled.div`
 	${Base}
-	background: linear-gradient(180deg, transparent, #181818);
+	top: 30%;
+	background: linear-gradient(180deg, transparent, var(--gradient-bg));
 `
 
 export class TrackHeaderBackground extends React.Component<
