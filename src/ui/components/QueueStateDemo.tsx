@@ -1,6 +1,7 @@
 import React from "react"
 import { Subscription } from "rxjs"
 import { QueueState } from "../../core/queue/TrackQueue"
+import { Button } from "../controls/Button"
 
 export class QueueStateDemo extends React.Component<unknown, QueueState> {
 	subscription: Subscription
@@ -29,8 +30,8 @@ export class QueueStateDemo extends React.Component<unknown, QueueState> {
 		return (
 			<div style={{ margin: "0 20px" }}>
 				<h2>TrackQueue</h2>
-				<BeatSaber.React.Button
-					type="blue"
+				<Button
+					color="blue"
 					text="Unlock"
 					isDisabled={!this.state.blocked}
 					onClick={BeatSaber.Core.TrackQueue.queueUnblock}

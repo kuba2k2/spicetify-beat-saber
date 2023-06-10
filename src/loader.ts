@@ -2,27 +2,11 @@ import * as manifest from "../apps/beatsaber/manifest.json"
 
 const globals = ["Spicetify"]
 
-const components = [
-	"Button",
-	"Card",
-	"CardWithoutLink",
-	"CircularLoader",
-	"HeaderBackgroundImage",
-	"HeaderData",
-	"Table",
-	"TableCell",
-	"TableHeaderCell",
-	"TableHeaderRow",
-	"TableRow",
-	"TrackList",
-]
-
 const spicetifyClasses = [
 	// "BridgeAsync",
 	"CosmosAsync",
 	"LocalStorage",
 	"React",
-	"ReactComponent",
 	"ReactDOM",
 	"URI",
 ]
@@ -33,30 +17,12 @@ function checkGlobals(window: Window) {
 		if (window[name] === undefined) return false
 	}
 
-	// check React components
-	if (BeatSaber.IsZlink) {
-		for (const name of components) {
-			if (window[name] === undefined) return false
-		}
-	}
-
 	// check Spicetify classes
 	for (const name of spicetifyClasses) {
 		if (!Spicetify[name]) return false
 	}
 
 	return true
-}
-
-function importComponents(source: Window) {
-	if (BeatSaber.IsZlink) {
-		// copy from Window
-		for (const name of components) {
-			BeatSaber.React[name] = source[name]
-		}
-	} else {
-		// import polyfills
-	}
 }
 
 /**
@@ -111,9 +77,6 @@ function BeatSaberLoaderTop() {
 		setTimeout(BeatSaberLoaderTop, 1000)
 		return
 	}
-
-	// import React components
-	importComponents(window.top)
 
 	// remove the temporary resolver iframe
 	if (BeatSaber.IsZlink) {

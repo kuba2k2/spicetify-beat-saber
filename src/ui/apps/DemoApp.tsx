@@ -9,6 +9,7 @@ import { Icon } from "../controls/Icon"
 import { TextField } from "../controls/TextField"
 import { Toggle } from "../controls/Toggle"
 import { TrackPage } from "./track/TrackPage"
+import { LoadingSpinner } from "../components/LoadingSpinner"
 
 const PageWrapper = styled.div`
 	margin-top: ${BeatSaber.IsZlink ? "100px" : "0"};
@@ -114,9 +115,6 @@ export class DemoApp extends React.Component {
 				<hr />
 				<QueueStateDemo /> */
 
-		const ZlinkButton = BeatSaber.IsXpui
-			? (props) => <span></span>
-			: (props) => <BeatSaber.React.Button {...props} />
 		return (
 			<PageWrapper>
 				<Title>Demo Page</Title>
@@ -145,7 +143,6 @@ export class DemoApp extends React.Component {
 					<tr>
 						<th>Name</th>
 						<th>Component</th>
-						<th></th>
 						<th></th>
 					</tr>
 					<tr>
@@ -195,7 +192,9 @@ export class DemoApp extends React.Component {
 					</tr>
 					<tr>
 						<td>LoadingSpinner</td>
-						<td>{/* <LoadingSpinner /> */}</td>
+						<td>
+							<LoadingSpinner />
+						</td>
 					</tr>
 					<tr>
 						<td>ButtonGroup</td>
@@ -211,7 +210,6 @@ export class DemoApp extends React.Component {
 					</tr>
 					<tr>
 						<td>Button / default</td>
-						<td></td>
 						<td>
 							<Button text="Button" />
 						</td>
@@ -222,9 +220,6 @@ export class DemoApp extends React.Component {
 					<tr>
 						<td>Button / green</td>
 						<td>
-							<ZlinkButton type="green" text="Button" />
-						</td>
-						<td>
 							<Button color="green" text="Button" />
 						</td>
 						<td>
@@ -233,13 +228,6 @@ export class DemoApp extends React.Component {
 					</tr>
 					<tr>
 						<td>Button / green / disabled</td>
-						<td>
-							<ZlinkButton
-								type="green"
-								text="Button"
-								isDisabled={true}
-							/>
-						</td>
 						<td>
 							<Button
 								color="green"
@@ -259,9 +247,6 @@ export class DemoApp extends React.Component {
 					<tr>
 						<td>Button / gray</td>
 						<td>
-							<ZlinkButton type="gray" text="Button" />
-						</td>
-						<td>
 							<Button color="gray" text="Button" />
 						</td>
 						<td>
@@ -270,9 +255,6 @@ export class DemoApp extends React.Component {
 					</tr>
 					<tr>
 						<td>Button / blue</td>
-						<td>
-							<ZlinkButton type="blue" text="Button" />
-						</td>
 						<td>
 							<Button color="blue" text="Button" />
 						</td>
@@ -283,9 +265,6 @@ export class DemoApp extends React.Component {
 					<tr>
 						<td>Button / red</td>
 						<td>
-							<ZlinkButton type="red" text="Button" />
-						</td>
-						<td>
 							<Button color="red" text="Button" />
 						</td>
 						<td>
@@ -295,9 +274,6 @@ export class DemoApp extends React.Component {
 					<tr>
 						<td>Button / white</td>
 						<td>
-							<ZlinkButton type="white" text="Button" />
-						</td>
-						<td>
 							<Button color="white" text="Button" />
 						</td>
 						<td>
@@ -306,7 +282,6 @@ export class DemoApp extends React.Component {
 					</tr>
 					<tr>
 						<td>Button / transparent</td>
-						<td></td>
 						<td>
 							<Button color="transparent" text="Button" />
 						</td>
@@ -320,9 +295,6 @@ export class DemoApp extends React.Component {
 					</tr>
 					<tr>
 						<td>Button / stroke</td>
-						<td>
-							<ZlinkButton type="stroke" text="Button" />
-						</td>
 						<td>
 							<Button
 								color="transparent"
@@ -342,21 +314,11 @@ export class DemoApp extends React.Component {
 					<tr>
 						<td>Button / text+icon</td>
 						<td>
-							<ZlinkButton
-								type="green"
-								text="Button"
-								icon="block"
-							/>
-						</td>
-						<td>
 							<Button color="green" text="Button" icon="block" />
 						</td>
 					</tr>
 					<tr>
 						<td>Button / icon only</td>
-						<td>
-							<ZlinkButton type="green" icon="block" />
-						</td>
 						<td>
 							<Button
 								color="green"
@@ -368,9 +330,6 @@ export class DemoApp extends React.Component {
 					<tr>
 						<td>Button / icon</td>
 						<td>
-							<ZlinkButton type="icon" icon="block" />
-						</td>
-						<td>
 							<Button
 								type="icon"
 								icon="block"
@@ -380,13 +339,6 @@ export class DemoApp extends React.Component {
 					</tr>
 					<tr>
 						<td>Button / icon + active</td>
-						<td>
-							<ZlinkButton
-								type="icon"
-								icon="block"
-								isActive={true}
-							/>
-						</td>
 						<td>
 							<Button
 								type="icon"
@@ -400,9 +352,6 @@ export class DemoApp extends React.Component {
 					<tr>
 						<td>Button / icon-background</td>
 						<td>
-							<ZlinkButton type="icon-background" icon="block" />
-						</td>
-						<td>
 							<Button
 								type="icon"
 								icon="block"
@@ -412,9 +361,6 @@ export class DemoApp extends React.Component {
 					</tr>
 					<tr>
 						<td>Button / icon-stroke</td>
-						<td>
-							<ZlinkButton type="icon-stroke" icon="block" />
-						</td>
 						<td>
 							<Button
 								type="icon"
@@ -427,13 +373,6 @@ export class DemoApp extends React.Component {
 					<tr>
 						<td>Button / icon-stroke + active</td>
 						<td>
-							<ZlinkButton
-								type="icon-stroke"
-								icon="block"
-								isActive={true}
-							/>
-						</td>
-						<td>
 							<Button
 								type="icon"
 								outline={true}
@@ -445,7 +384,6 @@ export class DemoApp extends React.Component {
 					</tr>
 					<tr>
 						<td>Button / icon + text</td>
-						<td></td>
 						<td>
 							<Button
 								type="icon"

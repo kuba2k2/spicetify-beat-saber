@@ -4,7 +4,6 @@ declare global {
 	interface BeatSaberGlobal {
 		Core: BeatSaberCore
 		Manifest: AppManifest
-		React: typeof Spicetify.ReactComponent
 		BaseUrl: string
 		IsZlink: boolean
 		IsXpui: boolean
