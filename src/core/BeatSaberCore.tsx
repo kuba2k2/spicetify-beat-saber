@@ -24,7 +24,7 @@ declare global {
 
 export class BeatSaberCore {
 	MainCSSFile = `/css/beatsaber.css`
-	AdditionalCSSFiles = [this.MainCSSFile, "/css/zlink-button.css"]
+	AdditionalCSSFiles = [this.MainCSSFile]
 
 	IsBrowser: boolean
 	Api = new ApiUtils()

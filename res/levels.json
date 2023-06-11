@@ -1,579 +1,115 @@
 {
-    "jaroslav-beck-100-bills": {
+    "aero-chord-boundless": {
         "pack": {
-            "id": "OstVol1",
-            "name": "Original Soundtrack Vol. 1",
-            "nameShort": "Original Soundtrack Vol. 1",
-            "cover": "OstVol1Cover",
-            "isDLC": false,
-            "isOST": true
+            "id": "Monstercat",
+            "name": "Monstercat Music Pack Vol. 1",
+            "nameShort": "Monstercat Vol. 1",
+            "cover": "MonstercatVol1Cover",
+            "isDLC": true,
+            "isOST": false
         },
-        "id": "100Bills",
-        "songName": "$100 Bills",
+        "id": "Boundless",
+        "songName": "Boundless",
         "songSubName": "",
-        "songAuthorName": "Jaroslav Beck",
+        "songAuthorName": "Aero Chord",
         "levelAuthorName": null,
-        "cover": "$100BillsCover"
+        "cover": "BoundlessCover"
     },
-    "jaroslav-beck-balearic-pumping": {
+    "beat-saber-178": {
         "pack": {
-            "id": "OstVol1",
-            "name": "Original Soundtrack Vol. 1",
-            "nameShort": "Original Soundtrack Vol. 1",
-            "cover": "OstVol1Cover",
+            "id": "OstVol5",
+            "name": "Original Soundtrack Vol. 5",
+            "nameShort": "Original Soundtrack Vol. 5",
+            "cover": "OstVol5Cover",
             "isDLC": false,
             "isOST": true
         },
-        "id": "BalearicPumping",
-        "songName": "Balearic Pumping",
+        "id": "DollarSeventyEight",
+        "songName": "$1.78",
         "songSubName": "",
-        "songAuthorName": "Jaroslav Beck",
-        "levelAuthorName": null,
-        "cover": "BalearicPumpingCover"
+        "songAuthorName": "Schwank",
+        "levelAuthorName": "altrewin",
+        "cover": "DollarSeventyEightCover"
     },
-    "jaroslav-beck-beat-saber": {
+    "beat-saber-curtains": {
         "pack": {
-            "id": "OstVol1",
-            "name": "Original Soundtrack Vol. 1",
-            "nameShort": "Original Soundtrack Vol. 1",
-            "cover": "OstVol1Cover",
+            "id": "OstVol5",
+            "name": "Original Soundtrack Vol. 5",
+            "nameShort": "Original Soundtrack Vol. 5",
+            "cover": "OstVol5Cover",
             "isDLC": false,
             "isOST": true
         },
-        "id": "BeatSaber",
-        "songName": "Beat Saber",
+        "id": "CurtainsAllNightLong",
+        "songName": "Curtains (All Night Long)",
         "songSubName": "",
-        "songAuthorName": "Jaroslav Beck",
-        "levelAuthorName": null,
-        "cover": "BeatSaberCover"
+        "songAuthorName": "EEWK",
+        "levelAuthorName": "altrewin",
+        "cover": "CurtainsAllNightLongCover"
     },
-    "jaroslav-beck-breezer": {
+    "beat-saber-finalbosschan": {
         "pack": {
-            "id": "OstVol1",
-            "name": "Original Soundtrack Vol. 1",
-            "nameShort": "Original Soundtrack Vol. 1",
-            "cover": "OstVol1Cover",
+            "id": "OstVol5",
+            "name": "Original Soundtrack Vol. 5",
+            "nameShort": "Original Soundtrack Vol. 5",
+            "cover": "OstVol5Cover",
             "isDLC": false,
             "isOST": true
         },
-        "id": "Breezer",
-        "songName": "Breezer",
-        "songSubName": "",
-        "songAuthorName": "Jaroslav Beck",
-        "levelAuthorName": null,
-        "cover": "BreezerCover"
-    },
-    "jaroslav-beck-commercial-pumping": {
-        "pack": {
-            "id": "OstVol1",
-            "name": "Original Soundtrack Vol. 1",
-            "nameShort": "Original Soundtrack Vol. 1",
-            "cover": "OstVol1Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "CommercialPumping",
-        "songName": "Commercial Pumping",
-        "songSubName": "",
-        "songAuthorName": "Jaroslav Beck",
-        "levelAuthorName": null,
-        "cover": "CommercialPumpingCover"
-    },
-    "jaroslav-beck-country-rounds": {
-        "pack": {
-            "id": "OstVol1",
-            "name": "Original Soundtrack Vol. 1",
-            "nameShort": "Original Soundtrack Vol. 1",
-            "cover": "OstVol1Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "CountryRounds",
-        "songName": "Country Rounds",
-        "songSubName": "Sqeepo Remix",
-        "songAuthorName": "Jaroslav Beck, Kings & Folk",
-        "levelAuthorName": null,
-        "cover": "KingsAndFolkCover"
-    },
-    "jaroslav-beck-escape": {
-        "pack": {
-            "id": "OstVol1",
-            "name": "Original Soundtrack Vol. 1",
-            "nameShort": "Original Soundtrack Vol. 1",
-            "cover": "OstVol1Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "Escape",
-        "songName": "Escape",
-        "songSubName": "ft. Summer Haze",
-        "songAuthorName": "Jaroslav Beck, Summer Haze",
-        "levelAuthorName": null,
-        "cover": "EscapeCover"
-    },
-    "jaroslav-beck-legend": {
-        "pack": {
-            "id": "OstVol1",
-            "name": "Original Soundtrack Vol. 1",
-            "nameShort": "Original Soundtrack Vol. 1",
-            "cover": "OstVol1Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "Legend",
-        "songName": "Legend",
-        "songSubName": "ft. Backchat",
-        "songAuthorName": "Jaroslav Beck, Backchat, Generdyn",
-        "levelAuthorName": null,
-        "cover": "LegendCover"
-    },
-    "jaroslav-beck-lvl-insane": {
-        "pack": {
-            "id": "OstVol1",
-            "name": "Original Soundtrack Vol. 1",
-            "nameShort": "Original Soundtrack Vol. 1",
-            "cover": "OstVol1Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "LvlInsane",
-        "songName": "Lvl Insane",
-        "songSubName": "",
-        "songAuthorName": "Jaroslav Beck",
-        "levelAuthorName": null,
-        "cover": "LvlInsaneCover"
-    },
-    "jaroslav-beck-turn-me-on": {
-        "pack": {
-            "id": "OstVol1",
-            "name": "Original Soundtrack Vol. 1",
-            "nameShort": "Original Soundtrack Vol. 1",
-            "cover": "OstVol1Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "TurnMeOn",
-        "songName": "Turn Me On",
-        "songSubName": "ft. Tiny C",
-        "songAuthorName": "Jaroslav Beck, Tiny C",
-        "levelAuthorName": null,
-        "cover": "TurnMeOnCover"
-    },
-    "sedliv-be-there-for-you": {
-        "pack": {
-            "id": "OstVol2",
-            "name": "Original Soundtrack Vol. 2",
-            "nameShort": "Original Soundtrack Vol. 2",
-            "cover": "OstVol2Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "BeThereForYou",
-        "songName": "Be There For You",
-        "songSubName": "ft. Kinnie Lane",
-        "songAuthorName": "Sedliv",
-        "levelAuthorName": null,
-        "cover": "BeThereForYouCover"
-    },
-    "mord-fustang-elixia": {
-        "pack": {
-            "id": "OstVol2",
-            "name": "Original Soundtrack Vol. 2",
-            "nameShort": "Original Soundtrack Vol. 2",
-            "cover": "OstVol2Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "Elixia",
-        "songName": "Elixia",
-        "songSubName": "",
-        "songAuthorName": "Mord Fustang",
-        "levelAuthorName": null,
-        "cover": "ElixiaCover"
-    },
-    "megaphonix-i-need-you": {
-        "pack": {
-            "id": "OstVol2",
-            "name": "Original Soundtrack Vol. 2",
-            "nameShort": "Original Soundtrack Vol. 2",
-            "cover": "OstVol2Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "INeedYou",
-        "songName": "I Need You",
-        "songSubName": "",
-        "songAuthorName": "Megaphonix",
-        "levelAuthorName": "Purphoros & Split",
-        "cover": "INeedYouCover"
-    },
-    "boom-kitty-rum-n-bass": {
-        "pack": {
-            "id": "OstVol2",
-            "name": "Original Soundtrack Vol. 2",
-            "nameShort": "Original Soundtrack Vol. 2",
-            "cover": "OstVol2Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "RumNBass",
-        "songName": "Rum n' Bass",
-        "songSubName": "",
-        "songAuthorName": "Boom Kitty",
-        "levelAuthorName": "Freek & Split",
-        "cover": "RumNBassCover"
-    },
-    "jaroslav-beck-unlimited-power": {
-        "pack": {
-            "id": "OstVol2",
-            "name": "Original Soundtrack Vol. 2",
-            "nameShort": "Original Soundtrack Vol. 2",
-            "cover": "OstVol2Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "UnlimitedPower",
-        "songName": "Unlimited Power",
-        "songSubName": "ft. Frank Bentley",
-        "songAuthorName": "Jaroslav Beck",
-        "levelAuthorName": "Split",
-        "cover": "UnlimitedPowerCover"
-    },
-    "jaroslav-beck-origins": {
-        "pack": {
-            "id": "OstVol3",
-            "name": "Original Soundtrack Vol. 3",
-            "nameShort": "Original Soundtrack Vol. 3",
-            "cover": "OstVol3Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "Origins",
-        "songName": "Origins",
-        "songSubName": "(ft. Mutrix)",
-        "songAuthorName": "Jaroslav Beck & Jan Ilavsky",
-        "levelAuthorName": null,
-        "cover": "OriginsCover"
-    },
-    "morgan-page-reason-for-living": {
-        "pack": {
-            "id": "OstVol3",
-            "name": "Original Soundtrack Vol. 3",
-            "nameShort": "Original Soundtrack Vol. 3",
-            "cover": "OstVol3Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "ReasonForLiving",
-        "songName": "Reason For Living",
-        "songSubName": "",
-        "songAuthorName": "Morgan Page",
-        "levelAuthorName": null,
-        "cover": "ReasonForLivingCover"
-    },
-    "pegboard-nerds-give-a-little-love": {
-        "pack": {
-            "id": "OstVol3",
-            "name": "Original Soundtrack Vol. 3",
-            "nameShort": "Original Soundtrack Vol. 3",
-            "cover": "OstVol3Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "GiveALittleLove",
-        "songName": "Give a Little Love",
-        "songSubName": "",
-        "songAuthorName": "Pegboard Nerds",
-        "levelAuthorName": null,
-        "cover": "GiveALittleLoveCover"
-    },
-    "pixl-full-charge": {
-        "pack": {
-            "id": "OstVol3",
-            "name": "Original Soundtrack Vol. 3",
-            "nameShort": "Original Soundtrack Vol. 3",
-            "cover": "OstVol3Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "FullCharge",
-        "songName": "Full Charge",
-        "songSubName": "",
-        "songAuthorName": "PIXL",
-        "levelAuthorName": null,
-        "cover": "FullChargeCover"
-    },
-    "slippy-immortal": {
-        "pack": {
-            "id": "OstVol3",
-            "name": "Original Soundtrack Vol. 3",
-            "nameShort": "Original Soundtrack Vol. 3",
-            "cover": "OstVol3Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "Immortal",
-        "songName": "Immortal",
-        "songSubName": "",
-        "songAuthorName": "Slippy",
-        "levelAuthorName": null,
-        "cover": "ImmortalCover"
-    },
-    "boom-kitty-burning-sands": {
-        "pack": {
-            "id": "OstVol3",
-            "name": "Original Soundtrack Vol. 3",
-            "nameShort": "Original Soundtrack Vol. 3",
-            "cover": "OstVol3Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "BurningSands",
-        "songName": "Burning Sands",
-        "songSubName": "",
-        "songAuthorName": "Boom Kitty",
-        "levelAuthorName": null,
-        "cover": "BurningSandsCover"
-    },
-    "jaroslav-beck-into-the-dream": {
-        "pack": {
-            "id": "OstVol4",
-            "name": "Original Soundtrack Vol. 4",
-            "nameShort": "Original Soundtrack Vol. 4",
-            "cover": "OstVol4Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "IntoTheDream",
-        "songName": "Into the Dream",
-        "songSubName": "ft. Jakub Tirco",
-        "songAuthorName": "Jaroslav Beck",
-        "levelAuthorName": null,
-        "cover": "IntoTheDreamLevelCover"
-    },
-    "jaroslav-beck-it-takes-me": {
-        "pack": {
-            "id": "OstVol4",
-            "name": "Original Soundtrack Vol. 4",
-            "nameShort": "Original Soundtrack Vol. 4",
-            "cover": "OstVol4Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "ItTakesMe",
-        "songName": "It Takes Me",
-        "songSubName": "ft. Waylon Reavis",
-        "songAuthorName": "Boom Kitty",
-        "levelAuthorName": null,
-        "cover": "ItTakesMeCover"
-    },
-    "jaroslav-beck-ludicrous": {
-        "pack": {
-            "id": "OstVol4",
-            "name": "Original Soundtrack Vol. 4",
-            "nameShort": "Original Soundtrack Vol. 4",
-            "cover": "OstVol4Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "LudicrousPlus",
-        "songName": "LUDICROUS+",
-        "songSubName": "",
-        "songAuthorName": "Jaroslav Beck",
-        "levelAuthorName": null,
-        "cover": "LudicrousPlusCover"
-    },
-    "jaroslav-beck-spin-eternally": {
-        "pack": {
-            "id": "OstVol4",
-            "name": "Original Soundtrack Vol. 4",
-            "nameShort": "Original Soundtrack Vol. 4",
-            "cover": "OstVol4Cover",
-            "isDLC": false,
-            "isOST": true
-        },
-        "id": "SpinEternally",
-        "songName": "Spin Eternally",
+        "id": "FinalBossChan",
+        "songName": "Final-Boss-Chan",
         "songSubName": "",
         "songAuthorName": "Camellia",
         "levelAuthorName": null,
-        "cover": "SpinEternallyCover"
+        "cover": "FinalBossChanCover"
     },
-    "jaroslav-beck-fitbeat": {
+    "beat-saber-firestarter": {
         "pack": {
-            "id": "Extras",
-            "name": "Extras",
-            "nameShort": "Extras",
-            "cover": "ExtrasCover",
+            "id": "OstVol5",
+            "name": "Original Soundtrack Vol. 5",
+            "nameShort": "Original Soundtrack Vol. 5",
+            "cover": "OstVol5Cover",
             "isDLC": false,
-            "isOST": false
+            "isOST": true
         },
-        "id": "FitBeat",
-        "songName": "FitBeat",
+        "id": "Firestarter",
+        "songName": "Firestarter",
         "songSubName": "",
+        "songAuthorName": "Tanger",
+        "levelAuthorName": "ETAN",
+        "cover": "FirestarterCover"
+    },
+    "beat-saber-i-wanna-be-a-machine": {
+        "pack": {
+            "id": "OstVol5",
+            "name": "Original Soundtrack Vol. 5",
+            "nameShort": "Original Soundtrack Vol. 5",
+            "cover": "OstVol5Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "IWannaBeAMachine",
+        "songName": "I Wanna Be A Machine",
+        "songSubName": "",
+        "songAuthorName": "The Living Tombstone",
+        "levelAuthorName": "ConnorJC",
+        "cover": "IWannaBeAMachineCover"
+    },
+    "beat-saber-magic": {
+        "pack": {
+            "id": "OstVol5",
+            "name": "Original Soundtrack Vol. 5",
+            "nameShort": "Original Soundtrack Vol. 5",
+            "cover": "OstVol5Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "Magic",
+        "songName": "Magic",
+        "songSubName": "ft. Meredith Bull",
         "songAuthorName": "Jaroslav Beck",
-        "levelAuthorName": null,
-        "cover": "FitBeat"
-    },
-    "noisestorm-crab-rave": {
-        "pack": {
-            "id": "Extras",
-            "name": "Extras",
-            "nameShort": "Extras",
-            "cover": "ExtrasCover",
-            "isDLC": false,
-            "isOST": false
-        },
-        "id": "CrabRave",
-        "songName": "Crab Rave",
-        "songSubName": "",
-        "songAuthorName": "Noisestorm",
-        "levelAuthorName": null,
-        "cover": "CrabRaveCover"
-    },
-    "kda-popstars": {
-        "pack": {
-            "id": "Extras",
-            "name": "Extras",
-            "nameShort": "Extras",
-            "cover": "ExtrasCover",
-            "isDLC": false,
-            "isOST": false
-        },
-        "id": "PopStars",
-        "songName": "POP/STARS - K/DA",
-        "songSubName": "",
-        "songAuthorName": "League of Legends",
-        "levelAuthorName": null,
-        "cover": "PopStarsCover"
-    },
-    "knower-one-hope": {
-        "pack": {
-            "id": "Extras",
-            "name": "Extras",
-            "nameShort": "Extras",
-            "cover": "ExtrasCover",
-            "isDLC": false,
-            "isOST": false
-        },
-        "id": "OneHope",
-        "songName": "One Hope",
-        "songSubName": "ft. David Binney",
-        "songAuthorName": "KNOWER",
-        "levelAuthorName": null,
-        "cover": "OneHopeCover"
-    },
-    "virtual-self-angel-voices": {
-        "pack": {
-            "id": "Extras",
-            "name": "Extras",
-            "nameShort": "Extras",
-            "cover": "ExtrasCover",
-            "isDLC": false,
-            "isOST": false
-        },
-        "id": "AngelVoices",
-        "songName": "Angel Voices",
-        "songSubName": "",
-        "songAuthorName": "Virtual Self",
-        "levelAuthorName": null,
-        "cover": "AngelVoicesCover"
-    },
-    "camellia-exit-this-earths-atomosphere": {
-        "pack": {
-            "id": "Camellia",
-            "name": "Camellia Music Pack",
-            "nameShort": "Camellia",
-            "cover": "CamelliaCover",
-            "isDLC": false,
-            "isOST": false
-        },
-        "id": "ExitThisEarthsAtomosphere",
-        "songName": "EXiT This Earth's Atomosphere",
-        "songSubName": "",
-        "songAuthorName": "Camellia",
-        "levelAuthorName": null,
-        "cover": "ExitThisEarthsAtomosphereCover"
-    },
-    "camellia-ghost": {
-        "pack": {
-            "id": "Camellia",
-            "name": "Camellia Music Pack",
-            "nameShort": "Camellia",
-            "cover": "CamelliaCover",
-            "isDLC": false,
-            "isOST": false
-        },
-        "id": "Ghost",
-        "songName": "Ghost",
-        "songSubName": "",
-        "songAuthorName": "Camellia",
-        "levelAuthorName": null,
-        "cover": "GhostCover"
-    },
-    "camellia-light-it-up": {
-        "pack": {
-            "id": "Camellia",
-            "name": "Camellia Music Pack",
-            "nameShort": "Camellia",
-            "cover": "CamelliaCover",
-            "isDLC": false,
-            "isOST": false
-        },
-        "id": "LightItUp",
-        "songName": "Light it up",
-        "songSubName": "",
-        "songAuthorName": "Camellia",
-        "levelAuthorName": null,
-        "cover": "CrystallizedAndLightItUpCover"
-    },
-    "camellia-crystallized": {
-        "pack": {
-            "id": "Camellia",
-            "name": "Camellia Music Pack",
-            "nameShort": "Camellia",
-            "cover": "CamelliaCover",
-            "isDLC": false,
-            "isOST": false
-        },
-        "id": "Crystallized",
-        "songName": "Crystallized",
-        "songSubName": "",
-        "songAuthorName": "Camellia",
-        "levelAuthorName": null,
-        "cover": "CrystallizedAndLightItUpCover"
-    },
-    "kasai-harcores-cycle-hit": {
-        "pack": {
-            "id": "Camellia",
-            "name": "Camellia Music Pack",
-            "nameShort": "Camellia",
-            "cover": "CamelliaCover",
-            "isDLC": false,
-            "isOST": false
-        },
-        "id": "CycleHit",
-        "songName": "Cycle Hit",
-        "songSubName": "",
-        "songAuthorName": "Kasai Harcores (DJ Genki,C-Show,Camellia)",
-        "levelAuthorName": null,
-        "cover": "CycleHitCover"
-    },
-    "camellia-what-the-cat": {
-        "pack": {
-            "id": "Camellia",
-            "name": "Camellia Music Pack",
-            "nameShort": "Camellia",
-            "cover": "CamelliaCover",
-            "isDLC": false,
-            "isOST": false
-        },
-        "id": "WhatTheCat",
-        "songName": "WHAT THE CAT!?",
-        "songSubName": "",
-        "songAuthorName": "Camellia",
-        "levelAuthorName": null,
-        "cover": "WhatTheCatCover"
+        "levelAuthorName": "Freeek",
+        "cover": "MagicCover"
     },
     "billie-eilish-all-the-good-girls-go-to-hell": {
         "pack": {
@@ -735,245 +271,85 @@
         "levelAuthorName": null,
         "cover": "YouShouldSeeMeInACrownCover"
     },
-    "skrillex-bangarang": {
+    "bomfunk-mcs-freestyler": {
         "pack": {
-            "id": "Skrillex",
-            "name": "Skrillex Music Pack",
-            "nameShort": "Skrillex",
-            "cover": "SkrillexCover",
+            "id": "EDM",
+            "name": "Electronic Mixtape",
+            "nameShort": "Electronic Mixtape",
+            "cover": "EDMCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "Bangarang",
-        "songName": "Bangarang",
-        "songSubName": "feat. Sirah",
-        "songAuthorName": "Skrillex",
-        "levelAuthorName": null,
-        "cover": "BangarangCover"
-    },
-    "skrillex-butterflies": {
-        "pack": {
-            "id": "Skrillex",
-            "name": "Skrillex Music Pack",
-            "nameShort": "Skrillex",
-            "cover": "SkrillexCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "Butterflies",
-        "songName": "Butterflies",
+        "id": "Freestyler",
+        "songName": "Freestyler",
         "songSubName": "",
-        "songAuthorName": "Skrillex, Starrah & Four Tet",
-        "levelAuthorName": null,
-        "cover": "ButterfliesCover"
+        "songAuthorName": "Bomfunk MC's",
+        "levelAuthorName": "Kolezan",
+        "cover": "Freestyler"
     },
-    "skrillex-dont-go": {
+    "boom-kitty-burning-sands": {
         "pack": {
-            "id": "Skrillex",
-            "name": "Skrillex Music Pack",
-            "nameShort": "Skrillex",
-            "cover": "SkrillexCover",
-            "isDLC": true,
-            "isOST": false
+            "id": "OstVol3",
+            "name": "Original Soundtrack Vol. 3",
+            "nameShort": "Original Soundtrack Vol. 3",
+            "cover": "OstVol3Cover",
+            "isDLC": false,
+            "isOST": true
         },
-        "id": "DontGo",
-        "songName": "Don't Go",
+        "id": "BurningSands",
+        "songName": "Burning Sands",
         "songSubName": "",
-        "songAuthorName": "Skrillex, Justin Bieber & Don Toliver",
+        "songAuthorName": "Boom Kitty",
         "levelAuthorName": null,
-        "cover": "DontGoCover"
+        "cover": "BurningSandsCover"
     },
-    "skrillex-first-of-the-year": {
+    "boom-kitty-it-takes-me": {
         "pack": {
-            "id": "Skrillex",
-            "name": "Skrillex Music Pack",
-            "nameShort": "Skrillex",
-            "cover": "SkrillexCover",
-            "isDLC": true,
-            "isOST": false
+            "id": "OstVol4",
+            "name": "Original Soundtrack Vol. 4",
+            "nameShort": "Original Soundtrack Vol. 4",
+            "cover": "OstVol4Cover",
+            "isDLC": false,
+            "isOST": true
         },
-        "id": "FirstOfTheYear",
-        "songName": "First of the Year",
-        "songSubName": "(Equinox)",
-        "songAuthorName": "Skrillex",
+        "id": "ItTakesMe",
+        "songName": "It Takes Me",
+        "songSubName": "ft. Waylon Reavis",
+        "songAuthorName": "Boom Kitty",
         "levelAuthorName": null,
-        "cover": "FirstOfTheYearCover"
+        "cover": "ItTakesMeCover"
     },
-    "skrillex-ragga-bomb": {
+    "boom-kitty-rum-n-bass": {
         "pack": {
-            "id": "Skrillex",
-            "name": "Skrillex Music Pack",
-            "nameShort": "Skrillex",
-            "cover": "SkrillexCover",
-            "isDLC": true,
-            "isOST": false
+            "id": "OstVol2",
+            "name": "Original Soundtrack Vol. 2",
+            "nameShort": "Original Soundtrack Vol. 2",
+            "cover": "OstVol2Cover",
+            "isDLC": false,
+            "isOST": true
         },
-        "id": "RaggaBomb",
-        "songName": "Ragga Bomb",
-        "songSubName": "feat. Ragga Twins",
-        "songAuthorName": "Skrillex",
-        "levelAuthorName": null,
-        "cover": "RaggaBombCover"
-    },
-    "skrillex-rock-n-roll": {
-        "pack": {
-            "id": "Skrillex",
-            "name": "Skrillex Music Pack",
-            "nameShort": "Skrillex",
-            "cover": "SkrillexCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "RockNRoll",
-        "songName": "Rock 'n' Roll",
-        "songSubName": "(Will Take You to the Mountain)",
-        "songAuthorName": "Skrillex",
-        "levelAuthorName": null,
-        "cover": "RockNRollCover"
-    },
-    "skrillex-scary-monsters-and-nice-sprites": {
-        "pack": {
-            "id": "Skrillex",
-            "name": "Skrillex Music Pack",
-            "nameShort": "Skrillex",
-            "cover": "SkrillexCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "ScaryMonstersAndNiceSprites",
-        "songName": "Scary Monsters and Nice Sprites",
+        "id": "RumNBass",
+        "songName": "Rum n' Bass",
         "songSubName": "",
-        "songAuthorName": "Skrillex",
-        "levelAuthorName": null,
-        "cover": "ScaryMonstersAndNiceSpritesCover"
+        "songAuthorName": "Boom Kitty",
+        "levelAuthorName": "Freek & Split",
+        "cover": "RumNBassCover"
     },
-    "skrillex-the-devils-den": {
+    "bruno-martini-famous": {
         "pack": {
-            "id": "Skrillex",
-            "name": "Skrillex Music Pack",
-            "nameShort": "Skrillex",
-            "cover": "SkrillexCover",
+            "id": "Timbaland",
+            "name": "Timbaland Music Pack",
+            "nameShort": "Timbaland",
+            "cover": "TimbalandCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "TheDevilsDen",
-        "songName": "The Devil's Den",
-        "songSubName": "",
-        "songAuthorName": "Skrillex & Wolfgang Gartner",
+        "id": "Famous",
+        "songName": "Famous",
+        "songSubName": "ft. Jake Davis",
+        "songAuthorName": "Bruno Martini, Timbaland",
         "levelAuthorName": null,
-        "cover": "TheDevilsDenCover"
-    },
-    "onerepublic-counting-stars": {
-        "pack": {
-            "id": "Interscope",
-            "name": "Interscope Mixtape",
-            "nameShort": "Interscope",
-            "cover": "InterscopeCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "CountingStars",
-        "songName": "Counting Stars",
-        "songSubName": "",
-        "songAuthorName": "OneRepublic",
-        "levelAuthorName": null,
-        "cover": "CountingStarsCover"
-    },
-    "kendrick-lamar-dna": {
-        "pack": {
-            "id": "Interscope",
-            "name": "Interscope Mixtape",
-            "nameShort": "Interscope",
-            "cover": "InterscopeCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "DnaLamar",
-        "songName": "DNA.",
-        "songSubName": "",
-        "songAuthorName": "Kendrick Lamar",
-        "levelAuthorName": null,
-        "cover": "DnaLamarCover"
-    },
-    "the-pussycat-dolls-dont-cha": {
-        "pack": {
-            "id": "Interscope",
-            "name": "Interscope Mixtape",
-            "nameShort": "Interscope",
-            "cover": "InterscopeCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "DontCha",
-        "songName": "Don't Cha",
-        "songSubName": "",
-        "songAuthorName": "The Pussycat Dolls",
-        "levelAuthorName": null,
-        "cover": "DontChaCover"
-    },
-    "lmfao-party-rock-anthem": {
-        "pack": {
-            "id": "Interscope",
-            "name": "Interscope Mixtape",
-            "nameShort": "Interscope",
-            "cover": "InterscopeCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "PartyRockAnthem",
-        "songName": "Party Rock Anthem",
-        "songSubName": "",
-        "songAuthorName": "LMFAO ft. Lauren Bennett, GoonRock",
-        "levelAuthorName": null,
-        "cover": "PartyRockAnthemCover"
-    },
-    "limp-bizkit-rollin": {
-        "pack": {
-            "id": "Interscope",
-            "name": "Interscope Mixtape",
-            "nameShort": "Interscope",
-            "cover": "InterscopeCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "Rollin",
-        "songName": "Rollin' (Air Raid Vehicle) ",
-        "songSubName": "",
-        "songAuthorName": "Limp Bizkit",
-        "levelAuthorName": null,
-        "cover": "RollinCover"
-    },
-    "maroon-5-sugar": {
-        "pack": {
-            "id": "Interscope",
-            "name": "Interscope Mixtape",
-            "nameShort": "Interscope",
-            "cover": "InterscopeCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "Sugar",
-        "songName": "Sugar",
-        "songSubName": "",
-        "songAuthorName": "Maroon 5",
-        "levelAuthorName": null,
-        "cover": "SugarCover"
-    },
-    "gwen-stefani-the-sweet-escape": {
-        "pack": {
-            "id": "Interscope",
-            "name": "Interscope Mixtape",
-            "nameShort": "Interscope",
-            "cover": "InterscopeCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "TheSweetEscape",
-        "songName": "The Sweet Escape",
-        "songSubName": "ft. Akon",
-        "songAuthorName": "Gwen Stefani",
-        "levelAuthorName": null,
-        "cover": "TheSweetEscapeCover"
+        "cover": "FamousCover"
     },
     "bts-blood-sweat-tears": {
         "pack": {
@@ -1167,6 +543,1222 @@
         "levelAuthorName": null,
         "cover": "UghCover"
     },
+    "camellia-100-bills": {
+        "pack": {
+            "id": "Extras",
+            "name": "Extras",
+            "nameShort": "Extras",
+            "cover": "ExtrasCover",
+            "isDLC": false,
+            "isOST": false
+        },
+        "id": "100BillsRemix",
+        "songName": "$100 Bills",
+        "songSubName": "(Camellia's \"215$-Step\" Remix)",
+        "songAuthorName": "Jaroslav Beck, Camellia",
+        "levelAuthorName": "altrewin",
+        "cover": "100BillsRemixCover"
+    },
+    "camellia-crystallized": {
+        "pack": {
+            "id": "Camellia",
+            "name": "Camellia Music Pack",
+            "nameShort": "Camellia",
+            "cover": "CamelliaCover",
+            "isDLC": false,
+            "isOST": false
+        },
+        "id": "Crystallized",
+        "songName": "Crystallized",
+        "songSubName": "",
+        "songAuthorName": "Camellia",
+        "levelAuthorName": null,
+        "cover": "CrystallizedAndLightItUpCover"
+    },
+    "camellia-exit-this-earths-atomosphere": {
+        "pack": {
+            "id": "Camellia",
+            "name": "Camellia Music Pack",
+            "nameShort": "Camellia",
+            "cover": "CamelliaCover",
+            "isDLC": false,
+            "isOST": false
+        },
+        "id": "ExitThisEarthsAtomosphere",
+        "songName": "EXiT This Earth's Atomosphere",
+        "songSubName": "",
+        "songAuthorName": "Camellia",
+        "levelAuthorName": null,
+        "cover": "ExitThisEarthsAtomosphereCover"
+    },
+    "camellia-ghost": {
+        "pack": {
+            "id": "Camellia",
+            "name": "Camellia Music Pack",
+            "nameShort": "Camellia",
+            "cover": "CamelliaCover",
+            "isDLC": false,
+            "isOST": false
+        },
+        "id": "Ghost",
+        "songName": "Ghost",
+        "songSubName": "",
+        "songAuthorName": "Camellia",
+        "levelAuthorName": null,
+        "cover": "GhostCover"
+    },
+    "camellia-light-it-up": {
+        "pack": {
+            "id": "Camellia",
+            "name": "Camellia Music Pack",
+            "nameShort": "Camellia",
+            "cover": "CamelliaCover",
+            "isDLC": false,
+            "isOST": false
+        },
+        "id": "LightItUp",
+        "songName": "Light it up",
+        "songSubName": "",
+        "songAuthorName": "Camellia",
+        "levelAuthorName": null,
+        "cover": "CrystallizedAndLightItUpCover"
+    },
+    "camellia-spin-eternally": {
+        "pack": {
+            "id": "OstVol4",
+            "name": "Original Soundtrack Vol. 4",
+            "nameShort": "Original Soundtrack Vol. 4",
+            "cover": "OstVol4Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "SpinEternally",
+        "songName": "Spin Eternally",
+        "songSubName": "",
+        "songAuthorName": "Camellia",
+        "levelAuthorName": null,
+        "cover": "SpinEternallyCover"
+    },
+    "camellia-what-the-cat": {
+        "pack": {
+            "id": "Camellia",
+            "name": "Camellia Music Pack",
+            "nameShort": "Camellia",
+            "cover": "CamelliaCover",
+            "isDLC": false,
+            "isOST": false
+        },
+        "id": "WhatTheCat",
+        "songName": "WHAT THE CAT!?",
+        "songSubName": "",
+        "songAuthorName": "Camellia",
+        "levelAuthorName": null,
+        "cover": "WhatTheCatCover"
+    },
+    "darude-sandstorm": {
+        "pack": {
+            "id": "EDM",
+            "name": "Electronic Mixtape",
+            "nameShort": "Electronic Mixtape",
+            "cover": "EDMCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Sandstorm",
+        "songName": "Sandstorm",
+        "songSubName": "",
+        "songAuthorName": "Darude",
+        "levelAuthorName": "Freeek, ConnorJC, Kolezan, ETAN, Zakka, Altrewin",
+        "cover": "SandstormCover"
+    },
+    "deadmau5-ghosts-n-stuff": {
+        "pack": {
+            "id": "EDM",
+            "name": "Electronic Mixtape",
+            "nameShort": "Electronic Mixtape",
+            "cover": "EDMCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "GhostsNStuff",
+        "songName": "Ghosts 'n' Stuff",
+        "songSubName": "feat. Rob Swire",
+        "songAuthorName": "deadmau5",
+        "levelAuthorName": "altrewin",
+        "cover": "GhostsNStuffCover"
+    },
+    "dion-timmer-shiawase": {
+        "pack": {
+            "id": "RocketLeague",
+            "name": "Rocket League x Monstercat Music Pack",
+            "nameShort": "Rocket League x Monstercat",
+            "cover": "RocketLeagueCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Shiawase",
+        "songName": "Shiawase",
+        "songSubName": "",
+        "songAuthorName": "Dion Timmer",
+        "levelAuthorName": null,
+        "cover": "ShiawaseCover"
+    },
+    "fall-out-boy-centuries": {
+        "pack": {
+            "id": "FallOutBoy",
+            "name": "Fall Out Boy",
+            "nameShort": "Fall Out Boy",
+            "cover": "FallOutBoyCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Centuries",
+        "songName": "Centuries",
+        "songSubName": "",
+        "songAuthorName": "Fall Out Boy",
+        "levelAuthorName": "Kolezan",
+        "cover": "CenturiesCover"
+    },
+    "fall-out-boy-dance-dance": {
+        "pack": {
+            "id": "FallOutBoy",
+            "name": "Fall Out Boy",
+            "nameShort": "Fall Out Boy",
+            "cover": "FallOutBoyCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "DanceDance",
+        "songName": "Dance, Dance",
+        "songSubName": "",
+        "songAuthorName": "Fall Out Boy",
+        "levelAuthorName": "ConnorJC",
+        "cover": "DanceDanceCover"
+    },
+    "fall-out-boy-i-dont-care": {
+        "pack": {
+            "id": "FallOutBoy",
+            "name": "Fall Out Boy",
+            "nameShort": "Fall Out Boy",
+            "cover": "FallOutBoyCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "IDontCare",
+        "songName": "I Don't Care",
+        "songSubName": "",
+        "songAuthorName": "Fall Out Boy",
+        "levelAuthorName": "Zakka",
+        "cover": "IDontCareCover"
+    },
+    "fall-out-boy-immortals": {
+        "pack": {
+            "id": "FallOutBoy",
+            "name": "Fall Out Boy",
+            "nameShort": "Fall Out Boy",
+            "cover": "FallOutBoyCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Immortals",
+        "songName": "Immortals",
+        "songSubName": "",
+        "songAuthorName": "Fall Out Boy",
+        "levelAuthorName": "ConnorJC",
+        "cover": "ImmortalsCover"
+    },
+    "fall-out-boy-irresistible": {
+        "pack": {
+            "id": "FallOutBoy",
+            "name": "Fall Out Boy",
+            "nameShort": "Fall Out Boy",
+            "cover": "FallOutBoyCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Irresistible",
+        "songName": "Irresistible",
+        "songSubName": "",
+        "songAuthorName": "Fall Out Boy",
+        "levelAuthorName": "altrewin",
+        "cover": "IrresistibleCover"
+    },
+    "fall-out-boy-my-songs-know-what-you-did-in-the-dark": {
+        "pack": {
+            "id": "FallOutBoy",
+            "name": "Fall Out Boy",
+            "nameShort": "Fall Out Boy",
+            "cover": "FallOutBoyCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "MySongsKnow",
+        "songName": "My Songs Know What You Did In The Dark",
+        "songSubName": "(Light Em Up)",
+        "songAuthorName": "Fall Out Boy",
+        "levelAuthorName": "Freeek",
+        "cover": "MySongsKnowCover"
+    },
+    "fall-out-boy-this-aint-a-scene-its-an-arms-race": {
+        "pack": {
+            "id": "FallOutBoy",
+            "name": "Fall Out Boy",
+            "nameShort": "Fall Out Boy",
+            "cover": "FallOutBoyCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "ThisAintAScene",
+        "songName": "This Ain't A Scene, It's An Arms Race",
+        "songSubName": "",
+        "songAuthorName": "Fall Out Boy",
+        "levelAuthorName": "ETAN",
+        "cover": "ThisAintASceneCover"
+    },
+    "fall-out-boy-thnks-fr-th-mmrs": {
+        "pack": {
+            "id": "FallOutBoy",
+            "name": "Fall Out Boy",
+            "nameShort": "Fall Out Boy",
+            "cover": "FallOutBoyCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "ThnksFrThMmrs",
+        "songName": "Thnks fr th Mmrs",
+        "songSubName": "",
+        "songAuthorName": "Fall Out Boy",
+        "levelAuthorName": "Kolezan",
+        "cover": "ThnksFrThMmrsCover"
+    },
+    "fatboy-slim-the-rockafeller-skank": {
+        "pack": {
+            "id": "EDM",
+            "name": "Electronic Mixtape",
+            "nameShort": "Electronic Mixtape",
+            "cover": "EDMCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "TheRockafellerSkank",
+        "songName": "The Rockafeller Skank",
+        "songSubName": "",
+        "songAuthorName": "Fatboy Slim",
+        "levelAuthorName": "Kolezan",
+        "cover": "TheRockafellerSkankCover"
+    },
+    "feint-we-wont-be-alone": {
+        "pack": {
+            "id": "Monstercat",
+            "name": "Monstercat Music Pack Vol. 1",
+            "nameShort": "Monstercat Vol. 1",
+            "cover": "MonstercatVol1Cover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "WeWontBeAlone",
+        "songName": "We Won't Be Alone",
+        "songSubName": "ft. Laura Brehm",
+        "songAuthorName": "Feint",
+        "levelAuthorName": null,
+        "cover": "WeWontBeAloneCover"
+    },
+    "foo-fighters-the-pretender": {
+        "pack": {
+            "id": "RockMixtape",
+            "name": "Rock Mixtape Music Pack",
+            "nameShort": "Rock Mixtape",
+            "cover": "RockMixtapeCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "ThePretender",
+        "songName": "The Pretender",
+        "songSubName": "",
+        "songAuthorName": "Foo Fighters",
+        "levelAuthorName": "altrewin",
+        "cover": "ThePretenderCover"
+    },
+    "green-day-american-idiot": {
+        "pack": {
+            "id": "GreenDay",
+            "name": "Green Day Music Pack",
+            "nameShort": "Green Day",
+            "cover": "GreenDayCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "AmericanIdiot",
+        "songName": "American Idiot",
+        "songSubName": "",
+        "songAuthorName": "Green Day",
+        "levelAuthorName": null,
+        "cover": "AmericanIdiotCover"
+    },
+    "green-day-boulevard-of-broken-dreams": {
+        "pack": {
+            "id": "GreenDay",
+            "name": "Green Day Music Pack",
+            "nameShort": "Green Day",
+            "cover": "GreenDayCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "BoulevardOfBrokenDreams",
+        "songName": "Boulevard Of Broken Dreams",
+        "songSubName": "",
+        "songAuthorName": "Green Day",
+        "levelAuthorName": null,
+        "cover": "BoulevardOfBrokenDreamsCover"
+    },
+    "green-day-father-of-all": {
+        "pack": {
+            "id": "GreenDay",
+            "name": "Green Day Music Pack",
+            "nameShort": "Green Day",
+            "cover": "GreenDayCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "FatherOfAll",
+        "songName": "Father of All...",
+        "songSubName": "",
+        "songAuthorName": "Green Day",
+        "levelAuthorName": null,
+        "cover": "FatherOfAllCover"
+    },
+    "green-day-fire-ready-aim": {
+        "pack": {
+            "id": "GreenDay",
+            "name": "Green Day Music Pack",
+            "nameShort": "Green Day",
+            "cover": "GreenDayCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "FireReadyAim",
+        "songName": "Fire, Ready, Aim",
+        "songSubName": "",
+        "songAuthorName": "Green Day",
+        "levelAuthorName": null,
+        "cover": "FireReadyAimCover"
+    },
+    "green-day-holiday": {
+        "pack": {
+            "id": "GreenDay",
+            "name": "Green Day Music Pack",
+            "nameShort": "Green Day",
+            "cover": "GreenDayCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Holiday",
+        "songName": "Holiday",
+        "songSubName": "",
+        "songAuthorName": "Green Day",
+        "levelAuthorName": null,
+        "cover": "HolidayCover"
+    },
+    "green-day-minority": {
+        "pack": {
+            "id": "GreenDay",
+            "name": "Green Day Music Pack",
+            "nameShort": "Green Day",
+            "cover": "GreenDayCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Minority",
+        "songName": "Minority",
+        "songSubName": "",
+        "songAuthorName": "Green Day",
+        "levelAuthorName": null,
+        "cover": "MinorityCover"
+    },
+    "guns-n-roses-sweet-child-o-mine": {
+        "pack": {
+            "id": "RockMixtape",
+            "name": "Rock Mixtape Music Pack",
+            "nameShort": "Rock Mixtape",
+            "cover": "RockMixtapeCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "SweetChildOMine",
+        "songName": "Sweet Child O' Mine",
+        "songSubName": "",
+        "songAuthorName": "Guns N' Roses",
+        "levelAuthorName": "ConnorJC",
+        "cover": "SweetChildOMineCover"
+    },
+    "gwen-stefani-the-sweet-escape": {
+        "pack": {
+            "id": "Interscope",
+            "name": "Interscope Mixtape",
+            "nameShort": "Interscope",
+            "cover": "InterscopeCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "TheSweetEscape",
+        "songName": "The Sweet Escape",
+        "songSubName": "ft. Akon",
+        "songAuthorName": "Gwen Stefani",
+        "levelAuthorName": null,
+        "cover": "TheSweetEscapeCover"
+    },
+    "imagine-dragons-bad-liar": {
+        "pack": {
+            "id": "ImagineDragons",
+            "name": "Imagine Dragons Music Pack",
+            "nameShort": "Imagine Dragons",
+            "cover": "ImagineDragonsCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "BadLiar",
+        "songName": "Bad Liar",
+        "songSubName": "",
+        "songAuthorName": "Imagine Dragons",
+        "levelAuthorName": "GreatYazer (Kolezan Remaster)",
+        "cover": "BadLiarCover"
+    },
+    "imagine-dragons-believer": {
+        "pack": {
+            "id": "ImagineDragons",
+            "name": "Imagine Dragons Music Pack",
+            "nameShort": "Imagine Dragons",
+            "cover": "ImagineDragonsCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Believer",
+        "songName": "Believer",
+        "songSubName": "",
+        "songAuthorName": "Imagine Dragons",
+        "levelAuthorName": "Freeek (Freeek Remaster)",
+        "cover": "BelieverCover"
+    },
+    "imagine-dragons-bones": {
+        "pack": {
+            "id": "ImagineDragons",
+            "name": "Imagine Dragons Music Pack",
+            "nameShort": "Imagine Dragons",
+            "cover": "ImagineDragonsCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Bones",
+        "songName": "Bones",
+        "songSubName": "",
+        "songAuthorName": "Imagine Dragons",
+        "levelAuthorName": "ETAN",
+        "cover": "BonesCover"
+    },
+    "imagine-dragons-digital": {
+        "pack": {
+            "id": "ImagineDragons",
+            "name": "Imagine Dragons Music Pack",
+            "nameShort": "Imagine Dragons",
+            "cover": "ImagineDragonsCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Digital",
+        "songName": "Digital",
+        "songSubName": "",
+        "songAuthorName": "Imagine Dragons",
+        "levelAuthorName": "Freeek (Zakka Remaster)",
+        "cover": "DigitalCover"
+    },
+    "imagine-dragons-enemy": {
+        "pack": {
+            "id": "ImagineDragons",
+            "name": "Imagine Dragons Music Pack",
+            "nameShort": "Imagine Dragons",
+            "cover": "ImagineDragonsCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Enemy",
+        "songName": "Enemy",
+        "songSubName": "(from the series Arcane League of Legends)",
+        "songAuthorName": "Imagine Dragons x J.I.D",
+        "levelAuthorName": "Freeek",
+        "cover": "EnemyCover"
+    },
+    "imagine-dragons-its-time": {
+        "pack": {
+            "id": "ImagineDragons",
+            "name": "Imagine Dragons Music Pack",
+            "nameShort": "Imagine Dragons",
+            "cover": "ImagineDragonsCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "ItsTime",
+        "songName": "It's Time",
+        "songSubName": "",
+        "songAuthorName": "Imagine Dragons",
+        "levelAuthorName": "GreatYazer (altrewin Remaster)",
+        "cover": "RadioactiveAndItsTimeCover"
+    },
+    "imagine-dragons-machine": {
+        "pack": {
+            "id": "ImagineDragons",
+            "name": "Imagine Dragons Music Pack",
+            "nameShort": "Imagine Dragons",
+            "cover": "ImagineDragonsCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Machine",
+        "songName": "Machine",
+        "songSubName": "",
+        "songAuthorName": "Imagine Dragons",
+        "levelAuthorName": "Rustic (Zakka Remaster)",
+        "cover": "MachineCover"
+    },
+    "imagine-dragons-natural": {
+        "pack": {
+            "id": "ImagineDragons",
+            "name": "Imagine Dragons Music Pack",
+            "nameShort": "Imagine Dragons",
+            "cover": "ImagineDragonsCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Natural",
+        "songName": "Natural",
+        "songSubName": "",
+        "songAuthorName": "Imagine Dragons",
+        "levelAuthorName": "GreatYazer (altrewin Remaster)",
+        "cover": "NaturalCover"
+    },
+    "imagine-dragons-radioactive": {
+        "pack": {
+            "id": "ImagineDragons",
+            "name": "Imagine Dragons Music Pack",
+            "nameShort": "Imagine Dragons",
+            "cover": "ImagineDragonsCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Radioactive",
+        "songName": "Radioactive",
+        "songSubName": "",
+        "songAuthorName": "Imagine Dragons",
+        "levelAuthorName": "Freeek (ETAN Remaster)",
+        "cover": "RadioactiveAndItsTimeCover"
+    },
+    "imagine-dragons-thunder": {
+        "pack": {
+            "id": "ImagineDragons",
+            "name": "Imagine Dragons Music Pack",
+            "nameShort": "Imagine Dragons",
+            "cover": "ImagineDragonsCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Thunder",
+        "songName": "Thunder",
+        "songSubName": "",
+        "songAuthorName": "Imagine Dragons",
+        "levelAuthorName": "GreatYazer (ETAN Remaster)",
+        "cover": "ThunderCover"
+    },
+    "imagine-dragons-warriors": {
+        "pack": {
+            "id": "ImagineDragons",
+            "name": "Imagine Dragons Music Pack",
+            "nameShort": "Imagine Dragons",
+            "cover": "ImagineDragonsCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Warriors",
+        "songName": "Warriors",
+        "songSubName": "",
+        "songAuthorName": "Imagine Dragons",
+        "levelAuthorName": "Freeek (Freeek Remaster)",
+        "cover": "WarriorsCover"
+    },
+    "imagine-dragons-whatever-it-takes": {
+        "pack": {
+            "id": "ImagineDragons",
+            "name": "Imagine Dragons Music Pack",
+            "nameShort": "Imagine Dragons",
+            "cover": "ImagineDragonsCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "WhateverItTakes",
+        "songName": "Whatever It Takes",
+        "songSubName": "",
+        "songAuthorName": "Imagine Dragons",
+        "levelAuthorName": "Freeek (Kolezan Remaster)",
+        "cover": "WhateverItTakesCover"
+    },
+    "jaroslav-beck-100-bills": {
+        "pack": {
+            "id": "OstVol1",
+            "name": "Original Soundtrack Vol. 1",
+            "nameShort": "Original Soundtrack Vol. 1",
+            "cover": "OstVol1Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "100Bills",
+        "songName": "$100 Bills",
+        "songSubName": "",
+        "songAuthorName": "Jaroslav Beck",
+        "levelAuthorName": null,
+        "cover": "$100BillsCover"
+    },
+    "jaroslav-beck-balearic-pumping": {
+        "pack": {
+            "id": "OstVol1",
+            "name": "Original Soundtrack Vol. 1",
+            "nameShort": "Original Soundtrack Vol. 1",
+            "cover": "OstVol1Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "BalearicPumping",
+        "songName": "Balearic Pumping",
+        "songSubName": "",
+        "songAuthorName": "Jaroslav Beck",
+        "levelAuthorName": null,
+        "cover": "BalearicPumpingCover"
+    },
+    "jaroslav-beck-beat-saber": {
+        "pack": {
+            "id": "OstVol1",
+            "name": "Original Soundtrack Vol. 1",
+            "nameShort": "Original Soundtrack Vol. 1",
+            "cover": "OstVol1Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "BeatSaber",
+        "songName": "Beat Saber",
+        "songSubName": "",
+        "songAuthorName": "Jaroslav Beck",
+        "levelAuthorName": null,
+        "cover": "BeatSaberCover"
+    },
+    "jaroslav-beck-breezer": {
+        "pack": {
+            "id": "OstVol1",
+            "name": "Original Soundtrack Vol. 1",
+            "nameShort": "Original Soundtrack Vol. 1",
+            "cover": "OstVol1Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "Breezer",
+        "songName": "Breezer",
+        "songSubName": "",
+        "songAuthorName": "Jaroslav Beck",
+        "levelAuthorName": null,
+        "cover": "BreezerCover"
+    },
+    "jaroslav-beck-commercial-pumping": {
+        "pack": {
+            "id": "OstVol1",
+            "name": "Original Soundtrack Vol. 1",
+            "nameShort": "Original Soundtrack Vol. 1",
+            "cover": "OstVol1Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "CommercialPumping",
+        "songName": "Commercial Pumping",
+        "songSubName": "",
+        "songAuthorName": "Jaroslav Beck",
+        "levelAuthorName": null,
+        "cover": "CommercialPumpingCover"
+    },
+    "jaroslav-beck-country-rounds": {
+        "pack": {
+            "id": "OstVol1",
+            "name": "Original Soundtrack Vol. 1",
+            "nameShort": "Original Soundtrack Vol. 1",
+            "cover": "OstVol1Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "CountryRounds",
+        "songName": "Country Rounds",
+        "songSubName": "Sqeepo Remix",
+        "songAuthorName": "Jaroslav Beck, Kings & Folk",
+        "levelAuthorName": null,
+        "cover": "KingsAndFolkCover"
+    },
+    "jaroslav-beck-escape": {
+        "pack": {
+            "id": "OstVol1",
+            "name": "Original Soundtrack Vol. 1",
+            "nameShort": "Original Soundtrack Vol. 1",
+            "cover": "OstVol1Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "Escape",
+        "songName": "Escape",
+        "songSubName": "ft. Summer Haze",
+        "songAuthorName": "Jaroslav Beck, Summer Haze",
+        "levelAuthorName": null,
+        "cover": "EscapeCover"
+    },
+    "jaroslav-beck-fitbeat": {
+        "pack": {
+            "id": "Extras",
+            "name": "Extras",
+            "nameShort": "Extras",
+            "cover": "ExtrasCover",
+            "isDLC": false,
+            "isOST": false
+        },
+        "id": "FitBeat",
+        "songName": "FitBeat",
+        "songSubName": "",
+        "songAuthorName": "Jaroslav Beck",
+        "levelAuthorName": null,
+        "cover": "FitBeat"
+    },
+    "jaroslav-beck-into-the-dream": {
+        "pack": {
+            "id": "OstVol4",
+            "name": "Original Soundtrack Vol. 4",
+            "nameShort": "Original Soundtrack Vol. 4",
+            "cover": "OstVol4Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "IntoTheDream",
+        "songName": "Into the Dream",
+        "songSubName": "ft. Jakub Tirco",
+        "songAuthorName": "Jaroslav Beck",
+        "levelAuthorName": null,
+        "cover": "IntoTheDreamLevelCover"
+    },
+    "jaroslav-beck-legend": {
+        "pack": {
+            "id": "OstVol1",
+            "name": "Original Soundtrack Vol. 1",
+            "nameShort": "Original Soundtrack Vol. 1",
+            "cover": "OstVol1Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "Legend",
+        "songName": "Legend",
+        "songSubName": "ft. Backchat",
+        "songAuthorName": "Jaroslav Beck, Backchat, Generdyn",
+        "levelAuthorName": null,
+        "cover": "LegendCover"
+    },
+    "jaroslav-beck-ludicrous": {
+        "pack": {
+            "id": "OstVol4",
+            "name": "Original Soundtrack Vol. 4",
+            "nameShort": "Original Soundtrack Vol. 4",
+            "cover": "OstVol4Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "LudicrousPlus",
+        "songName": "LUDICROUS+",
+        "songSubName": "",
+        "songAuthorName": "Jaroslav Beck",
+        "levelAuthorName": null,
+        "cover": "LudicrousPlusCover"
+    },
+    "jaroslav-beck-lvl-insane": {
+        "pack": {
+            "id": "OstVol1",
+            "name": "Original Soundtrack Vol. 1",
+            "nameShort": "Original Soundtrack Vol. 1",
+            "cover": "OstVol1Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "LvlInsane",
+        "songName": "Lvl Insane",
+        "songSubName": "",
+        "songAuthorName": "Jaroslav Beck",
+        "levelAuthorName": null,
+        "cover": "LvlInsaneCover"
+    },
+    "jaroslav-beck-origins": {
+        "pack": {
+            "id": "OstVol3",
+            "name": "Original Soundtrack Vol. 3",
+            "nameShort": "Original Soundtrack Vol. 3",
+            "cover": "OstVol3Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "Origins",
+        "songName": "Origins",
+        "songSubName": "(ft. Mutrix)",
+        "songAuthorName": "Jaroslav Beck & Jan Ilavsky",
+        "levelAuthorName": null,
+        "cover": "OriginsCover"
+    },
+    "jaroslav-beck-spooky-beat": {
+        "pack": {
+            "id": "Extras",
+            "name": "Extras",
+            "nameShort": "Extras",
+            "cover": "ExtrasCover",
+            "isDLC": false,
+            "isOST": false
+        },
+        "id": "SpookyBeat",
+        "songName": "Spooky Beat",
+        "songSubName": "",
+        "songAuthorName": "Jaroslav Beck",
+        "levelAuthorName": "Freeek",
+        "cover": "SpookyBeatCover"
+    },
+    "jaroslav-beck-turn-me-on": {
+        "pack": {
+            "id": "OstVol1",
+            "name": "Original Soundtrack Vol. 1",
+            "nameShort": "Original Soundtrack Vol. 1",
+            "cover": "OstVol1Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "TurnMeOn",
+        "songName": "Turn Me On",
+        "songSubName": "ft. Tiny C",
+        "songAuthorName": "Jaroslav Beck, Tiny C",
+        "levelAuthorName": null,
+        "cover": "TurnMeOnCover"
+    },
+    "jaroslav-beck-unlimited-power": {
+        "pack": {
+            "id": "OstVol2",
+            "name": "Original Soundtrack Vol. 2",
+            "nameShort": "Original Soundtrack Vol. 2",
+            "cover": "OstVol2Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "UnlimitedPower",
+        "songName": "Unlimited Power",
+        "songSubName": "ft. Frank Bentley",
+        "songAuthorName": "Jaroslav Beck",
+        "levelAuthorName": "Split",
+        "cover": "UnlimitedPowerCover"
+    },
+    "karra-what-i-like": {
+        "pack": {
+            "id": "Timbaland",
+            "name": "Timbaland Music Pack",
+            "nameShort": "Timbaland",
+            "cover": "TimbalandCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "WhatILike",
+        "songName": "What I Like",
+        "songSubName": "",
+        "songAuthorName": "Nash Overstreet, Karra & Common Strangers",
+        "levelAuthorName": null,
+        "cover": "WhatILikeCover"
+    },
+    "kasai-harcores-cycle-hit": {
+        "pack": {
+            "id": "Camellia",
+            "name": "Camellia Music Pack",
+            "nameShort": "Camellia",
+            "cover": "CamelliaCover",
+            "isDLC": false,
+            "isOST": false
+        },
+        "id": "CycleHit",
+        "songName": "Cycle Hit",
+        "songSubName": "",
+        "songAuthorName": "Kasai Harcores (DJ Genki,C-Show,Camellia)",
+        "levelAuthorName": null,
+        "cover": "CycleHitCover"
+    },
+    "kaydence-dumb-thingz": {
+        "pack": {
+            "id": "Timbaland",
+            "name": "Timbaland Music Pack",
+            "nameShort": "Timbaland",
+            "cover": "TimbalandCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "DumbThingz",
+        "songName": "Dumb Thingz",
+        "songSubName": "",
+        "songAuthorName": "Kaydence, Timbaland",
+        "levelAuthorName": null,
+        "cover": "DumbThingzCover"
+    },
+    "kayzo-this-time": {
+        "pack": {
+            "id": "Monstercat",
+            "name": "Monstercat Music Pack Vol. 1",
+            "nameShort": "Monstercat Vol. 1",
+            "cover": "MonstercatVol1Cover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "ThisTime",
+        "songName": "This Time",
+        "songSubName": "",
+        "songAuthorName": "Kayzo",
+        "levelAuthorName": null,
+        "cover": "ThisTimeCover"
+    },
+    "kda-popstars": {
+        "pack": {
+            "id": "Extras",
+            "name": "Extras",
+            "nameShort": "Extras",
+            "cover": "ExtrasCover",
+            "isDLC": false,
+            "isOST": false
+        },
+        "id": "PopStars",
+        "songName": "POP/STARS - K/DA",
+        "songSubName": "",
+        "songAuthorName": "League of Legends",
+        "levelAuthorName": null,
+        "cover": "PopStarsCover"
+    },
+    "kendrick-lamar-dna": {
+        "pack": {
+            "id": "Interscope",
+            "name": "Interscope Mixtape",
+            "nameShort": "Interscope",
+            "cover": "InterscopeCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "DnaLamar",
+        "songName": "DNA.",
+        "songSubName": "",
+        "songAuthorName": "Kendrick Lamar",
+        "levelAuthorName": null,
+        "cover": "DnaLamarCover"
+    },
+    "kiss-i-was-made-for-lovin-you": {
+        "pack": {
+            "id": "RockMixtape",
+            "name": "Rock Mixtape Music Pack",
+            "nameShort": "Rock Mixtape",
+            "cover": "RockMixtapeCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "IWasMadeLovingYou",
+        "songName": "I Was Made For Lovin' You",
+        "songSubName": "",
+        "songAuthorName": "KISS",
+        "levelAuthorName": "ConnorJC",
+        "cover": "IWasMadeLovingYouCover"
+    },
+    "knower-one-hope": {
+        "pack": {
+            "id": "Extras",
+            "name": "Extras",
+            "nameShort": "Extras",
+            "cover": "ExtrasCover",
+            "isDLC": false,
+            "isOST": false
+        },
+        "id": "OneHope",
+        "songName": "One Hope",
+        "songSubName": "ft. David Binney",
+        "songAuthorName": "KNOWER",
+        "levelAuthorName": null,
+        "cover": "OneHopeCover"
+    },
+    "lady-gaga-alejandro": {
+        "pack": {
+            "id": "LadyGaga",
+            "name": "Lady Gaga Music Pack",
+            "nameShort": "Lady Gaga",
+            "cover": "LadyGagaCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Alejandro",
+        "songName": "Alejandro",
+        "songSubName": "",
+        "songAuthorName": "Lady Gaga",
+        "levelAuthorName": "Kolezan",
+        "cover": "AlejandroCover"
+    },
+    "lady-gaga-bad-romance": {
+        "pack": {
+            "id": "LadyGaga",
+            "name": "Lady Gaga Music Pack",
+            "nameShort": "Lady Gaga",
+            "cover": "LadyGagaCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "BadRomance",
+        "songName": "Bad Romance",
+        "songSubName": "",
+        "songAuthorName": "Lady Gaga",
+        "levelAuthorName": "Zakka",
+        "cover": "BadRomanceCover"
+    },
+    "lady-gaga-born-this-way": {
+        "pack": {
+            "id": "LadyGaga",
+            "name": "Lady Gaga Music Pack",
+            "nameShort": "Lady Gaga",
+            "cover": "LadyGagaCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "BornThisWay",
+        "songName": "Born This Way",
+        "songSubName": "",
+        "songAuthorName": "Lady Gaga",
+        "levelAuthorName": "ETAN",
+        "cover": "BornThisWayCover"
+    },
+    "lady-gaga-just-dance": {
+        "pack": {
+            "id": "LadyGaga",
+            "name": "Lady Gaga Music Pack",
+            "nameShort": "Lady Gaga",
+            "cover": "LadyGagaCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "JustDance",
+        "songName": "Just Dance",
+        "songSubName": "(feat. Colby O'Donis)",
+        "songAuthorName": "Lady Gaga, Colby O'Donis",
+        "levelAuthorName": "Kolezan",
+        "cover": "JustDanceCover"
+    },
+    "lady-gaga-paparazzi": {
+        "pack": {
+            "id": "LadyGaga",
+            "name": "Lady Gaga Music Pack",
+            "nameShort": "Lady Gaga",
+            "cover": "LadyGagaCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Paparazzi",
+        "songName": "Paparazzi",
+        "songSubName": "",
+        "songAuthorName": "Lady Gaga",
+        "levelAuthorName": "Ruckus",
+        "cover": "PaparazziCover"
+    },
+    "lady-gaga-poker-face": {
+        "pack": {
+            "id": "LadyGaga",
+            "name": "Lady Gaga Music Pack",
+            "nameShort": "Lady Gaga",
+            "cover": "LadyGagaCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "PokerFace",
+        "songName": "Poker Face",
+        "songSubName": "",
+        "songAuthorName": "Lady Gaga",
+        "levelAuthorName": "altrewin",
+        "cover": "PokerFaceCover"
+    },
+    "lady-gaga-rain-on-me": {
+        "pack": {
+            "id": "LadyGaga",
+            "name": "Lady Gaga Music Pack",
+            "nameShort": "Lady Gaga",
+            "cover": "LadyGagaCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "RainOnMe",
+        "songName": "Rain On Me",
+        "songSubName": "(with Ariana Grande)",
+        "songAuthorName": "Lady Gaga, Ariana Grande",
+        "levelAuthorName": "Zakka",
+        "cover": "RainOnMeCover"
+    },
+    "lady-gaga-stupid-love": {
+        "pack": {
+            "id": "LadyGaga",
+            "name": "Lady Gaga Music Pack",
+            "nameShort": "Lady Gaga",
+            "cover": "LadyGagaCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "StupidLove",
+        "songName": "Stupid Love",
+        "songSubName": "",
+        "songAuthorName": "Lady Gaga",
+        "levelAuthorName": "Ruckus",
+        "cover": "StupidLoveCover"
+    },
+    "lady-gaga-telephone": {
+        "pack": {
+            "id": "LadyGaga",
+            "name": "Lady Gaga Music Pack",
+            "nameShort": "Lady Gaga",
+            "cover": "LadyGagaCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Telephone",
+        "songName": "Telephone",
+        "songSubName": "(feat. Beyonc\u0102\u00a9)",
+        "songAuthorName": "Lady Gaga, Beyonc\u0102\u00a9",
+        "levelAuthorName": "Freeek",
+        "cover": "TelephoneCover"
+    },
+    "lady-gaga-the-edge-of-glory": {
+        "pack": {
+            "id": "LadyGaga",
+            "name": "Lady Gaga Music Pack",
+            "nameShort": "Lady Gaga",
+            "cover": "LadyGagaCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "TheEdgeOfGlory",
+        "songName": "The Edge Of Glory",
+        "songSubName": "",
+        "songAuthorName": "Lady Gaga",
+        "levelAuthorName": "ConnorJC",
+        "cover": "TheEdgeOfGloryCover"
+    },
+    "limp-bizkit-rollin": {
+        "pack": {
+            "id": "Interscope",
+            "name": "Interscope Mixtape",
+            "nameShort": "Interscope",
+            "cover": "InterscopeCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Rollin",
+        "songName": "Rollin' (Air Raid Vehicle) ",
+        "songSubName": "",
+        "songAuthorName": "Limp Bizkit",
+        "levelAuthorName": null,
+        "cover": "RollinCover"
+    },
     "linkin-park-bleed-it-out": {
         "pack": {
             "id": "LinkinPark",
@@ -1343,277 +1935,469 @@
         "levelAuthorName": null,
         "cover": "WhatIveDone"
     },
-    "sid-tipton-has-a-meaning": {
+    "lizzo-2-be-loved": {
         "pack": {
-            "id": "Timbaland",
-            "name": "Timbaland Music Pack",
-            "nameShort": "Timbaland",
-            "cover": "TimbalandCover",
+            "id": "Lizzo",
+            "name": "Lizzo Music Pack",
+            "nameShort": "Lizzo",
+            "cover": "LizzoCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "HasAMeaning",
-        "songName": "Has A Meaning",
+        "id": "2BeLoved",
+        "songName": "2 Be Loved (Am I Ready)",
         "songSubName": "",
-        "songAuthorName": "Sid Tipton, Timbaland",
-        "levelAuthorName": null,
-        "cover": "HasAMeaningCover"
+        "songAuthorName": "Lizzo",
+        "levelAuthorName": "ConnorJC",
+        "cover": "2BeLovedCover"
     },
-    "kaydence-dumb-thingz": {
+    "lizzo-about-damn-time": {
         "pack": {
-            "id": "Timbaland",
-            "name": "Timbaland Music Pack",
-            "nameShort": "Timbaland",
-            "cover": "TimbalandCover",
+            "id": "Lizzo",
+            "name": "Lizzo Music Pack",
+            "nameShort": "Lizzo",
+            "cover": "LizzoCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "DumbThingz",
-        "songName": "Dumb Thingz",
+        "id": "AboutDamnTime",
+        "songName": "About Damn Time",
         "songSubName": "",
-        "songAuthorName": "Kaydence, Timbaland",
-        "levelAuthorName": null,
-        "cover": "DumbThingzCover"
+        "songAuthorName": "Lizzo",
+        "levelAuthorName": "Freeek",
+        "cover": "AboutDamnTimeCover"
     },
-    "wavezswavesz-while-were-young": {
+    "lizzo-cuz-i-love-you": {
         "pack": {
-            "id": "Timbaland",
-            "name": "Timbaland Music Pack",
-            "nameShort": "Timbaland",
-            "cover": "TimbalandCover",
+            "id": "Lizzo",
+            "name": "Lizzo Music Pack",
+            "nameShort": "Lizzo",
+            "cover": "LizzoCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "WhileWereYoung",
-        "songName": "While We're Young",
+        "id": "CuzILoveYou",
+        "songName": "Cuz I Love You",
         "songSubName": "",
-        "songAuthorName": "WavezsWavezs",
-        "levelAuthorName": null,
-        "cover": "WhileWereYoungCover"
+        "songAuthorName": "Lizzo",
+        "levelAuthorName": "altrewin",
+        "cover": "CuzILoveYouCover"
     },
-    "karra-what-i-like": {
+    "lizzo-everybodys-gay": {
         "pack": {
-            "id": "Timbaland",
-            "name": "Timbaland Music Pack",
-            "nameShort": "Timbaland",
-            "cover": "TimbalandCover",
+            "id": "Lizzo",
+            "name": "Lizzo Music Pack",
+            "nameShort": "Lizzo",
+            "cover": "LizzoCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "WhatILike",
-        "songName": "What I Like",
+        "id": "EverybodysGay",
+        "songName": "Everybody's Gay",
         "songSubName": "",
-        "songAuthorName": "Nash Overstreet, Karra & Common Strangers",
-        "levelAuthorName": null,
-        "cover": "WhatILikeCover"
+        "songAuthorName": "Lizzo",
+        "levelAuthorName": "Zakka",
+        "cover": "EverybodysGayCover"
     },
-    "bruno-martini-famous": {
+    "lizzo-good-as-hell": {
         "pack": {
-            "id": "Timbaland",
-            "name": "Timbaland Music Pack",
-            "nameShort": "Timbaland",
-            "cover": "TimbalandCover",
+            "id": "Lizzo",
+            "name": "Lizzo Music Pack",
+            "nameShort": "Lizzo",
+            "cover": "LizzoCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "Famous",
-        "songName": "Famous",
-        "songSubName": "ft. Jake Davis",
-        "songAuthorName": "Bruno Martini, Timbaland",
-        "levelAuthorName": null,
-        "cover": "FamousCover"
-    },
-    "green-day-american-idiot": {
-        "pack": {
-            "id": "GreenDay",
-            "name": "Green Day Music Pack",
-            "nameShort": "Green Day",
-            "cover": "GreenDayCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "AmericanIdiot",
-        "songName": "American Idiot",
+        "id": "GoodAsHell",
+        "songName": "Good As Hell",
         "songSubName": "",
-        "songAuthorName": "Green Day",
-        "levelAuthorName": null,
-        "cover": "AmericanIdiotCover"
+        "songAuthorName": "Lizzo",
+        "levelAuthorName": "ETAN",
+        "cover": "GoodAsHellCover"
     },
-    "green-day-father-of-all": {
+    "lizzo-juice": {
         "pack": {
-            "id": "GreenDay",
-            "name": "Green Day Music Pack",
-            "nameShort": "Green Day",
-            "cover": "GreenDayCover",
+            "id": "Lizzo",
+            "name": "Lizzo Music Pack",
+            "nameShort": "Lizzo",
+            "cover": "LizzoCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "FatherOfAll",
-        "songName": "Father of All...",
+        "id": "Juice",
+        "songName": "Juice",
         "songSubName": "",
-        "songAuthorName": "Green Day",
-        "levelAuthorName": null,
-        "cover": "FatherOfAllCover"
+        "songAuthorName": "Lizzo",
+        "levelAuthorName": "ConnorJC",
+        "cover": "JuiceCover"
     },
-    "green-day-boulevard-of-broken-dreams": {
+    "lizzo-tempo": {
         "pack": {
-            "id": "GreenDay",
-            "name": "Green Day Music Pack",
-            "nameShort": "Green Day",
-            "cover": "GreenDayCover",
+            "id": "Lizzo",
+            "name": "Lizzo Music Pack",
+            "nameShort": "Lizzo",
+            "cover": "LizzoCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "BoulevardOfBrokenDreams",
-        "songName": "Boulevard Of Broken Dreams",
-        "songSubName": "",
-        "songAuthorName": "Green Day",
-        "levelAuthorName": null,
-        "cover": "BoulevardOfBrokenDreamsCover"
+        "id": "Tempo",
+        "songName": "Tempo",
+        "songSubName": "feat. Missy Elliott",
+        "songAuthorName": "Lizzo",
+        "levelAuthorName": "altrewin",
+        "cover": "TempoCover"
     },
-    "green-day-holiday": {
+    "lizzo-truth-hurts": {
         "pack": {
-            "id": "GreenDay",
-            "name": "Green Day Music Pack",
-            "nameShort": "Green Day",
-            "cover": "GreenDayCover",
+            "id": "Lizzo",
+            "name": "Lizzo Music Pack",
+            "nameShort": "Lizzo",
+            "cover": "LizzoCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "Holiday",
-        "songName": "Holiday",
+        "id": "TruthHurts",
+        "songName": "Truth Hurts",
         "songSubName": "",
-        "songAuthorName": "Green Day",
-        "levelAuthorName": null,
-        "cover": "HolidayCover"
+        "songAuthorName": "Lizzo",
+        "levelAuthorName": "ETAN",
+        "cover": "TruthHurtsCover"
     },
-    "green-day-fire-ready-aim": {
+    "lizzo-worship": {
         "pack": {
-            "id": "GreenDay",
-            "name": "Green Day Music Pack",
-            "nameShort": "Green Day",
-            "cover": "GreenDayCover",
+            "id": "Lizzo",
+            "name": "Lizzo Music Pack",
+            "nameShort": "Lizzo",
+            "cover": "LizzoCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "FireReadyAim",
-        "songName": "Fire, Ready, Aim",
+        "id": "Worship",
+        "songName": "Worship",
         "songSubName": "",
-        "songAuthorName": "Green Day",
-        "levelAuthorName": null,
-        "cover": "FireReadyAimCover"
+        "songAuthorName": "Lizzo",
+        "levelAuthorName": "Zakka",
+        "cover": "WorshipCover"
     },
-    "green-day-minority": {
+    "lmfao-party-rock-anthem": {
         "pack": {
-            "id": "GreenDay",
-            "name": "Green Day Music Pack",
-            "nameShort": "Green Day",
-            "cover": "GreenDayCover",
+            "id": "Interscope",
+            "name": "Interscope Mixtape",
+            "nameShort": "Interscope",
+            "cover": "InterscopeCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "Minority",
-        "songName": "Minority",
+        "id": "PartyRockAnthem",
+        "songName": "Party Rock Anthem",
         "songSubName": "",
-        "songAuthorName": "Green Day",
+        "songAuthorName": "LMFAO ft. Lauren Bennett, GoonRock",
         "levelAuthorName": null,
-        "cover": "MinorityCover"
+        "cover": "PartyRockAnthemCover"
     },
-    "tokyo-machine-play": {
+    "lynyrd-skynyrd-free-bird": {
         "pack": {
-            "id": "RocketLeague",
-            "name": "Rocket League x Monstercat Music Pack",
-            "nameShort": "Rocket League x Monstercat",
-            "cover": "RocketLeagueCover",
+            "id": "RockMixtape",
+            "name": "Rock Mixtape Music Pack",
+            "nameShort": "Rock Mixtape",
+            "cover": "RockMixtapeCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "Play",
-        "songName": "Play",
+        "id": "FreeBird",
+        "songName": "Free Bird",
         "songSubName": "",
-        "songAuthorName": "Tokyo Machine",
-        "levelAuthorName": null,
-        "cover": "PlayCover"
+        "songAuthorName": "Lynyrd Skynyrd",
+        "levelAuthorName": "Freeek",
+        "cover": "FreeBirdCover"
     },
-    "stephen-walking-glide": {
+    "madeon-icarus": {
         "pack": {
-            "id": "RocketLeague",
-            "name": "Rocket League x Monstercat Music Pack",
-            "nameShort": "Rocket League x Monstercat",
-            "cover": "RocketLeagueCover",
+            "id": "EDM",
+            "name": "Electronic Mixtape",
+            "nameShort": "Electronic Mixtape",
+            "cover": "EDMCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "Glide",
-        "songName": "Glide",
+        "id": "Icarus",
+        "songName": "Icarus",
         "songSubName": "",
-        "songAuthorName": "Stephen Walking",
-        "levelAuthorName": null,
-        "cover": "GlideCover"
+        "songAuthorName": "Madeon",
+        "levelAuthorName": "Zakka",
+        "cover": "IcarusCover"
     },
-    "slushii-luv-u-need-u": {
+    "maroon-5-sugar": {
         "pack": {
-            "id": "RocketLeague",
-            "name": "Rocket League x Monstercat Music Pack",
-            "nameShort": "Rocket League x Monstercat",
-            "cover": "RocketLeagueCover",
+            "id": "Interscope",
+            "name": "Interscope Mixtape",
+            "nameShort": "Interscope",
+            "cover": "InterscopeCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "LuvUNeedU",
-        "songName": "Luv U Need U",
+        "id": "Sugar",
+        "songName": "Sugar",
         "songSubName": "",
-        "songAuthorName": "Slushii",
+        "songAuthorName": "Maroon 5",
         "levelAuthorName": null,
-        "cover": "LuvUNeedUCover"
+        "cover": "SugarCover"
     },
-    "tokyo-machine-rock-it": {
+    "marshmello-alone": {
         "pack": {
-            "id": "RocketLeague",
-            "name": "Rocket League x Monstercat Music Pack",
-            "nameShort": "Rocket League x Monstercat",
-            "cover": "RocketLeagueCover",
+            "id": "EDM",
+            "name": "Electronic Mixtape",
+            "nameShort": "Electronic Mixtape",
+            "cover": "EDMCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "RockIt",
-        "songName": "Rock It",
+        "id": "Alone",
+        "songName": "Alone",
         "songSubName": "",
-        "songAuthorName": "Tokyo Machine",
-        "levelAuthorName": null,
-        "cover": "RockItCover"
+        "songAuthorName": "Marshmello",
+        "levelAuthorName": "ETAN",
+        "cover": "AloneCover"
     },
-    "dion-timmer-shiawase": {
+    "martin-garrix-animals": {
         "pack": {
-            "id": "RocketLeague",
-            "name": "Rocket League x Monstercat Music Pack",
-            "nameShort": "Rocket League x Monstercat",
-            "cover": "RocketLeagueCover",
+            "id": "EDM",
+            "name": "Electronic Mixtape",
+            "nameShort": "Electronic Mixtape",
+            "cover": "EDMCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "Shiawase",
-        "songName": "Shiawase",
+        "id": "Animals",
+        "songName": "Animals",
         "songSubName": "",
-        "songAuthorName": "Dion Timmer",
-        "levelAuthorName": null,
-        "cover": "ShiawaseCover"
+        "songAuthorName": "Martin Garrix",
+        "levelAuthorName": "Zakka",
+        "cover": "AnimalsCover"
     },
-    "slushii-test-me": {
+    "megaphonix-i-need-you": {
         "pack": {
-            "id": "RocketLeague",
-            "name": "Rocket League x Monstercat Music Pack",
-            "nameShort": "Rocket League x Monstercat",
-            "cover": "RocketLeagueCover",
+            "id": "OstVol2",
+            "name": "Original Soundtrack Vol. 2",
+            "nameShort": "Original Soundtrack Vol. 2",
+            "cover": "OstVol2Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "INeedYou",
+        "songName": "I Need You",
+        "songSubName": "",
+        "songAuthorName": "Megaphonix",
+        "levelAuthorName": "Purphoros & Split",
+        "cover": "INeedYouCover"
+    },
+    "mord-fustang-elixia": {
+        "pack": {
+            "id": "OstVol2",
+            "name": "Original Soundtrack Vol. 2",
+            "nameShort": "Original Soundtrack Vol. 2",
+            "cover": "OstVol2Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "Elixia",
+        "songName": "Elixia",
+        "songSubName": "",
+        "songAuthorName": "Mord Fustang",
+        "levelAuthorName": null,
+        "cover": "ElixiaCover"
+    },
+    "morgan-page-reason-for-living": {
+        "pack": {
+            "id": "OstVol3",
+            "name": "Original Soundtrack Vol. 3",
+            "nameShort": "Original Soundtrack Vol. 3",
+            "cover": "OstVol3Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "ReasonForLiving",
+        "songName": "Reason For Living",
+        "songSubName": "",
+        "songAuthorName": "Morgan Page",
+        "levelAuthorName": null,
+        "cover": "ReasonForLivingCover"
+    },
+    "muzz-feeling-stronger": {
+        "pack": {
+            "id": "Monstercat",
+            "name": "Monstercat Music Pack Vol. 1",
+            "nameShort": "Monstercat Vol. 1",
+            "cover": "MonstercatVol1Cover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "TestMe",
-        "songName": "Test Me",
-        "songSubName": "",
-        "songAuthorName": "Slushii x Dion Timmer",
+        "id": "FeelingStronger",
+        "songName": "Feeling Stronger",
+        "songSubName": "ft. Charlotte Colley",
+        "songAuthorName": "Muzzy",
         "levelAuthorName": null,
-        "cover": "TestMeCover"
+        "cover": "FeelingStrongerCover"
+    },
+    "nirvana-smells-like-teen-spirit": {
+        "pack": {
+            "id": "RockMixtape",
+            "name": "Rock Mixtape Music Pack",
+            "nameShort": "Rock Mixtape",
+            "cover": "RockMixtapeCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "SmellsLikeTeenSpirit",
+        "songName": "Smells Like Teen Spirit",
+        "songSubName": "",
+        "songAuthorName": "Nirvana",
+        "levelAuthorName": "Kolezan",
+        "cover": "SmellsLikeTeenSpiritCover"
+    },
+    "noisestorm-crab-rave": {
+        "pack": {
+            "id": "Extras",
+            "name": "Extras",
+            "nameShort": "Extras",
+            "cover": "ExtrasCover",
+            "isDLC": false,
+            "isOST": false
+        },
+        "id": "CrabRave",
+        "songName": "Crab Rave",
+        "songSubName": "",
+        "songAuthorName": "Noisestorm",
+        "levelAuthorName": null,
+        "cover": "CrabRaveCover"
+    },
+    "onerepublic-counting-stars": {
+        "pack": {
+            "id": "Interscope",
+            "name": "Interscope Mixtape",
+            "nameShort": "Interscope",
+            "cover": "InterscopeCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "CountingStars",
+        "songName": "Counting Stars",
+        "songSubName": "",
+        "songAuthorName": "OneRepublic",
+        "levelAuthorName": null,
+        "cover": "CountingStarsCover"
+    },
+    "panic-at-the-disco-crazy-genius": {
+        "pack": {
+            "id": "PanicAtTheDisco",
+            "name": "Panic! At The Disco Music Pack",
+            "nameShort": "Panic! At The Disco",
+            "cover": "PanicAtTheDiscoCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "CrazyGenius",
+        "songName": "Crazy = Genius",
+        "songSubName": "",
+        "songAuthorName": "Panic! At The Disco",
+        "levelAuthorName": "altrewin",
+        "cover": "CrazyGeniusCover"
+    },
+    "panic-at-the-disco-dancings-not-a-crime": {
+        "pack": {
+            "id": "PanicAtTheDisco",
+            "name": "Panic! At The Disco Music Pack",
+            "nameShort": "Panic! At The Disco",
+            "cover": "PanicAtTheDiscoCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "DancingsNotACrime",
+        "songName": "Dancing's Not A Crime",
+        "songSubName": "",
+        "songAuthorName": "Panic! At The Disco",
+        "levelAuthorName": "ETAN",
+        "cover": "DancingsNotACrimeCover"
+    },
+    "panic-at-the-disco-emperors-new-clothes": {
+        "pack": {
+            "id": "PanicAtTheDisco",
+            "name": "Panic! At The Disco Music Pack",
+            "nameShort": "Panic! At The Disco",
+            "cover": "PanicAtTheDiscoCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "EmperorsNewClothes",
+        "songName": "Emperor's New Clothes",
+        "songSubName": "",
+        "songAuthorName": "Panic! At The Disco",
+        "levelAuthorName": "GreatYazer (Zakka Remaster)",
+        "cover": "EmperorsNewClothesCover"
+    },
+    "panic-at-the-disco-hey-look-ma-i-made-it": {
+        "pack": {
+            "id": "PanicAtTheDisco",
+            "name": "Panic! At The Disco Music Pack",
+            "nameShort": "Panic! At The Disco",
+            "cover": "PanicAtTheDiscoCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "HeyLookMaIMadeIt",
+        "songName": "Hey Look Ma, I Made It",
+        "songSubName": "",
+        "songAuthorName": "Panic! At The Disco",
+        "levelAuthorName": "Zakka",
+        "cover": "HeyLookMaIMadeItCover"
+    },
+    "panic-at-the-disco-high-hopes": {
+        "pack": {
+            "id": "PanicAtTheDisco",
+            "name": "Panic! At The Disco Music Pack",
+            "nameShort": "Panic! At The Disco",
+            "cover": "PanicAtTheDiscoCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "HighHopes",
+        "songName": "High Hopes",
+        "songSubName": "",
+        "songAuthorName": "Panic! At The Disco",
+        "levelAuthorName": "GreatYazer (Kolezan Remaster)",
+        "cover": "HighHopesCover"
+    },
+    "panic-at-the-disco-say-amen": {
+        "pack": {
+            "id": "PanicAtTheDisco",
+            "name": "Panic! At The Disco Music Pack",
+            "nameShort": "Panic! At The Disco",
+            "cover": "PanicAtTheDiscoCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "SayAmen",
+        "songName": "Say Amen (Saturday Night)",
+        "songSubName": "",
+        "songAuthorName": "Panic! At The Disco",
+        "levelAuthorName": "Zakka",
+        "cover": "SayAmenCover"
+    },
+    "panic-at-the-disco-sugar-soaker": {
+        "pack": {
+            "id": "PanicAtTheDisco",
+            "name": "Panic! At The Disco Music Pack",
+            "nameShort": "Panic! At The Disco",
+            "cover": "PanicAtTheDiscoCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "SugarSoaker",
+        "songName": "Sugar Soaker",
+        "songSubName": "",
+        "songAuthorName": "Panic! At The Disco",
+        "levelAuthorName": "altrewin",
+        "cover": "SugarSoakerCover"
     },
     "panic-at-the-disco-the-greatest-show": {
         "pack": {
@@ -1627,8 +2411,8 @@
         "id": "TheGreatestShow",
         "songName": "The Greatest Show",
         "songSubName": "",
-        "songAuthorName": "Panic! at the Disco",
-        "levelAuthorName": null,
+        "songAuthorName": "Panic! At The Disco",
+        "levelAuthorName": "Freeek (Freeek Remaster)",
         "cover": "TheGreatestShowCover"
     },
     "panic-at-the-disco-victorious": {
@@ -1643,11 +2427,11 @@
         "id": "Victorious",
         "songName": "Victorious",
         "songSubName": "",
-        "songAuthorName": "Panic! at the Disco",
-        "levelAuthorName": null,
+        "songAuthorName": "Panic! At The Disco",
+        "levelAuthorName": "Freeek (ETAN Remaster)",
         "cover": "VictoriousCover"
     },
-    "panic-at-the-disco-emperors-new-clothes": {
+    "panic-at-the-disco-viva-las-vengeance": {
         "pack": {
             "id": "PanicAtTheDisco",
             "name": "Panic! At The Disco Music Pack",
@@ -1656,204 +2440,12 @@
             "isDLC": true,
             "isOST": false
         },
-        "id": "EmperorsNewClothes",
-        "songName": "Emperor's New Clothes",
+        "id": "VivaLasVengeance",
+        "songName": "Viva Las Vengeance",
         "songSubName": "",
-        "songAuthorName": "Panic! at the Disco",
-        "levelAuthorName": null,
-        "cover": "EmperorsNewClothesCover"
-    },
-    "panic-at-the-disco-high-hopes": {
-        "pack": {
-            "id": "PanicAtTheDisco",
-            "name": "Panic! At The Disco Music Pack",
-            "nameShort": "Panic! At The Disco",
-            "cover": "PanicAtTheDiscoCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "HighHopes",
-        "songName": "High Hopes",
-        "songSubName": "",
-        "songAuthorName": "Panic! at the Disco",
-        "levelAuthorName": null,
-        "cover": "HighHopesCover"
-    },
-    "imagine-dragons-bad-liar": {
-        "pack": {
-            "id": "ImagineDragons",
-            "name": "Imagine Dragons Music Pack",
-            "nameShort": "Imagine Dragons",
-            "cover": "ImagineDragonsCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "BadLiar",
-        "songName": "Bad Liar",
-        "songSubName": "",
-        "songAuthorName": "Imagine Dragons",
-        "levelAuthorName": null,
-        "cover": "BadLiarCover"
-    },
-    "imagine-dragons-believer": {
-        "pack": {
-            "id": "ImagineDragons",
-            "name": "Imagine Dragons Music Pack",
-            "nameShort": "Imagine Dragons",
-            "cover": "ImagineDragonsCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "Believer",
-        "songName": "Believer",
-        "songSubName": "",
-        "songAuthorName": "Imagine Dragons",
-        "levelAuthorName": null,
-        "cover": "BelieverCover"
-    },
-    "imagine-dragons-digital": {
-        "pack": {
-            "id": "ImagineDragons",
-            "name": "Imagine Dragons Music Pack",
-            "nameShort": "Imagine Dragons",
-            "cover": "ImagineDragonsCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "Digital",
-        "songName": "Digital",
-        "songSubName": "",
-        "songAuthorName": "Imagine Dragons",
-        "levelAuthorName": null,
-        "cover": "DigitalCover"
-    },
-    "imagine-dragons-its-time": {
-        "pack": {
-            "id": "ImagineDragons",
-            "name": "Imagine Dragons Music Pack",
-            "nameShort": "Imagine Dragons",
-            "cover": "ImagineDragonsCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "ItsTime",
-        "songName": "It's Time",
-        "songSubName": "",
-        "songAuthorName": "Imagine Dragons",
-        "levelAuthorName": null,
-        "cover": "RadioactiveAndItsTimeCover"
-    },
-    "imagine-dragons-machine": {
-        "pack": {
-            "id": "ImagineDragons",
-            "name": "Imagine Dragons Music Pack",
-            "nameShort": "Imagine Dragons",
-            "cover": "ImagineDragonsCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "Machine",
-        "songName": "Machine",
-        "songSubName": "",
-        "songAuthorName": "Imagine Dragons",
-        "levelAuthorName": null,
-        "cover": "MachineCover"
-    },
-    "imagine-dragons-natural": {
-        "pack": {
-            "id": "ImagineDragons",
-            "name": "Imagine Dragons Music Pack",
-            "nameShort": "Imagine Dragons",
-            "cover": "ImagineDragonsCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "Natural",
-        "songName": "Natural",
-        "songSubName": "",
-        "songAuthorName": "Imagine Dragons",
-        "levelAuthorName": null,
-        "cover": "NaturalCover"
-    },
-    "imagine-dragons-radioactive": {
-        "pack": {
-            "id": "ImagineDragons",
-            "name": "Imagine Dragons Music Pack",
-            "nameShort": "Imagine Dragons",
-            "cover": "ImagineDragonsCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "Radioactive",
-        "songName": "Radioactive",
-        "songSubName": "",
-        "songAuthorName": "Imagine Dragons",
-        "levelAuthorName": null,
-        "cover": "RadioactiveAndItsTimeCover"
-    },
-    "imagine-dragons-thunder": {
-        "pack": {
-            "id": "ImagineDragons",
-            "name": "Imagine Dragons Music Pack",
-            "nameShort": "Imagine Dragons",
-            "cover": "ImagineDragonsCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "Thunder",
-        "songName": "Thunder",
-        "songSubName": "",
-        "songAuthorName": "Imagine Dragons",
-        "levelAuthorName": null,
-        "cover": "ThunderCover"
-    },
-    "imagine-dragons-warriors": {
-        "pack": {
-            "id": "ImagineDragons",
-            "name": "Imagine Dragons Music Pack",
-            "nameShort": "Imagine Dragons",
-            "cover": "ImagineDragonsCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "Warriors",
-        "songName": "Warriors",
-        "songSubName": "",
-        "songAuthorName": "Imagine Dragons",
-        "levelAuthorName": null,
-        "cover": "WarriorsCover"
-    },
-    "imagine-dragons-whatever-it-takes": {
-        "pack": {
-            "id": "ImagineDragons",
-            "name": "Imagine Dragons Music Pack",
-            "nameShort": "Imagine Dragons",
-            "cover": "ImagineDragonsCover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "WhateverItTakes",
-        "songName": "Whatever It Takes",
-        "songSubName": "",
-        "songAuthorName": "Imagine Dragons",
-        "levelAuthorName": null,
-        "cover": "WhateverItTakesCover"
-    },
-    "aero-chord-boundless": {
-        "pack": {
-            "id": "Monstercat",
-            "name": "Monstercat Music Pack Vol. 1",
-            "nameShort": "Monstercat Vol. 1",
-            "cover": "MonstercatVol1Cover",
-            "isDLC": true,
-            "isOST": false
-        },
-        "id": "Boundless",
-        "songName": "Boundless",
-        "songSubName": "",
-        "songAuthorName": "Aero Chord",
-        "levelAuthorName": null,
-        "cover": "BoundlessCover"
+        "songAuthorName": "Panic! At The Disco",
+        "levelAuthorName": "Kolezan",
+        "cover": "VivaLasVengeanceCover"
     },
     "pegboard-nerds-emoji-vip": {
         "pack": {
@@ -1871,37 +2463,229 @@
         "levelAuthorName": null,
         "cover": "EmojiVIPCover"
     },
-    "tokyo-machine-epic": {
+    "pegboard-nerds-give-a-little-love": {
         "pack": {
-            "id": "Monstercat",
-            "name": "Monstercat Music Pack Vol. 1",
-            "nameShort": "Monstercat Vol. 1",
-            "cover": "MonstercatVol1Cover",
-            "isDLC": true,
-            "isOST": false
+            "id": "OstVol3",
+            "name": "Original Soundtrack Vol. 3",
+            "nameShort": "Original Soundtrack Vol. 3",
+            "cover": "OstVol3Cover",
+            "isDLC": false,
+            "isOST": true
         },
-        "id": "Epic",
-        "songName": "EPIC",
+        "id": "GiveALittleLove",
+        "songName": "Give a Little Love",
         "songSubName": "",
-        "songAuthorName": "Tokyo Machine",
+        "songAuthorName": "Pegboard Nerds",
         "levelAuthorName": null,
-        "cover": "EpicCover"
+        "cover": "GiveALittleLoveCover"
     },
-    "muzz-feeling-stronger": {
+    "pendulum-witchcraft": {
         "pack": {
-            "id": "Monstercat",
-            "name": "Monstercat Music Pack Vol. 1",
-            "nameShort": "Monstercat Vol. 1",
-            "cover": "MonstercatVol1Cover",
+            "id": "EDM",
+            "name": "Electronic Mixtape",
+            "nameShort": "Electronic Mixtape",
+            "cover": "EDMCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "FeelingStronger",
-        "songName": "Feeling Stronger",
-        "songSubName": "ft. Charlotte Colley",
-        "songAuthorName": "Muzzy",
+        "id": "Witchcraft",
+        "songName": "Witchcraft",
+        "songSubName": "",
+        "songAuthorName": "Pendulum",
+        "levelAuthorName": "Freeek",
+        "cover": "WitchcraftCover"
+    },
+    "pixl-full-charge": {
+        "pack": {
+            "id": "OstVol3",
+            "name": "Original Soundtrack Vol. 3",
+            "nameShort": "Original Soundtrack Vol. 3",
+            "cover": "OstVol3Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "FullCharge",
+        "songName": "Full Charge",
+        "songSubName": "",
+        "songAuthorName": "PIXL",
         "levelAuthorName": null,
-        "cover": "FeelingStrongerCover"
+        "cover": "FullChargeCover"
+    },
+    "queen-another-one-bites-the-dust": {
+        "pack": {
+            "id": "Queen",
+            "name": "Queen Music Pack",
+            "nameShort": "Queen",
+            "cover": "QueenCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "AnotherOneBitesTheDust",
+        "songName": "Another One Bites the Dust",
+        "songSubName": "",
+        "songAuthorName": "Queen",
+        "levelAuthorName": "Zakka",
+        "cover": "AnotherOneBitesTheDustCover"
+    },
+    "queen-bohemian-rhapsody": {
+        "pack": {
+            "id": "Queen",
+            "name": "Queen Music Pack",
+            "nameShort": "Queen",
+            "cover": "QueenCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "BohemianRhapsody",
+        "songName": "Bohemian Rhapsody",
+        "songSubName": "",
+        "songAuthorName": "Queen",
+        "levelAuthorName": "Zakka, Freeek, Kolezan, ETAN, altrewin",
+        "cover": "BohemianRhapsodyCover"
+    },
+    "queen-crazy-little-thing-called-love": {
+        "pack": {
+            "id": "Queen",
+            "name": "Queen Music Pack",
+            "nameShort": "Queen",
+            "cover": "QueenCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "CrazyLittleThingCalledLove",
+        "songName": "Crazy Little Thing Called Love",
+        "songSubName": "",
+        "songAuthorName": "Queen",
+        "levelAuthorName": "altrewin",
+        "cover": "CrazyLittleThingCalledLoveCover"
+    },
+    "queen-dont-stop-me-now": {
+        "pack": {
+            "id": "Queen",
+            "name": "Queen Music Pack",
+            "nameShort": "Queen",
+            "cover": "QueenCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "DontStopMeNow",
+        "songName": "Don't Stop Me Now",
+        "songSubName": "",
+        "songAuthorName": "Queen",
+        "levelAuthorName": "ETAN",
+        "cover": "DontStopMeNowCover"
+    },
+    "queen-i-want-it-all": {
+        "pack": {
+            "id": "Queen",
+            "name": "Queen Music Pack",
+            "nameShort": "Queen",
+            "cover": "QueenCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "IWantItAll",
+        "songName": "I Want It All",
+        "songSubName": "",
+        "songAuthorName": "Queen",
+        "levelAuthorName": "Zakka",
+        "cover": "IWantItAllCover"
+    },
+    "queen-killer-queen": {
+        "pack": {
+            "id": "Queen",
+            "name": "Queen Music Pack",
+            "nameShort": "Queen",
+            "cover": "QueenCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "KillerQueen",
+        "songName": "Killer Queen",
+        "songSubName": "",
+        "songAuthorName": "Queen",
+        "levelAuthorName": "Freeek",
+        "cover": "KillerQueenCover"
+    },
+    "queen-one-vision": {
+        "pack": {
+            "id": "Queen",
+            "name": "Queen Music Pack",
+            "nameShort": "Queen",
+            "cover": "QueenCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "OneVision",
+        "songName": "One Vision",
+        "songSubName": "",
+        "songAuthorName": "Queen",
+        "levelAuthorName": "altrewin",
+        "cover": "OneVisionCover"
+    },
+    "queen-somebody-to-love": {
+        "pack": {
+            "id": "Queen",
+            "name": "Queen Music Pack",
+            "nameShort": "Queen",
+            "cover": "QueenCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "SomebodyToLove",
+        "songName": "Somebody to Love",
+        "songSubName": "",
+        "songAuthorName": "Queen",
+        "levelAuthorName": "ETAN",
+        "cover": "SomebodyToLoveCover"
+    },
+    "queen-stone-cold-crazy": {
+        "pack": {
+            "id": "Queen",
+            "name": "Queen Music Pack",
+            "nameShort": "Queen",
+            "cover": "QueenCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "StoneColdCrazy",
+        "songName": "Stone Cold Crazy",
+        "songSubName": "",
+        "songAuthorName": "Queen",
+        "levelAuthorName": "Kolezan",
+        "cover": "StoneColdCrazyCover"
+    },
+    "queen-we-are-the-champions": {
+        "pack": {
+            "id": "Queen",
+            "name": "Queen Music Pack",
+            "nameShort": "Queen",
+            "cover": "QueenCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "WeAreTheChampions",
+        "songName": "We Are The Champions",
+        "songSubName": "",
+        "songAuthorName": "Queen",
+        "levelAuthorName": "altrewin, ETAN, Zakka, Kolezan, Freeek",
+        "cover": "WeAreTheChampionsCover"
+    },
+    "queen-we-will-rock-you": {
+        "pack": {
+            "id": "Queen",
+            "name": "Queen Music Pack",
+            "nameShort": "Queen",
+            "cover": "QueenCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "WeWillRockYou",
+        "songName": "We Will Rock You",
+        "songSubName": "",
+        "songAuthorName": "Queen",
+        "levelAuthorName": "Kolezan, Freek, altrewin, ETAN, Zakka",
+        "cover": "WeWillRockYouCover"
     },
     "riot-overkill": {
         "pack": {
@@ -1935,6 +2719,262 @@
         "levelAuthorName": null,
         "cover": "RattlesnakeCover"
     },
+    "rudimental-waiting-all-night": {
+        "pack": {
+            "id": "EDM",
+            "name": "Electronic Mixtape",
+            "nameShort": "Electronic Mixtape",
+            "cover": "EDMCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "WaitingAllNight",
+        "songName": "Waiting All Night",
+        "songSubName": "feat. Ella Eyre",
+        "songAuthorName": "Rudimental",
+        "levelAuthorName": "ETAN",
+        "cover": "WaitingAllNightCover"
+    },
+    "sedliv-be-there-for-you": {
+        "pack": {
+            "id": "OstVol2",
+            "name": "Original Soundtrack Vol. 2",
+            "nameShort": "Original Soundtrack Vol. 2",
+            "cover": "OstVol2Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "BeThereForYou",
+        "songName": "Be There For You",
+        "songSubName": "ft. Kinnie Lane",
+        "songAuthorName": "Sedliv",
+        "levelAuthorName": null,
+        "cover": "BeThereForYouCover"
+    },
+    "sid-tipton-has-a-meaning": {
+        "pack": {
+            "id": "Timbaland",
+            "name": "Timbaland Music Pack",
+            "nameShort": "Timbaland",
+            "cover": "TimbalandCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "HasAMeaning",
+        "songName": "Has A Meaning",
+        "songSubName": "",
+        "songAuthorName": "Sid Tipton, Timbaland",
+        "levelAuthorName": null,
+        "cover": "HasAMeaningCover"
+    },
+    "skrillex-bangarang": {
+        "pack": {
+            "id": "Skrillex",
+            "name": "Skrillex Music Pack",
+            "nameShort": "Skrillex",
+            "cover": "SkrillexCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Bangarang",
+        "songName": "Bangarang",
+        "songSubName": "feat. Sirah",
+        "songAuthorName": "Skrillex",
+        "levelAuthorName": null,
+        "cover": "BangarangCover"
+    },
+    "skrillex-butterflies": {
+        "pack": {
+            "id": "Skrillex",
+            "name": "Skrillex Music Pack",
+            "nameShort": "Skrillex",
+            "cover": "SkrillexCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Butterflies",
+        "songName": "Butterflies",
+        "songSubName": "",
+        "songAuthorName": "Skrillex, Starrah & Four Tet",
+        "levelAuthorName": null,
+        "cover": "ButterfliesCover"
+    },
+    "skrillex-dont-go": {
+        "pack": {
+            "id": "Skrillex",
+            "name": "Skrillex Music Pack",
+            "nameShort": "Skrillex",
+            "cover": "SkrillexCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "DontGo",
+        "songName": "Don't Go",
+        "songSubName": "",
+        "songAuthorName": "Skrillex, Justin Bieber & Don Toliver",
+        "levelAuthorName": null,
+        "cover": "DontGoCover"
+    },
+    "skrillex-first-of-the-year": {
+        "pack": {
+            "id": "Skrillex",
+            "name": "Skrillex Music Pack",
+            "nameShort": "Skrillex",
+            "cover": "SkrillexCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "FirstOfTheYear",
+        "songName": "First of the Year",
+        "songSubName": "(Equinox)",
+        "songAuthorName": "Skrillex",
+        "levelAuthorName": null,
+        "cover": "FirstOfTheYearCover"
+    },
+    "skrillex-ragga-bomb": {
+        "pack": {
+            "id": "Skrillex",
+            "name": "Skrillex Music Pack",
+            "nameShort": "Skrillex",
+            "cover": "SkrillexCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "RaggaBomb",
+        "songName": "Ragga Bomb",
+        "songSubName": "feat. Ragga Twins",
+        "songAuthorName": "Skrillex",
+        "levelAuthorName": null,
+        "cover": "RaggaBombCover"
+    },
+    "skrillex-rock-n-roll": {
+        "pack": {
+            "id": "Skrillex",
+            "name": "Skrillex Music Pack",
+            "nameShort": "Skrillex",
+            "cover": "SkrillexCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "RockNRoll",
+        "songName": "Rock 'n' Roll",
+        "songSubName": "(Will Take You to the Mountain)",
+        "songAuthorName": "Skrillex",
+        "levelAuthorName": null,
+        "cover": "RockNRollCover"
+    },
+    "skrillex-scary-monsters-and-nice-sprites": {
+        "pack": {
+            "id": "Skrillex",
+            "name": "Skrillex Music Pack",
+            "nameShort": "Skrillex",
+            "cover": "SkrillexCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "ScaryMonstersAndNiceSprites",
+        "songName": "Scary Monsters and Nice Sprites",
+        "songSubName": "",
+        "songAuthorName": "Skrillex",
+        "levelAuthorName": null,
+        "cover": "ScaryMonstersAndNiceSpritesCover"
+    },
+    "skrillex-the-devils-den": {
+        "pack": {
+            "id": "Skrillex",
+            "name": "Skrillex Music Pack",
+            "nameShort": "Skrillex",
+            "cover": "SkrillexCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "TheDevilsDen",
+        "songName": "The Devil's Den",
+        "songSubName": "",
+        "songAuthorName": "Skrillex & Wolfgang Gartner",
+        "levelAuthorName": null,
+        "cover": "TheDevilsDenCover"
+    },
+    "slippy-immortal": {
+        "pack": {
+            "id": "OstVol3",
+            "name": "Original Soundtrack Vol. 3",
+            "nameShort": "Original Soundtrack Vol. 3",
+            "cover": "OstVol3Cover",
+            "isDLC": false,
+            "isOST": true
+        },
+        "id": "Immortal",
+        "songName": "Immortal",
+        "songSubName": "",
+        "songAuthorName": "Slippy",
+        "levelAuthorName": null,
+        "cover": "ImmortalCover"
+    },
+    "slushii-luv-u-need-u": {
+        "pack": {
+            "id": "RocketLeague",
+            "name": "Rocket League x Monstercat Music Pack",
+            "nameShort": "Rocket League x Monstercat",
+            "cover": "RocketLeagueCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "LuvUNeedU",
+        "songName": "Luv U Need U",
+        "songSubName": "",
+        "songAuthorName": "Slushii",
+        "levelAuthorName": null,
+        "cover": "LuvUNeedUCover"
+    },
+    "slushii-test-me": {
+        "pack": {
+            "id": "RocketLeague",
+            "name": "Rocket League x Monstercat Music Pack",
+            "nameShort": "Rocket League x Monstercat",
+            "cover": "RocketLeagueCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "TestMe",
+        "songName": "Test Me",
+        "songSubName": "",
+        "songAuthorName": "Slushii x Dion Timmer",
+        "levelAuthorName": null,
+        "cover": "TestMeCover"
+    },
+    "stephen-walking-glide": {
+        "pack": {
+            "id": "RocketLeague",
+            "name": "Rocket League x Monstercat Music Pack",
+            "nameShort": "Rocket League x Monstercat",
+            "cover": "RocketLeagueCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Glide",
+        "songName": "Glide",
+        "songSubName": "",
+        "songAuthorName": "Stephen Walking",
+        "levelAuthorName": null,
+        "cover": "GlideCover"
+    },
+    "steppenwolf-born-to-be-wild": {
+        "pack": {
+            "id": "RockMixtape",
+            "name": "Rock Mixtape Music Pack",
+            "nameShort": "Rock Mixtape",
+            "cover": "RockMixtapeCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "BornToBeWild",
+        "songName": "Born To Be Wild",
+        "songSubName": "",
+        "songAuthorName": "Steppenwolf",
+        "levelAuthorName": "Zakka",
+        "cover": "BornToBeWildCover"
+    },
     "stonebank-stronger": {
         "pack": {
             "id": "Monstercat",
@@ -1951,7 +2991,215 @@
         "levelAuthorName": null,
         "cover": "StrongerCover"
     },
-    "kayzo-this-time": {
+    "survivor-eye-of-the-tiger": {
+        "pack": {
+            "id": "RockMixtape",
+            "name": "Rock Mixtape Music Pack",
+            "nameShort": "Rock Mixtape",
+            "cover": "RockMixtapeCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "EyeOfTheTiger",
+        "songName": "Eye of the Tiger",
+        "songSubName": "",
+        "songAuthorName": "Survivor",
+        "levelAuthorName": "altrewin",
+        "cover": "EyeOfTheTigerCover"
+    },
+    "the-pussycat-dolls-dont-cha": {
+        "pack": {
+            "id": "Interscope",
+            "name": "Interscope Mixtape",
+            "nameShort": "Interscope",
+            "cover": "InterscopeCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "DontCha",
+        "songName": "Don't Cha",
+        "songSubName": "",
+        "songAuthorName": "The Pussycat Dolls",
+        "levelAuthorName": null,
+        "cover": "DontChaCover"
+    },
+    "the-weeknd-blinding-lights": {
+        "pack": {
+            "id": "TheWeeknd",
+            "name": "The Weeknd Music Pack",
+            "nameShort": "The Weeknd",
+            "cover": "TheWeekndCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "BlindingLights",
+        "songName": "Blinding Lights",
+        "songSubName": "",
+        "songAuthorName": "The Weeknd",
+        "levelAuthorName": "ConnorJC",
+        "cover": "BlindingLightsCover"
+    },
+    "the-weeknd-cant-feel-my-face": {
+        "pack": {
+            "id": "TheWeeknd",
+            "name": "The Weeknd Music Pack",
+            "nameShort": "The Weeknd",
+            "cover": "TheWeekndCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "CantFeelMyFace",
+        "songName": "Can't Feel My Face",
+        "songSubName": "",
+        "songAuthorName": "The Weeknd",
+        "levelAuthorName": "altrewin",
+        "cover": "CantFeelMyFaceCover"
+    },
+    "the-weeknd-how-do-i-make-you-love-me": {
+        "pack": {
+            "id": "TheWeeknd",
+            "name": "The Weeknd Music Pack",
+            "nameShort": "The Weeknd",
+            "cover": "TheWeekndCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "HowDoIMakeYouLoveMe",
+        "songName": "How Do I Make You Love Me?",
+        "songSubName": "",
+        "songAuthorName": "The Weeknd",
+        "levelAuthorName": "Kolezan",
+        "cover": "HowDoIMakeYouLoveMeCover"
+    },
+    "the-weeknd-i-feel-it-coming": {
+        "pack": {
+            "id": "TheWeeknd",
+            "name": "The Weeknd Music Pack",
+            "nameShort": "The Weeknd",
+            "cover": "TheWeekndCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "IFeelItComing",
+        "songName": "I Feel It Coming",
+        "songSubName": "feat. Daft Punk",
+        "songAuthorName": "The Weeknd",
+        "levelAuthorName": "Zakka",
+        "cover": "IFeelItComingCover"
+    },
+    "the-weeknd-pray-for-me": {
+        "pack": {
+            "id": "TheWeeknd",
+            "name": "The Weeknd Music Pack",
+            "nameShort": "The Weeknd",
+            "cover": "TheWeekndCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "PrayForMe",
+        "songName": "Pray For Me",
+        "songSubName": "",
+        "songAuthorName": "The Weeknd, Kendrick Lamar",
+        "levelAuthorName": "altrewin",
+        "cover": "PrayForMeCover"
+    },
+    "the-weeknd-sacrifice": {
+        "pack": {
+            "id": "TheWeeknd",
+            "name": "The Weeknd Music Pack",
+            "nameShort": "The Weeknd",
+            "cover": "TheWeekndCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Sacrifice",
+        "songName": "Sacrifice",
+        "songSubName": "",
+        "songAuthorName": "The Weeknd",
+        "levelAuthorName": "Zakka",
+        "cover": "SacrificeCover"
+    },
+    "the-weeknd-save-your-tears": {
+        "pack": {
+            "id": "TheWeeknd",
+            "name": "The Weeknd Music Pack",
+            "nameShort": "The Weeknd",
+            "cover": "TheWeekndCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "SaveYourTears",
+        "songName": "Save Your Tears",
+        "songSubName": "",
+        "songAuthorName": "The Weeknd",
+        "levelAuthorName": "ETAN",
+        "cover": "SaveYourTearsCover"
+    },
+    "the-weeknd-starboy": {
+        "pack": {
+            "id": "TheWeeknd",
+            "name": "The Weeknd Music Pack",
+            "nameShort": "The Weeknd",
+            "cover": "TheWeekndCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Starboy",
+        "songName": "Starboy",
+        "songSubName": "feat. Daft Punk",
+        "songAuthorName": "The Weeknd",
+        "levelAuthorName": "ConnorJC",
+        "cover": "StarboyCover"
+    },
+    "the-weeknd-take-my-breath": {
+        "pack": {
+            "id": "TheWeeknd",
+            "name": "The Weeknd Music Pack",
+            "nameShort": "The Weeknd",
+            "cover": "TheWeekndCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "TakeMyBreath",
+        "songName": "Take My Breath",
+        "songSubName": "",
+        "songAuthorName": "The Weeknd",
+        "levelAuthorName": "Zakka",
+        "cover": "TakeMyBreathCover"
+    },
+    "the-weeknd-the-hills": {
+        "pack": {
+            "id": "TheWeeknd",
+            "name": "The Weeknd Music Pack",
+            "nameShort": "The Weeknd",
+            "cover": "TheWeekndCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "TheHills",
+        "songName": "The Hills",
+        "songSubName": "",
+        "songAuthorName": "The Weeknd",
+        "levelAuthorName": "Freeek",
+        "cover": "TheHills"
+    },
+    "the-white-stripes-seven-nation-army": {
+        "pack": {
+            "id": "RockMixtape",
+            "name": "Rock Mixtape Music Pack",
+            "nameShort": "Rock Mixtape",
+            "cover": "RockMixtapeCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "SevenNationArmy",
+        "songName": "Seven Nation Army",
+        "songSubName": "",
+        "songAuthorName": "The White Stripes",
+        "levelAuthorName": "Zakka",
+        "cover": "SevenNationArmyCover"
+    },
+    "tokyo-machine-epic": {
         "pack": {
             "id": "Monstercat",
             "name": "Monstercat Music Pack Vol. 1",
@@ -1960,12 +3208,60 @@
             "isDLC": true,
             "isOST": false
         },
-        "id": "ThisTime",
-        "songName": "This Time",
+        "id": "Epic",
+        "songName": "EPIC",
         "songSubName": "",
-        "songAuthorName": "Kayzo",
+        "songAuthorName": "Tokyo Machine",
         "levelAuthorName": null,
-        "cover": "ThisTimeCover"
+        "cover": "EpicCover"
+    },
+    "tokyo-machine-escape-remix": {
+        "pack": {
+            "id": "Extras",
+            "name": "Extras",
+            "nameShort": "Extras",
+            "cover": "ExtrasCover",
+            "isDLC": false,
+            "isOST": false
+        },
+        "id": "EscapeRemix",
+        "songName": "Escape Remix",
+        "songSubName": "",
+        "songAuthorName": "Jaroslav Beck, Tokyo Machine",
+        "levelAuthorName": "ConnorJC Zakka",
+        "cover": "EscapeRemixCover"
+    },
+    "tokyo-machine-play": {
+        "pack": {
+            "id": "RocketLeague",
+            "name": "Rocket League x Monstercat Music Pack",
+            "nameShort": "Rocket League x Monstercat",
+            "cover": "RocketLeagueCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "Play",
+        "songName": "Play",
+        "songSubName": "",
+        "songAuthorName": "Tokyo Machine",
+        "levelAuthorName": null,
+        "cover": "PlayCover"
+    },
+    "tokyo-machine-rock-it": {
+        "pack": {
+            "id": "RocketLeague",
+            "name": "Rocket League x Monstercat Music Pack",
+            "nameShort": "Rocket League x Monstercat",
+            "cover": "RocketLeagueCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "RockIt",
+        "songName": "Rock It",
+        "songSubName": "",
+        "songAuthorName": "Tokyo Machine",
+        "levelAuthorName": null,
+        "cover": "RockItCover"
     },
     "tristam-till-its-over": {
         "pack": {
@@ -1983,20 +3279,52 @@
         "levelAuthorName": null,
         "cover": "TillItsOverCover"
     },
-    "feint-we-wont-be-alone": {
+    "virtual-self-angel-voices": {
         "pack": {
-            "id": "Monstercat",
-            "name": "Monstercat Music Pack Vol. 1",
-            "nameShort": "Monstercat Vol. 1",
-            "cover": "MonstercatVol1Cover",
+            "id": "Extras",
+            "name": "Extras",
+            "nameShort": "Extras",
+            "cover": "ExtrasCover",
+            "isDLC": false,
+            "isOST": false
+        },
+        "id": "AngelVoices",
+        "songName": "Angel Voices",
+        "songSubName": "",
+        "songAuthorName": "Virtual Self",
+        "levelAuthorName": null,
+        "cover": "AngelVoicesCover"
+    },
+    "wavezswavesz-while-were-young": {
+        "pack": {
+            "id": "Timbaland",
+            "name": "Timbaland Music Pack",
+            "nameShort": "Timbaland",
+            "cover": "TimbalandCover",
             "isDLC": true,
             "isOST": false
         },
-        "id": "WeWontBeAlone",
-        "songName": "We Won't Be Alone",
-        "songSubName": "ft. Laura Brehm",
-        "songAuthorName": "Feint",
+        "id": "WhileWereYoung",
+        "songName": "While We're Young",
+        "songSubName": "",
+        "songAuthorName": "WavezsWavezs",
         "levelAuthorName": null,
-        "cover": "WeWontBeAloneCover"
+        "cover": "WhileWereYoungCover"
+    },
+    "zedd-stay-the-night": {
+        "pack": {
+            "id": "EDM",
+            "name": "Electronic Mixtape",
+            "nameShort": "Electronic Mixtape",
+            "cover": "EDMCover",
+            "isDLC": true,
+            "isOST": false
+        },
+        "id": "StayTheNight",
+        "songName": "Stay The Night",
+        "songSubName": "feat. Hayley Williams",
+        "songAuthorName": "Zedd",
+        "levelAuthorName": "ConnorJC",
+        "cover": "StayTheNightCover"
     }
 }
