@@ -3,15 +3,16 @@ import { Map } from "beastsaber-api/lib/models/Map"
 import BeatSaverAPI from "beatsaver-api"
 import { SortOrder } from "beatsaver-api/lib/api/search"
 import { SearchResponse } from "beatsaver-api/lib/models/SearchResponse"
-import { BridgeTrack } from "../models/BridgeTrack"
+import { ApiTrack } from "../models/ApiTrack"
 import { CosmosArtist } from "../models/CosmosArtist"
-import { Level } from "../models/Level"
+import { MapLocal } from "../models/MapLocal"
+import URI from "../models/URI"
 import { BackendRequestHandler } from "./BackendRequestHandler"
 
 export class ApiUtils {
 	BeatSaver = new BeatSaverAPI({
 		AppName: "spicetify-beat-saber",
-		Version: BeatSaberManifest.BundleVersion,
+		Version: BeatSaber.Manifest.BundleVersion,
 	})
 
 	BeastSaber = new BeastSaber()
@@ -22,19 +23,13 @@ export class ApiUtils {
 		)
 	}
 
-	async getTrackMetadata(uri: Spicetify.URI): Promise<BridgeTrack> {
-		const track = await Spicetify.BridgeAsync.request("track_metadata", [
-			uri.toString(),
-		])
-		return track as BridgeTrack
+	async getTrackMetadata(uri: URI): Promise<ApiTrack> {
+		const url = `https://api.spotify.com/v1/tracks/${uri.id}`
+		return (await Spicetify.CosmosAsync.get(url)) as ApiTrack
 	}
 
-	async getArtist(uri: Spicetify.URI): Promise<CosmosArtist> {
-		const id = uri.getBase62Id()
-		const catalogue = window.__spotify.product_state.catalogue
-		const locale = window.__spotify.locale
-		const username = window.__spotify.username
-		const url = `hm://artist/v1/${id}/desktop?format=json&catalogue=${catalogue}&locale=${locale}&username=${username}&cat=1`
+	async getArtist(uri: URI): Promise<CosmosArtist> {
+		const url = `https://spclient.wg.spotify.com/artist/v1/${uri.id}/desktop?format=json`
 		return (await Spicetify.CosmosAsync.get(url)) as CosmosArtist
 	}
 
@@ -55,8 +50,8 @@ export class ApiUtils {
 	private async login() {
 		if (!(await this.BeastSaber.isLoggedIn())) {
 			await this.BeastSaber.login(
-				BeatSaber.Settings.bsaberLogin,
-				BeatSaber.Settings.bsaberPassword
+				BeatSaber.Core.Settings.bsaberLogin,
+				BeatSaber.Core.Settings.bsaberPassword
 			)
 		}
 	}
@@ -85,24 +80,24 @@ export class ApiUtils {
 	}
 
 	async levelsRequest<T>(endpoint: string): Promise<T> {
-		const url = `http://${BeatSaber.Settings.backendHostname}/levels${endpoint}`
+		const url = `http://${BeatSaber.Core.Settings.backendHostname}/levels${endpoint}`
 		const headers = {
-			Authorization: `Basic ${BeatSaber.Settings.backendAuth}`,
+			Authorization: `Basic ${BeatSaber.Core.Settings.backendAuth}`,
 		}
 		const response = await Spicetify.CosmosAsync.get(url, null, headers)
 		return response as unknown as T
 	}
 
-	async getDownloads(): Promise<Level[]> {
-		return this.levelsRequest<Level[]>("/")
+	async getDownloads(): Promise<MapLocal[]> {
+		return this.levelsRequest<MapLocal[]>("/")
 	}
 
 	async getDownloadHashes(): Promise<string[]> {
 		return this.levelsRequest<string[]>("/hashes")
 	}
 
-	async downloadLevel(hash: string): Promise<Level> {
-		return this.levelsRequest<Level>(`/download/${hash}`)
+	async downloadLevel(hash: string): Promise<MapLocal> {
+		return this.levelsRequest<MapLocal>(`/download/${hash}`)
 	}
 
 	async deleteLevel(levelDir: string): Promise<void> {

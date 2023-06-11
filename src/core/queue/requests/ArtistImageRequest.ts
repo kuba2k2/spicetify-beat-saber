@@ -1,4 +1,5 @@
 import { Track } from "../../models/Track"
+import URI from "../../models/URI"
 import { TrackQueueRequest } from "../base/TrackQueueRequest"
 
 export class ArtistImageRequest extends TrackQueueRequest {
@@ -12,11 +13,10 @@ export class ArtistImageRequest extends TrackQueueRequest {
 	}
 
 	async run(track: Track): Promise<Track> {
-		const artist = await BeatSaber.Api.getArtist(track.artistURIs[0])
+		const artist = await BeatSaber.Core.Api.getArtist(track.artistURIs[0])
 		let image =
 			artist.header_image?.image ?? artist.info.portraits?.shift()?.uri
-		image = image?.replace("https://i.scdn.co/image/", "spotify:image:")
-		track.artistImage = Spicetify.URI.from(image) ?? false
+		track.artistImage = URI.from(image) ?? false
 		return track
 	}
 }

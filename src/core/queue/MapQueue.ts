@@ -8,7 +8,7 @@ export class MapQueue {
 	private queueRunning = false
 
 	private log(...data: unknown[]) {
-		if (BeatSaber.Settings.logMapQueue) {
+		if (BeatSaber.Core.Settings.logMapQueue) {
 			console.log("[MapQueue]", ...data)
 		}
 	}
@@ -58,7 +58,7 @@ export class MapQueue {
 				await request.run()
 			} catch (e) {
 				console.error("Map queue error", e)
-				BeatSaber.ErrorSubject.next(e)
+				BeatSaber.Core.ErrorSubject.next(e)
 				request.reject(e)
 				this.queueNext(0)
 				return

@@ -1,10 +1,9 @@
+import React from "react"
 import { Subscription } from "rxjs"
 import { QueueState } from "../../core/queue/TrackQueue"
+import { Button } from "../controls/Button"
 
-export class QueueStateDemo extends Spicetify.React.Component<
-	unknown,
-	QueueState
-> {
+export class QueueStateDemo extends React.Component<unknown, QueueState> {
 	subscription: Subscription
 
 	constructor() {
@@ -16,7 +15,7 @@ export class QueueStateDemo extends Spicetify.React.Component<
 	}
 
 	componentDidMount() {
-		this.subscription = BeatSaber.TrackQueue.queueSubject.subscribe(
+		this.subscription = BeatSaber.Core.TrackQueue.queueSubject.subscribe(
 			(state) => {
 				this.setState(state)
 			}
@@ -32,10 +31,10 @@ export class QueueStateDemo extends Spicetify.React.Component<
 			<div style={{ margin: "0 20px" }}>
 				<h2>TrackQueue</h2>
 				<Button
-					type="blue"
+					color="blue"
 					text="Unlock"
 					isDisabled={!this.state.blocked}
-					onClick={BeatSaber.TrackQueue.queueUnblock}
+					onClick={BeatSaber.Core.TrackQueue.queueUnblock}
 				/>
 				<br />
 				<br />

@@ -1,4 +1,4 @@
-name: Build SPA package
+name: Build app package
 on:
   push:
     tags:
@@ -25,6 +25,10 @@ jobs:
     - name: Check code formatting
       run: npm run format-check
 
+    - name: Download resources
+      run: |
+        bash levels.sh ${{ secrets.RES_HOST }} ${{ secrets.RES_PATH }}
+
     - name: Build package
       run: bash build.sh
 
@@ -33,6 +37,7 @@ jobs:
       with:
         files: |
           apps/*.spa
+          apps/*.zip
           apps/*.js
 
     - name: Upload workflow artifacts
@@ -41,4 +46,5 @@ jobs:
         name: beatsaber
         path: |
           apps/*.spa
+          apps/*.zip
           apps/*.js

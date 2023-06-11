@@ -14,13 +14,13 @@ export class BookmarkRequest extends MapQueueRequest {
 	}
 
 	async run() {
-		if (!BeatSaber.Settings.backendHostname) {
+		if (!BeatSaber.Core.Settings.backendHostname) {
 			throw new QueueError("Backend is not configured")
 		}
 
 		if (
-			!BeatSaber.Settings.bsaberLogin ||
-			!BeatSaber.Settings.bsaberPassword
+			!BeatSaber.Core.Settings.bsaberLogin ||
+			!BeatSaber.Core.Settings.bsaberPassword
 		) {
 			throw new QueueError("BeastSaber login data missing")
 		}
@@ -29,20 +29,20 @@ export class BookmarkRequest extends MapQueueRequest {
 		let map: Map
 		switch (this.type) {
 			case MapQueueRequestType.ADD:
-				map = await BeatSaber.Api.addBookmark(this.key)
-				await BeatSaber.Storage.Map.put(category, map)
+				map = await BeatSaber.Core.Api.addBookmark(this.key)
+				await BeatSaber.Core.Storage.Map.put(category, map)
 				break
 			case MapQueueRequestType.REMOVE:
-				map = (await BeatSaber.Storage.Map.get(
+				map = (await BeatSaber.Core.Storage.Map.get(
 					category,
 					this.key
 				)) as Map
-				await BeatSaber.Api.removeBookmark(map.id)
-				await BeatSaber.Storage.Map.remove(category, this.key)
+				await BeatSaber.Core.Api.removeBookmark(map.id)
+				await BeatSaber.Core.Storage.Map.remove(category, this.key)
 				break
 		}
 
-		const subjects = BeatSaber.TrackQueue.getSubjectsByKey(this.key)
+		const subjects = BeatSaber.Core.TrackQueue.getSubjectsByKey(this.key)
 		for (const subject of subjects) {
 			const track = subject.value
 			switch (this.type) {

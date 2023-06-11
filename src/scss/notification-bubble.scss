@@ -1,0 +1,33 @@
+.notification-bubble-container {
+	top: 0;
+	transform: translate(-50%, 0);
+
+	border-radius: 8px;
+	box-shadow: 0 4px 12px 4px rgba(0, 0, 0, 0.5);
+	color: #fff;
+	display: inline-block;
+	font-size: 16px;
+	line-height: 20px;
+	max-width: 450px;
+	opacity: 1;
+	padding: 12px 36px;
+	text-align: center;
+	transition: none 0.5s cubic-bezier(0.3, 0, 0.4, 1);
+	transition-property: opacity, background-color;
+
+	&.is-hidden {
+		opacity: 0;
+	}
+
+	&.success {
+		background-color: #1CB552;
+	}
+
+	&.info {
+		background-color: #2E77D0;
+	}
+
+	&.error {
+		background-color: #CD1A2B;
+	}
+}

@@ -2,7 +2,7 @@ import { isHTMLIFrame } from "../../core/utils"
 
 export abstract class BaseWatcher<T extends Element> {
 	protected observer: MutationObserver
-	protected childWatchers: Map<Node, BaseWatcher<Element>>
+	protected childWatchers: Map<Node, BaseWatcher<Element>[]>
 	protected root: T
 
 	constructor(root: T) {
@@ -17,7 +17,7 @@ export abstract class BaseWatcher<T extends Element> {
 	}
 
 	protected log(...data: unknown[]) {
-		if (BeatSaber.Settings.logWatchers) {
+		if (BeatSaber.Core.Settings.logWatchers) {
 			console.log(...data)
 		}
 	}
@@ -31,6 +31,7 @@ export abstract class BaseWatcher<T extends Element> {
 			}
 			target = parent.querySelector(selector)
 			if (!target) {
+				this.log(`[${this.constructor.name}] Waiting for`, selector)
 				setTimeout(this.observe.bind(this, selector), 1000)
 				return
 			}
@@ -68,14 +69,18 @@ export abstract class BaseWatcher<T extends Element> {
 	 * as the node argument to connect() on the returned
 	 * watcher.
 	 */
-	abstract mount(child: Element): BaseWatcher<Element> | undefined
+	abstract mount(
+		child: Element
+	): BaseWatcher<Element> | BaseWatcher<Element>[] | undefined
 
 	/**
 	 * Cleanup any created child watchers, also disconnect the observer.
 	 */
 	public disconnect() {
-		this.childWatchers.forEach((watcher) => {
-			watcher.disconnect()
+		this.childWatchers.forEach((watchers) => {
+			watchers.forEach((watcher) => {
+				watcher.disconnect()
+			})
 		})
 		this.childWatchers.clear()
 		this.observer?.disconnect()
@@ -84,30 +89,35 @@ export abstract class BaseWatcher<T extends Element> {
 	protected handleNodeAdded(node: Node | Element): void {
 		if (!("tagName" in node)) return
 
-		const watcher = this.mount(node)
-		if (!watcher) return
-		this.childWatchers.set(node, watcher)
+		let watchers = this.mount(node)
+		if (!watchers) return
+		if (!Array.isArray(watchers)) watchers = [watchers]
+		this.childWatchers.set(node, watchers)
 
-		if (
-			isHTMLIFrame(node) &&
-			node.contentDocument.readyState !== "complete"
-		) {
-			const listener = () => {
+		watchers.forEach((watcher) => {
+			if (
+				isHTMLIFrame(node) &&
+				node.contentDocument.readyState !== "complete"
+			) {
+				const listener = () => {
+					watcher.connect()
+					node.removeEventListener("load", listener)
+				}
+				node.addEventListener("load", listener)
+			} else {
 				watcher.connect()
-				node.removeEventListener("load", listener)
 			}
-			node.addEventListener("load", listener)
-		} else {
-			watcher.connect()
-		}
+		})
 	}
 
 	protected handleNodeRemoved(node: Node | Element): void {
 		if (!("tagName" in node)) return
 
-		const watcher = this.childWatchers.get(node)
-		if (!watcher) return
+		const watchers = this.childWatchers.get(node)
+		if (!watchers) return
 		this.childWatchers.delete(node)
-		watcher.disconnect()
+		watchers.forEach((watcher) => {
+			watcher.disconnect()
+		})
 	}
 }

@@ -1,64 +1,28 @@
 import * as manifest from "../apps/beatsaber/manifest.json"
 
-const globals = [
-	"React",
-	"ReactComponent",
-	"ReactDOM",
-	"Redux",
-	"ReduxStore",
-	"Spicetify",
-	"Webpack",
-	"Button",
-	"Card",
-	"CardWithoutLink",
-	"CircularLoader",
-	"GlueToggle",
-	"HeaderBackgroundImage",
-	"HeaderData",
-	"Table",
-	"TableCell",
-	"TableHeaderCell",
-	"TableHeaderRow",
-	"TableRow",
-	"TrackList",
-]
+const globals = ["Spicetify"]
 
 const spicetifyClasses = [
-	"BridgeAsync",
+	// "BridgeAsync",
 	"CosmosAsync",
 	"LocalStorage",
 	"React",
-	"ReactComponent",
 	"ReactDOM",
-	"Redux",
-	"ReduxStore",
 	"URI",
 ]
 
 function checkGlobals(window: Window) {
+	// check globals
 	for (const name of globals) {
-		if (!window[name]) return false
+		if (window[name] === undefined) return false
 	}
+
+	// check Spicetify classes
 	for (const name of spicetifyClasses) {
 		if (!Spicetify[name]) return false
 	}
+
 	return true
-}
-
-function copyGlobals(source: Window, target: Window) {
-	for (const name of globals) {
-		target[name] = source[name]
-	}
-}
-
-function tryResolve(app: string) {
-	const iframe = document.createElement("iframe")
-	iframe.style.display = "none"
-	iframe.src = `spotify:app:${app}:loader`
-	iframe.onload = () => {
-		iframe.remove()
-	}
-	document.body.appendChild(iframe)
 }
 
 /**
@@ -74,46 +38,96 @@ function BeatSaberLoader() {
 	}
 
 	const isTopWindow = window === window.top
+	const isBrowser = !navigator.userAgent.includes("Spotify")
 
 	if (isTopWindow) {
-		console.log("[BeatSaber/Top] Loading version", manifest.BundleVersion)
-		// check if everything is available already
-		if (!checkGlobals(window)) {
-			setTimeout(BeatSaberLoader, 1000)
-			return
+		BeatSaberLoaderTop()
+		if (isBrowser) {
+			BeatSaberLoaderRender()
 		}
-
-		// remove the temporary resolver iframe
-		const resolverIframe = document.getElementById("beatsaber-app-resolver")
-		if (resolverIframe) resolverIframe.remove()
 	} else {
-		console.log(
-			"[BeatSaber/SubApp] Loading version",
-			manifest.BundleVersion
-		)
-		// check if the global core is initialized
-		if (!window.top.BeatSaber) {
-			setTimeout(BeatSaberLoader, 1000)
-			return
-		}
-		// make everything available in this window
-		copyGlobals(window.top, window)
-		window.BeatSaber = window.top.BeatSaber
+		BeatSaberLoaderSub()
+		BeatSaberLoaderRender()
+	}
+}
+
+function BeatSaberLoaderTop() {
+	console.log("[BeatSaber/Top] Loading version", manifest.BundleVersion)
+
+	// check Spotify type
+	const isXpui = window.location.href.includes("xpui.app.spotify.com")
+	const baseUrl = isXpui
+		? "https://xpui.app.spotify.com/assets/beatsaber"
+		: "https://beatsaber.app.spotify.com"
+
+	// build global data object
+	window.BeatSaber = {
+		Core: undefined,
+		// @ts-ignore
+		Manifest: manifest,
+		// @ts-ignore
+		React: {},
+		BaseUrl: baseUrl,
+		IsZlink: !isXpui,
+		IsXpui: isXpui,
 	}
 
-	// store the app manifest globally (ignore missing property errors)
-	// @ts-ignore
-	window.BeatSaberManifest = manifest
+	// check if everything is available already
+	if (!checkGlobals(window)) {
+		setTimeout(BeatSaberLoaderTop, 1000)
+		return
+	}
+
+	// remove the temporary resolver iframe
+	if (BeatSaber.IsZlink) {
+		const resolverIframe = document.getElementById("beatsaber-app-resolver")
+		if (resolverIframe) resolverIframe.remove()
+	}
 
 	// run the Main script
+	// (not needed in SubApp)
 	const script = document.createElement("script")
-	script.src = "https://beatsaber.app.spotify.com/beatsaber.bundle.js"
+	script.src = `${BeatSaber.BaseUrl}/beatsaber.bundle.js`
 	document.body.appendChild(script)
+	console.log("[BeatSaber/Top] Main script injected")
 
-	// try to resolve additional iframes
-	tryResolve("beatsaber-assets")
+	// load the stylesheets
+	// (SubApp has stylesheets in index.html)
+	const style = document.createElement("link")
+	style.rel = "stylesheet"
+	style.href = `${BeatSaber.BaseUrl}/css/beatsaber.css`
+	document.head.appendChild(style)
+	console.log("[BeatSaber/Top] Main stylesheet injected")
+}
 
-	console.log("[BeatSaber] Main script injected")
+function BeatSaberLoaderSub() {
+	console.log("[BeatSaber/Sub] Loading version", manifest.BundleVersion)
+
+	// check if the global core is initialized
+	if (!window.top.BeatSaber || !window.top.BeatSaber.Core) {
+		setTimeout(BeatSaberLoaderSub, 1000)
+		return
+	}
+
+	// make everything available in this window
+	window.BeatSaber = window.top.BeatSaber
+	// @ts-ignore
+	window.Spicetify = window.top.Spicetify
+}
+
+function BeatSaberLoaderRender() {
+	// check if the global core is initialized
+	if (!window.top.BeatSaber || !window.top.BeatSaber.Core) {
+		setTimeout(BeatSaberLoaderRender, 1000)
+		return
+	}
+
+	// render the app page
+	BeatSaber.Core.render(
+		BeatSaber.Core.getAppPage(),
+		window.document.getElementById("root")
+	)
+	console.log("[BeatSaber] App page rendered")
 }
 
 BeatSaberLoader()

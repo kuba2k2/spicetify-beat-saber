@@ -1,0 +1,17 @@
+{
+	"name": "Beat Saber",
+	"description": "Beat Saber map availability plugin for Spicetify",
+	"preview": ".github/screenshot.png",
+	"readme": "README.md",
+	"branch": "dist",
+	"authors": [
+		{
+			"name": "kuba2k2",
+			"url": "https://github.com/kuba2k2"
+		}
+	],
+	"tags": [
+		"beatsaber",
+		"beatsaver"
+	]
+}

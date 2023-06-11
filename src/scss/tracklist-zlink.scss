@@ -1,0 +1,17 @@
+.tl-bs {
+	width: 40px;
+	padding: 0 10px;
+
+	button {
+		width: 20px;
+		--bs-button-size: 20px;
+
+		&::before {
+			padding-left: 2px;
+		}
+	}
+}
+
+.TableCellBeatSaber {
+	width: 40px;
+}

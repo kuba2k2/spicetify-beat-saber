@@ -1,4 +1,4 @@
-import { Level } from "../../models/Level"
+import { MapLocal } from "../../models/MapLocal"
 import { MapCategory } from "../../storage/MapStorage"
 import { MapQueueRequest, MapQueueRequestType } from "../base/MapQueueRequest"
 import { QueueError } from "../base/QueueError"
@@ -14,27 +14,27 @@ export class DownloadRequest extends MapQueueRequest {
 	}
 
 	async run() {
-		if (!BeatSaber.Settings.backendHostname) {
+		if (!BeatSaber.Core.Settings.backendHostname) {
 			throw new QueueError("Backend is not configured")
 		}
 
 		const category = MapCategory.DOWNLOADED
-		let level: Level
+		let level: MapLocal
 		switch (this.type) {
 			case MapQueueRequestType.ADD:
-				level = await BeatSaber.Api.downloadLevel(this.hash)
-				await BeatSaber.Storage.Map.put(category, level)
+				level = await BeatSaber.Core.Api.downloadLevel(this.hash)
+				await BeatSaber.Core.Storage.Map.put(category, level)
 				break
 			case MapQueueRequestType.REMOVE:
-				level = (await BeatSaber.Storage.Map.get(
+				level = (await BeatSaber.Core.Storage.Map.get(
 					category,
 					this.hash
-				)) as Level
-				await BeatSaber.Api.deleteLevel(level.levelDir)
+				)) as MapLocal
+				await BeatSaber.Core.Api.deleteLevel(level.levelDir)
 				break
 		}
 
-		const subjects = BeatSaber.TrackQueue.getSubjectsByHash(this.hash)
+		const subjects = BeatSaber.Core.TrackQueue.getSubjectsByHash(this.hash)
 		for (const subject of subjects) {
 			const track = subject.value
 			switch (this.type) {

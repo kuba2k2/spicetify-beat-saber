@@ -3,7 +3,7 @@
 		"allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
 		"experimentalDecorators": true,
-		"jsx": "preserve",
+		"jsx": "react",
 		"lib": ["es2019", "dom"],
 		"module": "commonjs",
 		"moduleResolution": "node",

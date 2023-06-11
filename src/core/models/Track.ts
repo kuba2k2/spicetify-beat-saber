@@ -1,7 +1,8 @@
 import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
-import { BuiltInLevel } from "./BuiltInLevel"
+import { MapOst } from "./MapOst"
 import { getSlug } from "../utils"
 import { TrackDB } from "./TrackDB"
+import URI from "./URI"
 
 export enum TrackState {
 	DEFAULT = "DEFAULT",
@@ -54,7 +55,7 @@ export enum TrackState {
 }
 
 export class Track extends TrackDB {
-	builtInLevel: BuiltInLevel = null
+	builtInLevel: MapOst = null
 
 	/**
 	 * All map hashes.
@@ -89,12 +90,12 @@ export class Track extends TrackDB {
 	constructor(init: Partial<Track>) {
 		super()
 		Object.assign(this, init)
-		this.uri = Spicetify.URI.from(this.uri)
+		this.uri = URI.from(this.uri)
 		this.slug = getSlug(this.getDefaultSearchQuery())
-		this.artistURIs = this.artistURIs.map((uri) => Spicetify.URI.from(uri))
-		this.artistImage = Spicetify.URI.from(this.artistImage)
-		this.albumUri = Spicetify.URI.from(this.albumUri)
-		this.imageUri = Spicetify.URI.from(this.imageUri)
+		this.artistURIs = this.artistURIs.map((uri) => URI.from(uri))
+		this.artistImage = URI.from(this.artistImage)
+		this.albumUri = URI.from(this.albumUri)
+		this.imageUri = URI.from(this.imageUri)
 		this.extractHashes()
 		// this.includeHashes = new Set()
 	}
