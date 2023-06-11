@@ -51,10 +51,9 @@ function js(debug?: boolean, src?: string) {
 			contents = contents.replaceAll(`require('${global}')`, globals[global])
 		}
 		// make shim-xpui export the render() function
-		if (file.basename == "index.js") {
-			contents = contents.replace("(function(){", "const renderRequire=(function(){")
+		if (file.basename == "shim-xpui.ts") {
+			contents = "const renderRequire=" + contents
 			contents += "const render = renderRequire(1).default;"
-			// contents = contents.replace("")
 		}
 		return contents
 	}
@@ -77,6 +76,7 @@ function js(debug?: boolean, src?: string) {
 			})
 		)
 		.pipe(gulpIf(debug, sourcemaps.init({ loadMaps: true })))
+		.pipe(transform("utf8", rewriteRequire))
 		.pipe(gulpIf(!debug, uglify()))
 		.pipe(
 			rename((opt) => {
@@ -85,7 +85,6 @@ function js(debug?: boolean, src?: string) {
 			})
 		)
 		.pipe(gulpIf(debug, sourcemaps.write(".")))
-		.pipe(transform("utf8", rewriteRequire))
 		.pipe(gulp.dest("apps/beatsaber/"))
 }
 
