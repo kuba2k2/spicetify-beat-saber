@@ -23,7 +23,7 @@ export class DetailsRequest extends TrackQueueRequest {
 		track.album = metadata.album?.name
 		track.albumUri = URI.from(metadata.album?.uri)
 		let maxSize = 0
-		for (const image of metadata.album?.images) {
+		for (const image of metadata.album?.images ?? []) {
 			if (image.width > maxSize) {
 				track.imageUri = URI.from(image.url)
 				maxSize = image.width

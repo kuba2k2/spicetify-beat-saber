@@ -1,7 +1,7 @@
 type RequestType = "http" | "cosmos"
 
 export class RequestProxy {
-	attached: boolean = false
+	attached = false
 	fetch: (input: RequestInfo, init?: RequestInit) => Promise<Response>
 	cosmos: (arg1: any, arg2?: any) => any
 

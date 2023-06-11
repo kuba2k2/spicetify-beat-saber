@@ -18,7 +18,7 @@ type ButtonSize = 16 | 24 | 28 | 32 | 48 | 56
 type ButtonProps = {
 	type?: "normal" | "icon"
 	icon?: IconType
-	text?: String
+	text?: string
 	tooltip?: string
 	color?: ButtonColor
 	activeColor?: ButtonColor

@@ -5,7 +5,7 @@ on:
       - "v*.*.*"
 jobs:
   build:
-    name: Build SPA package
+    name: Build app package
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
