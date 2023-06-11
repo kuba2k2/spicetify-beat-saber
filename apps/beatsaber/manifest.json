@@ -1,7 +1,7 @@
 {
   "BundleIdentifier": "beatsaber",
   "BundleType": "Application",
-  "BundleVersion": "2.0.2",
+  "BundleVersion": "2.0.3",
   "VendorIdentifier": "com.spotify",
   "UserInstallable": false,
   "AppDescription": {
