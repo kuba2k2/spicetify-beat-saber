@@ -1,7 +1,5 @@
 import { MapDetail } from "beatsaver-api/lib/models/MapDetail"
 import React from "react"
-import AutoSizer from "react-virtualized-auto-sizer"
-import { FixedSizeList as List, ListChildComponentProps } from "react-window"
 import styled from "styled-components"
 import {
 	Characteristic,
