@@ -5,13 +5,24 @@ import { QueueState } from "../../../core/queue/TrackQueue"
 import { PlaybarPopup, PlaybarPopupItem } from "../../components/PlaybarPopup"
 import { SectionDivider } from "../../components/SectionDivider"
 import { Button } from "../../controls/Button"
+import { Icon } from "../../controls/Icon"
 import { TextField } from "../../controls/TextField"
 import { Toggle } from "../../controls/Toggle"
 import { TrackPage } from "../track/TrackPage"
+import { DirectoryPage } from "./DirectoryPage"
 
 type SettingsPopupProps = {
 	isOpen: boolean
 } & QueueState
+
+type SettingsPopupState = {
+	backendCheck: boolean
+	backendWait: boolean
+	backendError: boolean
+	backendVersion: string | null
+	backendBsDir: string | null
+	backendBsVer: string | null
+}
 
 const SettingsLabel = styled.span`
 	margin-left: 10px;
@@ -36,11 +47,26 @@ const SettingsField = styled(TextField)`
 	margin-bottom: 15px;
 `
 
-export class SettingsPopup extends React.Component<SettingsPopupProps> {
+const BackendIcon = styled(Icon)`
+	margin-top: 2px;
+`
+
+export class SettingsPopup extends React.Component<
+	SettingsPopupProps,
+	SettingsPopupState
+> {
 	constructor(props: SettingsPopupProps) {
 		super(props)
 		this.handleBlockClick = this.handleBlockClick.bind(this)
 		this.handleClearClick = this.handleClearClick.bind(this)
+		this.state = {
+			backendCheck: false,
+			backendWait: false,
+			backendError: false,
+			backendVersion: null,
+			backendBsDir: null,
+			backendBsVer: null,
+		}
 	}
 
 	handleBlockClick() {
@@ -64,7 +90,11 @@ export class SettingsPopup extends React.Component<SettingsPopupProps> {
 	handleInputChange(key: string, value: string): boolean {
 		BeatSaber.Core.Settings[key] = value
 		BeatSaber.Core.saveSettings()
-		this.forceUpdate()
+		if (key.startsWith("backend")) {
+			this.setState({ backendCheck: true })
+		} else {
+			this.forceUpdate()
+		}
 		return true
 	}
 
@@ -72,6 +102,57 @@ export class SettingsPopup extends React.Component<SettingsPopupProps> {
 		const track = BeatSaber.Core.TrackQueue.getTrack(request.slug)
 		if (!track) return
 		TrackPage.showAsModal(track)
+	}
+
+	handleBackendCheck() {
+		this.updateBackend()
+	}
+
+	handleBsDirBrowse() {
+		DirectoryPage.showAsModal(
+			this.state.backendBsDir,
+			this.handleBsDirChange.bind(this)
+		)
+	}
+
+	async handleBsDirChange(path: string) {
+		try {
+			await BeatSaber.Core.Api.setBsDir(path)
+			await this.updateBackend()
+		} catch (e) {
+			BeatSaber.Core.error(e)
+		}
+	}
+
+	async componentDidUpdate(prevProps: SettingsPopupProps) {
+		if (!this.props.isOpen || prevProps.isOpen === this.props.isOpen) return
+		this.updateBackend()
+	}
+
+	async updateBackend() {
+		this.setState({ backendCheck: false, backendWait: true })
+		try {
+			const version = await BeatSaber.Core.Api.checkBackend()
+			let bsDir: string = null
+			let bsVer: string = null
+			try {
+				const data = await BeatSaber.Core.Api.getBsDir()
+				bsDir = data.path
+				bsVer = data.version
+			} catch {
+				//
+			}
+			this.setState({
+				backendWait: false,
+				backendError: false,
+				backendVersion: version,
+				backendBsDir: bsDir,
+				backendBsVer: bsVer,
+			})
+		} catch (e) {
+			BeatSaber.Core.error(e)
+			this.setState({ backendWait: false, backendError: true })
+		}
 	}
 
 	render() {
@@ -84,26 +165,15 @@ export class SettingsPopup extends React.Component<SettingsPopupProps> {
 			logWatchers: "Debug UI watchers",
 		}
 
-		const inputsBsaber: { [key: string]: [string, Spicetify.Model.Icon] } =
-			{
-				bsaberUsername: [
-					"Username (profile name)",
-					// @ts-ignore
-					BeatSaber.IsZlink ? "user" : "artist",
-				],
-				bsaberLogin: ["Login (e-mail or login username)", "edit"],
-				bsaberPassword: ["Password", "locked"],
-			}
-
-		const inputsBackend: { [key: string]: [string, Spicetify.Model.Icon] } =
-			{
-				backendHostname: [
-					"Hostname (domain:port)",
-					// @ts-ignore
-					BeatSaber.IsZlink ? "device-computer" : "computer",
-				],
-				backendAuth: ["Authentication", "locked"],
-			}
+		const inputsBsaber: { [key: string]: [string, IconType] } = {
+			bsaberUsername: [
+				"Username (profile name)",
+				// @ts-ignore
+				BeatSaber.IsZlink ? "user" : "artist",
+			],
+			bsaberLogin: ["Login (e-mail or login username)", "edit"],
+			bsaberPassword: ["Password", "locked"],
+		}
 
 		let requests = this.props.enqueued
 		if (this.props.current) {
@@ -140,16 +210,89 @@ export class SettingsPopup extends React.Component<SettingsPopupProps> {
 
 				<SectionDivider description="Backend config" />
 
-				{Object.entries(inputsBackend).map(([key, [value, icon]]) => (
-					<SettingsField
-						key={key}
-						label={value}
-						placeholder={value}
-						value={BeatSaber.Core.Settings[key]}
-						iconStart={icon}
-						onChange={this.handleInputChange.bind(this, key)}
-					/>
-				))}
+				<SettingsField
+					key="backendHostname"
+					label="Hostname"
+					placeholder="Hostname (domain:port)"
+					value={BeatSaber.Core.Settings.backendHostname}
+					iconStart={
+						(BeatSaber.IsZlink
+							? "device-computer"
+							: "computer") as IconType
+					}
+					onChange={this.handleInputChange.bind(
+						this,
+						"backendHostname"
+					)}
+				/>
+
+				<SettingsInfo style={{ marginTop: "-10px" }}>
+					{this.state.backendCheck ? (
+						<p>
+							<BackendIcon icon={BeatSaber.Icons["question"]} />
+							<a
+								href="#"
+								onClick={this.handleBackendCheck.bind(this)}
+							>
+								Click to check connection
+							</a>
+						</p>
+					) : this.state.backendWait ? (
+						<p>
+							<BackendIcon icon={BeatSaber.Icons["search"]} />
+							Checking connection...
+						</p>
+					) : this.state.backendError ? (
+						<p>
+							<BackendIcon icon={BeatSaber.Icons["x"]} />
+							Couldn't connect to backend
+						</p>
+					) : this.state.backendVersion ? (
+						<p>
+							<BackendIcon icon={BeatSaber.Icons["check"]} />
+							Connected: v{this.state.backendVersion}
+						</p>
+					) : (
+						<div />
+					)}
+				</SettingsInfo>
+
+				{/* <SettingsField
+					key="backendAuth"
+					label="Authentication"
+					placeholder="Authentication"
+					value={BeatSaber.Core.Settings.backendAuth}
+					iconStart="locked"
+					onChange={this.handleInputChange.bind(this, "backendAuth")}
+				/> */}
+
+				<SettingsField
+					key="backendBsDir"
+					label="Beat Saber directory"
+					placeholder="C:\..."
+					value={
+						this.state.backendVersion
+							? this.state.backendBsDir ?? ""
+							: ""
+					}
+					iconStart="playlist-folder"
+					iconEnd={BeatSaber.Icons["queue"]}
+					onIconEndClick={this.handleBsDirBrowse.bind(this)}
+				/>
+
+				<SettingsInfo style={{ marginTop: "-10px" }}>
+					{this.state.backendBsDir ? (
+						<p>
+							<BackendIcon icon={BeatSaber.Icons["check"]} />
+							Beat Saber {this.state.backendBsVer}
+						</p>
+					) : (
+						<p>
+							<BackendIcon icon={BeatSaber.Icons["x"]} />
+							Not a valid path
+						</p>
+					)}
+				</SettingsInfo>
 
 				<SectionDivider description="Debugging" />
 

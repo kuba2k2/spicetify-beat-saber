@@ -8,6 +8,19 @@ import { ApiPartnerArtist } from "../models/ApiPartnerArtist"
 import { MapLocal } from "../models/MapLocal"
 import URI from "../models/URI"
 import { BackendRequestHandler } from "./BackendRequestHandler"
+import { satisfies } from "semver"
+
+type FilesResponse = {
+	path: string
+	parent: string
+	dirs: string[]
+	files: string[]
+}
+
+type BsDirResponse = {
+	path: string
+	version: string
+}
 
 export class ApiUtils {
 	BeatSaver = new BeatSaverAPI({
@@ -94,8 +107,8 @@ export class ApiUtils {
 		await this.BeastSaber.bookmarkRemove(id)
 	}
 
-	async levelsRequest<T>(endpoint: string): Promise<T> {
-		const url = `http://${BeatSaber.Core.Settings.backendHostname}/levels${endpoint}`
+	async backendGet<T>(endpoint: string): Promise<T> {
+		const url = `http://${BeatSaber.Core.Settings.backendHostname}${endpoint}`
 		const headers = {
 			Authorization: `Basic ${BeatSaber.Core.Settings.backendAuth}`,
 		}
@@ -103,19 +116,52 @@ export class ApiUtils {
 		return response as unknown as T
 	}
 
+	async backendPost<T>(endpoint: string): Promise<T> {
+		const url = `http://${BeatSaber.Core.Settings.backendHostname}${endpoint}`
+		const headers = {
+			Authorization: `Basic ${BeatSaber.Core.Settings.backendAuth}`,
+		}
+		const response = await Spicetify.CosmosAsync.post(url, null, headers)
+		return response as unknown as T
+	}
+
+	async checkBackend(): Promise<string> {
+		const data = await this.backendGet<any>("/")
+		if (!satisfies(data.version, ">=2.0.0")) {
+			throw Error("Please update spicetify-beat-saber-backend")
+		}
+		return data.version
+	}
+
 	async getDownloads(): Promise<MapLocal[]> {
-		return this.levelsRequest<MapLocal[]>("/")
+		return this.backendGet<MapLocal[]>("/levels")
 	}
 
 	async getDownloadHashes(): Promise<string[]> {
-		return this.levelsRequest<string[]>("/hashes")
+		return this.backendGet<string[]>("/levels/hashes")
 	}
 
 	async downloadLevel(hash: string): Promise<MapLocal> {
-		return this.levelsRequest<MapLocal>(`/download/${hash}`)
+		return this.backendGet<MapLocal>(`/levels/download/${hash}`)
 	}
 
-	async deleteLevel(levelDir: string): Promise<void> {
-		this.levelsRequest<string>(`/delete/${encodeURIComponent(levelDir)}`)
+	async deleteLevel(levelDir: string): Promise<string> {
+		return this.backendGet<string>(
+			`/levels/delete/${encodeURIComponent(levelDir)}`
+		)
+	}
+
+	async listFilesInPath(path: string): Promise<FilesResponse> {
+		return await this.backendGet("/files?path=" + encodeURIComponent(path))
+	}
+
+	async getBsDir(): Promise<BsDirResponse> {
+		return await this.backendGet("/levels/bsdir")
+	}
+
+	async setBsDir(path: string): Promise<BsDirResponse> {
+		return await this.backendPost(
+			"/levels/bsdir?path=" + encodeURIComponent(path)
+		)
 	}
 }

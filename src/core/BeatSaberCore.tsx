@@ -37,13 +37,13 @@ export class BeatSaberCore {
 	MapQueue = new MapQueue()
 	NotificationSubject = new Subject<NotificationData>()
 	Settings = {
-		blockQueue: true,
+		blockQueue: false,
 		logQueue: false,
 		logMapQueue: false,
 		logStateButton: false,
 		logTrackPage: false,
 		logWatchers: false,
-		backendHostname: null,
+		backendHostname: "localhost:23287",
 		backendAuth: null,
 		bsaberLogin: null,
 		bsaberPassword: null,
@@ -74,7 +74,13 @@ export class BeatSaberCore {
 		}
 
 		// sync bookmarks and downloads
-		setTimeout(this.syncMaps, 5000)
+		setTimeout(async () => {
+			try {
+				await this.syncMaps()
+			} catch (e) {
+				this.error(e)
+			}
+		}, 5000)
 
 		if (BeatSaber.IsZlink) {
 			// build icon map
@@ -201,6 +207,8 @@ export class BeatSaberCore {
 			return
 		}
 
+		await BeatSaber.Core.Api.checkBackend()
+
 		const now = new Date().getTime()
 		if (
 			now - BeatSaber.Core.Settings.lastSyncTime <
@@ -290,6 +298,14 @@ export class BeatSaberCore {
 	}
 
 	public error(error: Error) {
+		if (error.toString().includes("status code 500")) {
+			error = Error("Couldn't connect to backend")
+		} else if (error.toString().includes("status code 404")) {
+			error = Error("Please update spicetify-beat-saber-backend")
+		} else if (error.toString().includes("status code 400")) {
+			error = Error("Check the Beat Saber directory path setting")
+		}
+
 		this.NotificationSubject.next({ type: "error", text: error.toString() })
 	}
 }
