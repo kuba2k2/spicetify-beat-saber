@@ -4,7 +4,7 @@ import BeatSaverAPI from "beatsaver-api"
 import { SortOrder } from "beatsaver-api/lib/api/search"
 import { SearchResponse } from "beatsaver-api/lib/models/SearchResponse"
 import { ApiTrack } from "../models/ApiTrack"
-import { CosmosArtist } from "../models/CosmosArtist"
+import { ApiPartnerArtist } from "../models/ApiPartnerArtist"
 import { MapLocal } from "../models/MapLocal"
 import URI from "../models/URI"
 import { BackendRequestHandler } from "./BackendRequestHandler"
@@ -28,9 +28,24 @@ export class ApiUtils {
 		return (await Spicetify.CosmosAsync.get(url)) as ApiTrack
 	}
 
-	async getArtist(uri: URI): Promise<CosmosArtist> {
-		const url = `https://spclient.wg.spotify.com/artist/v1/${uri.id}/desktop?format=json`
-		return (await Spicetify.CosmosAsync.get(url)) as CosmosArtist
+	async getArtist(uri: URI): Promise<ApiPartnerArtist> {
+		const vars = {
+			uri: uri.toString(),
+			locale: "",
+			includePrerelease: false,
+		}
+		const exts = {
+			persistedQuery: {
+				version: 1,
+				sha256Hash:
+					"35648a112beb1794e39ab931365f6ae4a8d45e65396d641eeda94e4003d41497",
+			},
+		}
+		const varsStr = encodeURIComponent(JSON.stringify(vars))
+		const extsStr = encodeURIComponent(JSON.stringify(exts))
+		const url = `https://api-partner.spotify.com/pathfinder/v1/query?operationName=queryArtistOverview&variables=${varsStr}&extensions=${extsStr}`
+		const data: any = await Spicetify.CosmosAsync.get(url)
+		return data.data.artistUnion as ApiPartnerArtist
 	}
 
 	async searchMaps(query: string): Promise<SearchResponse> {

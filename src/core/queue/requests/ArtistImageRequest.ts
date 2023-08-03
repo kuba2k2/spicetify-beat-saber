@@ -15,8 +15,10 @@ export class ArtistImageRequest extends TrackQueueRequest {
 	async run(track: Track): Promise<Track> {
 		const artist = await BeatSaber.Core.Api.getArtist(track.artistURIs[0])
 		const image =
-			artist.header_image?.image ?? artist.info.portraits?.shift()?.uri
-		track.artistImage = URI.from(image) ?? false
+			artist.visuals.headerImage ??
+			artist.visuals.avatarImage ??
+			artist.visuals.gallery?.items?.shift()
+		track.artistImage = URI.from(image?.sources?.shift()?.url) ?? false
 		return track
 	}
 }
