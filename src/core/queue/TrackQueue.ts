@@ -187,7 +187,7 @@ export class TrackQueue {
 				track = await request.run(track)
 			} catch (e) {
 				console.error("Queue error", e)
-				BeatSaber.Core.ErrorSubject.next(e)
+				BeatSaber.Core.error(e)
 				this.queueNext(0)
 				return
 			}

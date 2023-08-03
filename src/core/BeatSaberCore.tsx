@@ -15,6 +15,10 @@ import { MapCategory } from "./storage/MapStorage"
 import { StyleSheetManager, ServerStyleSheet } from "styled-components"
 import { XpuiModal } from "../ui/components/XpuiModal"
 import URI from "./models/URI"
+import {
+	NotificationData,
+	NotificationType,
+} from "../ui/components/Notification"
 
 declare global {
 	interface Window {
@@ -31,7 +35,7 @@ export class BeatSaberCore {
 	Storage = new Storage()
 	TrackQueue = new TrackQueue()
 	MapQueue = new MapQueue()
-	ErrorSubject = new Subject<Error>()
+	NotificationSubject = new Subject<NotificationData>()
 	Settings = {
 		blockQueue: true,
 		logQueue: false,
@@ -68,11 +72,6 @@ export class BeatSaberCore {
 		if (BeatSaber.IsXpui) {
 			new XpuiWatcher(document.body as HTMLBodyElement).connect()
 		}
-
-		// subscribe to show errors
-		this.ErrorSubject.subscribe((error) => {
-			Spicetify.showNotification(error.toString())
-		})
 
 		// sync bookmarks and downloads
 		setTimeout(this.syncMaps, 5000)
@@ -215,7 +214,7 @@ export class BeatSaberCore {
 		let bookmarkCount = 0
 
 		if (BeatSaber.Core.Settings.bsaberUsername && BeatSaber.Core.Settings) {
-			Spicetify.showNotification("Syncing bookmarks...")
+			this.notify("Syncing bookmarks...")
 			const keys = await BeatSaber.Core.Api.getBookmarkKeys(
 				BeatSaber.Core.Settings.bsaberUsername
 			)
@@ -231,7 +230,7 @@ export class BeatSaberCore {
 			})
 
 			for (const page of missingPages) {
-				Spicetify.showNotification(`Getting bookmarks page ${page}...`)
+				this.notify(`Getting bookmarks page ${page}...`)
 				const bookmarks = await BeatSaber.Core.Api.getBookmarks(
 					BeatSaber.Core.Settings.bsaberUsername,
 					page
@@ -243,16 +242,14 @@ export class BeatSaberCore {
 			}
 		}
 
-		Spicetify.showNotification("Syncing downloads...")
+		this.notify("Syncing downloads...")
 		const downloads = await BeatSaber.Core.Api.getDownloads()
 		await BeatSaber.Core.Storage.Map.put(
 			MapCategory.DOWNLOADED,
 			...downloads
 		)
 
-		Spicetify.showNotification(
-			`Added ${bookmarkCount || "no"} new bookmarks`
-		)
+		this.notify(`Added ${bookmarkCount || "no"} new bookmarks`)
 	}
 
 	public saveSettings() {
@@ -286,5 +283,13 @@ export class BeatSaberCore {
 
 	public pauseAudio() {
 		this.audio?.pause()
+	}
+
+	public notify(text: string, type: NotificationType = "info") {
+		this.NotificationSubject.next({ type, text })
+	}
+
+	public error(error: Error) {
+		this.NotificationSubject.next({ type: "error", text: error.toString() })
 	}
 }

@@ -4,9 +4,16 @@ import { Subscription } from "rxjs"
 import { QueueState } from "../../core/queue/TrackQueue"
 import { SettingsPopup } from "./popup/SettingsPopup"
 import { Button } from "../controls/Button"
+import {
+	Notification,
+	NotificationData,
+	NotificationProps,
+} from "../components/Notification"
 
 type PopupAppState = {
 	settingsOpen: boolean
+	notification: NotificationData
+	notificationVisible?: boolean
 } & QueueState
 
 const Wrapper = styled.div`
@@ -14,7 +21,9 @@ const Wrapper = styled.div`
 `
 
 export class PopupApp extends React.Component<unknown, PopupAppState> {
-	subscription: Subscription
+	queueSub: Subscription
+	msgSub: Subscription
+	msgTimeout: NodeJS.Timeout = null
 
 	constructor() {
 		super({})
@@ -23,19 +32,29 @@ export class PopupApp extends React.Component<unknown, PopupAppState> {
 			enqueued: [],
 			blocked: false,
 			settingsOpen: false,
+			notification: {},
 		}
 	}
 
 	componentDidMount() {
-		this.subscription = BeatSaber.Core.TrackQueue.queueSubject.subscribe(
+		this.queueSub = BeatSaber.Core.TrackQueue.queueSubject.subscribe(
 			(state) => {
 				this.setState(state)
 			}
 		)
+		// subscribe to show notifications
+		this.msgSub = BeatSaber.Core.NotificationSubject.subscribe((data) => {
+			this.setState({ notification: data, notificationVisible: true })
+			clearTimeout(this.msgTimeout)
+			this.msgTimeout = setTimeout(() => {
+				this.setState({ notificationVisible: false })
+			}, 5000)
+		})
 	}
 
 	componentWillUnmount() {
-		this.subscription.unsubscribe()
+		this.queueSub.unsubscribe()
+		this.msgSub.unsubscribe()
 	}
 
 	handleIconClick() {
@@ -65,6 +84,11 @@ export class PopupApp extends React.Component<unknown, PopupAppState> {
 				<SettingsPopup
 					isOpen={this.state.settingsOpen}
 					{...this.state}
+				/>
+
+				<Notification
+					isVisible={this.state.notificationVisible}
+					{...this.state.notification}
 				/>
 			</Wrapper>
 		)

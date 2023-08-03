@@ -58,7 +58,7 @@ export class MapQueue {
 				await request.run()
 			} catch (e) {
 				console.error("Map queue error", e)
-				BeatSaber.Core.ErrorSubject.next(e)
+				BeatSaber.Core.error(e)
 				request.reject(e)
 				this.queueNext(0)
 				return

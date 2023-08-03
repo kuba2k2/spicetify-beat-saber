@@ -19,13 +19,8 @@ type TrackPageState = {
 	query: string
 	imageRequested?: boolean
 	artistImageRequested?: boolean
-	bubbleVisible?: boolean
-	bubbleType?: BubbleType
-	bubbleText?: string
 } & TrackPageProps &
 	Required<TrackMapSets>
-
-type BubbleType = "success" | "info" | "error"
 
 const Page = styled.div`
 	display: flex;
@@ -44,7 +39,6 @@ const SearchField = styled(TextField)`
 
 export class TrackPage extends React.Component<TrackPageProps, TrackPageState> {
 	subscription: Subscription = null
-	bubbleTimeout: NodeJS.Timeout
 	scrollNodeRef: React.RefObject<HTMLDivElement>
 
 	constructor(props: TrackPageProps) {
@@ -179,13 +173,16 @@ export class TrackPage extends React.Component<TrackPageProps, TrackPageState> {
 		try {
 			if (this.state.bookmarkedKeys.has(map.id)) {
 				await BeatSaber.Core.MapQueue.bookmarkRemove(map)
-				this.showBubble("info", "Removed bookmark for " + map.name)
+				BeatSaber.Core.notify(
+					"Removed bookmark for " + map.name,
+					"info"
+				)
 			} else {
 				await BeatSaber.Core.MapQueue.bookmarkAdd(map)
-				this.showBubble("success", "Bookmarked " + map.name)
+				BeatSaber.Core.notify("Bookmarked " + map.name, "success")
 			}
 		} catch (e) {
-			this.showBubble("error", e.toString())
+			BeatSaber.Core.error(e)
 		}
 		this.state.bookmarkingKeys.delete(map.id)
 		this.forceUpdate()
@@ -198,28 +195,16 @@ export class TrackPage extends React.Component<TrackPageProps, TrackPageState> {
 		try {
 			if (this.state.downloadedHashes.has(hash)) {
 				await BeatSaber.Core.MapQueue.downloadRemove(map)
-				this.showBubble("info", "Deleted " + map.name)
+				BeatSaber.Core.notify("Deleted " + map.name, "info")
 			} else {
 				await BeatSaber.Core.MapQueue.downloadAdd(map)
-				this.showBubble("success", "Downloaded " + map.name)
+				BeatSaber.Core.notify("Downloaded " + map.name, "success")
 			}
 		} catch (e) {
-			this.showBubble("error", e.toString())
+			BeatSaber.Core.error(e)
 		}
 		this.state.downloadingHashes.delete(hash)
 		this.forceUpdate()
-	}
-
-	showBubble(type: BubbleType, text: string) {
-		this.setState({
-			bubbleVisible: true,
-			bubbleType: type,
-			bubbleText: text,
-		})
-		clearTimeout(this.bubbleTimeout)
-		this.bubbleTimeout = setTimeout(() => {
-			this.setState({ bubbleVisible: false })
-		}, 5000)
 	}
 
 	render() {
@@ -290,16 +275,6 @@ export class TrackPage extends React.Component<TrackPageProps, TrackPageState> {
 				/>
 
 				{page}
-
-				<div className="notification-bubble-mount-node">
-					<div
-						className={`notification-bubble-container ${
-							this.state.bubbleType
-						} ${this.state.bubbleVisible ? "" : "is-hidden"}`}
-					>
-						<span>{this.state.bubbleText}</span>
-					</div>
-				</div>
 			</Page>
 		)
 	}
