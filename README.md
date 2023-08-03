@@ -23,9 +23,11 @@ This is a custom app for the Spotify desktop client (with Spicetify installed). 
 
 [spicetify-beat-saber-backend](https://github.com/kuba2k2/spicetify-beat-saber-backend) is required to bookmark maps on BeastSaber (due to CORS issues) and to download maps to Beat Saber directory. After installing, the backend can be configured in the popup menu in bottom-right corner of the Spotify client.
 
-Refer to the backend's README for instructions on how to configure everything.
-
 ## Installation
+
+**NOTE:** [install spicetify-beat-saber-backend](https://github.com/kuba2k2/spicetify-beat-saber-backend) first.
+
+After installing the extension, you only need to set the Beat Saber game path to use the downloading feature. Refer to `Configuration` below.
 
 ### Modern clients (v1.2.x+)
 
@@ -55,6 +57,17 @@ A custom [fork of Spicetify](https://github.com/kuba2k2/spicetify-legacy) is nee
 7. `spicetify backup` (if you haven't done this before)
 8. `spicetify apply`
 9. The app should now be available in your Spotify client.
+
+## Configuration
+
+A few configuration options are available in the Beat Saber popup window (bottom-right of the Spotify window):
+- BeastSaber login data - required to use the bookmarking feature
+  - `Username` is your BeastSaber public profile name (as in https://bsaber.com/members/profile-name-goes-here/)
+  - `Login` is your e-mail address or login name that allows to login to BeastSaber
+  - `Password` is pretty self-explanatory
+- backend access info - required to use either bookmarking or downloading
+  - `Hostname` - leave the default, which is `localhost:23287`
+  - `Beat Saber directory` is the path to the Beat Saber game directory (i.e. the one with `Beat Saber.exe` in it, NOT `CustomLevels`)
 
 ## License
 
