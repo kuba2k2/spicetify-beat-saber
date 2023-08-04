@@ -86,7 +86,7 @@ export class DirectoryPage extends React.Component<
 	async navigate(path: string) {
 		this.props.pathRef[0] = path
 		this.setState({ loading: true })
-		const data = await BeatSaber.Core.Api.listFilesInPath(path)
+		const data = await BeatSaber.Core.Api.listFilesInPath(path || "")
 		this.setState(data)
 		this.setState({ loading: false })
 	}
