@@ -66,7 +66,7 @@ export class ApiUtils {
 					persistCache: true,
 				}
 			)
-			return data.artistUnion as ApiPartnerArtist
+			return data.data.artistUnion as ApiPartnerArtist
 		}
 
 		const vars = {

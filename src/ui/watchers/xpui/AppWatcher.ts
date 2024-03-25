@@ -3,7 +3,12 @@ import { TracklistWatcher } from "./TracklistWatcher"
 
 export class AppWatcher extends BaseWatcher<HTMLBodyElement> {
 	connect(): void {
-		this.observe(".Root__main-view .os-content main", {
+		const selector = document.querySelector(
+			".Root__main-view .os-content main"
+		)
+			? ".Root__main-view .os-content main"
+			: ".Root__main-view .main-view-container__scroll-node"
+		this.observe(selector, {
 			subtree: true,
 			childList: true,
 		})

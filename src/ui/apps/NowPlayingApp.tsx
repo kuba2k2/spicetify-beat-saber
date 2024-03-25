@@ -51,10 +51,12 @@ export class NowPlayingApp extends React.Component<
 	render() {
 		const data = this.state.data
 		if (!data) return null
+		// @ts-expect-error: 'item' is not in types
+		const trackData = data.track ?? data.item
 		const track: TrackBase = {
-			uri: URI.from(data.track.uri),
-			title: data.track.metadata.title,
-			artists: [data.track.metadata.artist_name],
+			uri: URI.from(trackData.uri),
+			title: trackData.metadata.title,
+			artists: [trackData.metadata.artist_name],
 		}
 		if (BeatSaber.IsZlink) {
 			return <StyledApp trackBase={track} />
