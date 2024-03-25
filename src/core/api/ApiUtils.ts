@@ -42,6 +42,33 @@ export class ApiUtils {
 	}
 
 	async getArtist(uri: URI): Promise<ApiPartnerArtist> {
+		if ("GraphQL" in Spicetify) {
+			// @ts-expect-error: not in types
+			const { GraphQL } = Spicetify
+			const queryArtistOverview = {
+				name: "queryArtistOverview",
+				operation: "query",
+				sha256Hash:
+					"35648a112beb1794e39ab931365f6ae4a8d45e65396d641eeda94e4003d41497",
+				value: null,
+			}
+
+			const request = {
+				uri: uri.toString(),
+				locale: "",
+				includePrerelease: false,
+			}
+
+			const data: any = await GraphQL.Request(
+				queryArtistOverview,
+				request,
+				{
+					persistCache: true,
+				}
+			)
+			return data.artistUnion as ApiPartnerArtist
+		}
+
 		const vars = {
 			uri: uri.toString(),
 			locale: "",
@@ -112,8 +139,11 @@ export class ApiUtils {
 		const headers = {
 			Authorization: `Basic ${BeatSaber.Core.Settings.backendAuth}`,
 		}
-		const response = await Spicetify.CosmosAsync.get(url, null, headers)
-		return response as unknown as T
+		const response = await fetch(url, {
+			method: "GET",
+			headers,
+		})
+		return (await response.json()) as unknown as T
 	}
 
 	async backendPost<T>(endpoint: string): Promise<T> {
@@ -121,8 +151,11 @@ export class ApiUtils {
 		const headers = {
 			Authorization: `Basic ${BeatSaber.Core.Settings.backendAuth}`,
 		}
-		const response = await Spicetify.CosmosAsync.post(url, null, headers)
-		return response as unknown as T
+		const response = await fetch(url, {
+			method: "POST",
+			headers,
+		})
+		return (await response.json()) as unknown as T
 	}
 
 	async checkBackend(): Promise<string> {
