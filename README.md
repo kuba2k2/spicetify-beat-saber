@@ -42,6 +42,14 @@ After installing the extension, you only need to set the Beat Saber game path to
 7. `spicetify apply`
 8. The app should now be available in your Spotify client.
 
+### Uninstall - Modern clients (v1.2.x+)
+
+1. Run `spicetify config-dir` to open your Spicetify directory.
+2. Go to `CustomApps` and remove `beatsaber`.
+3. Run `spicetify config custom_apps beatsaber-` to remove it out of Spicetifys config.
+4. `spicetify apply`
+5. You should now have uninstalled the app :3
+
 ### Legacy clients (v1.1.56)
 
 *This part is left for reference only. You probably want to use the modern version above.*
